@@ -27,8 +27,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
-import com.earth2me.essentials.Mob.MobException;
-
 public class CoinBomb implements Listener {
 
 	public Main plugin;
@@ -41,7 +39,7 @@ public class CoinBomb implements Listener {
 	}
 
 		@EventHandler(priority=EventPriority.HIGH)
-		public void onPlayerUse(PlayerInteractEvent event) throws MobException{
+		public void onPlayerUse(PlayerInteractEvent event) {
 			final Player p = event.getPlayer();       
 				if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 					if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.DARK_GREEN + "Coin Bomb"))){
