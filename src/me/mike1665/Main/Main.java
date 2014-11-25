@@ -3,6 +3,7 @@ package me.mike1665.Main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
@@ -230,9 +231,9 @@ public class Main extends JavaPlugin implements Listener{
 		}
 		if (cmd.getName().equalsIgnoreCase("addstaff") && player.isOp()) {
 			if(player.isOp()) {
-				this.getConfig().set(player.getName() + ".Administrator", true);
+				this.getConfig().set(player.getUniqueId() + ".Administrator", true);
 				this.saveFile();
-				player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getName().toString() + ChatColor.BLUE +" to socreboard staff!");
+				player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getUniqueId().toString() + ChatColor.BLUE +" to socreboard staff!");
 				}	
 			}
 		
@@ -303,7 +304,7 @@ public class Main extends JavaPlugin implements Listener{
 	}
 	
     public void armorCancel(Player player, String reason) {
-    	String playerName = player.getName();
+    	UUID playerName = player.getUniqueId();
     	activate.remove(playerName);
 		rainbowarmor.remove(playerName);
 		player.getInventory().setArmorContents(null);
