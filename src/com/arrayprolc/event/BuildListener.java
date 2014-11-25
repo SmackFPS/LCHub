@@ -25,14 +25,12 @@ public class BuildListener implements Listener {
 	public void place(BlockPlaceEvent e){
 		if(e.getPlayer().getGameMode() != GameMode.CREATIVE){
 			e.setCancelled(true);
-			BUtils.sendActionBar(e.getPlayer(), StringManager.getMessage("§aPlease do not place blocks!", MessageType.ERROR));
 		}
 	}
 	@EventHandler
 	public void place(BlockBreakEvent e){
 		if(e.getPlayer().getGameMode() != GameMode.CREATIVE){
 			e.setCancelled(true);
-			BUtils.sendActionBar(e.getPlayer(), StringManager.getMessage("§aPlease do not break blocks!", MessageType.ERROR));
 		}
 	}
 	
@@ -40,7 +38,6 @@ public class BuildListener implements Listener {
 	public void onDrop(PlayerDropItemEvent e){
 		if(e.getPlayer().getGameMode() != GameMode.CREATIVE){
 			e.setCancelled(true);
-			BUtils.sendActionBar(e.getPlayer(), StringManager.getMessage("§aPlease do not drop items!", MessageType.ERROR));
 		}
 	}
 
