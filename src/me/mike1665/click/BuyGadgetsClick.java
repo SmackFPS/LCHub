@@ -84,7 +84,7 @@ public class BuyGadgetsClick implements Listener{
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
 			} 
-			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cTNT")) {
+			/*if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cTNT")) {
 				if(LcCoinsAPI.hasEnough(p, 30)) {
 					LcCoinsAPI.takePoints(p, 30);
 					ItemStack ender = new ItemStack(Material.TNT, 10);
@@ -96,7 +96,20 @@ public class BuyGadgetsClick implements Listener{
 				}else {
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
-			} 
+			} */
+			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure Chest")) {
+			if(LcCoinsAPI.hasEnough(p, 7000)) {
+				LcCoinsAPI.takePoints(p, 7000);
+				ItemStack ender = new ItemStack(Material.TRAPPED_CHEST, 1);
+				ItemMeta e = ender.getItemMeta();
+        		e.setDisplayName(ChatColor.RED + "§d§lTreasure Chest §7 - Right Click");
+        		ender.setItemMeta(e);
+        		p.getInventory().addItem(ender);
+        		p.closeInventory();
+			}else {
+				p.sendMessage(ChatColor.RED + "You dont have enough money!");
+			}
+		} 
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
 				if(LcCoinsAPI.hasEnough(p, 5000)) {

@@ -22,6 +22,7 @@ public class MountMenuClick implements Listener{
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
 		Player p = (Player) event.getWhoClicked();
+		try{
 		if (event.getInventory().getName().equalsIgnoreCase(MountMenu.INV_NAME)) {
 			event.setCancelled(true);
 
@@ -75,5 +76,6 @@ public class MountMenuClick implements Listener{
 				return;
 
 			} 
+		}catch(Exception ex){} //causing random nullpointers
 	}
 }
