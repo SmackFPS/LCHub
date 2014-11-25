@@ -13,6 +13,7 @@ public class ArrayEventSetup {
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		plugin = instance;
 		pm.registerEvents(new ClickInventory(plugin), plugin);
+		pm.registerEvents(new TabHeaderSetup(plugin), plugin);
 	}
 	
 }

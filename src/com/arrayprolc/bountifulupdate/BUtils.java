@@ -45,6 +45,7 @@ public class BUtils {
 	}
 	
 	public static void sendHeaderAndFooter(Player p, String head, String foot){
+		if(!isPlayerRightVersion(p)) return;
 		PlayerConnection connection = getConnection(p);
 		IChatBaseComponent header = ChatSerializer.a("{'color': '" + "', 'text': '" + head + "'}");
 		IChatBaseComponent footer = ChatSerializer.a("{'color': '" + "', 'text': '" + foot + "'}");
