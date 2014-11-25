@@ -14,6 +14,7 @@ public class ArrayEventSetup {
 		plugin = instance;
 		pm.registerEvents(new ClickInventory(plugin), plugin);
 		pm.registerEvents(new TabHeaderSetup(plugin), plugin);
+		pm.registerEvents(new BuildListener(plugin), plugin);
 	}
 	
 }
