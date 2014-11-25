@@ -16,6 +16,7 @@ import me.mike1665.click.VipGadjetsClick;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
+import me.mike1665.commands.StatsCommand;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
 import me.mike1665.eventhandlers.BuyMeowBalls;
@@ -152,6 +153,7 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new PixlBomb(this), this);
 		ArrayEventSetup.setupEvents(this);
 		ArrayCommandHandler.setup(this);
+		StatsCommand.setup(this);
 		colors.put("red", "255,0,0");
     	colors.put("orange", "255,127,0");
     	colors.put("yellow", "255,255,0");
@@ -273,13 +275,7 @@ public class Main extends JavaPlugin implements Listener{
 			player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "Armor deactivated.");
 
 		}
-		if (cmd.getName().equalsIgnoreCase("stats")) {
-			int a1 = LcTokensAPI.balancePoints(player);
-			int b1 = LcCoinsAPI.balancePoints(player);
-			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Tokens - " + a1);
-			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Coins - " + b1);
-
-		}
+		
 		if (cmd.getName().equalsIgnoreCase("addstaff") && player.isOp()) {
 			if(player.isOp()) {
 				this.getConfig().set(player.getUniqueId() + ".Administrator", true);
