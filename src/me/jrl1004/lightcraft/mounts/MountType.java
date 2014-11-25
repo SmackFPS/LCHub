@@ -8,14 +8,14 @@ import org.bukkit.entity.Horse.Variant;
 
 public enum MountType {
 
-	DRAGON(Color.BLACK, Style.BLACK_DOTS, Variant.HORSE), FROST(Color.WHITE,
-			Style.WHITE, Variant.HORSE), MULE(Color.BLACK, Style.BLACK_DOTS,
-			Variant.MULE), UNDEAD(Color.BLACK, Style.BLACK_DOTS,
-			Variant.SKELETON_HORSE);
+	DRAGON(Color.BLACK, Style.BLACK_DOTS, Variant.HORSE),
+	FROST(Color.WHITE, Style.WHITE, Variant.HORSE),
+	MULE(Color.BLACK, Style.BLACK_DOTS, Variant.MULE),
+	UNDEAD(Color.BLACK, Style.BLACK_DOTS, Variant.SKELETON_HORSE);
 
-	final Color color;
-	final Style style;
-	final Variant variant;
+	private final Color color;
+	private final Style style;
+	private final Variant variant;
 
 	MountType(Color c, Style s, Variant v) {
 		this.color = c;
@@ -36,8 +36,7 @@ public enum MountType {
 	}
 
 	public String getName(OfflinePlayer player) {
-		String name = ChatColor.translateAlternateColorCodes('&', "&a&l"
-				+ player.getName() + "'s Mount");
+		String name = ChatColor.translateAlternateColorCodes('&', "&a&l" + player.getName() + "'s Mount");
 		return name;
 	}
 }
