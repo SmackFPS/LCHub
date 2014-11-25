@@ -61,6 +61,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
+import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
@@ -131,6 +132,7 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new BuyGadgets(), this);
 		pm.registerEvents(new BuyEnderDoge(), this);
 		pm.registerEvents(new PixlBomb(this), this);
+		ArrayEventSetup.setupEvents(this);
 		colors.put("red", "255,0,0");
     	colors.put("orange", "255,127,0");
     	colors.put("yellow", "255,255,0");
