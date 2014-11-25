@@ -4,6 +4,7 @@ import java.util.Random;
 
 import me.mike1665.Main.Main;
 
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -65,7 +66,7 @@ public class ApiEvent implements Listener {
 		Score coins = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.WHITE + "" + b));
 		Score spacing3 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.DARK_AQUA + ""));
 		Score score3 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.YELLOW + "Rank "));
-		Score rank = objective.getScore(Bukkit.getOfflinePlayer(RankManager.getColor() + RankManager.getRank(p).toString()));
+		Score rank = objective.getScore(Bukkit.getOfflinePlayer(RankManager.getColor(RankManager.getRank(p)) + WordUtils.capitalize(RankManager.getRank(p).toString().toLowerCase())));
 		Score spacing4 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.RED + ""));
 		Score staff = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.BLUE + "Staff Online?"));
 		Score botmline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "-------------"));
