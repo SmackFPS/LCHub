@@ -19,6 +19,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class TNTFun implements Listener{
 	
 	private Main plugin;
@@ -33,7 +36,7 @@ public class TNTFun implements Listener{
 		  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.RED + "Fun Bomb"))){
 			 	final TNTPrimed tnt = event.getPlayer().getWorld().spawn(event.getPlayer().getEyeLocation(), TNTPrimed.class);
-				player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Explosion incoming!");
+				player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "Explosion incoming!");
 				player.playSound(player.getLocation(), Sound.FUSE, 10, 10);
 				player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
 			      if (player.getItemInHand().getAmount() == 1) {

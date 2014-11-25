@@ -15,6 +15,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class EntityHook implements Listener{
 	
 	@SuppressWarnings("unused")
@@ -24,7 +27,7 @@ public class EntityHook implements Listener{
 		  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.DARK_BLUE + "Entity Hook"))){
 			 	player.playSound(player.getLocation(), Sound.ITEM_BREAK, 10, 10);
-				player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Nearby entities have been hooked!");
+				player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) +  "Nearby entities have been hooked!");
 				player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
 			      if (player.getItemInHand().getAmount() == 1) {
 			    	  player.setItemInHand(null);
@@ -35,7 +38,7 @@ public class EntityHook implements Listener{
 					if(e.getType() == EntityType.PLAYER) {
 					Player entity = (Player) e;
 					player.playSound(player.getLocation(), Sound.LAVA_POP, 10, 10);
-					player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "You have been hooked!");
+					player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) +  "You have been hooked!");
 					}
 					e.setVelocity(new Vector(0, 3, 0));
 				}

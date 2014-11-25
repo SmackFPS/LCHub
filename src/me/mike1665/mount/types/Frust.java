@@ -1,5 +1,7 @@
 package me.mike1665.mount.types;
 
+import java.util.UUID;
+
 import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.utils.UtilAlg;
@@ -22,6 +24,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class Frust implements Listener{
 	
 	Player p;
@@ -33,14 +38,14 @@ public class Frust implements Listener{
 	}
 	
 	public void spawnFrost(final Player player) {
-		String pn = player.getPlayer().getName();
+		UUID pn = player.getPlayer().getUniqueId();
 	   boolean check = plugin.getConfig().getBoolean(pn + ".FrostMount");
 	    if (!check && LcCoinsAPI.hasEnough(player, 5000)) {
 	    	LcCoinsAPI.takePoints(player, 5000);
 			plugin.getConfig().set(pn + ".FrostMount", true);
 			plugin.saveFile();
-			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mount Purchased!");
-			player.sendMessage(ChatColor.AQUA + "Note: Click on your mount again to spawn your new mount! ");
+			player.sendMessage(StringManager.getPrefix(MessageType.INFO) +  ChatColor.GREEN + "" + ChatColor.BOLD + "Mount Purchased!");
+			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + ChatColor.AQUA + "Note: Click on your mount again to spawn your new mount! ");
 			
 	    } else if (check) {
     		Entity ent = (org.bukkit.entity.Horse) player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
@@ -58,7 +63,7 @@ public class Frust implements Listener{
 			horse.setJumpStrength(1.0D);
 			horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
 			horse.setOwner(player);
-	    	player.sendMessage(ChatColor.GREEN + "Mount Spawned");
+	    	player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.GREEN + "Mount Spawned");
 	    	new BukkitRunnable() {
 				@Override
 				public void run() {

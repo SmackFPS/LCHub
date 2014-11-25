@@ -12,6 +12,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class MountManager implements Listener{
 	
 	static Entity ent;
@@ -33,7 +36,7 @@ public class MountManager implements Listener{
 
 	    if ((horse.getOwner() == null) || (!horse.getOwner().equals(player)))
 	    {
-	      player.sendMessage(ChatColor.RED + "This is not your mount.");
+	      player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "This is not your mount.");
 	      event.setCancelled(true);
 	    }
 	  }

@@ -24,6 +24,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class CatWorks implements Listener{
 	
 	private Main plugin;
@@ -42,7 +45,7 @@ public class CatWorks implements Listener{
 	  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 		  if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.YELLOW + "Cat Works"))){
 			    if (this.cooldown.containsKey(p)) {
-					  p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.RED + "§cYou cannot use §b§lCat Works §cfor §b§l" + arrondi(((Double)this.cooldown.get(p)).doubleValue(), 1) + " Seconds.");
+					  p.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + ChatColor.RED + "§cYou cannot use §b§lCat Works §cfor §b§l" + arrondi(((Double)this.cooldown.get(p)).doubleValue(), 1) + " Seconds.");
 				      return;
 				    }
 			  this.cooldown.put(p, Double.valueOf(2.1D));

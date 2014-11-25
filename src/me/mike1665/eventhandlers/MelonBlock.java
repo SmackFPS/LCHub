@@ -18,6 +18,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class MelonBlock implements Listener{
 	
 	public static ItemStack createItem(Material material, int amount, boolean isEnchanted, String name, String lore) {
@@ -46,14 +49,14 @@ public class MelonBlock implements Listener{
 		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.RED + "Melon Block"))){
 			 	player.playSound(player.getLocation(), Sound.LAVA_POP, 10, 10);
 				player.getWorld().dropItemNaturally(player.getLocation().add(new Vector(0, 5, 0)), createItem(Material.MELON, 64, false, ChatColor.GREEN + "" + ChatColor.BOLD + "Super Melon", ChatColor.WHITE + "Eat them to get super speed!"));
-				player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "What have you done!");
+				player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) +  "What have you done?!");
 				event.setCancelled(true);
 				player.setItemInHand(null);
 		 		}
 		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "" +  ChatColor.BOLD + "Super Melon"))){
 			 	player.playSound(player.getLocation(), Sound.ORB_PICKUP, 10, 10);
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 150, 5));
-				player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "* You feel different now...");
+				player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "* You feel different now...");
 
 				event.setCancelled(true);
 				player.setItemInHand(null);

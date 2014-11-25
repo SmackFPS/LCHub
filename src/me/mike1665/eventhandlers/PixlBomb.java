@@ -27,6 +27,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class PixlBomb implements Listener {
 
 	public Main plugin;
@@ -53,7 +56,7 @@ public class PixlBomb implements Listener {
 			}
 
 	public void launchBomb(Player p) {
-	    Bukkit.broadcastMessage("§2§l[§a§lGemBomb§2§l] - §7§l" + p.getName() + " §a§ljust launched a GemBomb!");
+	    Bukkit.broadcastMessage(StringManager.getPrefix(MessageType.TREASURE) + p.getName() + " §a§ljust launched a GemBomb!");
 
 	    ItemStack baseItem = new ItemStack(Material.AIR);
 	    final ItemStack firedItem = new ItemStack(Material.AIR);

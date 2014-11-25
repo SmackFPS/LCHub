@@ -20,6 +20,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class RespawnEvent implements Listener{
 	
 	
@@ -40,7 +43,7 @@ public class RespawnEvent implements Listener{
 	  if (p.getItemInHand().getType() == Material.CHEST) {
 		  p.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu);
 		  p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
-		  p.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "Hub" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Opened Hub Menu.");
+		  p.sendMessage(StringManager.getPrefix(MessageType.INFO) + "Opened Hub Menu.");
 		  event.setCancelled(true);
 
 	  }

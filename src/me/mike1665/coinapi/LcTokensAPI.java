@@ -15,23 +15,23 @@ public class LcTokensAPI implements Listener {
 	
 	public static void givePoints(OfflinePlayer p, int i) {
 		plugin.getConfig().set(p.getName() + ".Tokens",
-				plugin.getConfig().getInt(p.getName() + ".Tokens", 0) + i);
+				plugin.getConfig().getInt(p.getUniqueId() + ".Tokens", 0) + i);
 		plugin.saveFile();
 	}
 
 	public static void takePoints(OfflinePlayer p, int i) {
 		plugin.getConfig().set(p.getName() + ".Tokens",
-				plugin.getConfig().getInt(p.getName() + ".Tokens", 0) - i);
+				plugin.getConfig().getInt(p.getUniqueId() + ".Tokens", 0) - i);
 		plugin.saveFile();
 	}
 
 	public static boolean hasEnough(OfflinePlayer p, int i) {
-		if (plugin.getConfig().getInt(p.getName() + ".Tokens") >= i)
+		if (plugin.getConfig().getInt(p.getUniqueId() + ".Tokens") >= i)
 			return true;
 		return false;
 	}
 	public static int balancePoints(OfflinePlayer p) {
-		int a = plugin.getConfig().getInt(p.getName() + ".Tokens");
+		int a = plugin.getConfig().getInt(p.getUniqueId() + ".Tokens");
 		return a;
 	}
 }

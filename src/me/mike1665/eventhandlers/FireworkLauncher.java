@@ -17,6 +17,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class FireworkLauncher implements Listener{
 	
 	public final Random random = new Random();
@@ -40,7 +43,7 @@ public class FireworkLauncher implements Listener{
 				player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
 					if (player.getItemInHand().getAmount() == 1) {
 						player.setItemInHand(null);
-						player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Purchase more with your coins!");
+						player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "Purchase more with your coins!");
 					}
 		 		}
 			}

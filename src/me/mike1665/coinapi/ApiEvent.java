@@ -32,7 +32,7 @@ public class ApiEvent implements Listener {
 		board = manager.getNewScoreboard();
 
 		Objective objective = board.registerNewObjective("Test", "Test2");
-		objective.setDisplayName(ChatColor.RED + " ❤ " + ChatColor.GREEN +"" + ChatColor.BOLD + "Light Craft" + "" + ChatColor.RED + " ❤");
+		objective.setDisplayName(ChatColor.RED + " ❤ " + ChatColor.GREEN +"" + ChatColor.BOLD + "LightCraft" + "" + ChatColor.RED + " ❤");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
 		Team team = board.registerNewTeam("Team");
@@ -79,9 +79,9 @@ public class ApiEvent implements Listener {
 	public void onJoin(final PlayerJoinEvent e) {
 		final Player p = e.getPlayer();
 		
-		if (!plugin.getConfig().contains(p.getName())) {
-			plugin.getConfig().set(p.getName() + ".Tokens", 50);
-			plugin.getConfig().set(p.getName() + ".Coins", 500);
+		if (!plugin.getConfig().contains(p.getUniqueId().toString())) {
+			plugin.getConfig().set(p.getUniqueId() + ".Tokens", 50);
+			plugin.getConfig().set(p.getUniqueId() + ".Coins", 500);
 			plugin.saveConfig();
 			scoreboard(p);
 		}

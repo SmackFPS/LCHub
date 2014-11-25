@@ -10,9 +10,9 @@ public class RankManager {
 		plugin = instance;
 	}
 	
-	public static String getRank(Player p){
-		plugin.getConfig().set(p,..getName() + ".Administrator", true);
+	/*public static String getRank(Player p){
+		plugin.getConfig().get(p.getUniqueId() + ".Administrator");
 		plugin.saveFile();
-	}
+	}*/
 
 }
