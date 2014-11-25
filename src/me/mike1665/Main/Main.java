@@ -96,21 +96,13 @@ public class Main extends JavaPlugin implements Listener{
 	public Undead und = new Undead();
 	public Frust fro = new Frust();
 	private EntityManager entityManager;
-	public static MySQL MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", "lolnicetry");
+	public static MySQL MySQL;
 	public static java.sql.Connection c = null;
 	
 	public void onEnable() {
 		instance = this;
-		try {
-			c = MySQL.openConnection();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		SQLTools.statementTest();
+
+
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
 		ApiEvent.initialize(this);
@@ -173,6 +165,17 @@ public class Main extends JavaPlugin implements Listener{
         EffectManager.initialize();
 
 		loadListeners();
+		MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
+		try {
+			c = MySQL.openConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQLTools.statementTest();
 	}
 	@Override
 	public void onDisable() {

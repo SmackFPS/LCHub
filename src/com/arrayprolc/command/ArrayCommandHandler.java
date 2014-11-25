@@ -4,7 +4,9 @@ import me.mike1665.Main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
 
 public class ArrayCommandHandler {
 
@@ -31,7 +33,17 @@ public class ArrayCommandHandler {
 				return true;
 			}
 		}
+		if(label.equalsIgnoreCase("sheeplol") && ((Player)sender).isOp()){
+			for(Entity e :  ((Player)sender).getNearbyEntities(5,  5,  5)){
+				if(e instanceof Sheep){
+					 ((Player)sender).setPassenger(e);
+					 return false;
+				}
+			}
+		}
 		return false;
 	}
+	
+
 	
 }
