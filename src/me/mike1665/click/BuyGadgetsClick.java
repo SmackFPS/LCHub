@@ -98,8 +98,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} */
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure Chest")) {
-			if(LcCoinsAPI.hasEnough(p, 7000)) {
-				LcCoinsAPI.takePoints(p, 7000);
+			if(LcTokensAPI.hasEnough(p, 60)) {
+				LcTokensAPI.takePoints(p, 60);
 				ItemStack ender = new ItemStack(Material.TRAPPED_CHEST, 1);
 				ItemMeta e = ender.getItemMeta();
         		e.setDisplayName(ChatColor.RED + "§d§lTreasure Chest §7 - Right Click");

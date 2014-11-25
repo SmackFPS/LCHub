@@ -8,6 +8,7 @@ import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -15,6 +16,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.reward.Reward;
+import com.arrayprolc.reward.RewardList;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
@@ -36,9 +38,16 @@ public class TreasureChestListener implements Listener {
 				i.setAmount(i.getAmount() - 1);
 				e.getPlayer().setItemInHand(i);
 				Bukkit.broadcastMessage(StringManager.getMessage("§a§l" + e.getPlayer().getName() + " is opening a tresure chest!", MessageType.TREASURE));
-				Reward[] rewards = { new Reward(e.getPlayer(), new ItemStack(Material.DIRT)), new Reward(e.getPlayer(), new ItemStack(Material.DIAMOND)), new Reward(e.getPlayer(), new ItemStack(Material.DIAMOND)), new Reward(e.getPlayer(), new ItemStack(Material.DIAMOND)), new Reward(e.getPlayer(), "say Console Test!", new ItemStack(Material.EMERALD))};
-				TreasureChest tc = new TreasureChest(e.getPlayer(), pickFourRewards(rewards));
+				chest(e.getPlayer());
 			}
+		}
+	}
+	
+	public void chest(Player p){
+		try{
+			TreasureChest tc = new TreasureChest(p, pickFourRewards(RewardList.list(p)));
+		}catch(Exception e){
+			chest(p);
 		}
 	}
 	

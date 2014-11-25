@@ -54,8 +54,8 @@ public class BuyGadgets implements Listener{
 						"§b (10) Costs §6§l: §d30 Tokens"));*/
 		buygadmenu.setItem(
 				22,
-				createItem(Material.TNT, 1, (short) 0, "§d§lTreasure Chest",
-						"§b (1) Costs §6§l: §a7000 Coins"));
+				createItem(Material.TRAPPED_CHEST, 1, (short) 0, "§d§lTreasure Chest",
+						"§b (1) Costs §6§l: §d60 Tokens"));
 		
 		
 		buygadmenu.setItem(
