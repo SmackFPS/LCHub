@@ -7,8 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Sound;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -69,7 +69,7 @@ public class AdminGadgetsClick implements Listener{
 	
 	@SuppressWarnings("deprecation")
 	public void spawnSHEEP(Player player) {
-		final org.bukkit.entity.Sheep sheep = (org.bukkit.entity.Sheep) Bukkit.getWorld("world").spawnEntity(player.getLocation(), EntityType.SHEEP);
+		final org.bukkit.entity.Sheep sheep = (org.bukkit.entity.Sheep) player.getWorld().spawn(player.getLocation(), Sheep.class);
 		sheep.setCustomName(ChatColor.AQUA + "Swag Sheep");
 		sheep.setMaxHealth(20);
 		sheep.setColor(DyeColor.RED);
