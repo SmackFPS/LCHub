@@ -69,10 +69,10 @@ import code.husky.mysql.MySQL;
 
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
+import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.sql.SQLTools;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
-import com.mysql.jdbc.Connection;
 
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
@@ -163,11 +163,14 @@ public class Main extends JavaPlugin implements Listener{
         this.usingarmor = new ArrayList<String>();
 		entityManager = new EntityManager(this);
         EffectManager.initialize();
+        RankManager.init(this);
 
 		loadListeners();
-		MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
+		
 		try {
+			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
 			c = MySQL.openConnection();
+			SQLTools.statementTest();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,7 +178,7 @@ public class Main extends JavaPlugin implements Listener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		SQLTools.statementTest();
+		
 	}
 	@Override
 	public void onDisable() {

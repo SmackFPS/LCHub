@@ -10,7 +10,8 @@ public class SQLTools {
 	public static void statementTest(){
 		try {
 			Statement statement = Main.c.createStatement();
-			statement.executeUpdate("INSERT INTO tokens (`PlayerRanks`) VALUES ('" + "ThisIsATestYay" + "');");
+			statement.executeUpdate("DELETE FROM tokens (`Rank`) VALUES ('" + "ArrayPro:OWNER,mike1665:DEV" + "');");
+			statement.executeUpdate("INSERT INTO tokens (`Rank`) VALUES ('" + "ArrayPro:OWNER,mike1665:DEV" + "');");
 			System.out.println("Inserted info");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

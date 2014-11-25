@@ -2,6 +2,7 @@ package com.arrayprolc.rank;
 
 import me.mike1665.Main.Main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class RankManager {
@@ -17,7 +18,8 @@ public class RankManager {
 	 */
 	@Deprecated
 	public static String getRankString(Player p){
-		return plugin.getConfig().getString(p.getUniqueId() + ".Rank");
+		String get = p.getUniqueId().toString() + ".rank";
+		return (String) plugin.getConfig().getString(get);
 	}
 
 	public static ServerRank getRank(Player p){
@@ -30,6 +32,7 @@ public class RankManager {
 		}catch(Exception ex){}
 		setRank(p, ServerRank.PLAYER);
 		return ServerRank.PLAYER;
+		
 	}
 
 	/**
@@ -37,8 +40,13 @@ public class RankManager {
 	 */
 	@Deprecated
 	public static void setRankString(Player p, String s){
-		plugin.getConfig().set(p.getUniqueId() + ".Rank", s);
-		plugin.reloadConfig();
+		try{
+			String s2 = p.getUniqueId().toString() + ".rank";
+		plugin.getConfig().set(s2, s);
+		plugin.saveConfig();
+		
+		}catch(Exception ex){ ex.printStackTrace(); }
+		
 	}
 
 	public static void setRank(Player p, ServerRank r){
@@ -60,6 +68,22 @@ public class RankManager {
 		
 		}
 		}catch(Exception ex){return "§7[name]: [message]";}
+	}
+	public static String getColor(ServerRank r){
+		try{
+		switch(r){
+		case ADMIN: return "§c";
+		case DEVELOPER: return "§9";
+		case HELPER: return "§d";
+		case MODERATOR: return "§d";
+		case MVP: return "§e";
+		case OWNER: return "§c";
+		case VIP: return "§a";
+		case PLAYER: return "§7";
+		default: return "§7";
+		
+		}
+		}catch(Exception ex){return "§7";}
 	}
 
 }

