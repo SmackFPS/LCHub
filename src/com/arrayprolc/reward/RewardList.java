@@ -6,7 +6,7 @@ public class RewardList {
 
 	public static Reward[] list(Player p){
 		Reward[] rList = {
-		//	new Reward(p, )
+			new Reward(p, )
 			
 			
 		};

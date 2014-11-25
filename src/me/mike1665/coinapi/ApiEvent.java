@@ -77,7 +77,7 @@ public class ApiEvent implements Listener {
 		staff.setScore(14);
 		botmline.setScore(12);
 		p.setScoreboard(board);
-		for(Player p2 : Bukkit.getOnlinePlayers()){
+	/*	for(Player p2 : Bukkit.getOnlinePlayers()){
 			try{
 				if(!board.getTeams().contains(p2.getName())){
 			Team team = board.registerNewTeam(p2.getName());
@@ -90,7 +90,7 @@ public class ApiEvent implements Listener {
 				team.setPrefix("§7");
 				team.addPlayer(p2);
 				}
-		}
+		}*/
 
 	}
 	@EventHandler(priority=EventPriority.HIGHEST)
