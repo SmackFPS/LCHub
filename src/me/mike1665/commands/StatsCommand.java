@@ -25,12 +25,12 @@ public class StatsCommand {
 		if (label.equalsIgnoreCase("stats")) {
 			int a1 = LcTokensAPI.balancePoints(player);
 			int b1 = LcCoinsAPI.balancePoints(player);
-			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "----------------------------------------------------");
+			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "------------------------------------------");
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Name: " + ChatColor.LIGHT_PURPLE + player.getName().toString());
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Rank: " + ChatColor.LIGHT_PURPLE + RankManager.getRank(player).toString());
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Tokens: " + ChatColor.LIGHT_PURPLE + a1);
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Coins: " + ChatColor.LIGHT_PURPLE + b1);
-			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "----------------------------------------------------");
+			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "-------------------------------------------");
 
 		}
 		return false;
