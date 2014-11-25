@@ -1,5 +1,6 @@
 package me.mike1665.Main;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,10 +65,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
+import code.husky.mysql.MySQL;
+
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
+import com.mysql.jdbc.Connection;
 
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
@@ -91,9 +95,20 @@ public class Main extends JavaPlugin implements Listener{
 	public Undead und = new Undead();
 	public Frust fro = new Frust();
 	private EntityManager entityManager;
+	MySQL MySQL = new MySQL(this, "db4free.net", "3306", "lcnetwork", "lcnetwork", "8%+CtE%#?4!8DPh9RnKQ^38%Yg@daUf*Dvm_?u#LFC-H$V$+Y3HecBkM#LhZ8ZWu9ynABHDGTk7#Vu*vUzZeSk");
+	java.sql.Connection c = null;
 	
 	public void onEnable() {
 		instance = this;
+		try {
+			c = MySQL.openConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
 		ApiEvent.initialize(this);
