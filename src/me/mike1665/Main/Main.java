@@ -61,6 +61,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
+import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
@@ -133,6 +134,7 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new BuyEnderDoge(), this);
 		pm.registerEvents(new PixlBomb(this), this);
 		ArrayEventSetup.setupEvents(this);
+		ArrayCommandHandler.setup(this);
 		colors.put("red", "255,0,0");
     	colors.put("orange", "255,127,0");
     	colors.put("yellow", "255,255,0");
@@ -151,6 +153,7 @@ public class Main extends JavaPlugin implements Listener{
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
 		Player player = (Player) sender;
+		ArrayCommandHandler.command(sender, cmd, label, a);
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
 			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
 		}
