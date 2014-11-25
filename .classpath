@@ -2,8 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/Mike/Desktop/All Other/Coding Shit/bukkit-1.7.10-R0.1-20140710.000649-3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Mike/Desktop/All Other/Coding Shit/craftbukkit-1.7.10-R0.1-20140716.024944-5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Mike/Desktop/Server/plugins/Essentials.jar"/>
+	<classpathentry kind="lib" path="A:/Guild Wars/spigot.jar"/>
+	<classpathentry kind="lib" path="A:/creative 2014/plugins/Essentials.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

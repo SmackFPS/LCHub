@@ -335,7 +335,7 @@ public class Main extends JavaPlugin implements Listener{
     	PlayerInventory playerInventory = player.getInventory();
     	
     	List<String> lore = new ArrayList<String>();
-    	lore.add("Test Armor");
+    	lore.add("§aR§ba§ci§dn§eb§1o§2w §7Armor");
     	
     	ItemStack lhelmet = new ItemStack(Material.LEATHER_HELMET, 1);
     	LeatherArmorMeta lam = (LeatherArmorMeta)lhelmet.getItemMeta();

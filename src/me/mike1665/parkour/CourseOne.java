@@ -80,11 +80,11 @@ public class CourseOne implements Listener {
 				player.sendMessage(tag + ChatColor.GREEN
 						+ "Welcome to the parkour course!");
 				player.sendMessage(tag + ChatColor.GREEN
-						+ "Here you will face many challenges in this course");
+						+ "Here you will face challenges in this course");
 				player.sendMessage(tag + ChatColor.GREEN
-						+ "They're Checkpoints to help you through");
+						+ "There are checkpoints to help you through");
 				player.sendMessage(tag + ChatColor.GREEN
-						+ "So you wont have to start over!");
+						+ "So you won't have to start over!");
 				player.sendMessage(tag + ChatColor.GREEN
 						+ "If you win this parkour you get to win");
 				player.sendMessage(tag + ChatColor.GREEN
