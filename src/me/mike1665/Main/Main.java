@@ -61,6 +61,9 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class Main extends JavaPlugin implements Listener{
 	
 	Scoreboard board;
@@ -186,12 +189,12 @@ public class Main extends JavaPlugin implements Listener{
              getConfig().set("cp1.pitch", player.getLocation().getPitch());
 
              saveConfig();
-             player.sendMessage(tag + ChatColor.GREEN + "Checkpoint set for parkour 1!");
+             player.sendMessage(StringManager.getMessage("Checkpoint set for parkour 1!", MessageType.PARKOUR));
              return true;
 		 }
 		 if (cmd.getName().equalsIgnoreCase("parkour1")) {
 			if (getConfig().getConfigurationSection("parkour1") == null) {
-				player.sendMessage(tag  +  ChatColor.RED + "Parkour spawn not yet set!");
+				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Parkour spawn not yet set!");
 				return true;
 			}
 			org.bukkit.World w = Bukkit.getServer().getWorld(getConfig().getString("parkour1.world"));
@@ -204,27 +207,27 @@ public class Main extends JavaPlugin implements Listener{
             parkour1.setPitch((float) pitch);
             parkour1.setYaw((float) yaw);
             player.teleport(parkour1);
-            player.sendMessage(tag + ChatColor.GREEN + "Teleported to " + ChatColor.AQUA +"Parkour1");
+            player.sendMessage(StringManager.getPrefix(MessageType.PARKOUR) + "Teleported to " + ChatColor.AQUA +"Parkour1");
 		}
 		 
 		 
 		if (cmd.getName().equalsIgnoreCase("caoff")) {
 			armorCancel(player, "off");
-			player.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Armor deactivated.");
+			player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "Armor deactivated.");
 
 		}
 		if (cmd.getName().equalsIgnoreCase("stats")) {
 			int a1 = PixlPointsAPI.balancePoints(player);
 			int b1 = PixlCoinsAPI.balancePoints(player);
-			player.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "PixlPunch" + ChatColor.GRAY + "]" + ChatColor.BLUE + " Pixels - " + a1);
-			player.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "PixlPunch" + ChatColor.GRAY + "]" + ChatColor.BLUE + " Coins - " + b1);
+			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Pixels - " + a1);
+			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Coins - " + b1);
 
 		}
 		if (cmd.getName().equalsIgnoreCase("addstaff") && player.isOp()) {
 			if(player.isOp()) {
 				this.getConfig().set(player.getName() + ".Administrator", true);
 				this.saveFile();
-				player.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "PixlPunch" + ChatColor.GRAY + "]" + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getName().toString() + ChatColor.BLUE +" to socreboard staff!");
+				player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getName().toString() + ChatColor.BLUE +" to socreboard staff!");
 				}	
 			}
 		
@@ -238,13 +241,13 @@ public class Main extends JavaPlugin implements Listener{
 					}
 					catch(NumberFormatException e)
 					{
-						player.sendMessage(ChatColor.RED + "Value must be a number!");
+						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
 					PixlPointsAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
 					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(player));
-					player.sendMessage(ChatColor.YELLOW + "" + a[0] + ChatColor.AQUA +" Pixels recieved!");
+					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA +" Pixels recieved!");
 
 				}else if (a.length == 2){
 					PixlPointsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
@@ -252,7 +255,7 @@ public class Main extends JavaPlugin implements Listener{
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);
 						//tempPlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(tempPlayer));
-						tempPlayer.sendMessage(ChatColor.YELLOW + "" + a[1] + ChatColor.AQUA +" Pixels recieved!");
+						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA +" Pixels recieved!");
 					}
 					
 				}
@@ -271,13 +274,13 @@ public class Main extends JavaPlugin implements Listener{
 					}
 					catch(NumberFormatException e)
 					{
-						player.sendMessage(ChatColor.RED + "Value must be a number!");
+						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
 					PixlCoinsAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
 					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins ")).setScore(PixlCoinsAPI.balancePoints(player));
-					player.sendMessage(ChatColor.YELLOW + "" + a[0] + ChatColor.AQUA +" Coins recieved!");
+					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + a[0] + ChatColor.AQUA +" Coins recieved!");
 
 				}else if (a.length == 2){
 					PixlCoinsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
@@ -285,13 +288,13 @@ public class Main extends JavaPlugin implements Listener{
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);
 						//tempPlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins ")).setScore(PixlCoinsAPI.balancePoints(tempPlayer));
-						tempPlayer.sendMessage(ChatColor.YELLOW + "" + a[1] + ChatColor.AQUA +" Coins recieved!");
+						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA + " Coins recieved!");
 					}
 					
 				}
 				
 			} else{
-				player.sendMessage(ChatColor.RED + "Something Failed");
+				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Something Failed");
 			}
 		}
 		

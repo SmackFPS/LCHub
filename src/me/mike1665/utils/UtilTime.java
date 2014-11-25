@@ -3,6 +3,7 @@ package me.mike1665.utils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class UtilTime
 {
   public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
@@ -38,7 +39,7 @@ public class UtilTime
     if (type == TimeUnit.FIT)
     {
       if (time < 60000L) type = TimeUnit.SECONDS;
-      else if (time < 3600000L) type = TimeUnit.MINUTES;
+      else if (time < 3600000L) type = TimeUnit.MINUTES; 
       else if (time < 86400000L) type = TimeUnit.HOURS; else {
         type = TimeUnit.DAYS;
       }
