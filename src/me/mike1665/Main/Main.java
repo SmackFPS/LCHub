@@ -248,7 +248,6 @@ public class Main extends JavaPlugin implements Listener{
 					}
 					LcTokensAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
-					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(player));
 					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA +" Tokens recieved!");
 
 				}else if (a.length == 2){
@@ -256,7 +255,6 @@ public class Main extends JavaPlugin implements Listener{
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);
-						//tempPlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(tempPlayer));
 						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA +" Tokens recieved!");
 					}
 					
@@ -281,7 +279,6 @@ public class Main extends JavaPlugin implements Listener{
 					}
 					LcCoinsAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
-					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins ")).setScore(PixlCoinsAPI.balancePoints(player));
 					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + a[0] + ChatColor.AQUA +" Coins recieved!");
 
 				}else if (a.length == 2){
@@ -289,7 +286,6 @@ public class Main extends JavaPlugin implements Listener{
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);
-						//tempPlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins ")).setScore(PixlCoinsAPI.balancePoints(tempPlayer));
 						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA + " Coins recieved!");
 					}
 					
