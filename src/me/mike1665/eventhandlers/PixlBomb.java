@@ -6,7 +6,7 @@ import java.util.UUID;
 import java.util.logging.Logger;
 
 import me.mike1665.Main.Main;
-import me.mike1665.coinapi.PixlPointsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -160,7 +160,7 @@ public class PixlBomb implements Listener {
 
 		if (this.firedEmys.contains(event.getItem().getUniqueId())) {
 			event.setCancelled(true);
-			PixlPointsAPI.givePoints(p, 1);
+			LcTokensAPI.givePoints(p, 1);
 			p.playSound(p.getLocation(), Sound.ORB_PICKUP, 2.0F, 2.0F);
 			event.getItem().teleport(
 					event.getItem().getLocation().subtract(0.0D, 300.0D, 0.0D));

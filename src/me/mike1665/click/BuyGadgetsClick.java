@@ -1,7 +1,7 @@
 package me.mike1665.click;
 
-import me.mike1665.coinapi.PixlCoinsAPI;
-import me.mike1665.coinapi.PixlPointsAPI;
+import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
 
@@ -33,8 +33,8 @@ public class BuyGadgetsClick implements Listener{
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Meow Balls")) {
-				if(PixlCoinsAPI.hasEnough(p, 60)) {
-					PixlCoinsAPI.takePoints(p, 60);
+				if(LcCoinsAPI.hasEnough(p, 60)) {
+					LcCoinsAPI.takePoints(p, 60);
                 	ItemStack snow = new ItemStack(Material.SNOW_BALL, 16);
                 	ItemMeta sno = snow.getItemMeta();
                 	sno.setDisplayName(ChatColor.GREEN + "MeowBall");
@@ -46,8 +46,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§9Ender Doge")) {
-				if(PixlCoinsAPI.hasEnough(p, 50)) {
-					PixlCoinsAPI.takePoints(p, 50);
+				if(LcCoinsAPI.hasEnough(p, 50)) {
+					LcCoinsAPI.takePoints(p, 50);
                 	ItemStack enderpearl = new ItemStack(Material.ENDER_PEARL, 16);
                 	ItemMeta ender = enderpearl.getItemMeta();
                 	ender.setDisplayName(ChatColor.BLUE + "EnderDoge");
@@ -59,8 +59,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 		}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Fireworks")) {
-				if(PixlCoinsAPI.hasEnough(p, 100)) {
-					PixlCoinsAPI.takePoints(p, 100);
+				if(LcCoinsAPI.hasEnough(p, 100)) {
+					LcCoinsAPI.takePoints(p, 100);
 					ItemStack ender = new ItemStack(Material.FIREWORK, 64);
 					ItemMeta e = ender.getItemMeta();
 					e.setDisplayName(ChatColor.DARK_BLUE + "Firework Launcher");
@@ -72,8 +72,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§1Entity Hook")) {
-				if(PixlPointsAPI.hasEnough(p, 50)) {
-					PixlPointsAPI.takePoints(p, 50);
+				if(LcTokensAPI.hasEnough(p, 50)) {
+					LcTokensAPI.takePoints(p, 50);
 					ItemStack ender = new ItemStack(Material.TRIPWIRE_HOOK, 10);
 					ItemMeta e = ender.getItemMeta();
             		e.setDisplayName(ChatColor.DARK_BLUE + "Entity Hook");
@@ -85,8 +85,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cTNT")) {
-				if(PixlCoinsAPI.hasEnough(p, 30)) {
-					PixlCoinsAPI.takePoints(p, 30);
+				if(LcCoinsAPI.hasEnough(p, 30)) {
+					LcCoinsAPI.takePoints(p, 30);
 					ItemStack ender = new ItemStack(Material.TNT, 10);
 					ItemMeta e = ender.getItemMeta();
             		e.setDisplayName(ChatColor.RED + "Fun Bomb");
@@ -99,8 +99,8 @@ public class BuyGadgetsClick implements Listener{
 			} 
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
-				if(PixlCoinsAPI.hasEnough(p, 5000)) {
-					PixlCoinsAPI.takePoints(p, 5000);
+				if(LcCoinsAPI.hasEnough(p, 5000)) {
+					LcCoinsAPI.takePoints(p, 5000);
 					ItemStack ender = new ItemStack(Material.DOUBLE_PLANT, 1);
 					ItemMeta e = ender.getItemMeta();
 					e.setDisplayName(ChatColor.DARK_GREEN + "Coin Bomb");
@@ -112,8 +112,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dPixel Bomb")) {
-				if(PixlPointsAPI.hasEnough(p, 100)) {
-					PixlPointsAPI.takePoints(p, 100);
+				if(LcTokensAPI.hasEnough(p, 100)) {
+					LcTokensAPI.takePoints(p, 100);
 					ItemStack ender = new ItemStack(Material.NETHER_STAR, 1);
 					ItemMeta e = ender.getItemMeta();
 					e.setDisplayName(ChatColor.LIGHT_PURPLE + "Pixel Bomb");

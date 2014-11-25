@@ -1,8 +1,7 @@
 package me.mike1665.mount.types;
 
 import me.mike1665.Main.Main;
-import me.mike1665.coinapi.PixlCoinsAPI;
-import me.mike1665.coinapi.PixlPointsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
 import net.minecraft.server.v1_7_R4.EntityCreature;
@@ -35,8 +34,8 @@ public class Mule implements Listener{
 	public void spawnMule(final Player player) {
 		String pn = player.getPlayer().getName();
 	   boolean check = plugin.getConfig().getBoolean(pn + ".MuleMount");
-	    if (!check && PixlPointsAPI.hasEnough(player, 100)) {
-	    	PixlCoinsAPI.takePoints(player, 100);
+	    if (!check && LcTokensAPI.hasEnough(player, 100)) {
+	    	LcTokensAPI.takePoints(player, 100);
 			plugin.getConfig().set(pn + ".MuleMount", true);
 			plugin.saveFile();
 			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.YELLOW + "" + ChatColor.BOLD + "Mount unlocked!");

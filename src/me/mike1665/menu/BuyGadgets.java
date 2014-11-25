@@ -47,19 +47,19 @@ public class BuyGadgets implements Listener{
 		buygadmenu.setItem(
 				21,
 				createItem(Material.TRIPWIRE_HOOK, 1, (short) 0, "§1Entity Hook",
-						"§b (10) Costs §6§l: §d50 Pixels"));
+						"§b (10) Costs §6§l: §d50 Tokens"));
 		buygadmenu.setItem(
 				22,
 				createItem(Material.TNT, 1, (short) 0, "§cTNT",
-						"§b (10) Costs §6§l: §d30 Pixels"));
+						"§b (10) Costs §6§l: §d30 Tokens"));
 		buygadmenu.setItem(
 				23,
 				createItem(Material.DOUBLE_PLANT, 1, (short) 0, "§2Coin Bomb",
 						"§b (1) Costs §6§l: §a5000 Coins"));
 		buygadmenu.setItem(
 				31,
-				createItem(Material.IRON_BARDING, 1, (short) 0, "§dPixel Bomb",
-						"§b (1) Costs §6§l: §d100 Pixels"));
+				createItem(Material.IRON_BARDING, 1, (short) 0, "§dToken Bomb",
+						"§b (1) Costs §6§l: §d100 Tokens"));
 
 	}
 

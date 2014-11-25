@@ -1,7 +1,7 @@
 package me.mike1665.mount.types;
 
 import me.mike1665.Main.Main;
-import me.mike1665.coinapi.PixlCoinsAPI;
+import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
 import net.minecraft.server.v1_7_R4.EntityCreature;
@@ -35,8 +35,8 @@ public class Undead implements Listener{
 	public void spawnUndead(final Player player) {
 		String pn = player.getPlayer().getName();
 	   boolean check = plugin.getConfig().getBoolean(pn + ".UndeadMount");
-	    if (!check && PixlCoinsAPI.hasEnough(player, 10000)) {
-	    	PixlCoinsAPI.takePoints(player, 10000);
+	    if (!check && LcCoinsAPI.hasEnough(player, 10000)) {
+	    	LcCoinsAPI.takePoints(player, 10000);
 			plugin.getConfig().set(pn + ".UndeadMount", true);
 			plugin.saveFile();
 			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mount unlocked!");

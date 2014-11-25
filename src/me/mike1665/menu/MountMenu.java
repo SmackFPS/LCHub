@@ -51,7 +51,7 @@ public class MountMenu implements Listener{
 		mountmenu.setItem(
 				32,
 				createItem(Material.HAY_BLOCK, 1, (short) 0, "§4Mule",
-						(plugin.getConfig().getBoolean(p.getName() + ".MuleMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §d100 Pixels")));
+						(plugin.getConfig().getBoolean(p.getName() + ".MuleMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §d100 Tokens")));
 		mountmenu.setItem(
 				34,
 				createItem(Material.BONE, 1, (short) 0, "§4Undead",

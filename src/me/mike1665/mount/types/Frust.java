@@ -1,7 +1,7 @@
 package me.mike1665.mount.types;
 
 import me.mike1665.Main.Main;
-import me.mike1665.coinapi.PixlCoinsAPI;
+import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
 import net.minecraft.server.v1_7_R4.EntityCreature;
@@ -35,8 +35,8 @@ public class Frust implements Listener{
 	public void spawnFrost(final Player player) {
 		String pn = player.getPlayer().getName();
 	   boolean check = plugin.getConfig().getBoolean(pn + ".FrostMount");
-	    if (!check && PixlCoinsAPI.hasEnough(player, 5000)) {
-	    	PixlCoinsAPI.takePoints(player, 5000);
+	    if (!check && LcCoinsAPI.hasEnough(player, 5000)) {
+	    	LcCoinsAPI.takePoints(player, 5000);
 			plugin.getConfig().set(pn + ".FrostMount", true);
 			plugin.saveFile();
 			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mount Purchased!");

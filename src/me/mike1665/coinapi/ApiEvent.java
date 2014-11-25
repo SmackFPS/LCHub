@@ -32,14 +32,14 @@ public class ApiEvent implements Listener {
 		board = manager.getNewScoreboard();
 
 		Objective objective = board.registerNewObjective("Test", "Test2");
-		objective.setDisplayName(ChatColor.RED + " ❤ " + ChatColor.GREEN +"" + ChatColor.BOLD + "Pixl Punch" + "" + ChatColor.RED + " ❤");
+		objective.setDisplayName(ChatColor.RED + " ❤ " + ChatColor.GREEN +"" + ChatColor.BOLD + "Light Craft" + "" + ChatColor.RED + " ❤");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
 		Team team = board.registerNewTeam("Team");
 		team.setDisplayName(ChatColor.RED + "");
 
-		int a = PixlPointsAPI.balancePoints(p);
-		int b = PixlCoinsAPI.balancePoints(p);
+		int a = LcTokensAPI.balancePoints(p);
+		int b = LcCoinsAPI.balancePoints(p);
 		
 		for (Player checkstaff : Bukkit.getOnlinePlayers()) {
 			if (checkstaff.isOp()) {
@@ -54,7 +54,7 @@ public class ApiEvent implements Listener {
 		}
 		
 		Score topline = objective.getScore(Bukkit.getOfflinePlayer("§-------------"));
-		Score score = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels "));
+		Score score = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Tokens "));
 		Score pixels = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.WHITE + "" + a));
 		Score spacing = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + " "));
 		Score score2 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins "));
@@ -80,9 +80,8 @@ public class ApiEvent implements Listener {
 		final Player p = e.getPlayer();
 		
 		if (!plugin.getConfig().contains(p.getName())) {
-			plugin.getConfig().set(p.getName() + ".Pixels", 50);
+			plugin.getConfig().set(p.getName() + ".Tokens", 50);
 			plugin.getConfig().set(p.getName() + ".Coins", 500);
-			plugin.getConfig().set(p.getName() + ".FrostMount", false);
 			plugin.saveConfig();
 			scoreboard(p);
 		}

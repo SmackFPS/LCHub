@@ -12,8 +12,8 @@ import me.mike1665.click.MountMenuClick;
 import me.mike1665.click.PlayerGadjetsClick;
 import me.mike1665.click.VipGadjetsClick;
 import me.mike1665.coinapi.ApiEvent;
-import me.mike1665.coinapi.PixlCoinsAPI;
-import me.mike1665.coinapi.PixlPointsAPI;
+import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
 import me.mike1665.eventhandlers.BuyMeowBalls;
@@ -85,8 +85,8 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public void onEnable() {
 		instance = this;
-		PixlPointsAPI.initialize(this);
-		PixlCoinsAPI.initialize(this);
+		LcTokensAPI.initialize(this);
+		LcCoinsAPI.initialize(this);
 		ApiEvent.initialize(this);
 		Frust.initialize(this);
 		MountManager.initialize(this);
@@ -116,9 +116,9 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new PaintballGun(this), this);
 		pm.registerEvents(new BatBlaster(this), this);
 		pm.registerEvents(new ApiEvent(), this);
-		pm.registerEvents(new PixlPointsAPI(), this);
+		pm.registerEvents(new LcTokensAPI(), this);
 		pm.registerEvents(new CoinBomb(this), this);
-		pm.registerEvents(new PixlCoinsAPI(), this);
+		pm.registerEvents(new LcCoinsAPI(), this);
 		pm.registerEvents(new CosmeticsMenu(), this);
 		pm.registerEvents(new CosMenuClick(), this);
 		pm.registerEvents(new MountManager(), this);
@@ -219,9 +219,9 @@ public class Main extends JavaPlugin implements Listener{
 
 		}
 		if (cmd.getName().equalsIgnoreCase("stats")) {
-			int a1 = PixlPointsAPI.balancePoints(player);
-			int b1 = PixlCoinsAPI.balancePoints(player);
-			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Pixels - " + a1);
+			int a1 = LcTokensAPI.balancePoints(player);
+			int b1 = LcCoinsAPI.balancePoints(player);
+			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Tokens - " + a1);
 			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + " Coins - " + b1);
 
 		}
@@ -233,7 +233,7 @@ public class Main extends JavaPlugin implements Listener{
 				}	
 			}
 		
-		if (cmd.getName().equalsIgnoreCase("givepixls") && player.isOp()) {
+		if (cmd.getName().equalsIgnoreCase("givetokens") && player.isOp()) {
 			if (a.length >= 1) {
 				if(a.length == 1) {
 					int tempValue;
@@ -246,18 +246,18 @@ public class Main extends JavaPlugin implements Listener{
 						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
-					PixlPointsAPI.givePoints(player, tempValue);
+					LcTokensAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
 					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(player));
-					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA +" Pixels recieved!");
+					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA +" Tokens recieved!");
 
 				}else if (a.length == 2){
-					PixlPointsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
+					LcTokensAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);
 						//tempPlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Pixels ")).setScore(PixlPointsAPI.balancePoints(tempPlayer));
-						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA +" Pixels recieved!");
+						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA +" Tokens recieved!");
 					}
 					
 				}
@@ -279,13 +279,13 @@ public class Main extends JavaPlugin implements Listener{
 						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
-					PixlCoinsAPI.givePoints(player, tempValue);
+					LcCoinsAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
 					//player.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins ")).setScore(PixlCoinsAPI.balancePoints(player));
 					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + a[0] + ChatColor.AQUA +" Coins recieved!");
 
 				}else if (a.length == 2){
-					PixlCoinsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
+					LcCoinsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
 					if(tempPlayer != null){
 						ApiEvent.updatescore(tempPlayer);

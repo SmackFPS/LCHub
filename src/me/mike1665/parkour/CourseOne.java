@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import me.mike1665.Main.Main;
-import me.mike1665.coinapi.PixlCoinsAPI;
-import me.mike1665.coinapi.PixlPointsAPI;
+import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -115,7 +115,7 @@ public class CourseOne implements Listener {
 						rewards = 1 + object.nextInt(2);
 
 						if (rewards == 1) {
-							PixlCoinsAPI.givePoints(player, 1000);
+							LcCoinsAPI.givePoints(player, 1000);
 							player.playSound(player.getLocation(),
 									Sound.LEVEL_UP, 10, 10);
 							Bukkit.broadcastMessage(tag + ChatColor.GREEN + ""
@@ -128,12 +128,12 @@ public class CourseOne implements Listener {
 						}
 
 						else if (rewards == 2) {
-							PixlPointsAPI.givePoints(player, 100);
+							LcTokensAPI.givePoints(player, 100);
 							player.playSound(player.getLocation(),
 									Sound.LEVEL_UP, 10, 10);
 							Bukkit.broadcastMessage(tag + ChatColor.GREEN + ""
 									+ ChatColor.BOLD + player.getName()
-									+ " Won 100 Pixels for winning parkour!");
+									+ " Won 100 Tokens for winning parkour!");
 							me.mike1665.coinapi.ApiEvent.scoreboard(player);
 							cp.remove(player);
 							teleport(player);
