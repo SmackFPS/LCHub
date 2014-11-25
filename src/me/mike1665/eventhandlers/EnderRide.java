@@ -16,6 +16,7 @@ import org.bukkit.projectiles.ProjectileSource;
 
 public class EnderRide implements Listener{
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerPlaceBlock(ProjectileLaunchEvent event) {
 		Player p = (Player) event.getEntity().getShooter();

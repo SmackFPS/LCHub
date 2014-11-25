@@ -313,7 +313,6 @@ public class Main extends JavaPlugin implements Listener{
 		}, 0, 4);
     }
     
-	@SuppressWarnings("deprecation")
 	public void cyclearmor() {
     	for(String playerName : rainbowarmor.keySet()) {
     		Player player = Bukkit.getPlayer(playerName);

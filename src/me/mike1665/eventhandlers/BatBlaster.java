@@ -78,6 +78,7 @@ public class BatBlaster implements Listener {
 
 				final Integer task = Integer.valueOf(Bukkit.getScheduler()
 						.runTaskTimer(this.plugin, new Runnable() {
+							@SuppressWarnings("deprecation")
 							public void run() {
 								for (Player cur : Bukkit.getOnlinePlayers()) {
 									if (BatBlaster.this._active

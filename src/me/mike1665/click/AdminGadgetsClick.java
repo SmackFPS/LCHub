@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftZombie;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,8 +42,7 @@ public class AdminGadgetsClick implements Listener{
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aTwerking Zombie")) {
-                	spawnBABYZOMBIE(p);
-					p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Spawned a Twerking Zombie");
+					p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Coming soon!");
                 	p.closeInventory();
                 	return;
 			}
@@ -69,6 +67,7 @@ public class AdminGadgetsClick implements Listener{
 			} 
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void spawnSHEEP(Player player) {
 		final org.bukkit.entity.Sheep sheep = (org.bukkit.entity.Sheep) Bukkit.getWorld("world").spawnEntity(player.getLocation(), EntityType.SHEEP);
 		sheep.setCustomName(ChatColor.AQUA + "Swag Sheep");
@@ -103,23 +102,5 @@ public class AdminGadgetsClick implements Listener{
 			}	
 		}, 0 , 1 * 2);
 	}
-	
-	public void spawnBABYZOMBIE(Player player)
-	{
-		final org.bukkit.entity.Zombie zombie = (org.bukkit.entity.Zombie) Bukkit.getWorld("world").spawnEntity(player.getLocation(), EntityType.ZOMBIE);
-		zombie.setCustomName(ChatColor.YELLOW + "Twerk dat ass");
-		zombie.setBaby(true);
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin,
-			new org.bukkit.scheduler.BukkitRunnable() {			
-					@Override
-					public void run() {
-						if (zombie.isValid() && !zombie.isDead()) {
-							((CraftZombie) zombie).getHandle().setSneaking(!((CraftZombie) zombie).getHandle().isSneaking());
-						}else {
-							Bukkit.getScheduler().cancelTask(getTaskId());
-						}
-					}
-					
-				}, 0 , 1 * 2);
-		}
+		
 }

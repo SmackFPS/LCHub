@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class BuyEnderDoge implements Listener{
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void projectiles(ProjectileHitEvent event)
 	{

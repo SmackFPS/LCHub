@@ -263,6 +263,7 @@ public enum ParticleEffect {
 	 * @param range Range
 	 * @return The list of players in the specified range
 	 */
+	@SuppressWarnings("deprecation")
 	private static List<Player> getPlayers(Location center, double range) {
 		List<Player> players = new ArrayList<Player>();
 		String name = center.getWorld().getName();

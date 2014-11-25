@@ -162,6 +162,7 @@ public class CourseOne implements Listener {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void parkourreturn(EntityDamageEvent event) {
 		if (join.contains(event.getEntity()) && !cp.contains(event.getEntity())) {
