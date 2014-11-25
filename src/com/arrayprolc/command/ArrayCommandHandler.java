@@ -1,11 +1,10 @@
 package com.arrayprolc.command;
+import me.mike1665.Main.Main;
+
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.PluginManager;
-
-import me.mike1665.Main.Main;
+import org.bukkit.entity.Player;
 
 public class ArrayCommandHandler {
 
@@ -16,6 +15,20 @@ public class ArrayCommandHandler {
 	}
 	
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a){
+		if(label.equalsIgnoreCase("g-reward")){
+			if(sender instanceof Player) return false;
+			Player p = Bukkit.getPlayer(a[0]);
+			int amount = Integer.parseInt(a[2]);
+			switch(a[1].toLowerCase()){
+			case "coin": {
+				me.mike1665.coinapi.LcCoinsAPI.givePoints(p, amount);
+				return true;
+			}
+			case "token":
+				me.mike1665.coinapi.LcTokensAPI.givePoints(p, amount);
+				return true;
+			}
+		}
 		return false;
 	}
 	
