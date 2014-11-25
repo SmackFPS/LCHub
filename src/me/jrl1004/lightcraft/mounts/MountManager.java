@@ -6,6 +6,7 @@ import java.util.List;
 import me.jrl1004.lightcraft.utils.Config;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 
 public class MountManager {
 	private static MountManager instance;
@@ -33,6 +34,10 @@ public class MountManager {
 	
 	public void lockMount(OfflinePlayer player, String mount) {
 		if(!mountIsUnlocked(player, mount)) return;
+		
+	}
+	
+	public void spawnMountForPlayer(Player player, MountType type) {
 		
 	}
 }
