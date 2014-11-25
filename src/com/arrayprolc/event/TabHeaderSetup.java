@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.arrayprolc.bountifulupdate.BUtils;
+import com.arrayprolc.coin.Multiplier;
 
 public class TabHeaderSetup implements Listener {
 
@@ -18,7 +19,19 @@ public class TabHeaderSetup implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
-		BUtils.sendHeaderAndFooter(e.getPlayer(), "�9Light�bCraft �3Network", "�7We can change this message later.");
+		BUtils.sendHeaderAndFooter(e.getPlayer(), "§9Light§bCraft §3Network", "§7We can change this message later.");
+		String sub = "";
+		if(Multiplier.coin(e.getPlayer()) > 1){
+			sub = sub + "§a" + Multiplier.coin(e.getPlayer()) + "x §aCoins";
+		}
+		if(Multiplier.token(e.getPlayer()) > 1){
+			if(sub.equals("")){
+			sub = sub + "§a" + Multiplier.coin(e.getPlayer()) + "x §dTokens";
+			}else{
+				sub = sub + "§7 ▪ §a" + Multiplier.coin(e.getPlayer()) + "x §dTokens";
+			}
+		}
+		BUtils.sendTitleToPlayer(e.getPlayer(), "", sub, 5, 5, 5);
 	}
 
 }
