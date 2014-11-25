@@ -96,7 +96,7 @@ public class Main extends JavaPlugin implements Listener{
 	public Undead und = new Undead();
 	public Frust fro = new Frust();
 	private EntityManager entityManager;
-	public static MySQL MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", "nicetry");
+	public static MySQL MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", "lolnicetry");
 	public static java.sql.Connection c = null;
 	
 	public void onEnable() {
