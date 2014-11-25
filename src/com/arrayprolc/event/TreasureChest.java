@@ -35,8 +35,8 @@ public class TreasureChest {
 						for(int z = -2; z < 2; z++){
 							Location loc2 = loc;
 							loc2 = loc2.add(x, -1, z);
-							p.sendBlockChange(loc2, Material.GRAVEL, (byte)0);
-							sendBreak(p, Material.GRAVEL, loc2);
+							p.sendBlockChange(loc2, Material.STONE, (byte)0);
+							sendBreak(p, Material.STONE, loc2);
 						}
 					}
 				case 2:
