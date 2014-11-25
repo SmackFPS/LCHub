@@ -12,6 +12,7 @@ public enum MessageType {
 	STATS,
 	TRANSACTION,
 	GADGETS,
-	PARKOUR;
+	PARKOUR,
+	TREASURE;
 	
 }

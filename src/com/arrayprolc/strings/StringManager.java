@@ -29,6 +29,7 @@ public class StringManager {
 		case TRANSACTION: return "§aTransaction";
 		case GADGETS: return "§eGadgets";
 		case PARKOUR: return "§dParkour";
+		case TREASURE: return "§b§lTreasure";
 		default: return "§eInfo";
 		
 		}
