@@ -24,34 +24,22 @@ import com.arrayprolc.rank.RankManager;
 public class ApiEvent implements Listener {
 	
 	private static Main plugin;
+	public static boolean hasInit = false;
 	
 	public static void initialize(Main plugin){
 		ApiEvent.plugin = plugin;
 	}
-	static Scoreboard board;
 	
 	@SuppressWarnings("deprecation")
 	public static void scoreboard(Player p){
 		ScoreboardManager manager = Bukkit.getScoreboardManager();
-		board = manager.getNewScoreboard();
+		Scoreboard board = manager.getNewScoreboard();
+		for(Player p2 : Bukkit.getOnlinePlayers())try{ board.getTeam(p2.getName()).unregister(); }catch(Exception ex){}
 
-		Objective objective = board.registerNewObjective("Test", "Test2");
+		Objective objective = board.registerNewObjective("Test2", "dummy");
 		objective.setDisplayName(ChatColor.RED + "▪ " + ChatColor.GREEN +"" + ChatColor.BOLD + "§9§lLight§3§lCraft" + "" + ChatColor.RED + " ▪");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-		for(Team team : board.getTeams()) team.unregister();
-		for(Player p2 : Bukkit.getOnlinePlayers()){
-			try{
-				
-			Team team = board.registerNewTeam(p2.getName() + new Random().nextInt() + new Random().nextDouble());
-			
-			team.setPrefix(RankManager.getFormat(RankManager.getRank(p2)).split(":")[0]);
-			team.addPlayer(p2);
-			}catch(Exception e){
-				Team team = board.registerNewTeam(p2.getName());
-				team.setPrefix("§7");
-				team.addPlayer(p2);
-				}
-		}
+
 		
 
 		int a = LcTokensAPI.balancePoints(p);
@@ -89,6 +77,20 @@ public class ApiEvent implements Listener {
 		staff.setScore(14);
 		botmline.setScore(12);
 		p.setScoreboard(board);
+		for(Player p2 : Bukkit.getOnlinePlayers()){
+			try{
+				if(!board.getTeams().contains(p2.getName())){
+			Team team = board.registerNewTeam(p2.getName());
+			
+			team.setPrefix(RankManager.getFormat(RankManager.getRank(p2)).split(":")[0]);
+			team.addPlayer(p2);
+				}
+			}catch(Exception e){
+				Team team = board.registerNewTeam(p2.getName());
+				team.setPrefix("§7");
+				team.addPlayer(p2);
+				}
+		}
 
 	}
 	@EventHandler(priority=EventPriority.HIGHEST)

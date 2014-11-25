@@ -69,7 +69,7 @@ import com.arrayprolc.strings.StringManager;
 
 public class Main extends JavaPlugin implements Listener{
 	
-	Scoreboard board;
+	public Scoreboard board;
 	public HashMap<String, String> colors = new HashMap<String, String>();
 	public static List<String> activate = new ArrayList<String>();
 	public static HashMap<String, String> rainbowarmor = new HashMap<String, String>();
