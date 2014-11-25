@@ -1,0 +1,33 @@
+============================================================
+			This doesn't have to be in order
+============================================================
+
+
+Pets (Self explanitory. Name Tag to set name, Disable pet, Put head on pet, Ride pet)
+
+Stats (In the Main file /stats)
+
+Dragon Mount (Ridable dragon. Disabled block damage, controlable, fancy effects = :D)
+
+Player Toggle (Clock - See Players / Hide players)
+
+Particles (Unique particle menu)
+
+Server Selector (Just a menu nothing fancy yet)
+
+Player Popper (With a toggable stick in they inventory when they join E.G Enabled = Blaze Rod Disables = Stick)
+
+Party manager (Self explanitory - /party create , /party invite ...etc)
+
+In-Code Ranks (Enum.. Basically if(p.has/isRank("Owner") { // rest of code) and (p.setRank) for donations !
+
+MOAR PURCHASEABLE GADGETS :D (Make em fun)
+
+Mineplex chests (ArrayPro started working on em)
+
+Player stats in the Hub Menu (E.G hover over a book and see your Tokens, Coins, Time played, stuff like dat)
+
+Hub Sword (If you have it enabled and other player has id disabled u cant attack them. Vise versa. But if you both have it enabled you can PVP at the hub :D)
+
+Rainbow gadget?? ( http://gyazo.com/0e6c8262aeb2815a6b4f08e0bf3afbb )
+
