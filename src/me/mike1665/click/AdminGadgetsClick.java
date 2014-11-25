@@ -20,7 +20,7 @@ public class AdminGadgetsClick implements Listener{
 		this.plugin = main;
 	}
 	
-	int num = 1;
+
 	
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
@@ -46,10 +46,11 @@ public class AdminGadgetsClick implements Listener{
                 	p.closeInventory();
                 	return;
 			}
-			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cRainbow Sheep")) {
-					spawnSHEEP(p);
+			if (event.getCurrentItem().getItemMeta().getDisplayName().contains("Rainbow Sheep")) {
+					
 					p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Spawned a Rainbow Sheep");
                 	p.closeInventory();
+                	spawnSHEEP(p);
                 	return;
 		}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§1Wear Rainbow Armor")) {
@@ -67,14 +68,13 @@ public class AdminGadgetsClick implements Listener{
 			} 
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void spawnSHEEP(Player player) {
 		final org.bukkit.entity.Sheep sheep = (org.bukkit.entity.Sheep) player.getWorld().spawn(player.getLocation(), Sheep.class);
 		sheep.setCustomName(ChatColor.AQUA + "Swag Sheep");
-		sheep.setMaxHealth(20);
 		sheep.setColor(DyeColor.RED);
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin,
 		new Runnable() {			
+			int num = 1;
 			@Override
 			public void run() {
 				if (num == 1){
