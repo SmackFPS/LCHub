@@ -30,7 +30,7 @@ public class StatsCommand {
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Rank: " + ChatColor.LIGHT_PURPLE + RankManager.getRank(player).toString());
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Tokens: " + ChatColor.LIGHT_PURPLE + a1);
 			player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Coins: " + ChatColor.LIGHT_PURPLE + b1);
-			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "-------------------------------------------");
+			player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "------------------------------------------");
 
 		}
 		return false;
