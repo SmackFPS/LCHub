@@ -34,6 +34,19 @@ public class RankManager {
 		return ServerRank.PLAYER;
 		
 	}
+	
+	public static ServerRank getRankFromString(String s){
+		try{
+			for(ServerRank r : ServerRank.values()){
+				if(r.toString().equalsIgnoreCase(s)){
+					return r;
+				}
+			}
+		}catch(Exception ex){}
+		//setRank(p, ServerRank.PLAYER);
+		return ServerRank.PLAYER;
+		
+	}
 
 	/**
 	 * @deprecated "Do not use, use ServerRank instead."

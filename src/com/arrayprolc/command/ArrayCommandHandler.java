@@ -8,6 +8,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 
+import com.arrayprolc.rank.RankFile;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 
@@ -37,6 +38,8 @@ public class ArrayCommandHandler {
 			}
 		}
 		if(label.equalsIgnoreCase("sheeplol") && ((Player)sender).isOp()){
+			try{((Player)sender).getPassenger().eject();
+			((Player)sender).eject(); }catch(Exception ex){}
 			for(Entity e :  ((Player)sender).getNearbyEntities(5,  5,  5)){
 				if(e instanceof Sheep){
 					 ((Player)sender).setPassenger(e);
@@ -44,8 +47,18 @@ public class ArrayCommandHandler {
 				}
 			}
 		}
+		if(label.equalsIgnoreCase("rank")){
+			if(sender instanceof Player){
+				if(!((Player)sender).isOp()) return false;
+			}
+			Player p = Bukkit.getPlayer(a[0]);
+			ServerRank r = RankManager.getRankFromString(a[1]);
+			RankManager.setRank(p, r);
+			
+		}
 		if(label.equalsIgnoreCase("test")){
-			RankManager.setRank(((Player)sender), ServerRank.OWNER);
+			RankFile.saveToFile(new String[] {"test" });
+			
 		}
 		return false;
 	}

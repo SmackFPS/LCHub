@@ -207,6 +207,7 @@ public class Main extends JavaPlugin implements Listener{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
 		
 		if(ArrayCommandHandler.command(sender, cmd, label, a)) return true;
+		if(StatsCommand.command(sender, cmd, label, a)) return true;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
 			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
