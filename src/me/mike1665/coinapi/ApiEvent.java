@@ -48,11 +48,11 @@ public class ApiEvent implements Listener {
 		for (Player checkstaff : Bukkit.getOnlinePlayers()) {
 			if (checkstaff.isOp()) {
 				Score staffyes = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "" + ChatColor.BOLD + "YES"));
-				staffyes.setScore(13);
+				staffyes.setScore(10);
 				break;
 			} else if (!checkstaff.isOp()){
 				Score staffno = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.DARK_RED + "" + ChatColor.BOLD + "NO"));
-				staffno.setScore(13);
+				staffno.setScore(10);
 				break;
 			}
 		}
@@ -64,6 +64,9 @@ public class ApiEvent implements Listener {
 		Score score2 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Coins "));
 		Score coins = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.WHITE + "" + b));
 		Score spacing3 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.DARK_AQUA + ""));
+		Score score3 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.YELLOW + "Rank "));
+		Score rank = objective.getScore(Bukkit.getOfflinePlayer(RankManager.getColor() + RankManager.getRank(p).toString()));
+		Score spacing4 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.RED + ""));
 		Score staff = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.BLUE + "Staff Online?"));
 		Score botmline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "-------------"));
 
@@ -74,23 +77,12 @@ public class ApiEvent implements Listener {
 		score2.setScore(17);
 		coins.setScore(16);
 		spacing3.setScore(15);
-		staff.setScore(14);
-		botmline.setScore(12);
+		score3.setScore(14);
+		rank.setScore(13);
+		spacing4.setScore(12);
+		staff.setScore(11);
+		botmline.setScore(9);
 		p.setScoreboard(board);
-	/*	for(Player p2 : Bukkit.getOnlinePlayers()){
-			try{
-				if(!board.getTeams().contains(p2.getName())){
-			Team team = board.registerNewTeam(p2.getName());
-			
-			team.setPrefix(RankManager.getFormat(RankManager.getRank(p2)).split(":")[0]);
-			team.addPlayer(p2);
-				}
-			}catch(Exception e){
-				Team team = board.registerNewTeam(p2.getName());
-				team.setPrefix("§7");
-				team.addPlayer(p2);
-				}
-		}*/
 
 	}
 	@EventHandler(priority=EventPriority.HIGHEST)
