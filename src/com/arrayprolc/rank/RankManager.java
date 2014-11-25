@@ -45,7 +45,8 @@ public class RankManager {
 		setRankString(p, r.toString());
 	}
 	
-	public String getFormat(ServerRank r){
+	public static String getFormat(ServerRank r){
+		try{
 		switch(r){
 		case ADMIN: return "§7[§cAdmin§7] §c[name]§7:§f [message]";
 		case DEVELOPER: return "§7[§9Dev§7] §9[name]§7:§f [message]";
@@ -58,6 +59,7 @@ public class RankManager {
 		default: return "§7[name]: [message]";
 		
 		}
+		}catch(Exception ex){return "§7[name]: [message]";}
 	}
 
 }

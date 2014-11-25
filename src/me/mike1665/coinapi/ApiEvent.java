@@ -1,5 +1,7 @@
 package me.mike1665.coinapi;
 
+import java.util.Random;
+
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
@@ -17,6 +19,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import com.arrayprolc.rank.RankManager;
+
 public class ApiEvent implements Listener {
 	
 	private static Main plugin;
@@ -32,11 +36,23 @@ public class ApiEvent implements Listener {
 		board = manager.getNewScoreboard();
 
 		Objective objective = board.registerNewObjective("Test", "Test2");
-		objective.setDisplayName(ChatColor.RED + " ❤ " + ChatColor.GREEN +"" + ChatColor.BOLD + "LightCraft" + "" + ChatColor.RED + " ❤");
+		objective.setDisplayName(ChatColor.RED + "▪ " + ChatColor.GREEN +"" + ChatColor.BOLD + "§9§lLight§3§lCraft" + "" + ChatColor.RED + " ▪");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-
-		Team team = board.registerNewTeam("Team");
-		team.setDisplayName(ChatColor.RED + "");
+		for(Team team : board.getTeams()) team.unregister();
+		for(Player p2 : Bukkit.getOnlinePlayers()){
+			try{
+				
+			Team team = board.registerNewTeam(p2.getName() + new Random().nextInt() + new Random().nextDouble());
+			
+			team.setPrefix(RankManager.getFormat(RankManager.getRank(p2)).split(":")[0]);
+			team.addPlayer(p2);
+			}catch(Exception e){
+				Team team = board.registerNewTeam(p2.getName());
+				team.setPrefix("§7");
+				team.addPlayer(p2);
+				}
+		}
+		
 
 		int a = LcTokensAPI.balancePoints(p);
 		int b = LcCoinsAPI.balancePoints(p);
