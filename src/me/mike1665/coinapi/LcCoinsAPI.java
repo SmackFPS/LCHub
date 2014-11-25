@@ -14,13 +14,13 @@ public class LcCoinsAPI implements Listener {
 	}
 	
 	public static void givePoints(OfflinePlayer p, int i) {
-		plugin.getConfig().set(p.getName() + ".Coins",
+		plugin.getConfig().set(p.getUniqueId() + ".Coins",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Coins", 0) + i);
 		plugin.saveFile();
 	}
 
 	public static void takePoints(OfflinePlayer p, int i) {
-		plugin.getConfig().set(p.getName() + ".Coins",
+		plugin.getConfig().set(p.getUniqueId() + ".Coins",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Coins", 0) - i);
 		plugin.saveFile();
 	}

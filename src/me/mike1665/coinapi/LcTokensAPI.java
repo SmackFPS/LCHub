@@ -14,13 +14,13 @@ public class LcTokensAPI implements Listener {
 	}
 	
 	public static void givePoints(OfflinePlayer p, int i) {
-		plugin.getConfig().set(p.getName() + ".Tokens",
+		plugin.getConfig().set(p.getUniqueId() + ".Tokens",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Tokens", 0) + i);
 		plugin.saveFile();
 	}
 
 	public static void takePoints(OfflinePlayer p, int i) {
-		plugin.getConfig().set(p.getName() + ".Tokens",
+		plugin.getConfig().set(p.getUniqueId() + ".Tokens",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Tokens", 0) - i);
 		plugin.saveFile();
 	}
