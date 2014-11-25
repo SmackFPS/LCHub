@@ -28,6 +28,7 @@ public class TreasureChest {
 		loc.setY(loc.getY() - 1);
 		//		keepPlayerInside();
 		spawnChest();
+		keepPlayerInside();
 		rewards = r;
 	}
 
@@ -35,25 +36,27 @@ public class TreasureChest {
 	public void spawnChest(){
 		Bukkit.getServer().getScheduler().runTaskTimer(Bukkit.getPluginManager().getPlugin("HubPlugin"), new BukkitRunnable(){
 			int ticks = 0;
+			boolean ran = false;
 			public void run(){
 				if(done || ticks > 5){
-					Bukkit.getServer().getScheduler().cancelTask(this.getTaskId());
+					if(!ran) Bukkit.getServer().getScheduler().cancelTask(this.getTaskId());
 				}
+				if(!done && !ran){ this.runTask(Bukkit.getPluginManager().getPlugin("HubPlugin")); ran = true; }
+				if(!done){
 				ticks++;
 				switch(ticks){
 				case 1: generateCircle(loc, 1, Material.PACKED_ICE, (byte)0); return;
-
-				case 2: generateCircle(loc, 2, Material.SNOW_BLOCK, (byte)0); return;
-				case 3: generateCircle(loc.clone().add(0, 1, 0), 2, Material.LEAVES, (byte)0); return;
-				case 4: {
-					loc.clone().add(1, 1, 0).getBlock().setType(Material.CHEST);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(1, 1, 0));
-					loc.clone().add(-1, 1, 0).getBlock().setType(Material.CHEST);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(-1, 1, 0));
-					loc.clone().add(0, 1, 1).getBlock().setType(Material.CHEST);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, 1));
-					loc.clone().add(0, 1, -1).getBlock().setType(Material.CHEST);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, -1));
-				}
-				case 5:{
+				case 2: return;
+				case 3: generateCircle(loc, 2, Material.SNOW_BLOCK, (byte)0); return;
+				case 4: generateCircle(loc.clone().add(0, 1, 0), 2, Material.LEAVES, (byte)0); return;
+				case 5: {
+					for(Player p2 : Bukkit.getOnlinePlayers())	p2.sendBlockChange(loc.clone().add(1, 1, 0), Material.CHEST, (byte)0);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(1, 1, 0));
+					for(Player p2 : Bukkit.getOnlinePlayers())	p2.sendBlockChange(loc.clone().add(-1, 1, 0), Material.CHEST, (byte)0);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(-1, 1, 0));
+					for(Player p2 : Bukkit.getOnlinePlayers())	p2.sendBlockChange(loc.clone().add(0, 1, 1), Material.CHEST, (byte)0); for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, 1));
+					for(Player p2 : Bukkit.getOnlinePlayers())	p2.sendBlockChange(loc.clone().add(0, 1, -1), Material.CHEST, (byte)0);  for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, -1));
 					giveItems();
 					ticks = 6;
+				}
 				}
 				}
 
@@ -80,15 +83,26 @@ public class TreasureChest {
 
 		Bukkit.getServer().getScheduler().runTaskTimer(Bukkit.getPluginManager().getPlugin("HubPlugin"), new BukkitRunnable(){
 			int ticks = 0;
+			boolean ran = false;
 			public void run(){
 				if(done){
-					this.cancel();
+					Bukkit.getServer().getScheduler().cancelTask(this.getTaskId());
 				}
+				if(!done && !ran){ this.runTask(Bukkit.getPluginManager().getPlugin("HubPlugin")); ran = true; }
+				if(!done){
 				ticks++;
-				if(p.getLocation().distance(loc) > 1){
-					p.teleport(loc);
+				
+				if(p.getLocation().distance(loc) > 2){
+					p.teleport(loc.clone().add(0.5, 1, 0.5));
 				}
-
+				for(Player p2 : Bukkit.getOnlinePlayers()){
+					if(p != p2){
+						if(p2.getLocation().distance(loc) < 3){
+							p2.setVelocity(p2.getLocation().getDirection().multiply(-1.5));
+						}
+					}
+				}
+				}
 			}
 		}, 0, 1);
 	}
@@ -141,10 +155,13 @@ public class TreasureChest {
 	public void giveItems(){
 		Bukkit.getServer().getScheduler().runTaskTimer(Bukkit.getPluginManager().getPlugin("HubPlugin"), new BukkitRunnable(){
 			int ticks = 0;
+			boolean ran = false;
 			public void run(){
 				if(done){
-					this.cancel();
+					Bukkit.getServer().getScheduler().cancelTask(this.getTaskId());
 				}
+				if(!done && !ran){ this.runTask(Bukkit.getPluginManager().getPlugin("HubPlugin")); ran = true; }
+				if(!done){
 				ticks++;
 				if(ticks % 3 == 0 && ticks < 10) fireFirework(loc.clone().add(1, 3, 0));
 				if(ticks % 3 == 0 && ticks < 10) fireFirework(loc.clone().add(-1, 3, 0));
@@ -163,11 +180,19 @@ public class TreasureChest {
 					done();
 
 				}
+				}
 
 			}
 		}, 0, 1);
 	}
 	public void done(){
+
+		if(!done){
+			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(1, 1, 0));
+			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(-1, 1, 0));
+			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, 1));
+			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, -1));
+		}
 		done = true;
 	}
 	boolean rewardsDone = false;
