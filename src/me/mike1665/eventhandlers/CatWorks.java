@@ -5,13 +5,13 @@ import java.util.Random;
 
 import me.mike1665.Main.Main;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Builder;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Player;
@@ -23,9 +23,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import com.earth2me.essentials.Mob;
-import com.earth2me.essentials.Mob.MobException;
 
 public class CatWorks implements Listener{
 	
@@ -40,7 +37,7 @@ public class CatWorks implements Listener{
 
     
 	@EventHandler(priority=EventPriority.HIGH)
-	public void onPlayerUse(PlayerInteractEvent event) throws MobException{
+	public void onPlayerUse(PlayerInteractEvent event) {
 	  final Player p = event.getPlayer();       
 	  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 		  if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.YELLOW + "Cat Works"))){
@@ -61,8 +58,8 @@ public class CatWorks implements Listener{
 				    });
 				    ((BukkitRunnable)this._cdRunnable.get(p)).runTaskTimer(this.plugin, 2L, 2L);
 				    
-			  final Mob cat = Mob.OCELOT;
-				final Ocelot ocelot = (Ocelot)cat.spawn(p.getWorld(), Bukkit.getServer(), p.getEyeLocation());
+	    		Entity ent = (org.bukkit.entity.Ocelot) p.getWorld().spawnEntity(p.getLocation(), EntityType.OCELOT);
+	    		final Ocelot ocelot = (Ocelot) ent;
 				if (ocelot == null)
 				{
 					return;
