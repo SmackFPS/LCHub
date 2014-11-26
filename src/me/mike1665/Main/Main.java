@@ -32,6 +32,8 @@ import me.mike1665.eventhandlers.PaintballGun;
 import me.mike1665.eventhandlers.PixlBomb;
 import me.mike1665.eventhandlers.RespawnEvent;
 import me.mike1665.eventhandlers.TNTFun;
+import me.mike1665.funstuff.FunCreepers;
+import me.mike1665.funstuff.SpawnCreeper;
 import me.mike1665.hubstuff.DoubleJump;
 import me.mike1665.hubstuff.LaunchPad;
 import me.mike1665.hubstuff.NoHunger;
@@ -151,6 +153,8 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new BuyGadgets(), this);
 		pm.registerEvents(new BuyEnderDoge(), this);
 		pm.registerEvents(new PixlBomb(this), this);
+		pm.registerEvents(new SpawnCreeper(this), this);
+		pm.registerEvents(new FunCreepers(), this);
 		ArrayEventSetup.setupEvents(this);
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
