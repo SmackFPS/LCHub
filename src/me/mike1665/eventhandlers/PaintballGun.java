@@ -15,6 +15,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
@@ -36,13 +37,14 @@ public class PaintballGun implements Listener{
 		this.plugin = main;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void Paint(ProjectileHitEvent event) {
 		if (!this._balls.remove(event.getEntity())) {
 			return;
 		}
 			Location loc = event.getEntity().getLocation().add(event.getEntity().getVelocity());
-			loc.getWorld().playEffect(loc, Effect.STEP_SOUND, 49);
+			loc.getWorld().playEffect(loc, Effect.STEP_SOUND, Material.OBSIDIAN.getId());
 		
 			byte color = 2;
 			double r = Math.random();
@@ -66,10 +68,10 @@ public class PaintballGun implements Listener{
 					Location bLoc = block.getLocation().add(0.0D, 1.0D, 0.0D);
 				
 					if (block.getType() == Material.CARPET) {
-						setBlockToRestore (block, 35, color, 4L);
+						setBlockToRestore (block, 35, color, 4L, event.getEntity().getShooter());
 					}
 					if (block.getType() != Material.WOOL) {
-						setBlockToRestore (block, 35, color, 4L);
+						setBlockToRestore (block, 35, color, 4L, event.getEntity().getShooter());
 						
 						for (int k = 0; k < 7; k++)
 							ParticleEffect.FIREWORKS_SPARK.display(bLoc, 0.0F, 0.0F, 0.0F, 0.1F, 1);
@@ -119,18 +121,19 @@ public class PaintballGun implements Listener{
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void setBlockToRestore(final Block block, int id, byte color, long timeInSecs)
+	public void setBlockToRestore(final Block block, int id, byte color, long timeInSecs, Entity shooter)
 	  {
+		if(!(shooter instanceof Player)) return;
+		final Player p = (Player)shooter;
+		
 	    final int BeforeId = block.getTypeId();
 	    final byte BeforeData = block.getData();
-	    block.setTypeId(id);
-	    block.setData(color);
+	    for(Player p2 : Bukkit.getOnlinePlayers()) p2.sendBlockChange(block.getLocation(), id, color);
 	    Bukkit.getScheduler().runTaskLater(this.plugin, new Runnable()
 	    {
 	      public void run()
 	      {
-	        block.setTypeId(BeforeId);
-	        block.setData(BeforeData);
+	      for(Player p2 : Bukkit.getOnlinePlayers()) if(p != p2) p2.sendBlockChange(block.getLocation(), BeforeId, BeforeData);
 	      }
 	    }
 	    , timeInSecs * 5L);
