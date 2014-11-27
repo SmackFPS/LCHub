@@ -32,7 +32,7 @@ public abstract class LCSubCommand {
 	public String[] dropArgument(String... input) {
 		if (input.length <= 1)
 			return new String[0];
-		ArrayList<String> a = Arrays.asList(input);
+		ArrayList<String> a = new ArrayList<String>(Arrays.asList(input));
 		a.remove(0);
 		return a.toArray(new String[a.size()]);
 	}
