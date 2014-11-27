@@ -1,7 +1,7 @@
 package me.jrl1004.lightcraft.commands;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 
 import me.jrl1004.lightcraft.commands.party.PartyCommand;
 
@@ -13,14 +13,14 @@ import org.bukkit.entity.Player;
 public class LCCommand implements CommandExecutor {
 
 	private static LCCommand instance;
-	private HashSet<LCSubCommand> commands = new HashSet<LCSubCommand>(Arrays.asList(new PartyCommand()));;
+	private ArrayList<LCSubCommand> commands;
 
-	private LCCommand() {
+	public LCCommand() {
+		commands = new ArrayList<LCSubCommand>(Arrays.asList(new PartyCommand()));
+		instance = this;
 	}
 
 	public static LCCommand getInstance() {
-		if (instance == null)
-			instance = new LCCommand();
 		return instance;
 	}
 
