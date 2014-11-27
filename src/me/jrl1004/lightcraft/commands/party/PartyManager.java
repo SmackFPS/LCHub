@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 import org.bukkit.OfflinePlayer;
 
-class PartyManager {
+public class PartyManager {
 
 	private static PartyManager instance;
 

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import me.jrl1004.lightcraft.commands.LCCommand;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -171,6 +172,7 @@ public class Main extends JavaPlugin implements Listener{
         RankManager.init(this);
 	//	loadListeners();
         me.jrl1004.lightcraft.commands.party.PartyManager.getInstance();
+        LCCommand.getInstance();
 		
 		try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
