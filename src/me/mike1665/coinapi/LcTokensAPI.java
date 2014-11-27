@@ -36,7 +36,12 @@ public class LcTokensAPI implements Listener {
 		return false;
 	}
 	public static int balancePoints(OfflinePlayer p) {
-		int a = plugin.getConfig().getInt(p.getUniqueId() + ".Tokens");
+		int a;
+		try {
+			a = plugin.getConfig().getInt(p.getUniqueId() + ".Tokens");
+		}catch(Exception exc) {
+			a = 0;
+		}
 		return a;
 	}
 }
