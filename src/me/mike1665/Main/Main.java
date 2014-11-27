@@ -171,8 +171,9 @@ public class Main extends JavaPlugin implements Listener{
      //   EffectManager.initialize();
         RankManager.init(this);
 	//	loadListeners();
-        me.jrl1004.lightcraft.commands.party.PartyManager.getInstance();
-        LCCommand.getInstance();
+        new  me.jrl1004.lightcraft.commands.party.PartyManager();
+        //LCCommand.getInstance();
+        new LCCommand();
 		
 		try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
