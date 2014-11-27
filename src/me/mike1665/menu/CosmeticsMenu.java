@@ -29,7 +29,19 @@ public class CosmeticsMenu implements Listener{
 		cosmenu = Bukkit.createInventory(null, 54, "§8[§aP§8] §1Hub Menu");
 
 		cosmenu.setItem(
-				13,
+				1,
+				createItem(Material.DOUBLE_PLANT, 1, (short) 0, "§5Economy",
+						"§1Choose a fun Gadget to show off to everyone!"));
+		cosmenu.setItem(
+				4,
+				createItem(Material.BOOK, 1, (short) 0, "§a§bStats",
+						"§1Choose a fun Gadget to show off to everyone!"));
+		cosmenu.setItem(
+				7,
+				createItem(Material.DIAMOND_SWORD, 1, (short) 0, "§eRank",
+						"§1Choose a fun Gadget to show off to everyone!"));
+		cosmenu.setItem(
+				22,
 				createItem(Material.CHEST, 1, (short) 0, "§aGadgets",
 						"§1Choose a fun Gadget to show off to everyone!"));
 		cosmenu.setItem(

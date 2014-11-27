@@ -71,7 +71,8 @@ public class SpawnCreeper implements Listener {
 									+ "Fun Creeper");
 							num++;
 						} else if (num == 2) {
-							creeper.setCustomName(ChatColor.RED + "Fun Creeper");
+							creeper.setCustomName(ChatColor.RED 
+									+ "Fun Creeper");
 							num++;
 						} else if (num == 3) {
 							creeper.setCustomName(ChatColor.GOLD
@@ -113,6 +114,8 @@ public class SpawnCreeper implements Listener {
 							creeper.setCustomName(ChatColor.DARK_PURPLE
 									+ "Fun Creeper");
 							num = 1;
+						} else if (!creeper.isValid()) {
+							
 						}
 					}
 				}, 0, 1 * 2);
