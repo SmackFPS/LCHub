@@ -67,7 +67,7 @@ public class CosmeticsMenu implements Listener{
 			}));
 		
 
-		cosmenu.setItem(7, ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§eRank", 
+		cosmenu.setItem(7, ItemTools.setName(new ItemStack(Material.NETHER_STAR), "§eRank", 
 				new String[] { 
 			"",
 			"§eYou current rank:",

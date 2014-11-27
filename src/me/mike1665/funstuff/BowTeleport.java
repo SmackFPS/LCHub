@@ -33,7 +33,7 @@ public class BowTeleport implements Listener {
 		bow.setItemMeta(bowmeta);
 
 		inventory.remove(bow);
-		inventory.setItem(8, bow);
+		inventory.setItem(7, bow);
 
 		ItemStack arrow = new ItemStack(Material.ARROW, 1);
 		inventory.remove(arrow);
@@ -67,7 +67,7 @@ public class BowTeleport implements Listener {
 			event.setCancelled(true);
 		}
 
-		if (event.getSlot() == 8) {
+		if (event.getSlot() == 7) {
 			event.setCancelled(true);
 		}
 	}
@@ -78,7 +78,7 @@ public class BowTeleport implements Listener {
 		if (current_slot == 35) {
 			event.setCancelled(true);
 		}
-		if (current_slot == 8) {
+		if (current_slot == 7) {
 			event.setCancelled(true);
 		}
 	}
