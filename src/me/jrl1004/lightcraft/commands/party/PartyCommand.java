@@ -16,6 +16,7 @@ public class PartyCommand extends LCSubCommand {
 		delete,
 		leave,
 		kick,
+		invite,
 		open,
 		closed;
 	}
@@ -64,7 +65,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case join:
 			if (args.length == 0) {
-				p.sendMessage(ChatColor.AQUA + "Usage: /Party create <name>");
+				p.sendMessage(ChatColor.AQUA + "Usage: /Party join <name>");
 				return;
 			}
 			if (PartyManager.getInstance().isInParty(p)) {
@@ -153,6 +154,21 @@ public class PartyCommand extends LCSubCommand {
 			p.sendMessage(ChatColor.AQUA + "Party has been closed.");
 		}
 			return;
+		case invite: {
+			if (args.length == 0) {
+				p.sendMessage(ChatColor.AQUA + "Usage: /Party invite <player>");
+				return;
+			}
+			if (!PartyManager.getInstance().getByPlayer(p).getHost().getUniqueId().equals(p.getUniqueId())) {
+				p.sendMessage(ChatColor.RED + "You are not the host of this party!");
+				return;
+			}
+			@SuppressWarnings("deprecation")
+			OfflinePlayer invitee = Bukkit.getOfflinePlayer(args[0]);
+			PartyManager.getInstance().getByPlayer(p).setInvited(invitee);
+			p.sendMessage(ChatColor.AQUA + "You kicked " + args[0] + " from your party.");
+			return;
+		}
 		default:
 			sendUsage(p);
 			return;
