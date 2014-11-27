@@ -9,6 +9,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.arrayprolc.item.ItemTools;
+
 public class CosmeticsMenu implements Listener{
 	
 	public ItemStack createItem(Material material, int amount, short shrt,
@@ -56,6 +58,9 @@ public class CosmeticsMenu implements Listener{
 				43,
 				createItem(Material.EGG, 1, (short) 0, "§6Pets",
 						"§6Want a friend?"));
+		
+		cosmenu.setItem(44, ItemTools.setName(new ItemStack(Material.DIRT), "Dirt", new String[] { "Guess what", "It's dirt" }));
+		
 	}
 
 }
