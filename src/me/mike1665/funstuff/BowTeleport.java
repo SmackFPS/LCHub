@@ -1,6 +1,7 @@
 package me.mike1665.funstuff;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
@@ -95,6 +96,7 @@ public class BowTeleport implements Listener {
 				p.teleport(arrow);
 				p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10.0F,
 						1.0F);
+				p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 2);
 			}
 		}
 	}
