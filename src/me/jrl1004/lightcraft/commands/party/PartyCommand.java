@@ -43,8 +43,10 @@ public class PartyCommand extends LCSubCommand {
 			sendUsage(p);
 			return;
 		}
-		Sub s = Sub.valueOf(args[0]);
-		if (s == null) {
+		Sub s;
+		try {
+			s = Sub.valueOf(args[0]);
+		} catch (Exception e) {
 			sendUsage(p);
 			return;
 		}
@@ -84,8 +86,8 @@ public class PartyCommand extends LCSubCommand {
 				}
 				party.addToParty(p);
 				p.sendMessage(ChatColor.AQUA + "Party joined!");
-				return;
 			}
+			return;
 		case delete:
 			if (!PartyManager.getInstance().isInParty(p)) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
@@ -100,6 +102,7 @@ public class PartyCommand extends LCSubCommand {
 				PartyManager.getInstance().deleteParty(party);
 				p.sendMessage(ChatColor.AQUA + "Party deleted! D:");
 			}
+			return;
 		case leave:
 			if (!PartyManager.getInstance().isInParty(p)) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
