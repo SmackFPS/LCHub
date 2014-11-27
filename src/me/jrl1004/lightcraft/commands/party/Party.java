@@ -18,6 +18,7 @@ public class Party {
 		this.invites = new HashSet<OfflinePlayer>();
 		locked = true;
 		this.host = host;
+		players.add(host);
 	}
 
 	public void addToParty(OfflinePlayer player) {

@@ -188,6 +188,9 @@ public class PartyCommand extends LCSubCommand {
 	}
 
 	private void addToParty(OfflinePlayer player, String key) {
-
+		Party party = PartyManager.getInstance().getByName(key);
+		if (party == null)
+			return;
+		party.addToParty(player);
 	}
 }
