@@ -79,21 +79,25 @@ public class CosmeticsMenu implements Listener{
 		
 		
 		cosmenu.setItem(
-				22,
+				21,
 				createItem(Material.CHEST, 1, (short) 0, "§aGadgets",
 						"§1Choose a fun Gadget to show off to everyone!"));
 		cosmenu.setItem(
-				37, 
+				19, 
 				createItem(Material.IRON_BARDING, 1, (short) 0, "§cMounts",
 						"§3Choose an eye-pooping mount!"));
 		cosmenu.setItem(
-				40,
+				23,
 				createItem(Material.ENDER_PEARL, 1, (short) 0, "§8Hub Purchaseables",
 						"§bPurchase some fun Gadgets!"));
 		cosmenu.setItem(
-				43,
+				25,
 				createItem(Material.EGG, 1, (short) 0, "§6Pets",
 						"§6Want a friend?"));
+		cosmenu.setItem(
+				40,
+				createItem(Material.RECORD_10, 1, (short) 0, "§3JukeBox",
+						"§eNeed something entertaining?"));
 		return cosmenu;
 
 
