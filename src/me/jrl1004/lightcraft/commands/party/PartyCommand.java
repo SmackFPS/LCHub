@@ -47,7 +47,7 @@ public class PartyCommand extends LCSubCommand {
 			sendUsage(p);
 			return;
 		}
-		args = dropArgument(args);
+		args = super.dropArgument(args);
 		switch (s) {
 		case create:
 			if (args.length == 0) {

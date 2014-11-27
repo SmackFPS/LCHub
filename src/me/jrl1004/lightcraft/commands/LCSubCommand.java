@@ -1,7 +1,7 @@
 package me.jrl1004.lightcraft.commands;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
@@ -32,7 +32,7 @@ public abstract class LCSubCommand {
 	public String[] dropArgument(String... input) {
 		if (input.length <= 1)
 			return new String[0];
-		List<String> a = Arrays.asList(input);
+		ArrayList<String> a = Arrays.asList(input);
 		a.remove(0);
 		return a.toArray(new String[a.size()]);
 	}
