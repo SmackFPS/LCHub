@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 
+import com.arrayprolc.friend.FriendManager;
 import com.arrayprolc.menu.MenuListener;
 
 public class ArrayEventSetup {
@@ -21,6 +22,7 @@ public class ArrayEventSetup {
 		pm.registerEvents(new TreasureChestListener(plugin), plugin);
 		pm.registerEvents(new MenuListener(plugin), plugin);
 		pm.registerEvents(new PlayerChat(plugin), plugin);
+		FriendManager.init(instance);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
 	}

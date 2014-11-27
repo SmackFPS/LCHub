@@ -8,16 +8,18 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 
-import com.arrayprolc.rank.RankFile;
+import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
+import com.arrayprolc.serverjoin.PartyTools;
 
 public class ArrayCommandHandler {
 
 	static Main plugin;
-	
+	static BungeeHooks h;
 	public static void setup(Main instance){
 		plugin = instance;
+		h = new BungeeHooks(instance);
 	}
 	
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a){
@@ -57,7 +59,10 @@ public class ArrayCommandHandler {
 			
 		}
 		if(label.equalsIgnoreCase("test")){
-			RankFile.saveToFile(new String[] {"test" });
+			PartyTools.sendPartyToServer((Player)sender, "creative");
+			
+		}
+		if(label.equalsIgnoreCase("friends")){
 			
 		}
 		return false;

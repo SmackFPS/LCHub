@@ -31,7 +31,7 @@ public class MusicMenu implements Listener{
 	public static Inventory musicmenu(Player p) {
 		Inventory musicmenu;
 		
-		musicmenu = Bukkit.createInventory(null, 9, name);
+		musicmenu = Bukkit.createInventory(null, 9*4, name);
 
 		musicmenu.setItem(
 				4,

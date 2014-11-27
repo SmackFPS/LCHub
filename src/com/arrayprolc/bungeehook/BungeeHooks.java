@@ -5,6 +5,7 @@ import java.util.HashMap;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -15,9 +16,10 @@ import com.google.common.io.ByteStreams;
 public class BungeeHooks implements PluginMessageListener {
 	static Main plugin;
 	HashMap<String, Integer> players = new HashMap<String, Integer>();
-	String[] servers;
+	static String[] servers;
 	@SuppressWarnings("deprecation")
-	public void init(Main instance){
+	public BungeeHooks(Main instance){
+		plugin = instance;
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(instance, "BungeeCord");
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(instance, "BungeeCord", this);
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable(){
@@ -31,7 +33,7 @@ public class BungeeHooks implements PluginMessageListener {
 				}
 			}
 		}, 0, 5);
-		plugin = instance;
+		
 	}
 
 	public static void sendPlayerToServer(String name, Player p){
@@ -39,6 +41,13 @@ public class BungeeHooks implements PluginMessageListener {
 		out.writeUTF("Connect");
 		out.writeUTF(name);
 		p.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
+	}
+	public static void sendPlayerToServer(String name, OfflinePlayer p){
+		ByteArrayDataOutput out = ByteStreams.newDataOutput();
+		out.writeUTF("ConnectOther");
+		out.writeUTF(p.getName());
+		out.writeUTF(name);
+		Bukkit.getOnlinePlayers()[0].sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
 	}
 
 	public int getPlayerCount(String server){
