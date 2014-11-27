@@ -13,6 +13,7 @@ import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
 import me.mike1665.click.GadjetsMenuClick;
 import me.mike1665.click.MountMenuClick;
+import me.mike1665.click.MusicClick;
 import me.mike1665.click.PlayerGadjetsClick;
 import me.mike1665.click.VipGadjetsClick;
 import me.mike1665.coinapi.ApiEvent;
@@ -45,6 +46,7 @@ import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.GadjetsMenu;
 import me.mike1665.menu.MountMenu;
+import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.PlayerGadjets;
 import me.mike1665.menu.VipGadjets;
 import me.mike1665.mount.types.Frust;
@@ -197,6 +199,8 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new SpawnCreeper(this), this);
 		pm.registerEvents(new FunCreepers(), this);
 		pm.registerEvents(new BowTeleport(), this);
+		pm.registerEvents(new MusicMenu(), this);
+		pm.registerEvents(new MusicClick(), this);
 		// pm.registerEvents(new ItemListener(), this);
 	}
 

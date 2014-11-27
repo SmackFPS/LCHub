@@ -2,6 +2,7 @@ package me.mike1665.click;
 
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
+import me.mike1665.menu.GadjetsMenu;
 import me.mike1665.menu.MountMenu;
 import me.mike1665.menu.MusicMenu;
 
@@ -37,7 +38,8 @@ public class CosMenuClick implements Listener{
 			}
 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aGadgets")) {
-				p.performCommand("gadgets");
+      		  	p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
+				p.openInventory(GadjetsMenu.gadmenu);
 				return;
 			}
                 
