@@ -39,7 +39,8 @@ public class AdminGadgetsClick implements Listener{
 			if (!event.getCurrentItem().hasItemMeta()) {
 				return;
 			}
-
+			if (!(event.getCurrentItem().getItemMeta().hasDisplayName())) {
+				return;
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aTwerking Zombie")) {
 					p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Coming soon!");
@@ -66,6 +67,7 @@ public class AdminGadgetsClick implements Listener{
       		  	return;
 
 			} 
+		}
 	}
 	
 	public void spawnSHEEP(Player player) {

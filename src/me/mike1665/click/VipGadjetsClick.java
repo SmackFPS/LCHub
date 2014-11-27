@@ -27,7 +27,8 @@ public class VipGadjetsClick implements Listener{
 			if (!(event.getCurrentItem().hasItemMeta())) {
 				return;
 			}
-
+			if (!event.getCurrentItem().hasItemMeta()) {
+				return;
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§bMeow Balls")) {
                 	ItemStack snow = new ItemStack(Material.SNOW_BALL, 16);
@@ -119,4 +120,5 @@ public class VipGadjetsClick implements Listener{
             	p.closeInventory();
 			}
 	}	
+	}
 }

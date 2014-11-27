@@ -20,9 +20,8 @@ import com.arrayprolc.rank.RankManager;
 
 public class CosmeticsMenu implements Listener{
 	
-	Player p;
-	
-	public ItemStack createItem(Material material, int amount, short shrt,
+	public static String name = "§8[§aP§8] §1Hub Menu";
+	public static ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
 		ItemStack item = new ItemStack(material, amount, (short) shrt);
 		ItemMeta meta = item.getItemMeta();
@@ -35,12 +34,13 @@ public class CosmeticsMenu implements Listener{
 		return item;
 	}
 
-	public static Inventory cosmenu;
+	public static Inventory cosmenu(Player p)
 	{
+		Inventory cosmenu;
 		int a = LcTokensAPI.balancePoints(p);
 		int b = LcCoinsAPI.balancePoints(p);
 		
-		cosmenu = Bukkit.createInventory(null, 54, "§8[§aP§8] §1Hub Menu");
+		cosmenu = Bukkit.createInventory(null, 54, name);
 
 		cosmenu.setItem(1, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§5Economy", 
 			new String[] { 
@@ -94,7 +94,7 @@ public class CosmeticsMenu implements Listener{
 				43,
 				createItem(Material.EGG, 1, (short) 0, "§6Pets",
 						"§6Want a friend?"));
-		
+		return cosmenu;
 
 
 		

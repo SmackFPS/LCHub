@@ -16,7 +16,7 @@ public class CosMenuClick implements Listener{
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
 		Player p = (Player) event.getWhoClicked();
-		if (event.getInventory().getName().equalsIgnoreCase(CosmeticsMenu.cosmenu.getName())) {
+		if (event.getInventory().getName().equalsIgnoreCase(CosmeticsMenu.name)) {
 			event.setCancelled(true);
 
 			if (event.getCurrentItem() == null) {
@@ -30,8 +30,11 @@ public class CosMenuClick implements Listener{
 			if (!event.getCurrentItem().hasItemMeta()) {
 				return;
 			}
-
+			
+			if (!event.getCurrentItem().hasItemMeta()) {
+				return;
 			}
+
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aGadgets")) {
 				p.performCommand("gadgets");
 				return;
@@ -59,4 +62,5 @@ public class CosMenuClick implements Listener{
 
 			} 
 		}
+	}
 	}

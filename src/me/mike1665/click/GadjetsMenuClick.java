@@ -29,8 +29,10 @@ public class GadjetsMenuClick implements Listener{
 			if (!event.getCurrentItem().hasItemMeta()) {
 				return;
 			}
-
+			if (!event.getCurrentItem().hasItemMeta()) {
+				return;
 			}
+
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§6Vip Gadgets")) {
                 if (p.hasPermission("vip.gad") || p.isOp()) {
                 		p.openInventory(me.mike1665.menu.VipGadjets.vipgadmenu);
@@ -60,9 +62,10 @@ public class GadjetsMenuClick implements Listener{
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§bBack to Hub Menu")) {
 				p.closeInventory();
-        		p.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu);
+        		p.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu((Player) event.getWhoClicked()));
       		  	p.playSound(p.getLocation(), Sound.DOOR_CLOSE, 10, 10);
 			} 
 		}
+	}
 	}
 		

@@ -27,6 +27,7 @@ public class SpawnCreeper implements Listener {
 
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
+		try{
 		Player p = (Player) event.getWhoClicked();
 		if (event.getInventory().getName()
 				.equalsIgnoreCase(BuyGadgets.buygadmenu.getName())) {
@@ -43,6 +44,7 @@ public class SpawnCreeper implements Listener {
 			if (!event.getCurrentItem().hasItemMeta()) {
 				return;
 			}
+		
 
 		}
 		if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -55,6 +57,7 @@ public class SpawnCreeper implements Listener {
 			p.closeInventory();
 			return;
 		}
+		}catch(Exception ex){}
 	}
 
 	public void spawnCreeper(Player player) {

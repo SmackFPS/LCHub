@@ -216,7 +216,7 @@ public class Main extends JavaPlugin implements Listener{
 			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
 		}
 		if (cmd.getName().equalsIgnoreCase("cosmenu")) {
-			player.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu);
+			player.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu((Player)sender));
 		}
 		if (cmd.getName().equalsIgnoreCase("mountmenu")) {
 			player.openInventory(MountMenu.getMountShop(player));

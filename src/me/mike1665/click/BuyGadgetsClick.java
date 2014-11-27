@@ -19,8 +19,9 @@ public class BuyGadgetsClick implements Listener{
 	
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
+		try{
 		Player p = (Player) event.getWhoClicked();
-		if (event.getInventory().getName().equalsIgnoreCase(BuyGadgets.buygadmenu.getName())) {
+		if (event.getInventory().getName().equalsIgnoreCase(CosmeticsMenu.name)) {
 			event.setCancelled(true);
 
 			if (event.getCurrentItem() == null) {
@@ -30,8 +31,10 @@ public class BuyGadgetsClick implements Listener{
 			if (!(event.getCurrentItem().hasItemMeta())) {
 				return;
 			}
-
+			if (!(event.getCurrentItem().getItemMeta().hasDisplayName())) {
+				return;
 			}
+
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Meow Balls")) {
 				if(LcCoinsAPI.hasEnough(p, 60)) {
 					LcCoinsAPI.takePoints(p, 60);
@@ -138,9 +141,11 @@ public class BuyGadgetsClick implements Listener{
 				}
 		}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cGo Back")) {
-				p.openInventory(CosmeticsMenu.cosmenu);
+				p.openInventory(CosmeticsMenu.cosmenu(p));
 				p.playSound(p.getLocation(), Sound.DOOR_CLOSE, 10, 10);
 				return;
 		}
+		}
+		}catch(Exception e){}
 	}
 }

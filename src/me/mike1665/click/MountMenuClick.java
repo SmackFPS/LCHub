@@ -37,7 +37,8 @@ public class MountMenuClick implements Listener{
 			if (!event.getCurrentItem().hasItemMeta()) {
 				return;
 			}
-
+			if (!event.getCurrentItem().hasItemMeta()) {
+				return;
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aFrosty")) {
 				this.fro.spawnFrost(p);
@@ -60,7 +61,7 @@ public class MountMenuClick implements Listener{
 			} 
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§c<- Go Back")) {
-				p.openInventory(CosmeticsMenu.cosmenu);
+				p.openInventory(CosmeticsMenu.cosmenu(p));
       		  	p.playSound(p.getLocation(), Sound.DOOR_CLOSE, 10, 10);
 				return;
 
@@ -76,6 +77,7 @@ public class MountMenuClick implements Listener{
 				return;
 
 			} 
+		}
 		}catch(Exception ex){} //causing random nullpointers
 	}
 }

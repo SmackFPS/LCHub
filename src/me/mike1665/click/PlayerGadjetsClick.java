@@ -27,7 +27,12 @@ public class PlayerGadjetsClick implements Listener{
 			if (!(event.getCurrentItem().hasItemMeta())) {
 				return;
 			}
-
+			
+			if (!(event.getCurrentItem().getItemMeta().hasDisplayName())) {
+				return;
+			}
+			if (!event.getCurrentItem().hasItemMeta()) {
+				return;
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "Ender Ride")) {
             	ItemStack ender = new ItemStack(Material.ENDER_PEARL, 1);
@@ -61,5 +66,6 @@ public class PlayerGadjetsClick implements Listener{
 
 			} 
 		}
+	}
 	}
 	
