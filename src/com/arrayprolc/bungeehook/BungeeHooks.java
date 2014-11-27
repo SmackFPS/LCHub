@@ -13,28 +13,10 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
-public class BungeeHooks implements PluginMessageListener {
+public class BungeeHooks {
 	static Main plugin;
-	HashMap<String, Integer> players = new HashMap<String, Integer>();
-	static String[] servers;
-	@SuppressWarnings("deprecation")
-	public BungeeHooks(Main instance){
-		plugin = instance;
-		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(instance, "BungeeCord");
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(instance, "BungeeCord", this);
-		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable(){
-			public void run(){
-				if(servers != null){
-					for(String srv : servers){
-						ByteArrayDataOutput out = ByteStreams.newDataOutput();
-						out.writeUTF("PlayerList");
-						out.writeUTF(srv);
-					}
-				}
-			}
-		}, 0, 5);
-		
-	}
+	public static HashMap<String, Integer> players = new HashMap<String, Integer>();
+	public static String[] servers = { "lobby", "creative", "wt001" };
 
 	public static void sendPlayerToServer(String name, Player p){
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -55,18 +37,5 @@ public class BungeeHooks implements PluginMessageListener {
 
 	}
 
-	@Override
-	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-		if (!channel.equals("BungeeCord")) {
-			return;
-		}
-		ByteArrayDataInput in = ByteStreams.newDataInput(message);
-		String subchannel = in.readUTF();
-		if (subchannel.equals("PlayerList")) {
-			String server = in.readUTF(); 
-			String[] playerList = in.readUTF().split(", ");
-			players.remove(server);
-			players.put(server, playerList.length);
-		}
-	}
+
 }

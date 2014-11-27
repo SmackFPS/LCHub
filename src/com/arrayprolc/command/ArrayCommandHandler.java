@@ -21,10 +21,8 @@ import com.arrayprolc.strings.StringManager;
 public class ArrayCommandHandler {
 
 	static Main plugin;
-	static BungeeHooks h;
 	public static void setup(Main instance){
 		plugin = instance;
-		h = new BungeeHooks(instance);
 	}
 	
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a){

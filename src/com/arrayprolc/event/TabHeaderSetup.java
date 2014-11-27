@@ -19,7 +19,7 @@ public class TabHeaderSetup implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
-		BUtils.sendHeaderAndFooter(e.getPlayer(), "§9Light§bCraft §3Network", "§7We can change this message later.");
+		BUtils.sendHeaderAndFooter(e.getPlayer(), "§9Light§bCraft §3Network", "§7Buy Ranks, Gadgets and more at store.lightcraftmc.com");
 		String sub = "";
 		if(Multiplier.coin(e.getPlayer()) > 1){
 			sub = sub + "§a" + Multiplier.coin(e.getPlayer()) + "x §aCoins";

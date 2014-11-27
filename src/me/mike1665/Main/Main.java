@@ -1,6 +1,5 @@
 package me.mike1665.Main;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,21 +70,25 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scoreboard.Scoreboard;
 
 import code.husky.mysql.MySQL;
 
+import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.rank.RankManager;
-import com.arrayprolc.sql.SQLTools;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
 
-public class Main extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin implements Listener, PluginMessageListener {
 
 	public Scoreboard board;
 	public HashMap<String, String> colors = new HashMap<String, String>();
@@ -135,8 +138,11 @@ public class Main extends JavaPlugin implements Listener {
 		loadListeners();
 		new PartyManager();
 		getCommand("party").setExecutor(new LCCommand());
+		try{
+			bungee();
+		}catch(Exception e){ e.printStackTrace(); }
 
-		try {
+		/*try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
 			c = MySQL.openConnection();
 			SQLTools.statementTest();
@@ -146,10 +152,48 @@ public class Main extends JavaPlugin implements Listener {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 
+	@SuppressWarnings("deprecation")
+	public void bungee(){
+		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+		System.out.println("Initializing Bungee Hooks");
+		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
+			public void run(){
+				for(String srv : BungeeHooks.players.keySet()){
+					//Debug stuff
+					Bukkit.broadcastMessage(srv + " has " + BungeeHooks.players.get(srv) + " players online.");
+				}
+					for(String srv : BungeeHooks.servers){
+						ByteArrayDataOutput out = ByteStreams.newDataOutput();
+						out.writeUTF("PlayerList");  
+						out.writeUTF(srv);
+				}
+			}
+		}, 0, 5);
+
+	}
+	
+	public static int getPlayerCount(String server){
+		
+		return 0;
+	}
+	@Override
+	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+		if (!channel.equals("BungeeCord")) {
+			return;
+		}
+		ByteArrayDataInput in = ByteStreams.newDataInput(message);
+		String subchannel = in.readUTF();
+		String server = in.readUTF(); 
+		String[] playerList = in.readUTF().split(", ");
+		BungeeHooks.players.remove(server);
+		BungeeHooks.players.put(server, playerList.length);
+		Bukkit.broadcastMessage(in.readUTF());
+	}
 	@Override
 	public void onDisable() {
 		entityManager.dispose();
