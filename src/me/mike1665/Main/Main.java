@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import me.jrl1004.lightcraft.commands.LCCommand;
+import me.jrl1004.lightcraft.commands.party.PartyManager;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -82,8 +83,8 @@ import com.arrayprolc.strings.StringManager;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
 
-public class Main extends JavaPlugin implements Listener{
-	
+public class Main extends JavaPlugin implements Listener {
+
 	public Scoreboard board;
 	public HashMap<String, String> colors = new HashMap<String, String>();
 	public static List<String> activate = new ArrayList<String>();
@@ -91,7 +92,7 @@ public class Main extends JavaPlugin implements Listener{
 	public Integer armortask = null;
 	public Integer updateboard = null;
 	public static Location _spawn;
-    @SuppressWarnings("unused")
+	@SuppressWarnings("unused")
 	private ArrayList<String> usingarmor;
 	String tag = ChatColor.RED + "" + ChatColor.BOLD + "Parkour " + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
 	public static Main instance;
@@ -102,7 +103,7 @@ public class Main extends JavaPlugin implements Listener{
 	private EntityManager entityManager;
 	public static MySQL MySQL;
 	public static java.sql.Connection c = null;
-	
+
 	public void onEnable() {
 		instance = this;
 		LcTokensAPI.initialize(this);
@@ -114,6 +115,47 @@ public class Main extends JavaPlugin implements Listener{
 		MountMenu.initialize(this);
 		Mule.initialize(this);
 		CourseOne.initialize(this);
+		ArrayEventSetup.setupEvents(this);
+		ArrayCommandHandler.setup(this);
+		StatsCommand.setup(this);
+		colors.put("red", "255,0,0");
+		colors.put("orange", "255,127,0");
+		colors.put("yellow", "255,255,0");
+		colors.put("green", "0,255,0");
+		colors.put("blue", "0,0,255");
+		colors.put("indigo", "75,0,130");
+		colors.put("violet", "143,0,255");
+		armorrun();
+		this.usingarmor = new ArrayList<String>();
+		entityManager = new EntityManager(this);
+		// EffectManager.initialize();
+		RankManager.init(this);
+		loadListeners();
+		new PartyManager();
+		getCommand("party").setExecutor(new LCCommand());
+
+		try {
+			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
+			c = MySQL.openConnection();
+			SQLTools.statementTest();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public void onDisable() {
+		entityManager.dispose();
+		EffectManager.disposeAll();
+		HandlerList.unregisterAll((Plugin) this);
+	}
+
+	private void loadListeners() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		pm.registerEvents(new EnderDoge(), this);
@@ -155,110 +197,71 @@ public class Main extends JavaPlugin implements Listener{
 		pm.registerEvents(new SpawnCreeper(this), this);
 		pm.registerEvents(new FunCreepers(), this);
 		pm.registerEvents(new BowTeleport(), this);
-		ArrayEventSetup.setupEvents(this);
-		ArrayCommandHandler.setup(this);
-		StatsCommand.setup(this);
-		colors.put("red", "255,0,0");
-    	colors.put("orange", "255,127,0");
-    	colors.put("yellow", "255,255,0");
-    	colors.put("green", "0,255,0");
-    	colors.put("blue", "0,0,255");
-    	colors.put("indigo", "75,0,130");
-    	colors.put("violet", "143,0,255");
-    	armorrun();
-        this.usingarmor = new ArrayList<String>();
-		entityManager = new EntityManager(this);
-     //   EffectManager.initialize();
-        RankManager.init(this);
-	//	loadListeners();
-        new  me.jrl1004.lightcraft.commands.party.PartyManager();
-        //LCCommand.getInstance();
-        new LCCommand();
-		
-		try {
-			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
-			c = MySQL.openConnection();
-			SQLTools.statementTest();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	@Override
-	public void onDisable() {
-		entityManager.dispose();
-        EffectManager.disposeAll();
-		HandlerList.unregisterAll((Plugin) this);
-	}
-	/*private void loadListeners() {
-		getServer().getPluginManager().registerEvents(new ItemListener(), this);
+		// pm.registerEvents(new ItemListener(), this);
 	}
 
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
-	public List<EffectManager> getEffectManagers() {
-		return EffectManager.getManagers();
-	}*/
-	public void saveFile(){
+	/*
+	 * public EntityManager getEntityManager() { return entityManager; }
+	 * 
+	 * public List<EffectManager> getEffectManagers() { return
+	 * EffectManager.getManagers(); }
+	 */
+	public void saveFile() {
 		this.saveConfig();
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
-		
-		if(ArrayCommandHandler.command(sender, cmd, label, a)) return true;
-		if(StatsCommand.command(sender, cmd, label, a)) return true;
+
+		if (ArrayCommandHandler.command(sender, cmd, label, a))
+			return true;
+		if (StatsCommand.command(sender, cmd, label, a))
+			return true;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
 			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
 		}
 		if (cmd.getName().equalsIgnoreCase("cosmenu")) {
-			player.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu((Player)sender));
+			player.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu((Player) sender));
 		}
 		if (cmd.getName().equalsIgnoreCase("mountmenu")) {
 			player.openInventory(MountMenu.getMountShop(player));
 		}
 		if (cmd.getName().equalsIgnoreCase("parkour")) {
-			player.sendMessage(ChatColor.RED + "          :" +  ChatColor.RED + " Parkour Version 1" + ChatColor.RED + " :");
-			player.sendMessage(ChatColor.RED + "          :" +  ChatColor.GREEN + " Developed by @SwaggyYolo " + ChatColor.RED + ":");
+			player.sendMessage(ChatColor.RED + "          :" + ChatColor.RED + " Parkour Version 1" + ChatColor.RED + " :");
+			player.sendMessage(ChatColor.RED + "          :" + ChatColor.GREEN + " Developed by @SwaggyYolo " + ChatColor.RED + ":");
 			player.sendMessage(tag + ChatColor.YELLOW + " /setparkour1 - Sets the spawn for Parkour 1. ");
 			player.sendMessage(tag + ChatColor.YELLOW + " /parkour1 - Teleport to the set point. ");
 			player.sendMessage(tag + ChatColor.YELLOW + " /cp1 - Sets Checkpoint for Course 1. ");
 
 		}
-		 if (cmd.getName().equalsIgnoreCase("setparkour1") && player.isOp()) {
-             getConfig().set("parkour1.world", player.getLocation().getWorld().getName());
-             getConfig().set("parkour1.x", player.getLocation().getX());
-             getConfig().set("parkour1.y", player.getLocation().getY());
-             getConfig().set("parkour1.z", player.getLocation().getZ());
-             getConfig().set("parkour1.direction", player.getLocation().getDirection());
-             getConfig().set("parkour1.yaw", player.getLocation().getYaw());
-             getConfig().set("parkour1.pitch", player.getLocation().getPitch());
+		if (cmd.getName().equalsIgnoreCase("setparkour1") && player.isOp()) {
+			getConfig().set("parkour1.world", player.getLocation().getWorld().getName());
+			getConfig().set("parkour1.x", player.getLocation().getX());
+			getConfig().set("parkour1.y", player.getLocation().getY());
+			getConfig().set("parkour1.z", player.getLocation().getZ());
+			getConfig().set("parkour1.direction", player.getLocation().getDirection());
+			getConfig().set("parkour1.yaw", player.getLocation().getYaw());
+			getConfig().set("parkour1.pitch", player.getLocation().getPitch());
 
-             saveConfig();
-             player.sendMessage(tag + ChatColor.GREEN + "Parkour 1 spawn set!");
-             return true;
-		 }
-		 if (cmd.getName().equalsIgnoreCase("cp1") && player.isOp()) {
-             getConfig().set("cp1.world", player.getLocation().getWorld().getName());
-             getConfig().set("cp1.x", player.getLocation().getX());
-             getConfig().set("cp1.y", player.getLocation().getY());
-             getConfig().set("cp1.z", player.getLocation().getZ());
-             getConfig().set("cp1.direction", player.getLocation().getDirection());
-             getConfig().set("cp1.yaw", player.getLocation().getYaw());
-             getConfig().set("cp1.pitch", player.getLocation().getPitch());
+			saveConfig();
+			player.sendMessage(tag + ChatColor.GREEN + "Parkour 1 spawn set!");
+			return true;
+		}
+		if (cmd.getName().equalsIgnoreCase("cp1") && player.isOp()) {
+			getConfig().set("cp1.world", player.getLocation().getWorld().getName());
+			getConfig().set("cp1.x", player.getLocation().getX());
+			getConfig().set("cp1.y", player.getLocation().getY());
+			getConfig().set("cp1.z", player.getLocation().getZ());
+			getConfig().set("cp1.direction", player.getLocation().getDirection());
+			getConfig().set("cp1.yaw", player.getLocation().getYaw());
+			getConfig().set("cp1.pitch", player.getLocation().getPitch());
 
-             saveConfig();
-             player.sendMessage(StringManager.getMessage("Checkpoint set for parkour 1!", MessageType.PARKOUR));
-             return true;
-		 }
-		 if (cmd.getName().equalsIgnoreCase("parkour1")) {
+			saveConfig();
+			player.sendMessage(StringManager.getMessage("Checkpoint set for parkour 1!", MessageType.PARKOUR));
+			return true;
+		}
+		if (cmd.getName().equalsIgnoreCase("parkour1")) {
 			if (getConfig().getConfigurationSection("parkour1") == null) {
 				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Parkour spawn not yet set!");
 				return true;
@@ -266,179 +269,175 @@ public class Main extends JavaPlugin implements Listener{
 			org.bukkit.World w = Bukkit.getServer().getWorld(getConfig().getString("parkour1.world"));
 			double yaw = getConfig().getDouble("parkour1.yaw");
 			double pitch = getConfig().getDouble("parkour1.pitch");
-            double x = getConfig().getDouble("parkour1.x");
-            double y = getConfig().getDouble("parkour1.y");
-            double z = getConfig().getDouble("parkour1.z");
-            Location parkour1 = new Location(w, x, y,z);
-            parkour1.setPitch((float) pitch);
-            parkour1.setYaw((float) yaw);
-            player.teleport(parkour1);
-            player.sendMessage(StringManager.getPrefix(MessageType.PARKOUR) + "Teleported to " + ChatColor.AQUA +"Parkour1");
+			double x = getConfig().getDouble("parkour1.x");
+			double y = getConfig().getDouble("parkour1.y");
+			double z = getConfig().getDouble("parkour1.z");
+			Location parkour1 = new Location(w, x, y, z);
+			parkour1.setPitch((float) pitch);
+			parkour1.setYaw((float) yaw);
+			player.teleport(parkour1);
+			player.sendMessage(StringManager.getPrefix(MessageType.PARKOUR) + "Teleported to " + ChatColor.AQUA + "Parkour1");
 		}
-		 
-		 
+
 		if (cmd.getName().equalsIgnoreCase("caoff")) {
 			armorCancel(player, "off");
 			player.sendMessage(StringManager.getPrefix(MessageType.GADGETS) + "Armor deactivated.");
 
 		}
-		
+
 		if (cmd.getName().equalsIgnoreCase("addstaff") && player.isOp()) {
-			if(player.isOp()) {
+			if (player.isOp()) {
 				this.getConfig().set(player.getUniqueId() + ".Administrator", true);
 				this.saveFile();
-				player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getUniqueId().toString() + ChatColor.BLUE +" to socreboard staff!");
-				}	
+				player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.BLUE + "Added " + ChatColor.YELLOW + player.getUniqueId().toString() + ChatColor.BLUE + " to socreboard staff!");
 			}
-		
+		}
+
 		if (cmd.getName().equalsIgnoreCase("givetokens") && player.isOp()) {
 			if (a.length >= 1) {
-				if(a.length == 1) {
+				if (a.length == 1) {
 					int tempValue;
-					try
-					{
+					try {
 						tempValue = Integer.parseInt(a[0]);
-					}
-					catch(NumberFormatException e)
-					{
+					} catch (NumberFormatException e) {
 						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
 					LcTokensAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
-					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA +" Tokens recieved!");
+					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[0] + ChatColor.AQUA + " Tokens recieved!");
 
-				}else if (a.length == 2){
+				} else if (a.length == 2) {
 					LcTokensAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
-					if(tempPlayer != null){
+					if (tempPlayer != null) {
 						ApiEvent.updatescore(tempPlayer);
-						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA +" Tokens recieved!");
+						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA + " Tokens recieved!");
 					}
-					
+
 				}
-				
+
 			} else {
 				player.sendMessage(ChatColor.RED + "Somehting Failed!");
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("givecoins") && player.isOp()) {
 			if (a.length >= 1) {
-				if(a.length == 1) {
+				if (a.length == 1) {
 					int tempValue;
-					try
-					{
+					try {
 						tempValue = Integer.parseInt(a[0]);
-					}
-					catch(NumberFormatException e)
-					{
+					} catch (NumberFormatException e) {
 						player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Value must be a number!");
 						return true;
 					}
 					LcCoinsAPI.givePoints(player, tempValue);
 					ApiEvent.updatescore(player);
-					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + a[0] + ChatColor.AQUA +" Coins recieved!");
+					player.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + a[0] + ChatColor.AQUA + " Coins recieved!");
 
-				}else if (a.length == 2){
+				} else if (a.length == 2) {
 					LcCoinsAPI.givePoints(Bukkit.getOfflinePlayer(a[0]), Integer.parseInt(a[1]));
 					Player tempPlayer = this.getServer().getPlayer(a[0]);
-					if(tempPlayer != null){
+					if (tempPlayer != null) {
 						ApiEvent.updatescore(tempPlayer);
 						tempPlayer.sendMessage(StringManager.getPrefix(MessageType.TRANSACTION) + "" + a[1] + ChatColor.AQUA + " Coins recieved!");
 					}
-					
+
 				}
-				
-			} else{
+
+			} else {
 				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Something Failed");
 			}
 		}
-		
+
 		return false;
 	}
-	
-    public void armorCancel(Player player, String reason) {
-    	UUID playerName = player.getUniqueId();
-    	activate.remove(playerName);
+
+	public void armorCancel(Player player, String reason) {
+		UUID playerName = player.getUniqueId();
+		activate.remove(playerName);
 		rainbowarmor.remove(playerName);
 		player.getInventory().setArmorContents(null);
-    }
-    
-    public void armorrun() {
-    	armortask = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-		    public void run() {
-		    	cyclearmor();
-		    }
+	}
+
+	public void armorrun() {
+		armortask = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				cyclearmor();
+			}
 		}, 0, 4);
-    }
-    
+	}
+
 	public void cyclearmor() {
-    	for(String playerName : rainbowarmor.keySet()) {
-    		Player player = Bukkit.getPlayer(playerName);
-    		if(player != null) {
-    			String color = rainbowarmor.get(playerName);
-    			color = nextColor(color);
-    			setArmorColor(player,
-    				getColor(color),
-    				getColor(color),
-    				getColor(color),
-    				getColor(color)
-    			);
-    			rainbowarmor.put(playerName, color);
-    		}
-    	}
-    }
-	
-    public void setArmorColor(Player player, Color helmetColor, Color chestplateColor, Color leggingsColor, Color bootsColor) {
-    	PlayerInventory playerInventory = player.getInventory();
-    	
-    	List<String> lore = new ArrayList<String>();
-    	lore.add("§aR§ba§ci§dn§eb§1o§2w §7Armor");
-    	
-    	ItemStack lhelmet = new ItemStack(Material.LEATHER_HELMET, 1);
-    	LeatherArmorMeta lam = (LeatherArmorMeta)lhelmet.getItemMeta();
-    	lam.setColor(helmetColor);
-    	lam.setLore(lore);
-    	lhelmet.setItemMeta(lam);
-    	playerInventory.setHelmet(lhelmet);
-    	
-    	ItemStack lchestplate = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-    	lam.setColor(chestplateColor);
-    	lchestplate.setItemMeta(lam);
-    	playerInventory.setChestplate(lchestplate);
-    	
-    	ItemStack lleggings = new ItemStack(Material.LEATHER_LEGGINGS, 1);
-    	lam.setColor(leggingsColor);
-    	lleggings.setItemMeta(lam);
-    	playerInventory.setLeggings(lleggings);
-    	
-    	ItemStack lboots = new ItemStack(Material.LEATHER_BOOTS, 1);
-    	lam.setColor(bootsColor);
-    	lboots.setItemMeta(lam);
-    	playerInventory.setBoots(lboots);
-    }
-    
-    public Color getColor(String color) {
-    	if(colors.containsKey(color)) {
-    		String RGB = colors.get(color);
-    		String[] RGBArray = RGB.split(",");
-    		return Color.fromRGB(Integer.parseInt(RGBArray[0]), Integer.parseInt(RGBArray[1]), Integer.parseInt(RGBArray[2]));
-    	}
-    	return null;
-    }
-    
-    public String nextColor(String color) {
-    	if(color.equalsIgnoreCase("red")) return "orange";
-    	else if(color.equalsIgnoreCase("orange")) return "yellow";
-    	else if(color.equalsIgnoreCase("yellow")) return "green";
-    	else if(color.equalsIgnoreCase("green")) return "blue";
-    	else if(color.equalsIgnoreCase("blue")) return "indigo";
-    	else if(color.equalsIgnoreCase("indigo")) return "violet";
-    	else if(color.equalsIgnoreCase("violet")) return "red";
-    	else return "red";
-    }
-    
-    public static Location GetSpawn() {
-        return _spawn.clone();
-      }
+		for (String playerName : rainbowarmor.keySet()) {
+			Player player = Bukkit.getPlayer(playerName);
+			if (player != null) {
+				String color = rainbowarmor.get(playerName);
+				color = nextColor(color);
+				setArmorColor(player, getColor(color), getColor(color), getColor(color), getColor(color));
+				rainbowarmor.put(playerName, color);
+			}
+		}
+	}
+
+	public void setArmorColor(Player player, Color helmetColor, Color chestplateColor, Color leggingsColor, Color bootsColor) {
+		PlayerInventory playerInventory = player.getInventory();
+
+		List<String> lore = new ArrayList<String>();
+		lore.add("§aR§ba§ci§dn§eb§1o§2w §7Armor");
+
+		ItemStack lhelmet = new ItemStack(Material.LEATHER_HELMET, 1);
+		LeatherArmorMeta lam = (LeatherArmorMeta) lhelmet.getItemMeta();
+		lam.setColor(helmetColor);
+		lam.setLore(lore);
+		lhelmet.setItemMeta(lam);
+		playerInventory.setHelmet(lhelmet);
+
+		ItemStack lchestplate = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
+		lam.setColor(chestplateColor);
+		lchestplate.setItemMeta(lam);
+		playerInventory.setChestplate(lchestplate);
+
+		ItemStack lleggings = new ItemStack(Material.LEATHER_LEGGINGS, 1);
+		lam.setColor(leggingsColor);
+		lleggings.setItemMeta(lam);
+		playerInventory.setLeggings(lleggings);
+
+		ItemStack lboots = new ItemStack(Material.LEATHER_BOOTS, 1);
+		lam.setColor(bootsColor);
+		lboots.setItemMeta(lam);
+		playerInventory.setBoots(lboots);
+	}
+
+	public Color getColor(String color) {
+		if (colors.containsKey(color)) {
+			String RGB = colors.get(color);
+			String[] RGBArray = RGB.split(",");
+			return Color.fromRGB(Integer.parseInt(RGBArray[0]), Integer.parseInt(RGBArray[1]), Integer.parseInt(RGBArray[2]));
+		}
+		return null;
+	}
+
+	public String nextColor(String color) {
+		if (color.equalsIgnoreCase("red"))
+			return "orange";
+		else if (color.equalsIgnoreCase("orange"))
+			return "yellow";
+		else if (color.equalsIgnoreCase("yellow"))
+			return "green";
+		else if (color.equalsIgnoreCase("green"))
+			return "blue";
+		else if (color.equalsIgnoreCase("blue"))
+			return "indigo";
+		else if (color.equalsIgnoreCase("indigo"))
+			return "violet";
+		else if (color.equalsIgnoreCase("violet"))
+			return "red";
+		else
+			return "red";
+	}
+
+	public static Location GetSpawn() {
+		return _spawn.clone();
+	}
 }
