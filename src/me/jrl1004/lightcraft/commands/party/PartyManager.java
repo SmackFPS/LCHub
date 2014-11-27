@@ -10,13 +10,13 @@ public class PartyManager {
 
 	private final HashSet<Party> parties;
 
-	private PartyManager() {
-		this.parties = new HashSet<Party>();
+	// Why does this suck?!
+	public PartyManager() {
+		parties = new HashSet<Party>();
+		instance = this;
 	}
 
 	public static PartyManager getInstance() {
-		if (instance == null)
-			instance = new PartyManager();
 		return instance;
 	}
 
@@ -43,7 +43,7 @@ public class PartyManager {
 		}
 		return null;
 	}
-	
+
 	public Party getByPlayer(OfflinePlayer player) {
 		if (parties.size() == 0)
 			return null;
@@ -53,7 +53,7 @@ public class PartyManager {
 		}
 		return null;
 	}
-	
+
 	public void deleteParty(Party party) {
 		party.wipeData();
 		parties.remove(party);

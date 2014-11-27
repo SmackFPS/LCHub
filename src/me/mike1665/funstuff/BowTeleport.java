@@ -1,8 +1,10 @@
 package me.mike1665.funstuff;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -30,6 +32,7 @@ public class BowTeleport implements Listener {
 		ItemMeta bowmeta = bow.getItemMeta();
 		bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
 				"&bTeleport Bow"));
+		bow.addEnchantment(Enchantment.KNOCKBACK, 1);
 		bow.setItemMeta(bowmeta);
 
 		inventory.remove(bow);
@@ -95,6 +98,7 @@ public class BowTeleport implements Listener {
 				p.teleport(arrow);
 				p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10.0F,
 						1.0F);
+				p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 2);
 			}
 		}
 	}
