@@ -8,6 +8,7 @@ import me.jrl1004.lightcraft.utils.LcConstants;
 import me.mike1665.Main.Main;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
@@ -55,5 +56,9 @@ public class MountManager {
 		horse.setCustomName(type.getName(player));
 		horse.setCustomNameVisible(true);
 		horse.setMetadata(LcConstants.MOUNT_METADATA_STRING, new FixedMetadataValue(Main.instance, true));
+	}
+
+	public boolean isEntityAMount(Entity e) {
+		return e.hasMetadata(LcConstants.MOUNT_METADATA_STRING);
 	}
 }
