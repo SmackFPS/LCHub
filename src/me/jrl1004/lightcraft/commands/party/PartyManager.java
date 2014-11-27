@@ -4,19 +4,19 @@ import java.util.HashSet;
 
 import org.bukkit.OfflinePlayer;
 
-class PartyManager {
+public class PartyManager {
 
 	private static PartyManager instance;
 
 	private final HashSet<Party> parties;
 
-	private PartyManager() {
-		this.parties = new HashSet<Party>();
+	// Why does this suck?!
+	public PartyManager() {
+		parties = new HashSet<Party>();
+		instance = this;
 	}
 
 	public static PartyManager getInstance() {
-		if (instance == null)
-			instance = new PartyManager();
 		return instance;
 	}
 
@@ -43,7 +43,7 @@ class PartyManager {
 		}
 		return null;
 	}
-	
+
 	public Party getByPlayer(OfflinePlayer player) {
 		if (parties.size() == 0)
 			return null;
@@ -53,7 +53,7 @@ class PartyManager {
 		}
 		return null;
 	}
-	
+
 	public void deleteParty(Party party) {
 		party.wipeData();
 		parties.remove(party);

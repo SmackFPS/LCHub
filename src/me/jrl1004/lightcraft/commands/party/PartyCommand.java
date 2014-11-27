@@ -1,6 +1,5 @@
 package me.jrl1004.lightcraft.commands.party;
 
-import me.jrl1004.lightcraft.commands.LCCommand;
 import me.jrl1004.lightcraft.commands.LCSubCommand;
 
 import org.bukkit.Bukkit;
@@ -17,13 +16,13 @@ public class PartyCommand extends LCSubCommand {
 		delete,
 		leave,
 		kick,
+		invite,
 		open,
 		closed;
 	}
 
 	public PartyCommand() {
 		super("party");
-		Bukkit.getPluginCommand("party").setExecutor(LCCommand.getInstance());
 	}
 
 	@Override
@@ -44,12 +43,14 @@ public class PartyCommand extends LCSubCommand {
 			sendUsage(p);
 			return;
 		}
-		Sub s = Sub.valueOf(args[0]);
-		if (s == null) {
+		Sub s;
+		try {
+			s = Sub.valueOf(args[0]);
+		} catch (Exception e) {
 			sendUsage(p);
 			return;
 		}
-		args = dropArgument(args);
+		args = super.dropArgument(args);
 		switch (s) {
 		case create:
 			if (args.length == 0) {
@@ -66,7 +67,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case join:
 			if (args.length == 0) {
-				p.sendMessage(ChatColor.AQUA + "Usage: /Party create <name>");
+				p.sendMessage(ChatColor.AQUA + "Usage: /Party join <name>");
 				return;
 			}
 			if (PartyManager.getInstance().isInParty(p)) {
@@ -85,8 +86,8 @@ public class PartyCommand extends LCSubCommand {
 				}
 				party.addToParty(p);
 				p.sendMessage(ChatColor.AQUA + "Party joined!");
-				return;
 			}
+			return;
 		case delete:
 			if (!PartyManager.getInstance().isInParty(p)) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
@@ -101,6 +102,7 @@ public class PartyCommand extends LCSubCommand {
 				PartyManager.getInstance().deleteParty(party);
 				p.sendMessage(ChatColor.AQUA + "Party deleted! D:");
 			}
+			return;
 		case leave:
 			if (!PartyManager.getInstance().isInParty(p)) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
@@ -129,7 +131,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case open: {
 			Party party = PartyManager.getInstance().getByPlayer(p);
-			if(party == null) {
+			if (party == null) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
 				return;
 			}
@@ -143,7 +145,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case closed: {
 			Party party = PartyManager.getInstance().getByPlayer(p);
-			if(party == null) {
+			if (party == null) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
 				return;
 			}
@@ -155,6 +157,25 @@ public class PartyCommand extends LCSubCommand {
 			p.sendMessage(ChatColor.AQUA + "Party has been closed.");
 		}
 			return;
+		case invite: {
+			if (args.length == 0) {
+				p.sendMessage(ChatColor.AQUA + "Usage: /Party invite <player>");
+				return;
+			}
+			if (PartyManager.getInstance().getByPlayer(p) == null) {
+				p.sendMessage(ChatColor.RED + "You are not in a party.");
+				return;
+			}
+			if (!PartyManager.getInstance().getByPlayer(p).getHost().getUniqueId().equals(p.getUniqueId())) {
+				p.sendMessage(ChatColor.RED + "You are not the host of this party!");
+				return;
+			}
+			@SuppressWarnings("deprecation")
+			OfflinePlayer invitee = Bukkit.getOfflinePlayer(args[0]);
+			PartyManager.getInstance().getByPlayer(p).setInvited(invitee);
+			p.sendMessage(ChatColor.AQUA + "You invited " + args[0] + " to your party.");
+			return;
+		}
 		default:
 			sendUsage(p);
 			return;
@@ -170,6 +191,9 @@ public class PartyCommand extends LCSubCommand {
 	}
 
 	private void addToParty(OfflinePlayer player, String key) {
-
+		Party party = PartyManager.getInstance().getByName(key);
+		if (party == null)
+			return;
+		party.addToParty(player);
 	}
 }

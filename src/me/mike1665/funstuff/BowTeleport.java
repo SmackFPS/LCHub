@@ -2,6 +2,7 @@ package me.mike1665.funstuff;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
@@ -95,7 +96,8 @@ public class BowTeleport implements Listener {
 			if ((arrow.getShooter() instanceof Player)) {
 				Player p = (Player) arrow.getShooter();
 				p.getItemInHand().setDurability((short) 0);
-				p.teleport(arrow);
+				p.teleport(new Location(arrow.getWorld(), arrow.getLocation().getX(), arrow.getLocation().getY(), arrow.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch()));
+				arrow.remove();
 				p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10.0F,
 						1.0F);
 				p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 2);

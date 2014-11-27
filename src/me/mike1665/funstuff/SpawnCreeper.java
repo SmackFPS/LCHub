@@ -72,50 +72,62 @@ public class SpawnCreeper implements Listener {
 						if (num == 1) {
 							creeper.setCustomName(ChatColor.DARK_RED
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 2) {
 							creeper.setCustomName(ChatColor.RED 
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 3) {
 							creeper.setCustomName(ChatColor.GOLD
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 4) {
 							creeper.setCustomName(ChatColor.YELLOW
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 5) {
 							creeper.setCustomName(ChatColor.DARK_GREEN
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 6) {
 							creeper.setCustomName(ChatColor.GREEN
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num++;
 						} else if (num == 7) {
 							creeper.setCustomName(ChatColor.BLUE
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (num == 8) {
 							creeper.setCustomName(ChatColor.DARK_AQUA
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (num == 9) {
 							creeper.setCustomName(ChatColor.DARK_BLUE
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (num == 10) {
 							creeper.setCustomName(ChatColor.BLUE
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (num == 11) {
 							creeper.setCustomName(ChatColor.LIGHT_PURPLE
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (num == 12) {
 							creeper.setCustomName(ChatColor.DARK_PURPLE
 									+ "Fun Creeper");
+							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (!creeper.isValid()) {
 							
