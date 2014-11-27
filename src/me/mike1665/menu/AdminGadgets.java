@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class AdminGadgets implements Listener{
 	
-	public ItemStack createItem(Material material, int amount, short shrt,
+	public static ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
 		ItemStack item = new ItemStack(material, amount, (short) shrt);
 		ItemMeta meta = item.getItemMeta();
@@ -25,7 +25,7 @@ public class AdminGadgets implements Listener{
 	}
 
 	public static Inventory admingadmenu;
-	{
+	public static void init()  {
 		admingadmenu = Bukkit.createInventory(null, 9, "§7§nAdmin Gadgets Menu");
 
 		admingadmenu.setItem(

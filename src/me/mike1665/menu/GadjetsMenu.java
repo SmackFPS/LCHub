@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class GadjetsMenu implements Listener{
 	
-	public ItemStack createItem(Material material, int amount, short shrt,
+	public static ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
 		ItemStack item = new ItemStack(material, amount, (short) shrt);
 		ItemMeta meta = item.getItemMeta();
@@ -24,9 +24,9 @@ public class GadjetsMenu implements Listener{
 		return item;
 	}
 
-	public static Inventory gadmenu;
-	{
-		gadmenu = Bukkit.createInventory(null, 27, "§7§nGadgets Menu");
+	public  static Inventory gadmenu;
+	public static void init() {
+		gadmenu = Bukkit.createInventory(null, 9*4, "§7§nGadgets Menu");
 
 		gadmenu.setItem(
 				4,

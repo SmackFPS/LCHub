@@ -160,6 +160,11 @@ public class Main extends JavaPlugin implements Listener {
 	private void loadListeners() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
+		AdminGadgets.init();
+		BuyGadgets.init();
+		GadjetsMenu.init();
+		PlayerGadjets.init();
+		VipGadjets.init();
 		pm.registerEvents(new EnderDoge(), this);
 		pm.registerEvents(new CatWorks(this), this);
 		pm.registerEvents(new MeowBall(), this);

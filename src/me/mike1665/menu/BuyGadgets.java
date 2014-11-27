@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class BuyGadgets implements Listener{
 	
-	public ItemStack createItem(Material material, int amount, short shrt,
+	public static ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
 		ItemStack item = new ItemStack(material, amount, (short) shrt);
 		ItemMeta meta = item.getItemMeta();
@@ -25,7 +25,7 @@ public class BuyGadgets implements Listener{
 	}
 
 	public static Inventory buygadmenu;
-	{
+	public static void init()  {
 		buygadmenu = Bukkit.createInventory(null, 45, "§7§nHub Perks!");
 		
 		buygadmenu.setItem(

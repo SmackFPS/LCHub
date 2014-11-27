@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class VipGadjets implements Listener{
 	
-	public ItemStack createItem(Material material, int amount, short shrt,
+	public static ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
 		ItemStack item = new ItemStack(material, amount, (short) shrt);
 		ItemMeta meta = item.getItemMeta();
@@ -25,7 +25,7 @@ public class VipGadjets implements Listener{
 	}
 
 	public static Inventory vipgadmenu;
-	{
+	public static void init() {
 		vipgadmenu = Bukkit.createInventory(null, 45, "§7§nVip Gadgets Menu");
 		
 		vipgadmenu.setItem(
