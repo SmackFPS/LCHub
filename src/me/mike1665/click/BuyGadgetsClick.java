@@ -21,7 +21,7 @@ public class BuyGadgetsClick implements Listener{
 	public void onClick(InventoryClickEvent event) {
 		try{
 		Player p = (Player) event.getWhoClicked();
-		if (event.getInventory().getName().equalsIgnoreCase(CosmeticsMenu.name)) {
+		if (event.getInventory().getName().equalsIgnoreCase(BuyGadgets.buygadmenu.getName())) {
 			event.setCancelled(true);
 
 			if (event.getCurrentItem() == null) {
