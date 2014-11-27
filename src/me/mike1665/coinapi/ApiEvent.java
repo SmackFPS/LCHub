@@ -1,7 +1,5 @@
 package me.mike1665.coinapi;
 
-import java.util.Random;
-
 import me.mike1665.Main.Main;
 
 import org.apache.commons.lang.WordUtils;
@@ -18,7 +16,6 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.scoreboard.Team;
 
 import com.arrayprolc.rank.RankManager;
 

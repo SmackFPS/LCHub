@@ -2,16 +2,25 @@ package me.mike1665.menu;
 
 import java.util.ArrayList;
 
+import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
+import net.md_5.bungee.api.ChatColor;
+
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.arrayprolc.item.ItemTools;
+import com.arrayprolc.rank.RankManager;
 
 public class CosmeticsMenu implements Listener{
+	
+	Player p;
 	
 	public ItemStack createItem(Material material, int amount, short shrt,
 			String displayname, String lore) {
@@ -28,20 +37,47 @@ public class CosmeticsMenu implements Listener{
 
 	public static Inventory cosmenu;
 	{
+		int a = LcTokensAPI.balancePoints(p);
+		int b = LcCoinsAPI.balancePoints(p);
+		
 		cosmenu = Bukkit.createInventory(null, 54, "§8[§aP§8] §1Hub Menu");
 
-		cosmenu.setItem(
-				1,
-				createItem(Material.DOUBLE_PLANT, 1, (short) 0, "§5Economy",
-						"§1Choose a fun Gadget to show off to everyone!"));
-		cosmenu.setItem(
-				4,
-				createItem(Material.BOOK, 1, (short) 0, "§a§bStats",
-						"§1Choose a fun Gadget to show off to everyone!"));
-		cosmenu.setItem(
-				7,
-				createItem(Material.DIAMOND_SWORD, 1, (short) 0, "§eRank",
-						"§1Choose a fun Gadget to show off to everyone!"));
+		cosmenu.setItem(1, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§5Economy", 
+			new String[] { 
+			"",
+			"Your economy status:", 
+			"" ,
+			"§d§lTokens - " + a,
+			"",
+			"§a§lCoins - " + b,
+			"",
+			"§cPurchae more on the website!"
+			}));
+		
+		
+		cosmenu.setItem(4, ItemTools.setName(new ItemStack(Material.BOOK), "§a§bStats", 
+				new String[] {
+			"",
+			"Your server status:",
+			"",
+			ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Name: " + ChatColor.LIGHT_PURPLE + p.getName().toString(),
+			"",
+			ChatColor.YELLOW + "" + ChatColor.BOLD + ">>  " + ChatColor.GRAY + "Time played: " + ChatColor.LIGHT_PURPLE + "Coming soon....",
+			""
+			}));
+		
+
+		cosmenu.setItem(7, ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§eRank", 
+				new String[] { 
+			"",
+			"§eYou current rank:",
+			"",
+			"§7§lRank - " + RankManager.getColor(RankManager.getRank(p)) + WordUtils.capitalize(RankManager.getRank(p).toString().toLowerCase()),
+			"",
+			"§cPurchase a rank on the website!"
+			}));
+		
+		
 		cosmenu.setItem(
 				22,
 				createItem(Material.CHEST, 1, (short) 0, "§aGadgets",
@@ -59,7 +95,8 @@ public class CosmeticsMenu implements Listener{
 				createItem(Material.EGG, 1, (short) 0, "§6Pets",
 						"§6Want a friend?"));
 		
-		cosmenu.setItem(44, ItemTools.setName(new ItemStack(Material.DIRT), "Dirt", new String[] { "Guess what", "It's dirt" }));
+
+
 		
 	}
 
