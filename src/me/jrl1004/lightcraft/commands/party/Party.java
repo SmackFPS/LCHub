@@ -27,7 +27,11 @@ public class Party {
 	}
 
 	public boolean hasPlayer(OfflinePlayer player) {
-		return players.contains(player);
+		if(players.size() == 0) return false;
+		for(OfflinePlayer p : players) {
+			if(p.getUniqueId().equals(player.getUniqueId())) return true;
+		}
+		return false;
 	}
 
 	public boolean isInvited(OfflinePlayer player) {

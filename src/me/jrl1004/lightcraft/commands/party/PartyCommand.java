@@ -159,6 +159,10 @@ public class PartyCommand extends LCSubCommand {
 				p.sendMessage(ChatColor.AQUA + "Usage: /Party invite <player>");
 				return;
 			}
+			if (PartyManager.getInstance().getByPlayer(p) == null) {
+				p.sendMessage(ChatColor.RED + "You are not in a party.");
+				return;
+			}
 			if (!PartyManager.getInstance().getByPlayer(p).getHost().getUniqueId().equals(p.getUniqueId())) {
 				p.sendMessage(ChatColor.RED + "You are not the host of this party!");
 				return;
@@ -166,7 +170,7 @@ public class PartyCommand extends LCSubCommand {
 			@SuppressWarnings("deprecation")
 			OfflinePlayer invitee = Bukkit.getOfflinePlayer(args[0]);
 			PartyManager.getInstance().getByPlayer(p).setInvited(invitee);
-			p.sendMessage(ChatColor.AQUA + "You kicked " + args[0] + " from your party.");
+			p.sendMessage(ChatColor.AQUA + "You invited " + args[0] + " to your party.");
 			return;
 		}
 		default:
