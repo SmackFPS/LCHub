@@ -105,8 +105,6 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public void onEnable() {
 		instance = this;
-
-
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
 		ApiEvent.initialize(this);
@@ -172,7 +170,6 @@ public class Main extends JavaPlugin implements Listener{
 		entityManager = new EntityManager(this);
         EffectManager.initialize();
         RankManager.init(this);
-
 		loadListeners();
 		
 		try {
