@@ -13,10 +13,9 @@ import org.bukkit.entity.Player;
 public class LCCommand implements CommandExecutor {
 
 	private static LCCommand instance;
-	private HashSet<LCSubCommand> commands;
+	private HashSet<LCSubCommand> commands = new HashSet<LCSubCommand>(Arrays.asList(new PartyCommand()));;
 
 	private LCCommand() {
-		commands = new HashSet<LCSubCommand>(Arrays.asList(new PartyCommand()));
 	}
 
 	public static LCCommand getInstance() {
