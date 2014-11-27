@@ -1,6 +1,5 @@
 package me.jrl1004.lightcraft.commands.party;
 
-import me.jrl1004.lightcraft.commands.LCCommand;
 import me.jrl1004.lightcraft.commands.LCSubCommand;
 
 import org.bukkit.Bukkit;
@@ -23,7 +22,6 @@ public class PartyCommand extends LCSubCommand {
 
 	public PartyCommand() {
 		super("party");
-		Bukkit.getPluginCommand("party").setExecutor(LCCommand.getInstance());
 	}
 
 	@Override
@@ -129,7 +127,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case open: {
 			Party party = PartyManager.getInstance().getByPlayer(p);
-			if(party == null) {
+			if (party == null) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
 				return;
 			}
@@ -143,7 +141,7 @@ public class PartyCommand extends LCSubCommand {
 			return;
 		case closed: {
 			Party party = PartyManager.getInstance().getByPlayer(p);
-			if(party == null) {
+			if (party == null) {
 				p.sendMessage(ChatColor.RED + "You are not in a party.");
 				return;
 			}
