@@ -80,7 +80,6 @@ import com.arrayprolc.strings.StringManager;
 
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
-import de.slikey.effectlib.listener.ItemListener;
 
 public class Main extends JavaPlugin implements Listener{
 	
@@ -168,9 +167,10 @@ public class Main extends JavaPlugin implements Listener{
     	armorrun();
         this.usingarmor = new ArrayList<String>();
 		entityManager = new EntityManager(this);
-        EffectManager.initialize();
+     //   EffectManager.initialize();
         RankManager.init(this);
-		loadListeners();
+	//	loadListeners();
+        me.jrl1004.lightcraft.commands.party.PartyManager.getInstance();
 		
 		try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
@@ -191,7 +191,7 @@ public class Main extends JavaPlugin implements Listener{
         EffectManager.disposeAll();
 		HandlerList.unregisterAll((Plugin) this);
 	}
-	private void loadListeners() {
+	/*private void loadListeners() {
 		getServer().getPluginManager().registerEvents(new ItemListener(), this);
 	}
 
@@ -201,7 +201,7 @@ public class Main extends JavaPlugin implements Listener{
 
 	public List<EffectManager> getEffectManagers() {
 		return EffectManager.getManagers();
-	}
+	}*/
 	public void saveFile(){
 		this.saveConfig();
 	}
