@@ -61,6 +61,7 @@ public class ArrayCommandHandler {
 			
 		}
 		if(label.equalsIgnoreCase("test")){
+			sender.sendMessage("msg");
 			ProxiedParty.getInstance().sendPlayerPartyCommand((Player)sender, a);
 			
 		}

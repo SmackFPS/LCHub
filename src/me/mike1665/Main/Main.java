@@ -169,7 +169,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 		System.out.println("Initializing Bungee Hooks");
 		BungeeHooks.players.put("lobby", Bukkit.getOnlinePlayers().length);
-		/*Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
+	/*Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
 			public void run(){
 				if(Bukkit.getOnlinePlayers().length > 0){
 				for(String srv : BungeeHooks.servers){
