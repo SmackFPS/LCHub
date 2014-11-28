@@ -22,6 +22,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 public class CourseOne implements Listener {
 
@@ -201,6 +202,19 @@ public class CourseOne implements Listener {
 			}
 		}
 	}
+	
+	@EventHandler
+    public void onPlayerMove(PlayerMoveEvent event){
+        Player p = event.getPlayer();
+        Location loc = p.getLocation();
+        if (loc.getBlockY() <= 0){
+            if (join.contains(p) && !cp.contains(p)) {
+            	teleport(p);
+            } else if (join.contains(p) && cp.contains(p)) {
+            	checkpoint(p);
+            }
+        }
+    }  
 
 	public void remove(Player p) {
 		if (join.contains(p)) {
