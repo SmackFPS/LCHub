@@ -30,7 +30,7 @@ public class PvPSword implements Listener {
 		ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
 		ItemMeta pvp = sword.getItemMeta();
 		pvp.setDisplayName(ChatColor.LIGHT_PURPLE + "PvP Sword "
-				+ ChatColor.GRAY + "(Right-Click to activate)");
+				+ ChatColor.GRAY + "(Right-Click To PVP)");
 		ArrayList<String> Lore = new ArrayList<String>();
 		Lore.add("Make sure others have this enabled!");
 		pvp.setLore(Lore);
