@@ -116,7 +116,7 @@ public class ArrayCommandHandler {
 
 			if(!(sender instanceof Player)){
 				return true;
-			}
+			}//
 			Player p1 = (Player)sender;
 			try{
 				Player p2 = Bukkit.getPlayerExact(a[0]);

@@ -33,7 +33,7 @@ public class FriendManager {
 			acceptFriendRequest(to, from);
 			pendingFriendRequest.remove(formatString(to, from));
 			pendingFriendRequest.remove(formatString(from, to));
-			return;
+			return; //
 		}
 		if(pendingFriendRequest.contains(str)) {
 			sendMessage(from, StringManager.getPrefix(MessageType.ERROR) + "You have already sent " + to.getName() + " a friend request. Please wait for them to accept.");
