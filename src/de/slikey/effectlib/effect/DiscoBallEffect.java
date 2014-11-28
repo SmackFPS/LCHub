@@ -2,13 +2,14 @@ package de.slikey.effectlib.effect;
 
 /* Idea by coco5843 */
 
+import org.bukkit.Location;
+import org.bukkit.util.Vector;
+
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.RandomUtils;
-import org.bukkit.Location;
-import org.bukkit.util.Vector;
 
 public class DiscoBallEffect extends Effect {
 

@@ -9,10 +9,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 
-import com.arrayprolc.bountifulupdate.BUtils;
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
-
 public class BuildListener implements Listener {
 
 	public Main plugin;

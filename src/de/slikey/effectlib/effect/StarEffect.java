@@ -1,5 +1,8 @@
 package de.slikey.effectlib.effect;
 
+import org.bukkit.Location;
+import org.bukkit.util.Vector;
+
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.EffectType;
@@ -7,8 +10,6 @@ import de.slikey.effectlib.util.MathUtils;
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.RandomUtils;
 import de.slikey.effectlib.util.VectorUtils;
-import org.bukkit.Location;
-import org.bukkit.util.Vector;
 
 public class StarEffect extends Effect {
 

@@ -1,13 +1,13 @@
 package de.slikey.effectlib;
 
 
+import java.lang.ref.WeakReference;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Vector;
-
-import java.lang.ref.WeakReference;
 
 public abstract class Effect implements Runnable {
 

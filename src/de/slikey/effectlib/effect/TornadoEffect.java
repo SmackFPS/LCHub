@@ -10,7 +10,6 @@ import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.RandomUtils;
-import de.slikey.effectlib.util.VectorUtils;
 
 public class TornadoEffect extends Effect{
 	

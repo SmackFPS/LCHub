@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import de.slikey.effectlib.util.ParticleEffect;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -20,9 +19,10 @@ import org.bukkit.entity.Entity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.util.Disposable;
-import org.bukkit.util.Vector;
+import de.slikey.effectlib.util.ParticleEffect;
 
 /**
  * Dispose the EffectManager if you don't need him anymore.

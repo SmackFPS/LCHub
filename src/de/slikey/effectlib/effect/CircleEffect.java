@@ -8,7 +8,6 @@ import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.VectorUtils;
-import de.slikey.effectlib.util.ParticleEffect;
 
 public class CircleEffect extends Effect{
 	

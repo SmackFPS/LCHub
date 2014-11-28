@@ -18,8 +18,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import sun.misc.MessageUtils;
-
 public class SpawnCreeper implements Listener {
 
 	private Main plugin;

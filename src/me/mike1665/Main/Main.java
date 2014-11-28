@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import me.jrl1004.lightcraft.commands.LCCommand;
 import me.jrl1004.lightcraft.commands.party.PartyManager;
 import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.click.AdminGadgetsClick;
@@ -79,6 +78,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import code.husky.mysql.MySQL;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
+import com.arrayprolc.bungeehook.PartyHooks;
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.rank.RankManager;
@@ -165,11 +165,12 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	@SuppressWarnings("deprecation")
 	public void bungee(){
 		new ProxiedParty();
+		new PartyHooks();
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 		System.out.println("Initializing Bungee Hooks");
 		BungeeHooks.players.put("lobby", Bukkit.getOnlinePlayers().length);
-	/*Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
+		/*Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
 			public void run(){
 				if(Bukkit.getOnlinePlayers().length > 0){
 				for(String srv : BungeeHooks.servers){

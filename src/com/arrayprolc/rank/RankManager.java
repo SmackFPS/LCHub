@@ -2,7 +2,6 @@ package com.arrayprolc.rank;
 
 import me.mike1665.Main.Main;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class RankManager {

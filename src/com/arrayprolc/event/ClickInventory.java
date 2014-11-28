@@ -18,9 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.menu.Menu;
-import com.arrayprolc.menu.PlayerMenuEvent;
 import com.arrayprolc.serverjoin.PartyTools;
-import com.arrayprolc.strings.MessageType; 
+import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
 public class ClickInventory implements Listener {

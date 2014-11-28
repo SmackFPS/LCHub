@@ -2,7 +2,6 @@ package me.mike1665.mounts;
 
 import me.mike1665.Main.Main;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
