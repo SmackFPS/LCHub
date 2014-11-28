@@ -49,28 +49,33 @@ public class MagicClock implements Listener{
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerPlaceBlock(PlayerInteractEvent event) {
 		final Player player = event.getPlayer();
-		/*if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated"))) {
+				usingClock.add(player.getName());
 				ItemStack i = player.getItemInHand();
 				ItemMeta i2 = i.getItemMeta();
 				i2.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated");
 				i.setItemMeta(i2);
 				player.setItemInHand(i);
-				for (Player pl : Bukkit.getOnlinePlayers()) {
-					player.hidePlayer(pl);
-				}
+				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if (p != player.getPlayer()) {
+                            player.getPlayer().hidePlayer(p);
+                }
+            }
 			} else if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated"))) {
+				usingClock.remove(player.getName());
 				ItemStack i = player.getItemInHand();
 				ItemMeta i2 = i.getItemMeta();
 				i2.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
 				i.setItemMeta(i2);
 				player.setItemInHand(i);
-				for (Player pl : Bukkit.getOnlinePlayers()) {
-					player.showPlayer(pl);
-				}
-			}
-		}*/
-		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if (p != player.getPlayer()) {
+                            player.getPlayer().showPlayer(p);                                   
+               }
+            }
+		}
+		/*if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated"))) {
 				if (usingClock.contains(player.getPlayer().getName())) {
                     usingClock.remove(player.getPlayer().getName());
@@ -97,7 +102,7 @@ public class MagicClock implements Listener{
                         }
                     }
             	}
-			}
+			}*/
 		}	
 	}
 	
