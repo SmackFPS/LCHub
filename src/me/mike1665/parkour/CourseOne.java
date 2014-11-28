@@ -232,7 +232,7 @@ public class CourseOne implements Listener {
 	}
 
 	public void teleport(Player p) {
-		World w = Bukkit.getWorld("world");
+		World w = p.getWorld();
 		double yaw = plugin.getConfig().getDouble("parkour1.yaw");
 		double pitch = plugin.getConfig().getDouble("parkour1.pitch");
 		double x = plugin.getConfig().getDouble("parkour1.x");
@@ -245,7 +245,7 @@ public class CourseOne implements Listener {
 	}
 
 	public void checkpoint(Player p) {
-		World w = Bukkit.getWorld("world");
+		World w = p.getWorld();
 		double yaw = plugin.getConfig().getDouble("cp1.yaw");
 		double pitch = plugin.getConfig().getDouble("cp1.pitch");
 		double x = plugin.getConfig().getDouble("cp1.x");
