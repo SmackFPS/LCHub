@@ -44,7 +44,7 @@ public class ClickInventory implements Listener {
 				if(ticks % 5 == 0) ticks = 0;
 			}
 		}, 0, 1);
-		
+
 	}
 
 	@EventHandler
@@ -55,22 +55,23 @@ public class ClickInventory implements Listener {
 			((Player) e.getWhoClicked()).sendMessage(StringManager.getMessage("To change armor, use the Hub Gadgets menu.", MessageType.ERROR));
 		}
 	}
-	
+
 	@EventHandler
 	public void join(PlayerJoinEvent e){
 		e.getPlayer().getInventory().setItem(0, ItemTools.setName(new ItemStack(Material.BOOK), "§aGame Selector §7(Right-Click)"));
 		e.getPlayer().getInventory().setItem(8, ItemTools.setName(new ItemStack(Material.EMERALD), "§aShop §7(Right-Click)"));
 	}
-	
+
 	@EventHandler
 	public void interact(PlayerInteractEvent e){
 		if(!e.getAction().toString().contains("CLICK")) return;
 		if(e.getPlayer().getItemInHand().getType().equals(Material.BOOK)){
 			e.setCancelled(true);
+			Main.requestPlayerList();
 			selector.displayMenu(e.getPlayer());
 		}
 	}
-	
+
 	public int[] getTotalPlayers(String pfx){
 		int serverCount = 0;
 		int players = 0;
@@ -82,22 +83,22 @@ public class ClickInventory implements Listener {
 		}
 		return new int[] { players, serverCount };
 	}
-	
-	
-	
+
+
+
 	public String getFlashyColour(){
 		if(flash){
 			return "§7";
 		}
 		return "§e";
 	}
-	
-	
+
+
 	@EventHandler
 	public void move(PlayerMoveEvent e){
-	if(e.getPlayer().getLocation().getY() < 1) e.getPlayer().teleport(e.getPlayer().getWorld().getSpawnLocation());
+		if(e.getPlayer().getLocation().getY() < 1) e.getPlayer().teleport(e.getPlayer().getWorld().getSpawnLocation());
 	}
-	
+
 	@EventHandler
 	public void click2(InventoryClickEvent e){
 		if(!e.getInventory().getName().equals(selector.getName())) return;
@@ -125,9 +126,10 @@ public class ClickInventory implements Listener {
 		}
 		}
 	}
-	
+
 	static String getFirstOpenServer(Player p, String pfx, int maxPerGame){
 		int amountOfPlayers = PartyTools.playersWith(p);
+		Main.requestPlayerList();
 		for(String s : BungeeHooks.servers){
 			if(s.toLowerCase().equalsIgnoreCase(pfx.toLowerCase())){
 				return s;
@@ -144,7 +146,7 @@ public class ClickInventory implements Listener {
 		}
 		return "none";
 	}
-	
+
 	public static void sendToFirstOpenServer(Player p, String pfx, int maxPerGame, String gameDisplay){
 		if(!PartyTools.hasControl(p)){
 			p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You are not the party leader!");
@@ -159,7 +161,7 @@ public class ClickInventory implements Listener {
 			Bukkit.getPlayerExact(p2.getName()).sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + "Sending you" + and(PartyTools.getPartyMembers(p).length, (" and " + (PartyTools.playersWith(p2)-1) + " other player" + plural((PartyTools.playersWith(p2)-1)))) + " to " + gameDisplay + " #" + getAmount(firstOpenServer, pfx) + ".");
 			PartyTools.sendPlayerToServer(firstOpenServer, Bukkit.getPlayerExact(p2.getName()));
 		} 
-		
+
 	}
 	static String plural(int i){
 		if(i > 1){
@@ -167,7 +169,7 @@ public class ClickInventory implements Listener {
 		}
 		return "";
 	}
-	
+
 	static int getAmount(String s, String remove){
 		s = s.replace(remove, "");
 		if(s.equalsIgnoreCase("")){

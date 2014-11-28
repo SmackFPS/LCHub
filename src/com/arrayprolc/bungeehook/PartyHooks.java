@@ -1,5 +1,9 @@
 package com.arrayprolc.bungeehook;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
@@ -11,11 +15,17 @@ import com.google.common.io.ByteStreams;
 
 public class PartyHooks implements PluginMessageListener {
 	private static PartyHooks instance;
+	public static HashMap<UUID, Integer> players = new HashMap<UUID, Integer>();
 
 	public PartyHooks() {
 		instance = this;
 		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.instance, "BungeeCord");
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "BungeeCord", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partylist", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partyhost", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partysize", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "party", this);
+		//Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partylist", this);
 	}
 
 	public static PartyHooks getInstance() {
@@ -24,33 +34,44 @@ public class PartyHooks implements PluginMessageListener {
 
 	@Override
 	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-		Bukkit.broadcastMessage("incoming request");
 		try{
-		ByteArrayDataInput in = ByteStreams.newDataInput(message);
-		if (!channel.equals("BungeeCord")) {
-			return;
-		}
-		String build = in.readUTF();
-		Bukkit.broadcastMessage(build);
-		if(!build.equalsIgnoreCase("party:list")) return;
-		String key = in.readUTF();
-		String builder = in.readUTF();
-		//Bukkit.broadcastMessage(server + " " + builder);
-		boolean removeOne = false;
-		for(String s : builder.split(", ")){
-			if(s.equalsIgnoreCase("")){
-				removeOne = true;
-			}
-		}
-		Bukkit.broadcastMessage(key);
-		int r = builder.split(", ").length;
-		Bukkit.broadcastMessage(r + "");
+			ByteArrayDataInput in = ByteStreams.newDataInput(message);
+			if(channel.equals("partylist")){ partyList(channel, player, message, in); return; }
+			if(channel.equals("partyhost")){ partyHost(channel, player, message, in); return; }
+			if(channel.equals("partysize")){ partySize(channel, player, message, in); return; }
 		}catch(Exception ex){
 			//Don't print the stack trace.
 		}
 	}
-	
 
-	
-	
+	public void partyList(String channel, Player player, byte[] message, ByteArrayDataInput in){
+		String temp = "";
+		ArrayList<String> s = new ArrayList<String>();
+		boolean removeOne = false;
+		while(temp != null){
+			try{
+				temp = in.readUTF();
+
+			}catch(Exception e){
+				temp = null;
+			}
+			if(temp != null){
+				s.add(temp);
+			}
+		}
+		players.remove(player.getUniqueId());
+		players.put(player.getUniqueId(), s.size());
+	}
+
+	public void partyHost(String channel, Player player, byte[] message, ByteArrayDataInput in){
+
+	}
+
+	public void partySize(String channel, Player player, byte[] message, ByteArrayDataInput in){
+
+	}
+
+
+
+
 }

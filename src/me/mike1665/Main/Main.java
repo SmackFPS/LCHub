@@ -184,6 +184,16 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}, 0, 5);*/
 
 	}
+	public static void requestPlayerList(){
+		if(Bukkit.getOnlinePlayers().length > 0){
+		for(String srv : BungeeHooks.servers){
+			ByteArrayDataOutput out = ByteStreams.newDataOutput();
+			out.writeUTF("PlayerList");  
+			out.writeUTF(srv);
+			Bukkit.getOnlinePlayers()[0].sendPluginMessage(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "BungeeCord", out.toByteArray());
+		}
+		}
+	}
 
 	public static int getPlayerCount(String server){
 

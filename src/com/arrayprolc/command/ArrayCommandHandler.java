@@ -96,20 +96,21 @@ public class ArrayCommandHandler {
 					Player f = Bukkit.getPlayer(UUID.fromString(s));
 					if (start) {
 						if (isOnline(f)) {
-							s1 = s1 + "ï¿½a" + f.getName();
+							s1 = s1 + "§a" + f.getName();
 						} else {
-							s1 = s1 + "ï¿½7" + f.getName();
+							s1 = s1 + "§7" + f.getName();
 						}
 						start = false;
 					} else {
 						if (isOnline(f)) {
-							s1 = s1 + "ï¿½7, ï¿½a" + f.getName();
+							s1 = s1 + "§7, §a" + f.getName();
 						} else {
-							s1 = s1 + "ï¿½7, " + f.getName();
+							s1 = s1 + "§7, " + f.getName();
 						}
 					}
 				}
-				p1.sendMessage("ï¿½6Your Friends: " + s1);
+				
+				p1.sendMessage("§6Your Friends: " + s1);
 				return true;
 			}
 			try {
