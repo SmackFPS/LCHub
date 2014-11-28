@@ -5,7 +5,6 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -36,7 +35,7 @@ public class BowTeleport implements Listener {
 		bow.setItemMeta(bowmeta);
 
 		inventory.remove(bow);
-		inventory.setItem(6, bow);
+		inventory.setItem(5, bow);
 
 		ItemStack arrow = new ItemStack(Material.ARROW, 1);
 		inventory.remove(arrow);
@@ -70,7 +69,7 @@ public class BowTeleport implements Listener {
 			event.setCancelled(true);
 		}
 
-		if (event.getSlot() == 7) {
+		if (event.getSlot() == 5) {
 			event.setCancelled(true);
 		}
 	}
@@ -81,7 +80,7 @@ public class BowTeleport implements Listener {
 		if (current_slot == 35) {
 			event.setCancelled(true);
 		}
-		if (current_slot == 7) {
+		if (current_slot == 5) {
 			event.setCancelled(true);
 		}
 	}

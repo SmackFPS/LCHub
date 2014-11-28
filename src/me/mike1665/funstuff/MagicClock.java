@@ -17,6 +17,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class MagicClock implements Listener{
 	
+    ArrayList<String> clock = new ArrayList<String>();
+
+	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerRespawn(PlayerJoinEvent event) {
 		Player p = event.getPlayer();
@@ -24,25 +27,26 @@ public class MagicClock implements Listener{
 		ItemMeta pvp = sword.getItemMeta();
 		pvp.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
 		ArrayList<String> Lore = new ArrayList<String>();
-		Lore.add("The Magic Clockk! 2sp00ky4me");
+		Lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "The Magic Clock!");
 		pvp.setLore(Lore);
 		sword.setItemMeta(pvp);
-		p.getInventory().setItem(2, sword);
+		p.getInventory().setItem(1, sword);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerPlaceBlock(PlayerInteractEvent event) {
 		final Player player = event.getPlayer();
-		if (event.getAction() == Action.RIGHT_CLICK_AIR
-				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated"))) {
 				player.getItemInHand().getItemMeta().setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated");
+				player.getInventory().getItem(1).getItemMeta().setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated");
 				for (Player pl : Bukkit.getOnlinePlayers()) {
 					player.hidePlayer(pl);
 				}
 			} else if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated"))) {
 				player.getItemInHand().getItemMeta().setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
+				player.getInventory().getItem(1).getItemMeta().setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
 				for (Player pl : Bukkit.getOnlinePlayers()) {
 					player.showPlayer(pl);
 				}
