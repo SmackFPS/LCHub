@@ -35,11 +35,11 @@ public class ClickInventory implements Listener {
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable(){
 			public void run(){
-				selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players." }), 22+4);
-				selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3);
-				selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4);
-				selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_BLOCK), "§a§lCreative Buildoff", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("cb")[1] + " servers." }), 5);
-				selector.addItem(ItemTools.setName(new ItemStack(Material.FIREWORK), "§b§lParty", getFlashyColour() + "§oClick to configure!"), 22-4);
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players." }), 22+4); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_BLOCK), "§a§lCreative Buildoff", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("cb")[1] + " servers." }), 5); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.FIREWORK), "§b§lParty", getFlashyColour() + "§oClick to configure!"), 22-4); }catch(Exception e){}
 				ticks++;
 				if(ticks % 5 == 0) flash = !flash;
 				if(ticks % 5 == 0) ticks = 0;

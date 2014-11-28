@@ -133,7 +133,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		armorrun();
 		this.usingarmor = new ArrayList<String>();
 		entityManager = new EntityManager(this);
-		// EffectManager.initialize();
 		RankManager.init(this);
 		loadListeners();
 		new PartyManager();
