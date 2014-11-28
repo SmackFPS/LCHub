@@ -19,30 +19,26 @@ public class ProxiedParty {
 	public static ProxiedParty getInstance() {
 		return instance;
 	}
-	
-	public void requestPartyList(String player) {
-		@SuppressWarnings("deprecation")
-		Player sender = Bukkit.getPlayer(player);
+
+	public void requestPartyList(Player player) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:list");
-		sender.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		out.writeUTF(player.getName());
+		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
 	}
-	
-	public void requestPartyHost(String player) {
-		@SuppressWarnings("deprecation")
-		Player sender = Bukkit.getOnlinePlayers()[0];
+
+	public void requestPartyHost(Player player) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:host");
-		sender.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		out.writeUTF(player.getName());
+		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
 	}
-	
-	public void requestPartySize(String player) {
-		@SuppressWarnings("deprecation")
-		Player sender = Bukkit.getOnlinePlayers()[0];
+
+	public void requestPartySize(Player player) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:size");
-		sender.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		out.writeUTF(player.getName());
+		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
 	}
-	
-	
+
 }

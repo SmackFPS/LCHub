@@ -69,13 +69,14 @@ public class ArrayCommandHandler {
 		}
 		if (label.equalsIgnoreCase("test")) {
 			Player player = (Player) sender;
-		/*	ProxiedParty.getInstance().requestPartyHost(player.getName());
-			System.out.println("Host");
-			ProxiedParty.getInstance().requestPartySize(player.getName());
-			System.out.println("Size");*/
-			ProxiedParty.getInstance().requestPartyList(player.getName());
-		//	System.out.println("List");
-			
+			/*
+			 * ProxiedParty.getInstance().requestPartyHost(player.getName());
+			 * System.out.println("Host");
+			 * ProxiedParty.getInstance().requestPartySize(player.getName());
+			 * System.out.println("Size");
+			 */
+			ProxiedParty.getInstance().requestPartyList(player);
+			// System.out.println("List");
 
 		}
 		if (label.equalsIgnoreCase("friend")) {
