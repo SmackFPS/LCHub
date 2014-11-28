@@ -161,38 +161,52 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 		System.out.println("Initializing Bungee Hooks");
+		BungeeHooks.players.put("lobby", Bukkit.getOnlinePlayers().length);
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
 			public void run(){
-				for(String srv : BungeeHooks.players.keySet()){
-					//Debug stuff
-					Bukkit.broadcastMessage(srv + " has " + BungeeHooks.players.get(srv) + " players online.");
+				if(Bukkit.getOnlinePlayers().length > 0){
+				for(String srv : BungeeHooks.servers){
+					ByteArrayDataOutput out = ByteStreams.newDataOutput();
+					out.writeUTF("PlayerList");  
+					out.writeUTF(srv);
+					Bukkit.getOnlinePlayers()[0].sendPluginMessage(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "BungeeCord", out.toByteArray());
 				}
-					for(String srv : BungeeHooks.servers){
-						ByteArrayDataOutput out = ByteStreams.newDataOutput();
-						out.writeUTF("PlayerList");  
-						out.writeUTF(srv);
 				}
 			}
 		}, 0, 5);
 
 	}
-	
+
 	public static int getPlayerCount(String server){
-		
+
 		return 0;
 	}
 	@Override
 	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+		try{
+			//	Bukkit.broadcastMessage("--------------");
+		ByteArrayDataInput in = ByteStreams.newDataInput(message);
 		if (!channel.equals("BungeeCord")) {
 			return;
 		}
-		ByteArrayDataInput in = ByteStreams.newDataInput(message);
-		String subchannel = in.readUTF();
-		String server = in.readUTF(); 
-		String[] playerList = in.readUTF().split(", ");
+		String build = "";
+		if(!in.readUTF().equalsIgnoreCase("PlayerList")) return;
+		String server = in.readUTF();
+		String builder = in.readUTF();
+		//Bukkit.broadcastMessage(server + " " + builder);
+		boolean removeOne = false;
+		for(String s : builder.split(", ")){
+			if(s.equalsIgnoreCase("")){
+				removeOne = true;
+			}
+		}
+		int r = builder.split(", ").length;
 		BungeeHooks.players.remove(server);
-		BungeeHooks.players.put(server, playerList.length);
-		Bukkit.broadcastMessage(in.readUTF());
+		if(removeOne) r = r - 1;
+		BungeeHooks.players.put(server, r);
+		}catch(Exception ex){
+			//Don't print the stack trace.
+		}
 	}
 	@Override
 	public void onDisable() {
