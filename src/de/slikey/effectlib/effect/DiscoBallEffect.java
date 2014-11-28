@@ -16,7 +16,7 @@ public class DiscoBallEffect extends Effect {
     /**
      * Radius of the sphere
      */
-    public float sphereRadius = .6f;
+    public float sphereRadius = 1.0f;
 
     /**
      * Min and max sizes of the lines
@@ -26,7 +26,7 @@ public class DiscoBallEffect extends Effect {
     /**
      * Particle of the sphere and of the lines
      */
-    public ParticleEffect sphereParticle = ParticleEffect.FLAME, lineParticle = ParticleEffect.RED_DUST;
+    public ParticleEffect sphereParticle = ParticleEffect.RED_DUST, lineParticle = ParticleEffect.WITCH_MAGIC;
 
     /**
      * Max number of lines

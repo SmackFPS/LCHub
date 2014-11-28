@@ -45,7 +45,7 @@ public class PixlBomb implements Listener {
 		public void onPlayerUse(PlayerInteractEvent event) {
 			final Player p = event.getPlayer();       
 				if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-					if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.LIGHT_PURPLE + "Pixel Bomb"))){
+					if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.LIGHT_PURPLE + "Token Bomb"))){
 						launchBomb(p);
 						p.getItemInHand().setAmount(p.getItemInHand().getAmount() - 1);
 					      if (p.getItemInHand().getAmount() == 1) {
