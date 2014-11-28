@@ -31,10 +31,14 @@ public class ProxiedParty implements PluginMessageListener {
 			return;
 		}
 		ByteArrayDataInput input = ByteStreams.newDataInput(arg2);
-		if (!input.readUTF().equalsIgnoreCase("party"))
+		String temp = input.readUTF();
+		System.out.println(temp);
+		if (!temp.equalsIgnoreCase("party"))
 			return;
 		String target = input.readUTF();
+		System.out.println(target);
 		String line = input.readUTF();
+		System.out.println(line);
 		@SuppressWarnings("deprecation")
 		OfflinePlayer player = Bukkit.getOfflinePlayer(target);
 		if (player.isOnline())

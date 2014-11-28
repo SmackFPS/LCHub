@@ -1,6 +1,7 @@
 package com.arrayprolc.command;
 import java.util.UUID;
 
+import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
@@ -10,11 +11,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 
-import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.friend.FriendManager;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
-import com.arrayprolc.serverjoin.PartyTools;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
@@ -62,7 +61,7 @@ public class ArrayCommandHandler {
 			
 		}
 		if(label.equalsIgnoreCase("test")){
-			PartyTools.sendPartyToServer((Player)sender, "creative");
+			ProxiedParty.getInstance().sendPlayerPartyCommand((Player)sender, a);
 			
 		}
 		if(label.equalsIgnoreCase("friend")){
