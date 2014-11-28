@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
@@ -40,14 +41,19 @@ public class ProxiedParty implements PluginMessageListener {
 			player.getPlayer().sendMessage(line);
 	}
 
-	public synchronized void sendPlayerPartyCommand(Player player, String... args) {
+	public synchronized void sendPlayerPartyCommand(final Player player, final String... args) {
 		if (args.length == 0)
 			return;
 		if (!args[0].equalsIgnoreCase("party"))
 			return;
-		ByteArrayDataOutput out = ByteStreams.newDataOutput();
-		for (String s : args)
-			out.writeUTF(s);
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				ByteArrayDataOutput out = ByteStreams.newDataOutput();
+				for (String s : args)
+					out.writeUTF(s);
+				player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+			}
+		}.runTaskAsynchronously(Main.instance);
 	}
 }
