@@ -141,7 +141,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		RankManager.init(this);
 		loadListeners();
 		new PartyManager();
-		getCommand("party").setExecutor(new LCCommand());
+		//getCommand("party").setExecutor(new LCCommand());
 		try{
 			bungee();
 		}catch(Exception e){ e.printStackTrace(); }
