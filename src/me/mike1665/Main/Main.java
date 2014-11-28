@@ -218,9 +218,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	}
 	@Override
 	public void onDisable() {
-		entityManager.dispose();
-		EffectManager.disposeAll();
-		HandlerList.unregisterAll((Plugin) this);
+		//	entityManager.dispose();
+	//	EffectManager.disposeAll();
+		//	HandlerList.unregisterAll((Plugin) this);
 	}
 
 	private void loadListeners() {

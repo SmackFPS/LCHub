@@ -22,7 +22,7 @@ public class ProxiedParty {
 	
 	public void requestPartyList(String player) {
 		@SuppressWarnings("deprecation")
-		Player sender = Bukkit.getOnlinePlayers()[0];
+		Player sender = Bukkit.getPlayer(player);
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:list");
 		sender.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());

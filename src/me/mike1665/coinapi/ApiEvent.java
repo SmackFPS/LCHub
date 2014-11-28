@@ -55,7 +55,7 @@ public class ApiEvent implements Listener {
 			}
 		}
 		
-		Score topline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "§m-------------"));
+		Score topline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "-------------"));
 		Score score = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + "Tokens "));
 		Score pixels = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.WHITE + "" + a));
 		Score spacing = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.LIGHT_PURPLE + " "));
@@ -66,7 +66,7 @@ public class ApiEvent implements Listener {
 		Score rank = objective.getScore(Bukkit.getOfflinePlayer(RankManager.getColor(RankManager.getRank(p)) + WordUtils.capitalize(RankManager.getRank(p).toString().toLowerCase())));
 		Score spacing4 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.RED + ""));
 		Score staff = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.BLUE + "Staff Online?"));
-		Score botmline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "§m-------------"));
+		Score botmline = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "-------------"));
 
 		topline.setScore(21);
 		score.setScore(20);
