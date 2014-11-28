@@ -25,7 +25,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class BowTeleport implements Listener {
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerJoinBow(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		PlayerInventory inventory = player.getInventory();
@@ -44,7 +44,7 @@ public class BowTeleport implements Listener {
 		inventory.setItem(35, arrow);
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerInteractArrow(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		PlayerInventory inventory = player.getInventory();
@@ -62,7 +62,7 @@ public class BowTeleport implements Listener {
 			event.setCancelled(true);
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onInventoryClickEvent111(InventoryClickEvent event) {
 		if (event.getCurrentItem() == null)
 			return;
@@ -76,7 +76,7 @@ public class BowTeleport implements Listener {
 		}
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerDropItem111(PlayerDropItemEvent event) {
 		int current_slot = event.getPlayer().getInventory().getHeldItemSlot();
 		if (current_slot == 35) {
@@ -88,7 +88,7 @@ public class BowTeleport implements Listener {
 	}
 
 	@SuppressWarnings("deprecation")
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void arrowtp(ProjectileHitEvent e) {
 		Projectile proj = e.getEntity();
 		if ((proj instanceof Arrow)) {

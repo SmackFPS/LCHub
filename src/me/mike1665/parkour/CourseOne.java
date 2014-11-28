@@ -172,9 +172,12 @@ public class CourseOne implements Listener {
 					((CommandSender) event.getEntity()).sendMessage(tag
 							+ ChatColor.GOLD
 							+ "Uh-oh You died! Teleported to the beginning!");
+					event.setCancelled(true);
+					event.getEntity().setFireTicks(0);
 					event.getEntity().eject();
 					event.getEntity().leaveVehicle();
 					event.setDamage(0);
+					
 					return;
 				}
 			}
@@ -188,6 +191,8 @@ public class CourseOne implements Listener {
 							.sendMessage(tag
 									+ ChatColor.GOLD
 									+ "Lucky! You have a checkpoint! Sent to checkpoint!");
+					event.setCancelled(true);
+					event.getEntity().setFireTicks(0);
 					event.getEntity().eject();
 					event.getEntity().leaveVehicle();
 					event.setDamage(0);
@@ -195,9 +200,6 @@ public class CourseOne implements Listener {
 				}
 			}
 		}
-		event.setCancelled(true);
-		event.setDamage(0);
-		event.getEntity().setFireTicks(0);
 	}
 
 	public void remove(Player p) {
