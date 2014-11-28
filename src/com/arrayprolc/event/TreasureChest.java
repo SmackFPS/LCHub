@@ -29,6 +29,7 @@ public class TreasureChest {
 		//		keepPlayerInside();
 		spawnChest();
 		keepPlayerInside();
+		TreasureChestListener.currentlyEnabled.add(pl.getUniqueId());
 		rewards = r;
 	}
 
@@ -192,6 +193,7 @@ public class TreasureChest {
 			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(-1, 1, 0));
 			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, 1));
 			for(Player p2 : Bukkit.getOnlinePlayers()) sendBreak(p2, Material.CHEST, loc.clone().add(0, 1, -1));
+			TreasureChestListener.currentlyEnabled.remove(p.getUniqueId());
 		}
 		done = true;
 	}

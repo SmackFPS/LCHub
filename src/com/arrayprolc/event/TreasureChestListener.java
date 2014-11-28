@@ -23,6 +23,7 @@ import com.arrayprolc.strings.StringManager;
 public class TreasureChestListener implements Listener {
 
 	public static ArrayList<UUID> noPickup = new ArrayList<UUID>();
+	public static ArrayList<UUID> currentlyEnabled = new ArrayList<UUID>();
 	public Main plugin;
 
 	public TreasureChestListener(Main instance){
@@ -32,12 +33,12 @@ public class TreasureChestListener implements Listener {
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e){
 		if(e.getAction().toString().contains("RIGHT")){
-			if(e.getPlayer().getItemInHand().getType().equals(Material.TRAPPED_CHEST)){
+			if(e.getPlayer().getItemInHand().getType().equals(Material.TRAPPED_CHEST) && e.getPlayer().getItemInHand().hasItemMeta() && !currentlyEnabled.contains(e.getPlayer().getItemInHand())){
 				e.setCancelled(true);
 				ItemStack i = e.getPlayer().getItemInHand();
 				i.setAmount(i.getAmount() - 1);
 				e.getPlayer().setItemInHand(i);
-				Bukkit.broadcastMessage(StringManager.getMessage("§a§l" + e.getPlayer().getName() + " is opening a tresure chest!", MessageType.TREASURE));
+				Bukkit.broadcastMessage(StringManager.getMessage("§a§l" + e.getPlayer().getName() + " is opening a treasure chest!", MessageType.TREASURE));
 				chest(e.getPlayer());
 			}
 		}
