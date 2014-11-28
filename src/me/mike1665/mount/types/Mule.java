@@ -4,13 +4,14 @@ import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
-import net.minecraft.server.v1_7_R4.EntityCreature;
-import net.minecraft.server.v1_7_R4.Navigation;
+import net.minecraft.server.v1_8_R1.EntityCreature;
+import net.minecraft.server.v1_8_R1.Navigation;
+import net.minecraft.server.v1_8_R1.NavigationAbstract;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftCreature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse;
@@ -70,7 +71,7 @@ public class Mule implements Listener{
 			    	}
 			    	if(player.getPlayer().isValid()) {
 			    		EntityCreature ec = ((CraftCreature)horse).getHandle();
-			    		Navigation nav = ec.getNavigation();
+			    		NavigationAbstract nav = ec.getNavigation();
 			    		Location target = player.getLocation().add(UtilAlg.getTrajectory(player, horse).multiply(2));
 			    			if (UtilMath.offset(horse.getLocation(), target) > 3.0D) {
 			    				target = horse.getLocation();

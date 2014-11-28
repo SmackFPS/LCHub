@@ -3,18 +3,19 @@ package me.mike1665.utils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-import net.minecraft.server.v1_7_R4.EntityCreature;
-import net.minecraft.server.v1_7_R4.EntityInsentient;
-import net.minecraft.server.v1_7_R4.Navigation;
-import net.minecraft.server.v1_7_R4.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R1.EntityCreature;
+import net.minecraft.server.v1_8_R1.EntityInsentient;
+import net.minecraft.server.v1_8_R1.Navigation;
+import net.minecraft.server.v1_8_R1.NavigationAbstract;
+import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_7_R4.CraftWorld;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftCreature;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftEntity;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Giant;
@@ -283,7 +284,7 @@ public static String getName(EntityType type)
       return;
     }
     EntityCreature ec = ((CraftCreature)ent).getHandle();
-    Navigation nav = ec.getNavigation();
+    NavigationAbstract nav = ec.getNavigation();
 
     if (UtilMath.offset(ent.getLocation(), target) > 24.0D)
     {
