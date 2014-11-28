@@ -1,6 +1,7 @@
 package me.mike1665.funstuff;
 
 import me.mike1665.Main.Main;
+import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.menu.BuyGadgets;
 
 import org.bukkit.Bukkit;
@@ -16,6 +17,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import sun.misc.MessageUtils;
 
 public class SpawnCreeper implements Listener {
 
@@ -49,20 +52,25 @@ public class SpawnCreeper implements Listener {
 		}
 		if (event.getCurrentItem().getItemMeta().getDisplayName()
 				.equals("§aFun Creeper")) {
-			ItemStack enderpearl = new ItemStack(Material.EGG, 3);
-			ItemMeta ender = enderpearl.getItemMeta();
-			ender.setDisplayName("§4F§cu§6n §eC§2r§ae§be§3p§1e§9r");
-			enderpearl.setItemMeta(ender);
-			p.getInventory().addItem(enderpearl);
-			p.closeInventory();
-			return;
-		}
+			if(LcCoinsAPI.hasEnough(p, 30)) {
+				LcCoinsAPI.takePoints(p, 30);
+					ItemStack enderpearl = new ItemStack(Material.EGG, 3);
+					ItemMeta ender = enderpearl.getItemMeta();
+					ender.setDisplayName("§4F§cu§6n §eC§2r§ae§be§3p§1e§9r");
+					enderpearl.setItemMeta(ender);
+					p.getInventory().addItem(enderpearl);
+					p.closeInventory();
+					return;
+				} else {
+					p.sendMessage("Youdont have enough money!");
+				}
+			}
 		}catch(Exception ex){}
 	}
 
 	public void spawnCreeper(Player player) {
 		final Creeper creeper = (Creeper) player.getWorld().spawn(
-				player.getLocation(), Creeper.class);
+				player.getEyeLocation(), Creeper.class);
 		Bukkit.getServer().getScheduler()
 				.scheduleSyncRepeatingTask(plugin, new Runnable() {
 					int num = 1;
