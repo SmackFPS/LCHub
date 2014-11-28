@@ -17,22 +17,27 @@ public class ProxiedParty implements PluginMessageListener {
 
 	public ProxiedParty() {
 		instance = this;
+		Bukkit.broadcastMessage("Initialized ProxiedParty");
 		Bukkit.getMessenger().registerIncomingPluginChannel(Main.instance, "BungeeCord", this);
 		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.instance, "BungeeCord");
+		Bukkit.broadcastMessage("Incoming/Outgoing channel setup successful");
 	}
 
 	public static ProxiedParty getInstance() {
+	
 		return instance;
 	}
 
 	@Override
 	public void onPluginMessageReceived(String arg0, Player arg1, byte[] arg2) {
+		Bukkit.broadcastMessage("-----------------------------------");
+		Bukkit.broadcastMessage("Recieving message from " + arg0);
 		if (!arg0.equals("BungeeCord")) {
 			return;
 		}
 		ByteArrayDataInput input = ByteStreams.newDataInput(arg2);
 		String temp = input.readUTF();
-		System.out.println(temp);
+		Bukkit.broadcastMessage(temp);
 		if (!temp.equalsIgnoreCase("party"))
 			return;
 		String target = input.readUTF();
@@ -56,7 +61,7 @@ public class ProxiedParty implements PluginMessageListener {
 				ByteArrayDataOutput out = ByteStreams.newDataOutput();
 				for (String s : args)
 					out.writeUTF(s);
-				player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+				player.sendPluginMessage(Main.instance, "party", out.toByteArray());
 			}
 		}.runTaskAsynchronously(Main.instance);
 	}
