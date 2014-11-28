@@ -61,7 +61,7 @@ public class ProxiedParty implements PluginMessageListener {
 				ByteArrayDataOutput out = ByteStreams.newDataOutput();
 				for (String s : args)
 					out.writeUTF(s);
-				player.sendPluginMessage(Main.instance, "party", out.toByteArray());
+				player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
 			}
 		}.runTaskAsynchronously(Main.instance);
 	}
