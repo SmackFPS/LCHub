@@ -33,11 +33,10 @@ public class BowTeleport implements Listener {
 		ItemMeta bowmeta = bow.getItemMeta();
 		bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
 				"&bTeleport Bow"));
-		bow.addEnchantment(Enchantment.ARROW_INFINITE, 5);
 		bow.setItemMeta(bowmeta);
 
 		inventory.remove(bow);
-		inventory.setItem(7, bow);
+		inventory.setItem(6, bow);
 
 		ItemStack arrow = new ItemStack(Material.ARROW, 1);
 		inventory.remove(arrow);
