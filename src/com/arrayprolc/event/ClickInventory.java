@@ -157,7 +157,7 @@ public class ClickInventory implements Listener {
 			return;
 		}
 		for(OfflinePlayer p2 : PartyTools.getPartyMembers(p)){
-			Bukkit.getPlayerExact(p2.getName()).sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + "Sending you and " + (PartyTools.playersWith(p2)-1) + " other player" + plural((PartyTools.playersWith(p2)-1)) + " to " + gameDisplay + " #" + getAmount(firstOpenServer, pfx) + ".");
+			Bukkit.getPlayerExact(p2.getName()).sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + "Sending you" + and(PartyTools.getPartyMembers(p).length, (" and " + (PartyTools.playersWith(p2)-1) + " other player" + plural((PartyTools.playersWith(p2)-1)))) + " to " + gameDisplay + " #" + getAmount(firstOpenServer, pfx) + ".");
 			PartyTools.sendPlayerToServer(firstOpenServer, Bukkit.getPlayerExact(p2.getName()));
 		} 
 		
@@ -175,6 +175,12 @@ public class ClickInventory implements Listener {
 			return 1;
 		}
 		return Integer.parseInt(s);
+	}
+	public static String and(int i, String s){
+		if(i > 0){
+			return s;
+		}
+		return "";
 	}
 
 }
