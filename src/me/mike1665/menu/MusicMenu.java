@@ -38,7 +38,7 @@ public class MusicMenu implements Listener{
 				createItem(Material.BEACON, 1, (short) 0, "§cGo Back",
 						"§6Go back"));
 		musicmenu.setItem(
-				4,
+				8,
 				createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§4Turn off music",
 						""));
 		musicmenu.setItem(
