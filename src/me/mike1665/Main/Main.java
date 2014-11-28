@@ -141,7 +141,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		RankManager.init(this);
 		loadListeners();
 		new PartyManager();
-		getCommand("party").setExecutor(new LCCommand());
+		//getCommand("party").setExecutor(new LCCommand());
 		try{
 			bungee();
 		}catch(Exception e){ e.printStackTrace(); }
@@ -167,7 +167,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 		System.out.println("Initializing Bungee Hooks");
 		BungeeHooks.players.put("lobby", Bukkit.getOnlinePlayers().length);
-		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
+		/*Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable(){
 			public void run(){
 				if(Bukkit.getOnlinePlayers().length > 0){
 				for(String srv : BungeeHooks.servers){
@@ -178,7 +178,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 				}
 				}
 			}
-		}, 0, 5);
+		}, 0, 5);*/
 
 	}
 
