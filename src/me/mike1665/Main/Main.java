@@ -37,6 +37,7 @@ import me.mike1665.eventhandlers.RespawnEvent;
 import me.mike1665.eventhandlers.TNTFun;
 import me.mike1665.funstuff.BowTeleport;
 import me.mike1665.funstuff.FunCreepers;
+import me.mike1665.funstuff.PvPSword;
 import me.mike1665.funstuff.SpawnCreeper;
 import me.mike1665.hubstuff.DoubleJump;
 import me.mike1665.hubstuff.LaunchPad;
@@ -111,6 +112,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public static java.sql.Connection c = null;
 
 	public void onEnable() {
+		PluginManager pm = getServer().getPluginManager();
+		pm.registerEvents(new BowTeleport(), this);
+		pm.registerEvents(new PvPSword(), this);
 		instance = this;
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
@@ -262,7 +266,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new PixlBomb(this), this);
 		pm.registerEvents(new SpawnCreeper(this), this);
 		pm.registerEvents(new FunCreepers(), this);
-		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new MusicMenu(), this);
 		pm.registerEvents(new MusicClick(), this);
 		// pm.registerEvents(new ItemListener(), this);
