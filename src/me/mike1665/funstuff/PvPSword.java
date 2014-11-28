@@ -24,7 +24,7 @@ public class PvPSword implements Listener{
 	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerRespawn(PlayerJoinEvent event) {
 	Player p = event.getPlayer();
-		ItemStack sword = new ItemStack(Material.CHEST, 1);
+		ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
 		ItemMeta pvp = sword.getItemMeta();
 		pvp.setDisplayName(ChatColor.LIGHT_PURPLE + "PvP Sword " + ChatColor.GRAY + "(Right-Click to activate)");
 		ArrayList<String> Lore = new ArrayList<String>();
