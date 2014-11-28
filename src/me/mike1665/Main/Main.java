@@ -37,6 +37,7 @@ import me.mike1665.eventhandlers.RespawnEvent;
 import me.mike1665.eventhandlers.TNTFun;
 import me.mike1665.funstuff.BowTeleport;
 import me.mike1665.funstuff.FunCreepers;
+import me.mike1665.funstuff.MagicClock;
 import me.mike1665.funstuff.PvPSword;
 import me.mike1665.funstuff.SpawnCreeper;
 import me.mike1665.hubstuff.DoubleJump;
@@ -115,6 +116,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
+		pm.registerEvents(new MagicClock(), this);
 		instance = this;
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
