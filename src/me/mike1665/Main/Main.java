@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import me.jrl1004.lightcraft.commands.LCCommand;
 import me.jrl1004.lightcraft.commands.party.PartyManager;
+import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -157,6 +158,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	@SuppressWarnings("deprecation")
 	public void bungee(){
+		new ProxiedParty();
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 		System.out.println("Initializing Bungee Hooks");
