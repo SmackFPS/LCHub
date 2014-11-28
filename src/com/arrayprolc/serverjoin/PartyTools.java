@@ -49,7 +49,7 @@ public class PartyTools {
 		Party par = party(p);
 		if(!isHost(p, par)){
 			return false;
-		}
+		}//
 		for(OfflinePlayer p2 : getPlayersInParty(par)){
 			sendPlayerToServer(server, p2);
 		}

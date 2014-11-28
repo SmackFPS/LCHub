@@ -20,7 +20,7 @@ import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.menu.Menu;
 import com.arrayprolc.menu.PlayerMenuEvent;
 import com.arrayprolc.serverjoin.PartyTools;
-import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.MessageType; 
 import com.arrayprolc.strings.StringManager;
 
 public class ClickInventory implements Listener {
@@ -159,7 +159,7 @@ public class ClickInventory implements Listener {
 		for(OfflinePlayer p2 : PartyTools.getPartyMembers(p)){
 			Bukkit.getPlayerExact(p2.getName()).sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + "Sending you and " + (PartyTools.playersWith(p2)-1) + " other player" + plural((PartyTools.playersWith(p2)-1)) + " to " + gameDisplay + " #" + getAmount(firstOpenServer, pfx) + ".");
 			PartyTools.sendPlayerToServer(firstOpenServer, Bukkit.getPlayerExact(p2.getName()));
-		}
+		} 
 		
 	}
 	static String plural(int i){
