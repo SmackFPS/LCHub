@@ -26,7 +26,7 @@ public class GadjetsMenu implements Listener{
 
 	public  static Inventory gadmenu;
 	public static void init() {
-		gadmenu = Bukkit.createInventory(null, 9*4, "§7§nGadgets Menu");
+		gadmenu = Bukkit.createInventory(null, 9*3, "§7§nGadgets Menu");
 
 		gadmenu.setItem(
 				4,
