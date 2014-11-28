@@ -243,7 +243,7 @@ public class CourseOne implements Listener {
     public void onPlayerMove(PlayerMoveEvent event){
         Player p = event.getPlayer();
         Location loc = p.getLocation();
-        if (loc.getBlockY() <= 0){
+        if (loc.getBlockY() <= 5){
             if (join.contains(p) && !cp.contains(p)) {
             	teleport(p);
             } else if (join.contains(p) && cp.contains(p)) {
