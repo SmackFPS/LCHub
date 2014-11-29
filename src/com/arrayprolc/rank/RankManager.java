@@ -1,7 +1,10 @@
 package com.arrayprolc.rank;
 
+import java.util.ArrayList;
+
 import me.mike1665.Main.Main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class RankManager {
@@ -35,7 +38,12 @@ public class RankManager {
 	}
 	
 	public static boolean hasRank(Player p, ServerRank r){
-		return true;
+		if(getRank(p).toString().equalsIgnoreCase(r.toString())) return true;
+		for(ServerRank r5 : ServerRank.values()){
+			if(r5.toString().equalsIgnoreCase(getRank(p).toString())) return false;
+			if(r5.toString().equalsIgnoreCase(r.toString())) return true;
+		}
+		return false;
 	}
 	
 	public static ServerRank getRankFromString(String s){

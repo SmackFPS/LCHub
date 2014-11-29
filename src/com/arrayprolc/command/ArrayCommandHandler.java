@@ -75,7 +75,8 @@ public class ArrayCommandHandler {
 			 * ProxiedParty.getInstance().requestPartySize(player.getName());
 			 * System.out.println("Size");
 			 */
-			ProxiedParty.getInstance().requestPartyList(player);
+			//ProxiedParty.getInstance().requestPartyList(player);
+			Bukkit.broadcastMessage(RankManager.hasRank(player, ServerRank.VIP) + "");
 			// System.out.println("List");
 
 		}
