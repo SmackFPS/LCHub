@@ -85,7 +85,7 @@ public class UtilMovement {
  
 			Location targetLocation = Bukkit.getPlayer(p).getLocation();
  
-			boolean flag = this.entity.getNavigation().c();
+			boolean flag = this.entity.getNavigation().c;
  
 			this.entity.getNavigation().b(false);
 			this.path = this.entity.getNavigation().a(targetLocation.getX() + Math.cos(UtilCounter.count * radialsPerStep) * radius, targetLocation.getY() + 2, targetLocation.getZ() + Math.sin(UtilCounter.count * radialsPerStep) * radius);

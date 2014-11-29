@@ -2,9 +2,11 @@ package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
 
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.arrayprolc.bountifulupdate.BUtils;
 import com.arrayprolc.coin.Multiplier;
@@ -32,6 +34,14 @@ public class TabHeaderSetup implements Listener {
 			}
 		}
 		BUtils.sendTitle(e.getPlayer(), "", sub, 5, 5, 5);
+		e.getPlayer().teleport(e.getPlayer().getWorld().getSpawnLocation());
+		e.getPlayer().setGameMode(GameMode.ADVENTURE);
+		e.setJoinMessage(null);
+	}
+	
+	@EventHandler
+	public void onLeave(PlayerQuitEvent e){
+		e.setQuitMessage(null);
 	}
 
 }

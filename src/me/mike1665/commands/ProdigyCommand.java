@@ -67,7 +67,7 @@ public class ProdigyCommand {
 		plugin = instance;
 	}
 	
-	  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	  public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	  {
 	    if ((cmd.getName().equalsIgnoreCase("prodigypack")) || 
 	      (cmd.getName().equalsIgnoreCase("propack")))

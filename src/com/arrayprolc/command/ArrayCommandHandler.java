@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.Main.Main;
+import me.mike1665.commands.ProdigyCommand;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -27,12 +28,14 @@ public class ArrayCommandHandler {
 	}
 
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a) {
+		ProdigyCommand.onCommand(sender, cmd, label, a);
 		if (label.equalsIgnoreCase("g-reward")) {
 			if (sender instanceof Player)
 				return false;
 			Player p = Bukkit.getPlayer(a[0]);
 			int amount = Integer.parseInt(a[2]);
 			switch (a[1].toLowerCase()) {
+			
 			case "coin": {
 				me.mike1665.coinapi.LcCoinsAPI.givePoints(p, amount);
 				me.mike1665.coinapi.ApiEvent.scoreboard(p);
@@ -48,6 +51,7 @@ public class ArrayCommandHandler {
 			try {
 				((Player) sender).getPassenger().eject();
 				((Player) sender).eject();
+			//	((Player) sender).spigot().
 			} catch (Exception ex) {
 			}
 			for (Entity e : ((Player) sender).getNearbyEntities(5, 5, 5)) {
