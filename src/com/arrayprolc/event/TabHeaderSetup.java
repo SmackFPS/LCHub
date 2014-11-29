@@ -31,7 +31,7 @@ public class TabHeaderSetup implements Listener {
 				sub = sub + "§7 ▪ §a" + Multiplier.coin(e.getPlayer()) + "x §dTokens";
 			}
 		}
-		BUtils.sendTitleToPlayer(e.getPlayer(), "", sub, 5, 5, 5);
+		BUtils.sendTitle(e.getPlayer(), "", sub, 5, 5, 5);
 	}
 
 }
