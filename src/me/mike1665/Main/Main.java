@@ -84,8 +84,10 @@ import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
+import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
 
 public class Main extends JavaPlugin implements Listener, PluginMessageListener {
