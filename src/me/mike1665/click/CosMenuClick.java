@@ -39,7 +39,7 @@ public class CosMenuClick implements Listener{
 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aGadgets")) {
       		  	p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
-				p.openInventory(GadjetsMenu.gadmenu);
+      		  	p.openInventory(GadjetsMenu.gadmenu);
 				return;
 			}
                 
@@ -52,7 +52,7 @@ public class CosMenuClick implements Listener{
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Hub Purchaseables")) {
       		  	p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
-				p.openInventory(BuyGadgets.buygadmenu);
+				fr.coco_gigpn.prodigygadget.menu.menulist.Gadgets.openGadgetGui(p);
 				return;
 
 			} 

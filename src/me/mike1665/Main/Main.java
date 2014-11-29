@@ -1,5 +1,6 @@
 package me.mike1665.Main;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ import me.mike1665.click.VipGadjetsClick;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
+import me.mike1665.commands.ProdigyCommand;
 import me.mike1665.commands.StatsCommand;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
@@ -62,10 +64,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -73,6 +80,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.util.Vector;
 
 import code.husky.mysql.MySQL;
 
@@ -89,6 +97,26 @@ import com.google.common.io.ByteStreams;
 
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.entity.EntityManager;
+import fr.coco_gigpn.prodigygadget.event.EventManager;
+import fr.coco_gigpn.prodigygadget.extra.ExtraManager;
+import fr.coco_gigpn.prodigygadget.gadget.GadgetManager;
+import fr.coco_gigpn.prodigygadget.gadget.gadgets.GravityStation;
+import fr.coco_gigpn.prodigygadget.menu.MenuManager;
+import fr.coco_gigpn.prodigygadget.morph.MorphManager;
+import fr.coco_gigpn.prodigygadget.morph.morphs.Astronot;
+import fr.coco_gigpn.prodigygadget.particle.ParticleManager;
+import fr.coco_gigpn.prodigygadget.pet.PetManager;
+import fr.coco_gigpn.prodigygadget.updater.Updater;
+import fr.coco_gigpn.prodigygadget.util.Configs;
+import fr.coco_gigpn.prodigygadget.util.GravityTask;
+import fr.coco_gigpn.prodigygadget.util.Messages;
+import fr.coco_gigpn.prodigygadget.util.UtilCounter;
+import fr.coco_gigpn.prodigygadget.util.UtilEnt;
+import fr.coco_gigpn.prodigygadget.util.UtilFlash;
+import fr.coco_gigpn.prodigygadget.util.UtilLag;
+import fr.coco_gigpn.prodigygadget.util.UtilLocation;
+import fr.coco_gigpn.prodigygadget.util.UtilServer;
+import fr.coco_gigpn.prodigygadget.util.UtilTornado;
 
 public class Main extends JavaPlugin implements Listener, PluginMessageListener {
 
@@ -111,8 +139,17 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public static MySQL MySQL;
 	public EffectManager manager;
 	public static java.sql.Connection c = null;
+	  public static Configs config;
+	  public static Messages msg;
+	  public static Main schedule;
+	  public static UtilFlash redFactory;
+	  public static final String PREFIX = "§8[§3ProdigyGadget§8]";
+	  protected HashMap<UUID, Vector> velocities;
+	  protected HashMap<UUID, Location> positions;
+	  protected HashMap<UUID, Boolean> onGround;
 
 	public void onEnable() {
+	    schedule = this;
 		this.manager = new EffectManager(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
@@ -133,6 +170,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ArrayEventSetup.setupEvents(this);
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
+		ProdigyCommand.setup(this);
 		colors.put("red", "255,0,0");
 		colors.put("orange", "255,127,0");
 		colors.put("yellow", "255,255,0");
@@ -149,7 +187,62 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		//getCommand("party").setExecutor(new LCCommand());
 		try{
 			bungee();
-		}catch(Exception e){ e.printStackTrace(); }
+		}catch(Exception e){ e.printStackTrace(); 
+		}
+		
+	    try
+	    {
+	      new GravityTask(this).runTaskLater(this, 1L);
+	      this.velocities = new HashMap();
+	      this.onGround = new HashMap();
+	      this.positions = new HashMap();
+	      getServer().getPluginManager().registerEvents(this, this);
+	      
+
+	      schedule = this;
+	      redFactory = new UtilFlash(this);
+	      
+	      GadgetManager.registerEvents(this);
+	      ParticleManager.registerEvents(this);
+	      fr.coco_gigpn.prodigygadget.mount.MountManager.registerEvents(this);
+	      EventManager.registerEvents(this);
+	      MenuManager.registerEvents(this);
+	      ExtraManager.registerEvents(this);
+	      PetManager.registerEvents(this);
+	      fr.coco_gigpn.prodigygadget.effect.EffectManager.registerEvents(this);
+	      MorphManager.registerEvents(this);
+	      
+	      
+	      Bukkit.getPluginManager().registerEvents(new UtilEnt(), this);
+	      Bukkit.getPluginManager().registerEvents(new UtilCounter(), this);
+	      
+	      Bukkit.getPluginManager().registerEvents(new ParticleManager(), this);
+	      Bukkit.getPluginManager().registerEvents(new UtilTornado(), this);
+	      Bukkit.getPluginManager().registerEvents(new UtilLocation(), this);
+	      
+	      Bukkit.getPluginManager().registerEvents(new UtilLag(this), this);
+	      Bukkit.getServer().getScheduler()
+	        .scheduleSyncRepeatingTask(this, new Updater(this), 1L, 1L);
+	      
+	      config = new Configs(new File(getDataFolder(), "configs.yml"));
+	      config.load();
+	      
+	      msg = new Messages(new File(getDataFolder(), "messages.yml"));
+	      msg.load();
+	      
+	      Bukkit.getPluginManager().registerEvents(this, this);
+	      Bukkit.getServer().getConsoleSender()
+	        .sendMessage("§8[§3ProdigyGadget§8] §bis now §2enable !");
+	    }
+	    catch (InvalidConfigurationException e)
+	    {
+	      e.printStackTrace();
+	      Bukkit.getServer()
+	        .getConsoleSender()
+	        .sendMessage(
+	        "§8[§3LcGadgets§8] §4error will disable configuration file!");
+	    }
+	  }
 
 		/*try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
@@ -163,7 +256,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 			e.printStackTrace();
 		}*/
 
-	}
 
 	@SuppressWarnings("deprecation")
 	public void bungee(){
@@ -187,6 +279,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}, 0, 5);*/
 
 	}
+	@SuppressWarnings("deprecation")
 	public static void requestPlayerList(){
 		if(Bukkit.getOnlinePlayers().length > 0){
 		for(String srv : BungeeHooks.servers){
@@ -202,6 +295,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 		return 0;
 	}
+	@SuppressWarnings("unused")
 	@Override
 	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
 		try{
@@ -229,12 +323,92 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 			//Don't print the stack trace.
 		}
 	}
-	@Override
-	public void onDisable() {
-		//	entityManager.dispose();
-	//	EffectManager.disposeAll();
-		//	HandlerList.unregisterAll((Plugin) this);
-	}
+	  public void onDisable()
+	  {
+	    Bukkit.getServer().getConsoleSender().sendMessage("§8[§3ProdigyGadget§8] §bis now §4disable");
+	    for (Player players : UtilServer.getPlayers())
+	    {
+	      fr.coco_gigpn.prodigygadget.effect.EffectManager.removeEffect(players);
+	      MorphManager.removeMorph(players, false);
+	      PetManager.removeCurrentPet(players, false);
+	      fr.coco_gigpn.prodigygadget.mount.MountManager.removeCurrentPet(players, false);
+	    }
+	  }
+	  
+	  @SuppressWarnings("deprecation")
+	public void UpdateVelocities()
+	  {
+	    for (Player e : Bukkit.getServer().getOnlinePlayers()) {
+	      if ((Astronot.astronot.contains(e)) || (GravityStation.activateGravity.contains(e)))
+	      {
+	        Vector newv = e.getVelocity().clone();
+	        UUID uuid = e.getUniqueId();
+	        if ((this.velocities.containsKey(uuid)) && (this.onGround.containsKey(uuid)) && (!e.isOnGround()) && (!e.isInsideVehicle()))
+	        {
+	          Vector oldv = (Vector)this.velocities.get(uuid);
+	          if (!((Boolean)this.onGround.get(uuid)).booleanValue())
+	          {
+	            Vector d = oldv.clone();
+	            d.subtract(newv);
+	            double dy = d.getY();
+	            if ((dy > 0.0D) && ((newv.getY() < -0.01D) || (newv.getY() > 0.01D)))
+	            {
+	              Location loc = e.getLocation().clone();
+	              double gravity = 1.0D;
+	              while (loc.getBlockY() >= 0)
+	              {
+	                Block block = loc.getBlock();
+	                
+	                gravity = 0.3D;
+	                if (block.getType() != Material.AIR) {
+	                  break;
+	                }
+	                loc.setY(loc.getY() - 1.0D);
+	              }
+	              newv.setY(oldv.getY() - dy * gravity);
+	              boolean newxchanged = (newv.getX() < -0.001D) || (newv.getX() > 0.001D);
+	              boolean oldxchanged = (oldv.getX() < -0.001D) || (oldv.getX() > 0.001D);
+	              if ((newxchanged) && (oldxchanged)) {
+	                newv.setX(oldv.getX());
+	              }
+	              boolean newzchanged = (newv.getZ() < -0.001D) || (newv.getZ() > 0.001D);
+	              boolean oldzchanged = (oldv.getZ() < -0.001D) || (oldv.getZ() > 0.001D);
+	              if ((newzchanged) && (oldzchanged)) {
+	                newv.setZ(oldv.getZ());
+	              }
+	              e.setVelocity(newv.clone());
+	            }
+	          }
+	          else if (((e instanceof Player)) && 
+	            (this.positions.containsKey(uuid)))
+	          {
+	            Vector pos = e.getLocation().toVector();
+	            Vector oldpos = ((Location)this.positions.get(uuid)).toVector();
+	            Vector velocity = pos.subtract(oldpos);
+	            newv.setX(velocity.getX());
+	            newv.setZ(velocity.getZ());
+	          }
+	          e.setVelocity(newv.clone());
+	        }
+	        this.velocities.put(uuid, newv.clone());
+	        this.onGround.put(uuid, Boolean.valueOf(e.isOnGround()));
+	        this.positions.put(uuid, e.getLocation());
+	      }
+	    }
+	  }
+	  
+	  @EventHandler(priority=EventPriority.HIGHEST)
+	  public void onEntityDamageEvent(EntityDamageEvent e)
+	  {
+	    if ((e.getCause() == EntityDamageEvent.DamageCause.FALL) && 
+	      ((e.getEntity() instanceof Player)))
+	    {
+	      Player p = (Player)e.getEntity();
+	      if ((Astronot.astronot.contains(p)) || (GravityStation.activateGravity.contains(p))) {
+	        e.setCancelled(true);
+	      }
+	    }
+	  }
 
 	private void loadListeners() {
 		PluginManager pm = getServer().getPluginManager();

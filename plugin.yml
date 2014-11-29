@@ -23,3 +23,5 @@ commands:
     test:
     delfriend:
     friend:
+    prodigypack:
+      aliases: [propack]
