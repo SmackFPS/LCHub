@@ -11,7 +11,7 @@ public class HelixEffect extends Effect {
     /**
      * Particle to form the helix
      */
-    public ParticleEffect particle = ParticleEffect.FLAME;
+    public ParticleEffect particle = ParticleEffect.MAGIC_CRIT;
 
     /**
      * Amount of strands

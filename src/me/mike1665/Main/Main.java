@@ -35,6 +35,7 @@ import me.mike1665.eventhandlers.PixlBomb;
 import me.mike1665.eventhandlers.RespawnEvent;
 import me.mike1665.eventhandlers.TNTFun;
 import me.mike1665.funstuff.BowTeleport;
+import me.mike1665.funstuff.DiscoBall;
 import me.mike1665.funstuff.FunCreepers;
 import me.mike1665.funstuff.MagicClock;
 import me.mike1665.funstuff.PvPSword;
@@ -83,7 +84,6 @@ import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
 import de.slikey.effectlib.entity.EntityManager;
@@ -107,14 +107,18 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public Frust fro = new Frust();
 	private EntityManager entityManager;
 	public static MySQL MySQL;
+	public EffectManager manager;
 	public static java.sql.Connection c = null;
 
 	public void onEnable() {
+		this.manager = new EffectManager(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
 		pm.registerEvents(new MagicClock(), this);
+		pm.registerEvents(new DiscoBall(this), this);
 		instance = this;
+		MusicClick.initalize(this);
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
 		ApiEvent.initialize(this);

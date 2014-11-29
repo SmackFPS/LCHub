@@ -55,7 +55,7 @@ public class BuyGadgets implements Listener{
 		buygadmenu.setItem(
 				22,
 				createItem(Material.TRAPPED_CHEST, 1, (short) 0, "§d§lTreasure Chest",
-						"§b (1) Costs §6§l: §d60 Tokens"));
+						"§b (1) Costs §6§l: §d500 Tokens"));
 		
 		
 		buygadmenu.setItem(
@@ -70,6 +70,10 @@ public class BuyGadgets implements Listener{
 				30,
 				createItem(Material.MONSTER_EGG, 1, (short) 50, "§aFun Creeper",
 						"§b (3) Costs §6§l: §d30 Tokens"));
+		buygadmenu.setItem(
+				32,
+				createItem(Material.DIAMOND_BLOCK, 1, (short) 50, "§5Disco Ball",
+						"§b (1) Costs §6§l: §d80 Tokens"));
 
 	}
 

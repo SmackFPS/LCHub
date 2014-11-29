@@ -201,42 +201,6 @@ public class CourseOne implements Listener {
 				}
 			}
 		}
-		if (join.contains(event.getEntity()) && !cp.contains(event.getEntity())) {
-			if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
-				if ((event.getEntity() instanceof Player)) {
-					teleport((Player) event.getEntity());
-					((CommandSender) event.getEntity()).sendMessage(tag
-							+ ChatColor.GOLD
-							+ "Uh-oh You died! Teleported to the beginning!");
-					event.setCancelled(true);
-					event.getEntity().setFireTicks(0);
-					event.getEntity().eject();
-					event.getEntity().leaveVehicle();
-					event.setDamage(0);
-					
-					return;
-				}
-			}
-
-		} if (cp.contains(event.getEntity())
-			&& join.contains(event.getEntity())) {
-		if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
-			if ((event.getEntity() instanceof Player)) {
-				checkpoint((Player) event.getEntity());
-				((CommandSender) event.getEntity())
-						.sendMessage(tag
-								+ ChatColor.GOLD
-								+ "Lucky! You have a checkpoint! Sent to checkpoint!");
-				event.setCancelled(true);
-				event.getEntity().setFireTicks(0);
-				event.getEntity().eject();
-				event.getEntity().leaveVehicle();
-				event.setDamage(0);
-				return;
-			}
-		}
-	}
-		
 	}
 	
 	@EventHandler

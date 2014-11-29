@@ -127,18 +127,30 @@ public class BuyGadgetsClick implements Listener{
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");	
 				}
 			}
-			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dPixel Bomb")) {
+			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dToken Bomb")) {
 				if(LcTokensAPI.hasEnough(p, 100)) {
 					LcTokensAPI.takePoints(p, 100);
 					ItemStack ender = new ItemStack(Material.NETHER_STAR, 1);
 					ItemMeta e = ender.getItemMeta();
-					e.setDisplayName(ChatColor.LIGHT_PURPLE + "Pixel Bomb");
+					e.setDisplayName(ChatColor.LIGHT_PURPLE + "Token Bomb");
 					ender.setItemMeta(e);
 					p.getInventory().addItem(ender);
             		p.closeInventory();
 				} else {
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
+		}if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Disco Ball")) {
+			if(LcTokensAPI.hasEnough(p, 80)) {
+				LcTokensAPI.takePoints(p, 80);
+				ItemStack ender = new ItemStack(Material.DIAMOND_BLOCK, 1);
+				ItemMeta e = ender.getItemMeta();
+				e.setDisplayName(ChatColor.DARK_BLUE + "Disco Ball");
+        		ender.setItemMeta(e);
+        		p.getInventory().addItem(ender);
+        		p.closeInventory();
+			}else {
+				p.sendMessage(ChatColor.RED + "You dont have enough money!");	
+			}
 		}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cGo Back")) {
 				p.openInventory(CosmeticsMenu.cosmenu(p));
