@@ -34,6 +34,10 @@ public class RankManager {
 		
 	}
 	
+	public static boolean hasRank(Player p, ServerRank r){
+		return true;
+	}
+	
 	public static ServerRank getRankFromString(String s){
 		try{
 			for(ServerRank r : ServerRank.values()){
