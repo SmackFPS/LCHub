@@ -72,37 +72,9 @@ public class MagicClock implements Listener{
 				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                     if (p != player.getPlayer()) {
                             player.getPlayer().showPlayer(p);                                   
-               }
-            }
-		}
-		/*if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated"))) {
-				if (usingClock.contains(player.getPlayer().getName())) {
-                    usingClock.remove(player.getPlayer().getName());
-                    ItemStack i = player.getItemInHand();
-    				ItemMeta i2 = i.getItemMeta();
-    				i2.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
-    				i.setItemMeta(i2);
-    				player.setItemInHand(i);
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                            if (p != player.getPlayer()) {
-                                    player.getPlayer().showPlayer(p);                                   
-                       }
-                    }
-            } else { 
-                    usingClock.add(player.getPlayer().getName());
-                    ItemStack i = player.getItemInHand();
-    				ItemMeta i2 = i.getItemMeta();
-    				i2.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated");
-    				i.setItemMeta(i2);
-    				player.setItemInHand(i);
-                    for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                            if (p != player.getPlayer()) {
-                                    player.getPlayer().hidePlayer(p);
-                        }
-                    }
-            	}
-			}*/
+                    }	
+				}
+			}
 		}	
 	}
 	
