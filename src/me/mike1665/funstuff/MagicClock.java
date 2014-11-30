@@ -71,7 +71,7 @@ public class MagicClock implements Listener{
 				player.setItemInHand(i);
 				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                     if (p != player.getPlayer()) {
-                            player.getPlayer().showPlayer(p);                                   
+                            player.getPlayer().showPlayer(p);                               
                     }	
 				}
 			}

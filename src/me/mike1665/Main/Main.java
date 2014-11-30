@@ -100,7 +100,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public Integer armortask = null;
 	public Integer updateboard = null;
 	public static Location _spawn;
-	@SuppressWarnings("unused")
 	private ArrayList<String> usingarmor;
 	String tag = ChatColor.RED + "" + ChatColor.BOLD + "Parkour " + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
 	public static Main instance;
