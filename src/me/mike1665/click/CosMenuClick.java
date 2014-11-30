@@ -52,8 +52,8 @@ public class CosMenuClick implements Listener{
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Hub Purchaseables")) {
       		  	p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
-				fr.coco_gigpn.prodigygadget.menu.menulist.Gadgets.openGadgetGui(p);
-				return;
+      		  	p.openInventory(BuyGadgets.buygadmenu);
+      		  	return;
 
 			} 
 			

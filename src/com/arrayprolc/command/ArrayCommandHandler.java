@@ -2,9 +2,7 @@ package com.arrayprolc.command;
 
 import java.util.UUID;
 
-import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.Main.Main;
-import me.mike1665.commands.ProdigyCommand;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -28,7 +26,6 @@ public class ArrayCommandHandler {
 	}
 
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a) {
-		ProdigyCommand.onCommand(sender, cmd, label, a);
 		if (label.equalsIgnoreCase("g-reward")) {
 			if (sender instanceof Player)
 				return false;
