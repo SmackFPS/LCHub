@@ -26,6 +26,7 @@ public class MagicClock implements Listener{
 		ItemStack sword = new ItemStack(Material.WATCH, 1);
 		ItemMeta pvp = sword.getItemMeta();
 		pvp.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
+		usingClock.remove(event.getPlayer());
 		ArrayList<String> Lore = new ArrayList<String>();
 		Lore.add(ChatColor.RESET + "" + ChatColor.BLUE + "The Magic Clock!");
 		pvp.setLore(Lore);
@@ -59,21 +60,25 @@ public class MagicClock implements Listener{
 				player.setItemInHand(i);
 				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                     if (p != player.getPlayer()) {
-                            player.getPlayer().hidePlayer(p);
+                            player.hidePlayer(p);
                 }
             }
 			} else if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.RED + "Deactivated"))) {
 				usingClock.remove(player.getName());
 				ItemStack i = player.getItemInHand();
 				ItemMeta i2 = i.getItemMeta();
+				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    	try{
+                            player.showPlayer(p);        
+                            Bukkit.broadcastMessage(player.canSee(p) + "");
+                    	}catch(NullPointerException ex){
+                    		
+                    }	
+				}
 				i2.setDisplayName(ChatColor.GREEN + "Players " + ChatColor.YELLOW + "" + ChatColor.BOLD + ">> " + ChatColor.RESET + "" + ChatColor.GREEN + "Activated");
 				i.setItemMeta(i2);
 				player.setItemInHand(i);
-				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                    if (p != player.getPlayer()) {
-                            player.getPlayer().showPlayer(p);                               
-                    }	
-				}
+
 			}
 		}	
 	}

@@ -2,6 +2,8 @@ package com.arrayprolc.command;
 
 import java.util.UUID;
 
+import me.jrl1004.lightcraft.utils.ProxiedEconomy;
+import me.jrl1004.lightcraft.utils.ProxiedEconomy.Currency;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
@@ -70,14 +72,14 @@ public class ArrayCommandHandler {
 		}
 		if (label.equalsIgnoreCase("test")) {
 			Player player = (Player) sender;
-			/*
+			/* 
 			 * ProxiedParty.getInstance().requestPartyHost(player.getName());
 			 * System.out.println("Host");
 			 * ProxiedParty.getInstance().requestPartySize(player.getName());
 			 * System.out.println("Size");
 			 */
 			//ProxiedParty.getInstance().requestPartyList(player);
-			Bukkit.broadcastMessage(RankManager.hasRank(player, ServerRank.VIP) + "");
+			ProxiedEconomy.getInstance().increasePlayerBalance(player, Currency.Coins, 10l);
 			// System.out.println("List");
 
 		}

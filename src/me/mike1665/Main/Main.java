@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import me.jrl1004.lightcraft.commands.party.PartyManager;
+import me.jrl1004.lightcraft.utils.ProxiedEconomy;
 import me.jrl1004.lightcraft.utils.ProxiedParty;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
@@ -137,6 +138,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ArrayEventSetup.setupEvents(this);
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
+		new ProxiedEconomy();
 		colors.put("red", "255,0,0");
 		colors.put("orange", "255,127,0");
 		colors.put("yellow", "255,255,0");

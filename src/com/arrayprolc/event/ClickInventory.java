@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
+import com.arrayprolc.anvilgui.AnvilGUI;
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.menu.Menu;
@@ -38,7 +39,8 @@ public class ClickInventory implements Listener {
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_BLOCK), "§a§lCreative Buildoff", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("cb")[1] + " servers." }), 5); }catch(Exception e){}
-				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.FIREWORK), "§b§lParty", getFlashyColour() + "§oClick to configure!"), 22-4); }catch(Exception e){}
+				//try{ selector.addItem(ItemTools.setName(new ItemStack(Material.FIREWORK), "§b§lParty", getFlashyColour() + "§oClick to configure!"), 22-4); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.NAME_TAG), "§b§lCustom Server", getFlashyColour() + "§oClick to enter server..."), 22-4); }catch(Exception e){}
 				ticks++;
 				if(ticks % 5 == 0) flash = !flash;
 				if(ticks % 5 == 0) ticks = 0;
@@ -102,7 +104,7 @@ public class ClickInventory implements Listener {
 	@EventHandler
 	public void click2(InventoryClickEvent e){
 		if(!e.getInventory().getName().equals(selector.getName())) return;
-		Player p = (Player) e.getWhoClicked();
+		final Player p = (Player) e.getWhoClicked();
 		switch(e.getCurrentItem().getType()){
 		default: return;
 		case DIAMOND:{
@@ -121,6 +123,39 @@ public class ClickInventory implements Listener {
 		}
 		case DIAMOND_BLOCK:{
 			sendToFirstOpenServer(p, "cb", 16, "Creative Buildoff");
+			return;
+			
+		}
+		case NAME_TAG:{
+			if(!p.isOp()){
+				p.sendMessage("§cYou do not have permission to do that.");
+				return;
+			}
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), new Runnable(){
+				public void run(){
+					p.closeInventory();
+					com.arrayprolc.anvilgui.AnvilGUI gui = new AnvilGUI(p, new AnvilGUI.AnvilClickEventHandler(){
+						@Override
+						public void onAnvilClick(AnvilGUI.AnvilClickEvent event){
+						if(event.getSlot() == AnvilGUI.AnvilSlot.OUTPUT){
+						event.setWillClose(true);
+						event.setWillDestroy(true);
+						sendToFirstOpenServer(p, event.getName(), 16, "Custom Server");
+						} else {
+						event.setWillClose(false);
+						event.setWillDestroy(false);
+						}
+						}
+						});
+						 
+						gui.setSlot(AnvilGUI.AnvilSlot.INPUT_LEFT, ItemTools.setName(new ItemStack(Material.NAME_TAG), "lobby"));
+						p.sendMessage("§7Please enter a server name.");
+						 
+						gui.open();
+				}
+			}, 5);
+
+			//sendToFirstOpenServer(p, "cb", 16, "Creative Buildoff");
 			return;
 
 		}
