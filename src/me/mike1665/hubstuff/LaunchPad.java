@@ -19,7 +19,7 @@ public class LaunchPad implements Listener{
 		if ((e.getPlayer().getLocation().getWorld().getBlockAt(e.getPlayer().getLocation()).getType() == Material.STONE_PLATE) && (e.getPlayer().getLocation().getWorld().getBlockAt(e.getPlayer().getLocation()).getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_BLOCK)) {
 			if ((e.getPlayer() instanceof Player)) {
 				e.getPlayer().setVelocity(e.getPlayer().getLocation().getDirection().multiply(5.0D));
-				e.getPlayer().setVelocity(new Vector(e.getPlayer().getVelocity().getX(), 1.0D, e.getPlayer().getVelocity().getX()));
+				e.getPlayer().setVelocity(new Vector(e.getPlayer().getVelocity().getX(), 1.0D, e.getPlayer().getVelocity().getZ()));
 				e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.WITHER_SHOOT, 10, 10);
 				e.getPlayer().playEffect(e.getPlayer().getLocation(), Effect.MOBSPAWNER_FLAMES, 5);
 			}
