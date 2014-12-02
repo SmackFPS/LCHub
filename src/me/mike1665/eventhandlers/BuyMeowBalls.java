@@ -1,6 +1,7 @@
 package me.mike1665.eventhandlers;
 
 import me.mike1665.particlelib.ParticleEffect;
+import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -29,12 +30,20 @@ public class BuyMeowBalls implements Listener{
 	      if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "MeowBall"))){
 	    	  Snowball s = (Snowball)event.getEntity();
 		      s.getWorld().playSound(s.getLocation(), Sound.CAT_MEOW, 1.0F, 1.0F);
-		      ParticleEffect.LAVA.display(s.getLocation(), 0.0F, 0.0F, 0.0F, 0.0F, 20);
+	          ParticleLib18 lava = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
+	          ParticleLib18 hearts = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
+	          ParticleLib18 largesmoke = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
+
+
+		     //ParticleEffect.LAVA.display(s.getLocation(), 0.0F, 0.0F, 0.0F, 0.0F, 20);
+	          lava.sendToLocation(s.getLocation());
+	          hearts.sendToLocation(s.getLocation());
+	          largesmoke.sendToLocation(s.getLocation());
 
 		      s.getWorld().playEffect(s.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
 		      s.getWorld().playEffect(s.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
-		      ParticleEffect.HEART.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 2);
-		      ParticleEffect.LARGE_SMOKE.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 10);
+		     // ParticleEffect.HEART.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 2);
+		     // ParticleEffect.LARGE_SMOKE.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 10);
 		      player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
 		      if (player.getItemInHand().getAmount() == 1) {
 		    	  player.setItemInHand(null);

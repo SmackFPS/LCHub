@@ -4,6 +4,7 @@ import me.mike1665.Main.Main;
 import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MusicMenu;
 import me.mike1665.particlelib.ParticleEffect;
+import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -176,8 +177,10 @@ public class MusicClick implements Listener {
 	       
 	            double y2 = 5 - y;
 	       
+	            ParticleLib18 notes = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.NOTE, 0, 1, 5);
 	            Location loc2 = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y2, loc.getZ() + z);
-	            ParticleEffect.NOTE.display(loc2, 0, 0, 0, 0, 1);
+	            //ParticleEffect.NOTE.display(loc2, 0, 0, 0, 0, 1);
+	            notes.sendToLocation(loc2);
 	        }
 	   
 	        for (double y = 5; y >= 0; y -= 0.100) {
@@ -187,8 +190,11 @@ public class MusicClick implements Listener {
 	       
 	            double y2 = 5 - y;
 	       
+	            ParticleLib18 notes = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.NOTE, 0, 1, 5);
 	            Location loc2 = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y2, loc.getZ() + z);
-	            ParticleEffect.NOTE.display(loc2, 0, 0, 0, 0, 1);
+	            //ParticleEffect.NOTE.display(loc2, 0, 0, 0, 0, 1);
+	            notes.sendToLocation(loc2);
+
 	        }
 	   
 	    }

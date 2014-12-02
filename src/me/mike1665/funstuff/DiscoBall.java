@@ -14,8 +14,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import de.slikey.effectlib.effect.DiscoBallEffect;
-
 public class DiscoBall implements Listener{
 	
 	
@@ -40,9 +38,9 @@ public class DiscoBall implements Listener{
 	 public void spawnDisco(final Player p) {
 		 final Location l= p.getEyeLocation();
 		 l.add(0, 5, 0).getBlock().setType(Material.DIAMOND_BLOCK);
-		 final DiscoBallEffect discoBallEffect = new DiscoBallEffect(this.plugin.manager);
-	     discoBallEffect.setLocation(l);
-	     discoBallEffect.start();
+		// final DiscoBallEffect discoBallEffect = new DiscoBallEffect(this.plugin.manager);
+	   //  discoBallEffect.setLocation(l);
+	   //  discoBallEffect.start();
 		 p.sendMessage("Tried to run effect");
 		 new BukkitRunnable() {
 			 
@@ -50,7 +48,7 @@ public class DiscoBall implements Listener{
 			@Override
 			public void run() {
 				l.getBlock().setType(Material.AIR);
-				discoBallEffect.cancel();
+			//	discoBallEffect.cancel();
 				count--;
 				if (count == 0) cancel();
 			}

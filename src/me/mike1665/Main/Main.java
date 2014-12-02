@@ -89,9 +89,6 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
-import de.slikey.effectlib.EffectManager;
-import de.slikey.effectlib.entity.EntityManager;
-
 public class Main extends JavaPlugin implements Listener, PluginMessageListener {
 
 	public Scoreboard board;
@@ -108,17 +105,17 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public Mule m = new Mule();
 	public Undead und = new Undead();
 	public Frust fro = new Frust();
-	private EntityManager entityManager;
+	//private EntityManager entityManager;
 	public static MySQL MySQL;
-	public EffectManager manager;
-	public static java.sql.Connection c = null;
+	//public EffectManager manager;
+		public static java.sql.Connection c = null;
 	  public static final String PREFIX = "§8[§3ProdigyGadget§8]";
 	  protected HashMap<UUID, Vector> velocities;
 	  protected HashMap<UUID, Location> positions;
 	  protected HashMap<UUID, Boolean> onGround;
 
 	public void onEnable() {
-		this.manager = new EffectManager(this);
+		//this.manager = new EffectManager(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
@@ -148,7 +145,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		colors.put("violet", "143,0,255");
 		armorrun();
 		this.usingarmor = new ArrayList<String>();
-		entityManager = new EntityManager(this);
+		//entityManager = new EntityManager(this);
 		RankManager.init(this);
 		loadListeners();
 		new PartyManager();
