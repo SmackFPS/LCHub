@@ -4,10 +4,10 @@ import java.util.UUID;
 
 import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.mounts.Mounts;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
 import net.minecraft.server.v1_8_R1.EntityCreature;
-import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.NavigationAbstract;
 
 import org.bukkit.ChatColor;
@@ -33,6 +33,8 @@ public class Frust implements Listener{
 	Player p;
 	Entity ent;
 	private static Main plugin;
+	public Mounts mount;
+
 	
 	public static void initialize(Main plugin){
 		Frust.plugin = plugin;
@@ -49,6 +51,7 @@ public class Frust implements Listener{
 			player.sendMessage(StringManager.getPrefix(MessageType.INFO) + ChatColor.AQUA + "Note: Click on your mount again to spawn your new mount! ");
 			
 	    } else if (check) {
+	    	mount.removeMount(player);
     		Entity ent = (org.bukkit.entity.Horse) player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
     		final Horse horse = (Horse) ent;
     		horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD + "" + player.getName() + "'s " + ChatColor.WHITE + "Horse");
@@ -65,15 +68,19 @@ public class Frust implements Listener{
 			horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
 			horse.setOwner(player);
 	    	player.sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + ChatColor.GREEN + "Mount Spawned");
+	    	mount._active.put(player, horse);
 	    	new BukkitRunnable() {
 				@Override
 				public void run() {
-			    	me.mike1665.particlelib.ParticleEffect.SNOW_SHOVEL.display(horse.getLocation(), 1.0F, 2.0F, 1.0F, 0.0F, 10);
+			    	//me.mike1665.particlelib.ParticleEffect.SNOW_SHOVEL.display(horse.getLocation(), 1.0F, 2.0F, 1.0F, 0.0F, 10);
 			    	if (horse.isDead()) {
+			    		mount._active.remove(player);
+			    		mount.removeMount(player);
 			    		cancel();
 			    	}
 			    	if (!player.getPlayer().isValid()) {
-			    		horse.remove();
+			    		mount._active.remove(player);
+			    		mount.removeMount(player);
 			    		cancel();
 			    	}
 			    	if(player.getPlayer().isValid()) {
@@ -90,6 +97,8 @@ public class Frust implements Listener{
 			    	}
  				}
 			}.runTaskTimer(plugin, 6, 1);
+	    } else {
+	    	player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.RED + "Insufficient Funds!");
 	    }
 	}
 }

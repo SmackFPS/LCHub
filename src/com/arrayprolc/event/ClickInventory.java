@@ -61,7 +61,7 @@ public class ClickInventory implements Listener {
 	@EventHandler
 	public void join(PlayerJoinEvent e){
 		e.getPlayer().getInventory().setItem(0, ItemTools.setName(new ItemStack(Material.BOOK), "§aGame Selector §7(Right-Click)"));
-		e.getPlayer().getInventory().setItem(8, ItemTools.setName(new ItemStack(Material.EMERALD), "§aShop §7(Right-Click)"));
+		//e.getPlayer().getInventory().setItem(8, ItemTools.setName(new ItemStack(Material.EMERALD), "§aShop §7(Right-Click)"));
 	}
 
 	@EventHandler

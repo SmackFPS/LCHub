@@ -70,7 +70,6 @@ public class MagicClock implements Listener{
 				for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                     	try{
                             player.showPlayer(p);        
-                            Bukkit.broadcastMessage(player.canSee(p) + "");
                     	}catch(NullPointerException ex){
                     		
                     }	

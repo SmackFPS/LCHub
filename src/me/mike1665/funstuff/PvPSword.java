@@ -67,13 +67,23 @@ public class PvPSword implements Listener {
 				&& ((e.getDamager() instanceof Player))) {
 			Player dr = (Player) e.getDamager();
 			Player dd = (Player) e.getEntity();
-			if ((!pvp.contains(dr)) || (!pvp.contains(dd))) {
-				dr.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You or the player have PVP Disabled!");
+			if ((!pvp.contains(dr)) && (!pvp.contains(dd))) {
+				dr.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You both have PVP Disabled!");
 				dr.playSound(dr.getLocation(), Sound.ANVIL_LAND, 1.0F, 2.0F);
 				e.setCancelled(true);
 			} if ((pvp.contains(dr)) || (pvp.contains(dd))) {
 				dr.playSound(dr.getLocation(), Sound.ORB_PICKUP, 1.0F, 2.0F);
 				e.setCancelled(false);
+			}
+			if ((pvp.contains(dr)) && (!pvp.contains(dd))) {
+				dr.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "The player has PVP Disabled!");
+				dr.playSound(dr.getLocation(), Sound.ANVIL_LAND, 1.0F, 2.0F);
+				e.setCancelled(true);
+			}
+			if ((!pvp.contains(dr)) && (pvp.contains(dd))) {
+				dr.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You have PVP Disabled!");
+				dr.playSound(dr.getLocation(), Sound.ANVIL_LAND, 1.0F, 2.0F);
+				e.setCancelled(true);
 			}
 		}
 	}

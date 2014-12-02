@@ -2,10 +2,10 @@ package me.mike1665.mount.types;
 
 import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.mounts.Mounts;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilMath;
 import net.minecraft.server.v1_8_R1.EntityCreature;
-import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.NavigationAbstract;
 
 import org.bukkit.ChatColor;
@@ -27,6 +27,7 @@ public class Undead implements Listener{
 	
 	Player p;
 	Entity ent;
+	public Mounts mount;
 	private static Main plugin;
 	
 	public static void initialize(Main plugin){
@@ -44,6 +45,7 @@ public class Undead implements Listener{
 			player.sendMessage(ChatColor.AQUA + "Note: Click on your mount again to spawn your new mount! ");
 			
 	    } else if (check) {
+	    	mount.removeMount(player);
     		Entity ent = (org.bukkit.entity.Horse) player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
     		final Horse horse = (Horse) ent;
     		horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD + "" + player.getName() + "'s " + ChatColor.WHITE + "Horse");
@@ -60,16 +62,20 @@ public class Undead implements Listener{
 			horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
 			horse.setOwner(player);
 	    	player.sendMessage(ChatColor.GREEN + "Mount Spawned");
+	    	mount._active.put(player, horse);
 	    	new BukkitRunnable() {
 				@Override
 				public void run() {
-			    	me.mike1665.particlelib.ParticleEffect.FLAME.display(horse.getLocation(), 0.0F, 1.0F, 0.0F, 0.0F, 2);
-			    	me.mike1665.particlelib.ParticleEffect.LAVA.display(horse.getLocation(), 0.0F, 1.0F, 0.0F, 0.0F, 2);
+			    	//me.mike1665.particlelib.ParticleEffect.FLAME.display(horse.getLocation(), 0.0F, 1.0F, 0.0F, 0.0F, 2);
+			    	//me.mike1665.particlelib.ParticleEffect.LAVA.display(horse.getLocation(), 0.0F, 1.0F, 0.0F, 0.0F, 2);
 			    	if (horse.isDead()) {
+			    		mount._active.remove(player);
+			    		mount.removeMount(player);
 			    		cancel();
 			    	}
 			    	if (!player.getPlayer().isValid()) {
-			    		horse.remove();
+			    		mount._active.remove(player);
+			    		mount.removeMount(player);
 			    		cancel();
 			    	}
 			    	if(player.getPlayer().isValid()) {
@@ -86,6 +92,8 @@ public class Undead implements Listener{
 			    	}
  				}
 			}.runTaskTimer(plugin, 6, 1);
+	    } else { 
+	    	player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.RED + "Insufficient Funds!");
 	    }
 	}
 }

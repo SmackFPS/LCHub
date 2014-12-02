@@ -56,6 +56,7 @@ import me.mike1665.mount.types.Frust;
 import me.mike1665.mount.types.Mule;
 import me.mike1665.mount.types.Undead;
 import me.mike1665.mounts.MountManager;
+import me.mike1665.mounts.Mounts;
 import me.mike1665.parkour.CourseOne;
 
 import org.bukkit.Bukkit;
@@ -121,6 +122,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new PvPSword(), this);
 		pm.registerEvents(new MagicClock(), this);
 		pm.registerEvents(new DiscoBall(this), this);
+		pm.registerEvents(new Mounts(), this);
 		instance = this;
 		MusicClick.initalize(this);
 		LcTokensAPI.initialize(this);

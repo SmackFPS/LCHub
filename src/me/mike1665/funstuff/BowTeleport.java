@@ -12,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -52,12 +51,6 @@ public class BowTeleport implements Listener {
 			ItemStack arrow = new ItemStack(Material.ARROW, 2);
 			inventory.setItem(35, arrow);
 		}
-	}
-
-	@EventHandler(priority = EventPriority.HIGH)
-	public void onFallDamageBow(EntityDamageEvent event) {
-		if ((event.getEntity() instanceof Player))
-			event.setCancelled(true);
 	}
 
 	@EventHandler (priority = EventPriority.HIGHEST)
@@ -100,6 +93,6 @@ public class BowTeleport implements Listener {
 						1.0F);
 				p.playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 2);
 			}
-		}
+		} 
 	}
 }
