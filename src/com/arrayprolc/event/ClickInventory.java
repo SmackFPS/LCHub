@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.anvilgui.AnvilGUI;
 import com.arrayprolc.bungeehook.BungeeHooks;
+import com.arrayprolc.bungeehook.Servers;
 import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.menu.Menu;
 import com.arrayprolc.serverjoin.PartyTools;
@@ -77,7 +78,7 @@ public class ClickInventory implements Listener {
 	public int[] getTotalPlayers(String pfx){
 		int serverCount = 0;
 		int players = 0;
-		for(String s : BungeeHooks.servers){
+		for(String s : Servers.servers){
 			if(s.toLowerCase().startsWith(pfx.toLowerCase())){
 				serverCount++;
 				players = players + BungeeHooks.players.get(s);
@@ -165,7 +166,7 @@ public class ClickInventory implements Listener {
 	static String getFirstOpenServer(Player p, String pfx, int maxPerGame){
 		int amountOfPlayers = PartyTools.playersWith(p);
 		Main.requestPlayerList();
-		for(String s : BungeeHooks.servers){
+		for(String s : Servers.servers){
 			if(s.toLowerCase().equalsIgnoreCase(pfx.toLowerCase())){
 				return s;
 			}

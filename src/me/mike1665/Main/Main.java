@@ -81,6 +81,7 @@ import code.husky.mysql.MySQL;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.PartyHooks;
+import com.arrayprolc.bungeehook.Servers;
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
 import com.arrayprolc.rank.RankManager;
@@ -196,7 +197,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	@SuppressWarnings("deprecation")
 	public static void requestPlayerList(){
 		if(Bukkit.getOnlinePlayers().length > 0){
-		for(String srv : BungeeHooks.servers){
+		for(String srv : Servers.servers){
 			ByteArrayDataOutput out = ByteStreams.newDataOutput();
 			out.writeUTF("PlayerList");  
 			out.writeUTF(srv);

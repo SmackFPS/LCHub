@@ -14,7 +14,6 @@ import com.google.common.io.ByteStreams;
 public class BungeeHooks {
 	static Main plugin;
 	public static HashMap<String, Integer> players = new HashMap<String, Integer>();
-	p
 
 	public static void sendPlayerToServer(String name, Player p){
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
