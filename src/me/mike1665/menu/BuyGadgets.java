@@ -69,7 +69,7 @@ public class BuyGadgets implements Listener{
 		buygadmenu.setItem(
 				30,
 				createItem(Material.MONSTER_EGG, 1, (short) 50, "§aFun Creeper",
-						"§b (3) Costs §6§l: §d30 Tokens"));
+						"§b (1) Costs §6§l: §d30 Tokens"));
 		buygadmenu.setItem(
 				32,
 				createItem(Material.DIAMOND_BLOCK, 1, (short) 50, "§5Disco Ball",

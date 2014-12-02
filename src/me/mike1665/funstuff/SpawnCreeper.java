@@ -6,15 +6,17 @@ import me.mike1665.menu.BuyGadgets;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Creeper;
+import org.bukkit.entity.Egg;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -52,7 +54,7 @@ public class SpawnCreeper implements Listener {
 				.equals("§aFun Creeper")) {
 			if(LcCoinsAPI.hasEnough(p, 30)) {
 				LcCoinsAPI.takePoints(p, 30);
-					ItemStack enderpearl = new ItemStack(Material.EGG, 3);
+					ItemStack enderpearl = new ItemStack(Material.EGG, 2);
 					ItemMeta ender = enderpearl.getItemMeta();
 					ender.setDisplayName("§4F§cu§6n §eC§2r§ae§be§3p§1e§9r");
 					enderpearl.setItemMeta(ender);
@@ -66,9 +68,8 @@ public class SpawnCreeper implements Listener {
 		}catch(Exception ex){}
 	}
 
-	public void spawnCreeper(Player player) {
-		final Creeper creeper = (Creeper) player.getWorld().spawn(
-				player.getEyeLocation(), Creeper.class);
+	public void spawnCreeper(Player player, Location l) {
+		final Creeper creeper = (Creeper) player.getWorld().spawn(l, Creeper.class);
 		Bukkit.getServer().getScheduler()
 				.scheduleSyncRepeatingTask(plugin, new Runnable() {
 					int num = 1;
@@ -141,21 +142,23 @@ public class SpawnCreeper implements Listener {
 					}
 				}, 0, 1 * 2);
 	}
-
-	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerPlaceBlock(PlayerInteractEvent event) {
-		final Player player = event.getPlayer();
-		if (event.getAction() == Action.RIGHT_CLICK_AIR
-				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if ((disName(player.getItemInHand()) != null)
-					&& (disName(player.getItemInHand())
-							.equalsIgnoreCase("§4F§cu§6n §eC§2r§ae§be§3p§1e§9r"))) {
-				spawnCreeper(player);
-				player.getItemInHand().setAmount(
-						player.getItemInHand().getAmount() - 1);
-				return;
+	
+	@SuppressWarnings("deprecation")
+	@EventHandler (priority = EventPriority.HIGHEST)
+	public void arrowtp(ProjectileHitEvent e) {
+		Projectile proj = e.getEntity();
+		if ((proj instanceof Egg)) {
+			Egg egg = (Egg) proj;
+			if ((egg.getShooter() instanceof Player)) {
+				Player p = (Player) egg.getShooter();
+				if ((disName(p.getItemInHand()) != null)
+						&& (disName(p.getItemInHand())
+								.equalsIgnoreCase("§4F§cu§6n §eC§2r§ae§be§3p§1e§9r"))) {
+					spawnCreeper(p, new Location(egg.getWorld(), egg.getLocation().getX(), egg.getLocation().getY(), egg.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch()));
+					p.setItemInHand(null);
+				}
 			}
-		}
+		} 
 	}
 
 	public String disName(ItemStack i) {

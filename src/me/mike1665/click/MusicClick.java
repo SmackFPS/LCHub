@@ -1,5 +1,7 @@
 package me.mike1665.click;
 
+import java.util.ArrayList;
+
 import me.mike1665.Main.Main;
 import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MusicMenu;
@@ -18,10 +20,25 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class MusicClick implements Listener {
 	
 	public static Main plugin;
 	
+	ArrayList<Player> blocks = new ArrayList<Player>();
+	ArrayList<Player> chirp = new ArrayList<Player>();
+	ArrayList<Player> far = new ArrayList<Player>();
+	ArrayList<Player> mall = new ArrayList<Player>();
+	ArrayList<Player> mellohi = new ArrayList<Player>();
+	ArrayList<Player> stal = new ArrayList<Player>();
+	ArrayList<Player> strad = new ArrayList<Player>();
+	ArrayList<Player> ward = new ArrayList<Player>();
+	ArrayList<Player> eleven = new ArrayList<Player>();
+	ArrayList<Location> thirteen = new ArrayList<Location>();
+	ArrayList<Player> wait = new ArrayList<Player>();
+
 	public static void initalize(Main plugin){
 		MusicClick.plugin = plugin;
 	}
@@ -48,7 +65,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_3, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnBlocksJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -56,7 +73,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_4, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnChirpJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -64,7 +81,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_5, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnFarJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -72,7 +89,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_6, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnMallJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -80,7 +97,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_7, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnMellohiJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -88,7 +105,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_8, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnStalJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -96,7 +113,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_9, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnStradJuke(p);
 
 			}
 
@@ -105,7 +122,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_10, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnWardJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -113,7 +130,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_11, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawn11Juke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -121,7 +138,7 @@ public class MusicClick implements Listener {
 			      p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_12, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnWaitJuke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -129,7 +146,7 @@ public class MusicClick implements Listener {
 				 p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.GOLD_RECORD, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawn13Juke(p);
 
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
@@ -137,20 +154,22 @@ public class MusicClick implements Listener {
 				p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.GREEN_RECORD, 0);
 			      p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
 			      p.closeInventory();
-			      spawnjuke(p);
+			      spawnCatJuke(p);
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName()
 					.equals("§cGo Back")) {
 				p.openInventory(CosmeticsMenu.cosmenu(p));
 			}
-			if (event.getCurrentItem().getItemMeta().getDisplayName()
+			/*if (event.getCurrentItem().getItemMeta().getDisplayName()
 					.equals("§4Turn off music")) {
-				p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
-			}
+				p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0F, 10.0F);
+				p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "This feature is coming soon!");
+			}*/
 		}
 	}
 	
-	 public void spawnjuke(final Player p) {
+	//Average Spawn Juke - USED IN UNKOWN SITUATIONS
+	/* public void spawnjuke(final Player p) {
 		 final Location l= p.getEyeLocation();
 		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
 		 new BukkitRunnable() {
@@ -164,6 +183,221 @@ public class MusicClick implements Listener {
 				if (count == 0) cancel();
 			}
 		}.runTaskTimer(plugin, 20*180, 1);
+	 }*/
+	 
+	 //Blocks Disk
+	 public void spawnBlocksJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 20*327, 1);
+	 }
+	 
+	 //Chrip Disk
+	 public void spawnChirpJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 20*183, 1);
+	 }
+	 
+	 //Far Disk
+	 public void spawnFarJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 3048, 1);
+	 }
+	 
+	 //Mall Disk
+	 public void spawnMallJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 3804, 1);
+	 }
+	 
+	 //Mellohi Disk
+	 public void spawnMellohiJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 16320, 1);
+	 }
+	 
+	 //Stal Disk
+	 public void spawnStalJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 20*138, 1);
+	 }
+	 
+	 //Strad Disk
+	 public void spawnStradJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 3696, 1);
+	 }
+	 
+	 //Ward Disk
+	 public void spawnWardJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 4932, 1);
+	 }
+	 
+	 //11 Disk
+	 public void spawn11Juke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 1332, 1);
+	 }
+	 
+	 //Wait Disk
+	 public void spawnWaitJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 4296, 1);
+	 }
+	 
+	 //13 Disk
+	 public void spawn13Juke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 thirteen.add(l);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				thirteen.remove(p);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 3096, 1);
+	 }
+	 
+	 //Cat Disk
+	 public void spawnCatJuke(final Player p) {
+		 final Location l= p.getEyeLocation();
+		 l.add(0, -1, 0).getBlock().setType(Material.JUKEBOX);
+		 new BukkitRunnable() {
+			 
+			int count = 1;
+			@Override
+			public void run() {
+				l.getBlock().setType(Material.AIR);
+				runHelix(l);
+				thirteen.remove(p);
+				count--;
+				if (count == 0) cancel();
+			}
+		}.runTaskTimer(plugin, 20*183, 1);
+	 }
+	 
+	 //Remove Disk/JukeBox
+	 public void removeJuke(Player p) {
+		 Location l = p.getLocation();
+		 if (thirteen.contains(l)) {
+			 l.getBlock().setType(Material.AIR);
+		 }
 	 }
 	 
 	 public static void runHelix(Location loc) {

@@ -94,10 +94,21 @@ public class CosmeticsMenu implements Listener{
 				25,
 				createItem(Material.EGG, 1, (short) 0, "§6Pets",
 						"§6Want a friend?"));
-		cosmenu.setItem(
-				40,
-				createItem(Material.RECORD_10, 1, (short) 0, "§3JukeBox",
-						"§eNeed something entertaining?"));
+		
+		//cosmenu.setItem(
+		//		40,
+		//		createItem(Material.RECORD_10, 1, (short) 0, "§3JukeBox",
+		//				"§eNeed something entertaining?"));
+		
+		cosmenu.setItem(40, ItemTools.setName(new ItemStack(Material.RECORD_10), "§3JukeBox", 
+				new String[] { 
+			"",
+			"§eNeed something entertaining?",
+			"",
+			"§7§lThis is a §a§lVIP §7§lFeature §nONLY!",
+			"",
+			"§cPurchase a rank on the website!"
+			}));
 		return cosmenu;
 
 

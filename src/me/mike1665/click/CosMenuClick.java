@@ -13,6 +13,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import com.arrayprolc.rank.RankManager;
+import com.arrayprolc.rank.ServerRank;
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class CosMenuClick implements Listener{
 	
 	@EventHandler
@@ -65,9 +70,15 @@ public class CosMenuClick implements Listener{
 
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§3JukeBox")) {
-      		  	p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
-				p.openInventory(MusicMenu.musicmenu(p));
-				return;
+				if (RankManager.hasRank(p, ServerRank.VIP)) {
+      		  		p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
+      		  		p.openInventory(MusicMenu.musicmenu(p));
+					return;
+				} else {
+					p.closeInventory();
+      		  		p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10, 10);
+    				p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You need to purchase VIP for this feature!");
+				}
 			}
 		}
 	}

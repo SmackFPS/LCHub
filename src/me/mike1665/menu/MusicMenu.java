@@ -37,10 +37,10 @@ public class MusicMenu implements Listener{
 				4,
 				createItem(Material.BEACON, 1, (short) 0, "§cGo Back",
 						"§6Go back"));
-		musicmenu.setItem(
+		/*musicmenu.setItem(
 				8,
 				createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§4Turn off music",
-						""));
+						"")); */
 		musicmenu.setItem(
 				19,
 				createItem(Material.RECORD_3, 1, (short) 0, "§b§lBlocks Disk",

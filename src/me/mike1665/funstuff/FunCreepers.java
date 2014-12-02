@@ -2,14 +2,17 @@ package me.mike1665.funstuff;
 
 import java.util.List;
 
-import me.mike1665.particlelib.ParticleEffect;
+import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Creeper;
+import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.util.Vector;
 
 public class FunCreepers implements Listener{
@@ -20,14 +23,35 @@ public class FunCreepers implements Listener{
 			Location loc = e.getEntity().getLocation();
 			e.setCancelled(true);
 			e.blockList().clear();
-			ParticleEffect.FIREWORKS_SPARK.display(loc, 1.0F, 1.0F, 1.0F, 0.0F, 20);
-			ParticleEffect.LAVA.display(loc, 0.0F, 0.0F, 0.0F, 0.0F, 5);
-			ParticleEffect.HEART.display(loc, 0.0F, 0.0F, 0.0F, 0.0F, 5);
+            ParticleLib18 firework = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.FIREWORKS_SPARK, 0.0F, 20, 0);
+            ParticleLib18 lava = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 10, 0);
+            ParticleLib18 heart = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 5, 0);
+            ParticleLib18 smoke = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
+            firework.sendToLocation(loc);
+            lava.sendToLocation(loc);
+            heart.sendToLocation(loc);
+            smoke.sendToLocation(loc);
+			//ParticleEffect.FIREWORKS_SPARK.display(loc, 1.0F, 1.0F, 1.0F, 0.0F, 20);
+			//ParticleEffect.LAVA.display(loc, 0.0F, 0.0F, 0.0F, 0.0F, 5);
+			//ParticleEffect.HEART.display(loc, 0.0F, 0.0F, 0.0F, 0.0F, 5);
 			List<Entity> near = ((Entity) e).getNearbyEntities(10.0d, 10.0d, 10.0d);
 			for(Entity z : near) {
 				z.setVelocity(new Vector(0, 2, 0));
 			}
 		}
 	}
-
+	
+	  @EventHandler
+	  public void preventEggSpawn(ItemSpawnEvent event){
+	    if ((event.getEntity() instanceof Egg)) {
+	      event.setCancelled(true);
+	    }
+	  }
+	  
+		@EventHandler
+		public void creeper(EntityDamageByEntityEvent e) {
+			if (((e.getDamager() instanceof Creeper))) {
+				e.setCancelled(true);
+			}
+		}
 }
