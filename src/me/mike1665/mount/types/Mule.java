@@ -45,8 +45,7 @@ public class Mule implements Listener{
 			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.AQUA + "Note: Click on your mount again to spawn your new mount! ");
 	    } else if (check) {
 	    	mount.removeMount(player);
-    		Entity ent = (org.bukkit.entity.Horse) player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
-    		final Horse horse = (Horse) ent;
+	    	final Horse horse = (org.bukkit.entity.Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
     		horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD + "" + player.getName() + "'s " + ChatColor.WHITE + "Mule");
     		horse.setAdult();
     		horse.setAgeLock(true);

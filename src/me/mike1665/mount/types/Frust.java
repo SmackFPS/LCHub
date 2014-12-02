@@ -52,8 +52,7 @@ public class Frust implements Listener{
 			
 	    } else if (check) {
 	    	mount.removeMount(player);
-    		Entity ent = (org.bukkit.entity.Horse) player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
-    		final Horse horse = (Horse) ent;
+    		final Horse horse = (org.bukkit.entity.Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
     		horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD + "" + player.getName() + "'s " + ChatColor.WHITE + "Horse");
     		horse.setCustomNameVisible(true);
     		horse.setAdult();
