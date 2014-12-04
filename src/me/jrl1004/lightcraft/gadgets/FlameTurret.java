@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import me.mike1665.Main.Main;
-import me.mike1665.particlelib.ParticleEffect;
+import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -44,13 +44,16 @@ public class FlameTurret
 				LivingEntity target = getTarget();
 				if (target == null)
 				{
-					ParticleEffect.FLAME.display(gun, 0, 0, 0, 5, 1, Bukkit.getOnlinePlayers());
+					ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.FLAME, 1, 4, 5);
+					effect.sendToLocation(gun);
+				//	ParticleLib18.FLAME.display(gun, 0, 0, 0, 5, 1, Bukkit.getOnlinePlayers());
 					return;
 				}
 				float xOff = (float) (gun.getX() - target.getLocation().getX());
 				float yOff = (float) (gun.getY() - target.getLocation().getY());
 				float zOff = (float) (gun.getZ() - target.getLocation().getZ());
-				ParticleEffect.FLAME.display(gun, xOff, yOff, zOff, 5, 1, Bukkit.getOnlinePlayers());
+				ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.FLAME, 1, 4, xOff);
+				effect.sendToLocation(gun);
 			}
 		}.runTaskTimer(Main.instance, 0, 2);
 	}
