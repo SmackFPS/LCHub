@@ -6,8 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 
-import com.arrayprolc.friend.FriendManager;
 import com.arrayprolc.menu.MenuListener;
+import com.arrayprolc.speedways.Speedways;
 
 public class ArrayEventSetup {
 
@@ -22,7 +22,7 @@ public class ArrayEventSetup {
 		pm.registerEvents(new TreasureChestListener(plugin), plugin);
 		pm.registerEvents(new MenuListener(plugin), plugin);
 		pm.registerEvents(new PlayerChat(plugin), plugin);
-		FriendManager.init(instance);
+		pm.registerEvents(new Speedways(plugin), plugin);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
 	}
