@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import me.mike1665.Main.Main;
 import me.mike1665.particlelib.ParticleEffect;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -35,18 +37,22 @@ public class FlameTurret
 		new BukkitRunnable()
 		{
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void run()
 			{
 				LivingEntity target = getTarget();
 				if (target == null)
+				{
+					ParticleEffect.FLAME.display(gun, 0, 0, 0, 5, 1, Bukkit.getOnlinePlayers());
 					return;
+				}
 				float xOff = (float) (gun.getX() - target.getLocation().getX());
 				float yOff = (float) (gun.getY() - target.getLocation().getY());
 				float zOff = (float) (gun.getZ() - target.getLocation().getZ());
-				ParticleEffect.FLAME.display(gun, xOff, yOff, zOff, 5, 1);
+				ParticleEffect.FLAME.display(gun, xOff, yOff, zOff, 5, 1, Bukkit.getOnlinePlayers());
 			}
-		};
+		}.runTaskTimer(Main.instance, 0, 2);
 	}
 
 	private LivingEntity getTarget()
