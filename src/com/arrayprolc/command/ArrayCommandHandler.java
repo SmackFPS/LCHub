@@ -1,6 +1,6 @@
 package com.arrayprolc.command;
 
-import me.jrl1004.lightcraft.gadgets.FlameTurret;
+import me.jrl1004.lightcraft.gadgets.SpellTurret;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
@@ -79,7 +79,7 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			new FlameTurret((Player) sender);
+			new SpellTurret((Player) sender);
 
 		}
 		return false;

@@ -13,19 +13,19 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class FlameTurret
+public class SpellTurret
 {
 	private final Random r;
 	private final Location gun;
 
-	public FlameTurret(final Entity entity)
+	public SpellTurret(final Entity entity)
 	{
 		this.gun = entity.getLocation();
 		this.r = new Random();
 		run();
 	}
 
-	public FlameTurret(final Location gun)
+	public SpellTurret(final Location gun)
 	{
 		this.gun = gun;
 		this.r = new Random();
@@ -43,7 +43,7 @@ public class FlameTurret
 				LivingEntity target = getTarget();
 				if (target == null)
 				{
-					ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.FLAME, 1, 4, 5);
+					ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.SPELL_MOB, 1, 4, 5);
 					effect.sendToLocation(gun);
 					return;
 				}
@@ -53,7 +53,7 @@ public class FlameTurret
 				double _x = xOff / 10;
 				double _y = yOff / 10;
 				double _z = zOff / 10;
-				ParticleLib18 effect = new ParticleLib18(ParticleType.FLAME, 1, 1, 0);
+				ParticleLib18 effect = new ParticleLib18(ParticleType.SPELL_MOB, 1, 1, 0);
 				for (int i = 0; i < 10; i++)
 					effect.sendToLocation(gun.add(_x * i, _y * i, _z * i));
 			}
