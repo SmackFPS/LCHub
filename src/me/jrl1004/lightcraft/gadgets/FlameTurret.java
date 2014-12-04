@@ -6,8 +6,8 @@ import java.util.Random;
 
 import me.mike1665.Main.Main;
 import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.particles18.ParticleLib18.ParticleType;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -37,7 +37,6 @@ public class FlameTurret
 		new BukkitRunnable()
 		{
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public void run()
 			{
@@ -46,14 +45,17 @@ public class FlameTurret
 				{
 					ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.FLAME, 1, 4, 5);
 					effect.sendToLocation(gun);
-				//	ParticleLib18.FLAME.display(gun, 0, 0, 0, 5, 1, Bukkit.getOnlinePlayers());
 					return;
 				}
-				float xOff = (float) (gun.getX() - target.getLocation().getX());
-				float yOff = (float) (gun.getY() - target.getLocation().getY());
-				float zOff = (float) (gun.getZ() - target.getLocation().getZ());
-				ParticleLib18 effect = new ParticleLib18(ParticleLib18.ParticleType.FLAME, 1, 4, xOff);
-				effect.sendToLocation(gun);
+				double xOff = gun.getX() - target.getLocation().getX();
+				double yOff = gun.getY() - target.getLocation().getY();
+				double zOff = gun.getZ() - target.getLocation().getZ();
+				double _x = xOff / 10;
+				double _y = yOff / 10;
+				double _z = zOff / 10;
+				ParticleLib18 effect = new ParticleLib18(ParticleType.FLAME, 1, 1, 0);
+				for (int i = 0; i < 10; i++)
+					effect.sendToLocation(gun.add(_x * i, _y * i, _z * i));
 			}
 		}.runTaskTimer(Main.instance, 0, 2);
 	}
