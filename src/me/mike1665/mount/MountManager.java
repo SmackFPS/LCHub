@@ -26,7 +26,7 @@ import org.bukkit.plugin.PluginManager;
 public class MountManager
   implements Listener
 {
-  public static HashMap<UUID, Horse> pet = new HashMap();
+  public static HashMap<UUID, Horse> pet = new HashMap<UUID, Horse>();
 
   public static boolean HasPet(Player p) {
     if (pet.containsKey(p.getUniqueId())) {
@@ -138,7 +138,8 @@ public class MountManager
       event.setCancelled(true);
   }
 
-  @EventHandler
+  @SuppressWarnings("deprecation")
+@EventHandler
   public void ParticleAura(UpdateEvent event)
   {
     if (event.getType() == UpdateType.TICK)
@@ -153,7 +154,7 @@ public class MountManager
          //   new UtilParticle(UtilParticle.Particle.SNOW_SHOVEL, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
-          if (((Horse)pet.get(p)).hasMetadata("darkrider")) {
+         /* if (((Horse)pet.get(p)).hasMetadata("darkrider")) {
           //  new UtilParticle(UtilParticle.Particle.SPELL_WITCH, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
@@ -167,7 +168,7 @@ public class MountManager
 
           if (((Horse)pet.get(p)).hasMetadata("poseidonrider")) {
            // new UtilParticle(UtilParticle.Particle.WATER_SPLASH, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
-          }
+          } */
 
         }
 

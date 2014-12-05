@@ -52,6 +52,8 @@ import me.mike1665.menu.MountMenu;
 import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.PlayerGadjets;
 import me.mike1665.menu.VipGadjets;
+import me.mike1665.mount.MountManager;
+import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.parkour.CourseOne;
 
 import org.bukkit.Bukkit;
@@ -118,6 +120,8 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new DiscoBall(this), this);
 		instance = this;
 		schedule = this;
+		NyanRider.initialize(this);
+	    MountManager.registerEvents(this);
 		MusicClick.initalize(this);
 		LcTokensAPI.initialize(this);
 		LcCoinsAPI.initialize(this);
