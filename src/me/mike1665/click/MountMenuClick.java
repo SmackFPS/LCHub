@@ -2,9 +2,7 @@ package me.mike1665.click;
 
 import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MountMenu;
-import me.mike1665.mount.types.Frust;
-import me.mike1665.mount.types.Mule;
-import me.mike1665.mount.types.Undead;
+import me.mike1665.mount.mounts.NyanRider;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -15,9 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class MountMenuClick implements Listener{
 	
-	public Mule m = new Mule();
-	public Undead und = new Undead();
-	public Frust fro = new Frust();
+	NyanRider nyan = new NyanRider();
 	
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
@@ -41,20 +37,20 @@ public class MountMenuClick implements Listener{
 				return;
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aFrosty")) {
-				this.fro.spawnFrost(p);
-				p.closeInventory();
+				//this.fro.spawnFrost(p);
+				nyan.playAngelRider(p);
 				return;
 			}
                 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§4Mule")) {
-				this.m.spawnMule(p);
+				//this.m.spawnMule(p);
 				p.closeInventory();
 				return;
 
 			}
 			
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§4Undead")) {
-				this.und.spawnUndead(p);
+				//this.und.spawnUndead(p);
 				p.closeInventory();
 				return;
 
@@ -72,7 +68,7 @@ public class MountMenuClick implements Listener{
 				return;
 
 			} if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§4Remove")) {
-				this.m.removeMule(p);
+				//this.m.removeMule(p);
 				p.sendMessage(ChatColor.RED + "Should remove YOUR HORSE");
 				return;
 
