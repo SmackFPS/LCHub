@@ -20,7 +20,7 @@ public class SpellTurret
 
 	public SpellTurret(final Entity entity)
 	{
-		this.gun = entity.getLocation();
+		this.gun = entity.getLocation().clone();
 		this.r = new Random();
 		run();
 	}
