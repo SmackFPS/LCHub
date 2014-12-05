@@ -36,18 +36,29 @@ public class UtilTime
 
   public static double convert(long time, int trim, TimeUnit type)
   {
-    if (type == TimeUnit.FIT)
-    {
-      if (time < 60000L) type = TimeUnit.SECONDS;
-      else if (time < 3600000L) type = TimeUnit.MINUTES; 
-      else if (time < 86400000L) type = TimeUnit.HOURS; else {
+    if (type == TimeUnit.FIT) {
+      if (time < 60000L)
+        type = TimeUnit.SECONDS;
+      else if (time < 3600000L)
+        type = TimeUnit.MINUTES;
+      else if (time < 86400000L)
+        type = TimeUnit.HOURS;
+      else {
         type = TimeUnit.DAYS;
       }
     }
-    if (type == TimeUnit.DAYS) return UtilMath.trim(trim, time / 86400000.0D);
-    if (type == TimeUnit.HOURS) return UtilMath.trim(trim, time / 3600000.0D);
-    if (type == TimeUnit.MINUTES) return UtilMath.trim(trim, time / 60000.0D);
-    if (type == TimeUnit.SECONDS) return UtilMath.trim(trim, time / 1000.0D);
+    if (type == TimeUnit.DAYS) {
+      return UtilMath.trim(trim, time / 86400000.0D);
+    }
+    if (type == TimeUnit.HOURS) {
+      return UtilMath.trim(trim, time / 3600000.0D);
+    }
+    if (type == TimeUnit.MINUTES) {
+      return UtilMath.trim(trim, time / 60000.0D);
+    }
+    if (type == TimeUnit.SECONDS) {
+      return UtilMath.trim(trim, time / 1000.0D);
+    }
     return UtilMath.trim(trim, time);
   }
 
@@ -63,20 +74,32 @@ public class UtilTime
 
   public static String convertString(long time, int trim, TimeUnit type)
   {
-    if (time == -1L) return "Permanent";
-
-    if (type == TimeUnit.FIT)
-    {
-      if (time < 60000L) type = TimeUnit.SECONDS;
-      else if (time < 3600000L) type = TimeUnit.MINUTES;
-      else if (time < 86400000L) type = TimeUnit.HOURS; else {
+    if (time == -1L) {
+      return "Permanent";
+    }
+    if (type == TimeUnit.FIT) {
+      if (time < 60000L)
+        type = TimeUnit.SECONDS;
+      else if (time < 3600000L)
+        type = TimeUnit.MINUTES;
+      else if (time < 86400000L)
+        type = TimeUnit.HOURS;
+      else {
         type = TimeUnit.DAYS;
       }
     }
-    if (type == TimeUnit.DAYS) return UtilMath.trim(trim, time / 86400000.0D) + " Days";
-    if (type == TimeUnit.HOURS) return UtilMath.trim(trim, time / 3600000.0D) + " Hours";
-    if (type == TimeUnit.MINUTES) return UtilMath.trim(trim, time / 60000.0D) + " Minutes";
-    if (type == TimeUnit.SECONDS) return UtilMath.trim(trim, time / 1000.0D) + " Seconds";
+    if (type == TimeUnit.DAYS) {
+      return UtilMath.trim(trim, time / 86400000.0D) + " Days";
+    }
+    if (type == TimeUnit.HOURS) {
+      return UtilMath.trim(trim, time / 3600000.0D) + " Hours";
+    }
+    if (type == TimeUnit.MINUTES) {
+      return UtilMath.trim(trim, time / 60000.0D) + " Minutes";
+    }
+    if (type == TimeUnit.SECONDS) {
+      return UtilMath.trim(trim, time / 1000.0D) + " Seconds";
+    }
     return UtilMath.trim(trim, time) + " Milliseconds";
   }
 
@@ -87,11 +110,6 @@ public class UtilTime
 
   public static enum TimeUnit
   {
-    FIT, 
-    DAYS, 
-    HOURS, 
-    MINUTES, 
-    SECONDS, 
-    MILLISECONDS;
+    FIT, DAYS, HOURS, MINUTES, SECONDS, MILLISECONDS;
   }
 }
