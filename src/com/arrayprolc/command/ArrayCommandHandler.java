@@ -91,6 +91,11 @@ public class ArrayCommandHandler
 			SeekerSkull skull = new SeekerSkull(world);
 			skull.teleportTo(_c.getLocation().add(0, 5, 0), false);
 			NBTTagCompound s = skull.getNBTTag();
+			if (s == null)
+			{
+				Bukkit.broadcastMessage("Null skull");
+				s = new NBTTagCompound();
+			}
 			Bukkit.broadcastMessage(s.isEmpty() + " | " + s);
 			Set<NBTBase> b = s.c();
 			Iterator<NBTBase> iter = b.iterator();
