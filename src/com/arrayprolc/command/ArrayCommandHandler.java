@@ -89,6 +89,7 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
+			registerEntities();
 			Player _p = (Player) sender;
 			CraftPlayer _c = (CraftPlayer) _p;
 			net.minecraft.server.v1_8_R1.World world = _c.getHandle().getWorld();
