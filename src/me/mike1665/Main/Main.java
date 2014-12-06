@@ -19,6 +19,8 @@ import me.mike1665.click.VipGadjetsClick;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
+import me.mike1665.commands.AmmoTest;
+import me.mike1665.commands.MountUnlocked;
 import me.mike1665.commands.StatsCommand;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
@@ -44,6 +46,7 @@ import me.mike1665.funstuff.SpawnCreeper;
 import me.mike1665.hubstuff.DoubleJump;
 import me.mike1665.hubstuff.LaunchPad;
 import me.mike1665.hubstuff.NoHunger;
+import me.mike1665.hubstuff.UpdateScore;
 import me.mike1665.menu.AdminGadgets;
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
@@ -64,7 +67,10 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -110,6 +116,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	  protected HashMap<UUID, Vector> velocities;
 	  protected HashMap<UUID, Location> positions;
 	  protected HashMap<UUID, Boolean> onGround;
+	  public ApiEvent ae = new ApiEvent();
 
 	public void onEnable() {
 		//this.manager = new EffectManager(this);
@@ -118,6 +125,8 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new PvPSword(), this);
 		pm.registerEvents(new MagicClock(), this);
 		pm.registerEvents(new DiscoBall(this), this);
+		pm.registerEvents(new UpdateScore(), this);
+		pm.registerEvents(new AmmoTest(), this);
 		instance = this;
 		schedule = this;
 		NyanRider.initialize(this);
@@ -131,6 +140,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ArrayEventSetup.setupEvents(this);
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
+		MountUnlocked.setup(this);
 		new ProxiedEconomy();
 		colors.put("red", "255,0,0");
 		colors.put("orange", "255,127,0");
@@ -303,6 +313,11 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 			return true;
 		if (StatsCommand.command(sender, cmd, label, a))
 			return true;
+		if (MountUnlocked.onCommand(sender, cmd, label, a))
+			return true;
+		if (AmmoTest.onCommand(sender, cmd, label, a))
+			return true;
+		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
 			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
@@ -332,6 +347,16 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 			saveConfig();
 			player.sendMessage(tag + ChatColor.GREEN + "Parkour 1 spawn set!");
+			return true;
+		}
+		if (cmd.getName().equalsIgnoreCase("setmountspawn") && player.isOp()) {
+			getConfig().set("mount.world", player.getLocation().getWorld().getName());
+			getConfig().set("mount.x", player.getLocation().getX());
+			getConfig().set("mount.y", player.getLocation().getY());
+			getConfig().set("mount.z", player.getLocation().getZ());
+
+			saveConfig();
+			player.sendMessage(tag + ChatColor.GREEN + "Mount spawn set!");
 			return true;
 		}
 		if (cmd.getName().equalsIgnoreCase("cp1") && player.isOp()) {

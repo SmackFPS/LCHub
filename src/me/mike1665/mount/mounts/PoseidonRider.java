@@ -26,20 +26,20 @@ import org.bukkit.metadata.FixedMetadataValue;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
-public class NyanRider implements Listener {
+public class PoseidonRider implements Listener {
 
 	private static Main plugin;
 
 	public static void initialize(Main plugin) {
-		NyanRider.plugin = plugin;
+		PoseidonRider.plugin = plugin;
 	}
-
-	public void playAngelRider(Player p) {
+	
+	public static void playAngelRider(Player p) {
 		UUID pn = p.getPlayer().getUniqueId();
-		boolean check = plugin.getConfig().getBoolean(pn + ".NyanMount");
-		if (!check && LcCoinsAPI.hasEnough(p, 12000)) {
-			LcCoinsAPI.takePoints(p, 12000);
-			plugin.getConfig().set(pn + ".NyanMount", true);
+		boolean check = plugin.getConfig().getBoolean(pn + ".PoseidonMount");
+		if (!check && LcCoinsAPI.hasEnough(p, 10000)) {
+			LcCoinsAPI.takePoints(p, 10000);
+			plugin.getConfig().set(pn + ".PoseidonMount", true);
 			plugin.saveFile();
 			p.sendMessage(StringManager.getPrefix(MessageType.INFO)
 					+ ChatColor.GREEN + "" + ChatColor.BOLD
@@ -60,26 +60,24 @@ public class NyanRider implements Listener {
 
 				Horse horse = (Horse) p.getWorld().spawn(mountspawnloc,
 						Horse.class);
+
 				Entity entity = horse;
 				Horse entityHorse = (Horse) entity;
 				entityHorse.getInventory().setSaddle(
 						new ItemStack(Material.SADDLE));
-				horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD
-						+ p.getPlayer().getName() + ChatColor.RESET
-						+ "'s Horse");
+
+				entityHorse.getInventory().setArmor(
+						new ItemStack(Material.DIAMOND_BARDING));
+
 				horse.setCustomNameVisible(true);
 				horse.setOwner(p);
-				horse.setVariant(Horse.Variant.DONKEY);
+				horse.setVariant(Horse.Variant.HORSE);
 				horse.setAdult();
 				horse.setPassenger(p);
 
-				horse.setMetadata("nyanrider", new FixedMetadataValue(
-						Main.schedule, "nyanrider"));
+				horse.setMetadata("poseidonrider", new FixedMetadataValue(
+						Main.schedule, "poseidonrider"));
 				MountManager.pet.put(p.getUniqueId(), horse);
-			} else {
-				p.sendMessage(StringManager.getPrefix(MessageType.ERROR)
-						+ ChatColor.DARK_RED
-						+ "You cannot spawn mounts outside of the Hub world! ");
 			}
 		}
 	}
@@ -93,21 +91,15 @@ public class NyanRider implements Listener {
 			Entity e = p.getVehicle();
 
 			if ((e instanceof Horse)) {
-				if (e.hasMetadata("nyanrider")) {
-					byte color = 14;
+				if (e.hasMetadata("poseidonrider")) {
+					byte color = 3;
 					double r = Math.random();
 					if (r > 0.8D)
-						color = 2;
+						color = 11;
 					else if (r > 0.6D)
-						color = 4;
-					else if (r > 0.2D)
-						color = 5;
-					else if (r > 0.4D)
-						color = 6;
-					else if (r > 0.8D)
-						color = 10;
-					else if (r > 0.1D) {
-						color = 1;
+						color = 9;
+					else if (r > 0.2D) {
+						color = 0;
 					}
 
 					Iterator localIterator = UtilityBlock
@@ -119,9 +111,10 @@ public class NyanRider implements Listener {
 					while (localIterator.hasNext()) {
 						Block block = (Block) localIterator.next();
 						if (UtilityBlock.solid(block)) {
-							if (!UtilityBlock.blockToRestore.contains(block))
-								UtilityBlock.setBlockToRestore(block, 35,
+							if (!UtilityBlock.blockToRestore.contains(block)) {
+								UtilityBlock.setBlockToRestore(block, 159,
 										color, 2L, true, false, false);
+							}
 						}
 					}
 				}

@@ -12,4 +12,8 @@ public class Multiplier {
 	public static int token(OfflinePlayer p){
 		return 1;
 	}
+	
+	public static int ammo(OfflinePlayer p){
+		return 1;
+	}
 }

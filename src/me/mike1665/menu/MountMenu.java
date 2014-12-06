@@ -41,29 +41,34 @@ public class MountMenu implements Listener{
 		Inventory mountmenu = Bukkit.createInventory(null, 54, INV_NAME);
 
 		mountmenu.setItem(
-				28,
-				createItem(Material.SNOW_BALL, 1, (short) 0, "§aFrosty",
-						(plugin.getConfig().getBoolean(p.getName() + ".FrostMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a5000 Coins")));
+				20,
+				createItem(Material.INK_SACK, 1, (short) 8, "§b§lAngel Mount",
+						(plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".AngelMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
 		mountmenu.setItem(
-				30, 
-				createItem(Material.REDSTONE_BLOCK, 1, (short) 14, "§2Dragon",
-						(plugin.getConfig().getBoolean(p.getName() + ".DragonMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : /*"§bCosts §6§l: §a50000 Coins"*/ "§cThis Mount is in development.")));
+				21, 
+				createItem(Material.INK_SACK, 1, (short) 8, "§4§lGhost Mount",
+						(plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".GhostMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
 		mountmenu.setItem(
-				32,
-				createItem(Material.HAY_BLOCK, 1, (short) 0, "§4Mule",
-						(plugin.getConfig().getBoolean(p.getName() + ".MuleMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §d100 Tokens")));
+				22,
+				createItem(Material.INK_SACK, 1, (short) 8, "§f§lDark Mount",
+						(plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".DarkMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
 		mountmenu.setItem(
-				34,
-				createItem(Material.BONE, 1, (short) 0, "§4Undead",
-						(plugin.getConfig().getBoolean(p.getName() + ".UndeadMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
+				23,
+				createItem(Material.INK_SACK, 1, (short) 8, "§9§lPoseidon Mount",
+						(plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".PoseidonMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
+		mountmenu.setItem(
+				24,
+				createItem(Material.INK_SACK, 1, (short) 8, "§5§lNyan Mount",
+						(plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".NyanMount") ? ChatColor.GREEN + "" + ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a10000 Coins")));
+		
 		mountmenu.setItem(
 				4,
 				createItem(Material.CHEST, 1, (short) 0, "§c<- Go Back",
 						""));
-		/*mountmenu.setItem(
-				0,
-				createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§4Remove",
-						"")); */
+		mountmenu.setItem(
+				40,
+				createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§4Remove Mount",
+						"")); 
 		return mountmenu;
 	}
 

@@ -23,5 +23,7 @@ commands:
     test:
     delfriend:
     friend:
-    prodigypack:
-      aliases: [propack]
+    setmountspawn:
+    unlockmount:
+    giveammo:
+    giveammo2:

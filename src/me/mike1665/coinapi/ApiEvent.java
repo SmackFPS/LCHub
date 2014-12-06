@@ -83,19 +83,6 @@ public class ApiEvent implements Listener {
 		p.setScoreboard(board);
 
 	}
-	@EventHandler(priority=EventPriority.HIGHEST)
-	public void onJoin(final PlayerJoinEvent e) {
-		final Player p = e.getPlayer();
-		
-		if (!plugin.getConfig().contains(p.getUniqueId().toString())) {
-			plugin.getConfig().set(p.getUniqueId() + ".Tokens", 50);
-			plugin.getConfig().set(p.getUniqueId() + ".Coins", 500);
-			plugin.saveConfig();
-			scoreboard(p);
-		}
-		
-		scoreboard(p);
-	}
 	
 	@EventHandler
 	public void pickup(PlayerPickupItemEvent e) {

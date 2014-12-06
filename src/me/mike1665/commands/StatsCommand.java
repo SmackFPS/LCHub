@@ -21,6 +21,7 @@ public class StatsCommand {
 
 	public static boolean command(CommandSender sender, Command cmd,
 			String label, String[] a) {
+		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		if (label.equalsIgnoreCase("stats")) {
 			int a1 = LcTokensAPI.balancePoints(player);
