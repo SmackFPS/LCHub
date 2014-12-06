@@ -8,7 +8,7 @@ import org.bukkit.entity.EntityType;
 public enum CustomEntityType
 {
 
-	SEEKERSKULL("WitherSkull", 51, EntityType.WITHER_SKULL, EntityWitherSkull.class, SeekerSkull.class);
+	SEEKERSKULL("WitherSkull", 19, EntityType.WITHER_SKULL, EntityWitherSkull.class, SeekerSkull.class);
 
 	private String name;
 	private int id;
