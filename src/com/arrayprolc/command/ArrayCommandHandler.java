@@ -1,9 +1,11 @@
 package com.arrayprolc.command;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Set;
 
 import me.mike1665.Main.Main;
+import net.minecraft.server.v1_8_R1.EntityTypes;
 import net.minecraft.server.v1_8_R1.NBTBase;
 import net.minecraft.server.v1_8_R1.NBTTagCompound;
 
@@ -18,6 +20,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
+import com.arrayprolc.speedways.CustomEntityType;
 import com.arrayprolc.speedways.SeekerSkull;
 
 public class ArrayCommandHandler
@@ -119,4 +122,20 @@ public class ArrayCommandHandler
 		return false;
 	}
 
+	private static void registerEntities()
+	{
+		for (CustomEntityType entity : CustomEntityType.values())
+		{
+			try
+			{
+				Method a = EntityTypes.class.getDeclaredMethod("a", new Class<?>[] { Class.class, String.class, int.class });
+				a.setAccessible(true);
+				a.invoke(null, entity.getCustomClass(), entity.getName(), entity.getID());
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+				Bukkit.broadcastMessage(e.getMessage());
+			}
+		}
+	}
 }
