@@ -23,7 +23,6 @@ public class Speedways implements Listener {
 	public void onMove(PlayerMoveEvent e){
 		Block b = e.getPlayer().getLocation().getBlock();
 		boolean b2 = false;
-
 		if(b.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().equals(Material.REDSTONE_BLOCK)) b2 = true;
 
 		if(b.getLocation().add(0, 0, 1).getBlock().getType().equals(Material.RAILS) || b.getLocation().add(0, 0, -1).getBlock().getType().equals(Material.RAILS) || b.getLocation().add(1, 0, 0).getBlock().getType().equals(Material.RAILS) || b.getLocation().add(-1, 0, 0).getBlock().getType().equals(Material.RAILS)){
