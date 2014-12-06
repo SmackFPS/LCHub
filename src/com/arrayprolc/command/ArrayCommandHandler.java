@@ -1,17 +1,23 @@
 package com.arrayprolc.command;
 
-import me.jrl1004.lightcraft.gadgets.SpellTurret;
+import java.util.Iterator;
+import java.util.Set;
+
 import me.mike1665.Main.Main;
+import net.minecraft.server.v1_8_R1.NBTBase;
+import net.minecraft.server.v1_8_R1.NBTTagCompound;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
+import com.arrayprolc.speedways.SeekerSkull;
 
 public class ArrayCommandHandler
 {
@@ -79,8 +85,17 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			new SpellTurret((Player) sender);
-
+			Player _p = (Player) sender;
+			CraftPlayer _c = (CraftPlayer) _p;
+			net.minecraft.server.v1_8_R1.World world = _c.getHandle().getWorld();
+			SeekerSkull skull = new SeekerSkull(world);
+			skull.teleportTo(_c.getLocation().add(0, 5, 0), false);
+			NBTTagCompound s = skull.getNBTTag();
+			Bukkit.broadcastMessage(s.isEmpty() + " | " + s);
+			Set<NBTBase> b = s.c();
+			Iterator<NBTBase> iter = b.iterator();
+			while (iter.hasNext())
+				Bukkit.broadcastMessage(iter.next() + "");
 		}
 		return false;
 	}
