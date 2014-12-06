@@ -14,6 +14,7 @@ import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
@@ -88,7 +89,8 @@ public class ArrayCommandHandler
 			Player _p = (Player) sender;
 			CraftPlayer _c = (CraftPlayer) _p;
 			net.minecraft.server.v1_8_R1.World world = _c.getHandle().getWorld();
-			SeekerSkull skull = new SeekerSkull(world);
+			SeekerSkull skull = new SeekerSkull(world, _c.getHandle(), 1, 1, 1);
+			world.addEntity(skull, SpawnReason.CUSTOM);
 			skull.teleportTo(_c.getLocation().add(0, 5, 0), false);
 			NBTTagCompound s = skull.getNBTTag();
 			if (s == null)
