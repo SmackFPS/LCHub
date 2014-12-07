@@ -1,10 +1,13 @@
-package me.mike1665.eventhandlers;
+package me.mike1665.gadgets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import me.mike1665.Main.Main;
+import me.mike1665.ammo.BatBlasterAmmoManager;
+import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.particlelib.ParticleEffect;
+import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.utils.UtilAction;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilEnt;
@@ -22,6 +25,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -32,14 +36,6 @@ public class BatBlaster implements Listener {
 	private HashMap<Player, ArrayList<Bat>> _bats = new HashMap<Player, ArrayList<Bat>>();
 	private HashMap<Player, Double> _time = new HashMap<Player, Double>();
 	HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<Player, BukkitRunnable>();
-	// private ArrayList<UUID> _coolDown = new ArrayList<UUID>();
-
-	private Main plugin;
-
-	public BatBlaster(Main plugin) {
-		this.plugin = plugin;
-		Bukkit.getPluginManager().registerEvents(this, plugin);
-	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@EventHandler
@@ -48,15 +44,13 @@ public class BatBlaster implements Listener {
 		if (player.getItemInHand() == null) {
 			return;
 		}
-	    if (player.getItemInHand().getType() != Material.NETHER_STAR) {
+	    if (player.getItemInHand().getType() != Material.IRON_BARDING) {
 	        return;
 	    }
 		if (event.getAction() == Action.RIGHT_CLICK_AIR
 				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if ((disName(player.getItemInHand()) != null)
-					&& (disName(player.getItemInHand())
-							.equalsIgnoreCase(ChatColor.DARK_GRAY
-									+ "Bat Blaster"))) {
+			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand())
+							.equalsIgnoreCase(ChatColor.DARK_GRAY + "Bat Blaster " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(player) + " §7«§b"))) {
 				if (this._time.containsKey(player)) {
 					return;
 				}
@@ -75,7 +69,19 @@ public class BatBlaster implements Listener {
 					}
 				});
 				((BukkitRunnable) this._cdRunnable.get(player)).runTaskTimer(
-						this.plugin, 2L, 2L);
+						Main.schedule, 2L, 2L);
+				
+				BatBlasterAmmoManager.takeBatAmmo(player, 1);
+				if (BatBlasterAmmoManager.balaceBatAmmo(player) < 1){
+					player.getInventory().setItemInHand(null);
+					player.sendMessage("testdsdas");
+					return;
+				}
+	    		ItemStack snow = new ItemStack(Material.IRON_BARDING, 1);
+	    		ItemMeta sno = snow.getItemMeta();
+	    		sno.setDisplayName(ChatColor.DARK_GRAY + "Bat Blaster " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(player) + " §7«§b");
+	    		snow.setItemMeta(sno);
+	    		player.getInventory().setItemInHand(snow);
 
 				this._velocity.put(player, player.getEyeLocation());
 				this._active.put(player,
@@ -84,7 +90,7 @@ public class BatBlaster implements Listener {
 				this._bats.put(player, new ArrayList());
 
 				final Integer task = Integer.valueOf(Bukkit.getScheduler()
-						.runTaskTimer(this.plugin, new Runnable() {
+						.runTaskTimer(Main.schedule, new Runnable() {
 							@SuppressWarnings("deprecation")
 							public void run() {
 								for (Player cur : Bukkit.getOnlinePlayers()) {
@@ -149,7 +155,7 @@ public class BatBlaster implements Listener {
 							}
 						}, 1L, 1L).getTaskId());
 
-				Bukkit.getScheduler().runTaskLater(this.plugin, new Runnable() {
+				Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
 					public void run() {
 						ArrayList<Bat> batList = BatBlaster.this._bats
 								.get(event.getPlayer());
@@ -179,8 +185,8 @@ public class BatBlaster implements Listener {
 		if (this._bats.containsKey(player)) {
 			for (Bat bat : this._bats.get(player)) {
 				if (bat.isValid()) {
-					ParticleEffect.ANGRY_VILLAGER.display(bat.getLocation(),
-							5.0D, 0.0F, 0.0F, 0.0F, 0.0F, 3);
+				    ParticleLib18 angry = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.VILLAGER_ANGRY, 0.0F, 3, 0);
+					angry.sendToLocation(bat.getLocation());
 				}
 				bat.remove();
 			}
