@@ -50,7 +50,7 @@ public class BatBlaster implements Listener {
 		if (event.getAction() == Action.RIGHT_CLICK_AIR
 				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if ((disName(player.getItemInHand()) != null)&& (disName(player.getItemInHand())
-							.equalsIgnoreCase(ChatColor.DARK_GRAY + "Bat Blaster " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(player) + " §7«§b"))) {
+							.equalsIgnoreCase(ChatColor.DARK_GRAY + "Bat Blaster " + ChatColor.DARK_RED + BatBlasterAmmoManager.balaceBatAmmo(player)))) {
 				if (this._time.containsKey(player)) {
 					return;
 				}
@@ -79,7 +79,7 @@ public class BatBlaster implements Listener {
 				}
 	    		ItemStack snow = new ItemStack(Material.IRON_BARDING, 1);
 	    		ItemMeta sno = snow.getItemMeta();
-	    		sno.setDisplayName(ChatColor.DARK_GRAY + "Bat Blaster " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(player) + " §7«§b");
+	    		sno.setDisplayName(ChatColor.DARK_GRAY + "Bat Blaster " + ChatColor.DARK_RED + BatBlasterAmmoManager.balaceBatAmmo(player));
 	    		snow.setItemMeta(sno);
 	    		player.getInventory().setItemInHand(snow);
 

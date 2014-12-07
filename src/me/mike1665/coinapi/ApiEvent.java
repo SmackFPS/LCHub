@@ -93,6 +93,11 @@ public class ApiEvent implements Listener {
 		scoreboard(players);
 	}
 	
+	@EventHandler
+	public void join(PlayerJoinEvent e) {
+		updatescore(e.getPlayer());
+	}
+	
 	/*@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onKill(EntityDeathEvent e) {

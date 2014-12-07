@@ -5,13 +5,18 @@ import java.util.ArrayList;
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
+import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.ammo.PaintballAmmoManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -114,6 +119,17 @@ public class BuyGadgets implements Listener{
 				"",
 				"§rYour ammo: " + PaintballAmmoManager.balacePBAmmo(p)
 				}));
+		buygadmenu.setItem(25, ItemTools.setName(new ItemStack(Material.STICK), "§bKitty Cannon", 
+				new String[] { 
+				"",
+				"§rDoes it shoot cats", 
+				"§ror something else?" ,
+				"",
+				"§aClick to purchase",
+				"§r50 for §a500 Coins",
+				"",
+				"§rYour ammo: " + KittyCannonAmmoManager.balaceCatAmmo(p)
+				}));
 		buygadmenu.setItem(28, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§2Coin Bomb", 
 				new String[] { 
 				"",
@@ -149,6 +165,29 @@ public class BuyGadgets implements Listener{
 				}));
 		return buygadmenu;
 
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onInventoryClickEvent111(InventoryClickEvent event)
+	{
+		if (event.getCurrentItem() == null)
+			return;
+		event.getWhoClicked();
+
+		if (event.getSlot() == 2)
+		{
+			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerDropItem111(PlayerDropItemEvent event)
+	{
+		int current_slot = event.getPlayer().getInventory().getHeldItemSlot();
+		if (current_slot == 2)
+		{
+			event.setCancelled(true);
+		}
 	}
 
 }

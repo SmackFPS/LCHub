@@ -15,9 +15,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -53,7 +53,7 @@ public class EnderDoge implements Listener{
 		if (e.getPlayer().getItemInHand() == null) {
 			return;
 		}
-	    if (e.getPlayer().getItemInHand().getType() != Material.NETHER_STAR) {
+	    if (e.getPlayer().getItemInHand().getType() != Material.FIREWORK_CHARGE) {
 	        return;
 	    }
 		if (this._coolDown.contains(p.getUniqueId())) {
@@ -61,7 +61,7 @@ public class EnderDoge implements Listener{
 		}
 		
 		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.DARK_AQUA + "EnderDoge " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(p) + " §7«§b"))){
+			if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.DARK_AQUA + "EnderDoge " + ChatColor.DARK_RED + EnderDogeAmmoManager.balaceEnderDogeAmmo(p)))){
 				Player player = e.getPlayer();
 				e.setCancelled(true);
 		
@@ -73,23 +73,23 @@ public class EnderDoge implements Listener{
 						EnderDoge.this._coolDown.remove(p.getUniqueId());
 				
 					}
-				}, 5L);
-		
-				Projectile proj = player.launchProjectile(EnderPearl.class);
+				}, 5L);    		
+				Projectile proj = player.launchProjectile(Snowball.class);
 				proj.setVelocity(proj.getVelocity().multiply(2));
 				this._balls.add(proj);
 				player.getWorld().playSound(player.getLocation(), Sound.CHICKEN_EGG_POP, 1.5F, 1.5F);
-				MeowAmmoManager.takeMeowAmmo(player, 1);
-				if (MeowAmmoManager.balaceMeowAmmo(player) < 1){
+				EnderDogeAmmoManager.takeEnderDogeAmmo(p, 1);
+				if (EnderDogeAmmoManager.balaceEnderDogeAmmo(p) < 1){
 					player.getInventory().setItemInHand(null);
 					player.sendMessage("testdsdas");
 					return;
 				}
-	    		ItemStack snow = new ItemStack(Material.NETHER_STAR, 1);
+	    		ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
 	    		ItemMeta sno = snow.getItemMeta();
-	    		sno.setDisplayName(ChatColor.DARK_AQUA + "EnderDoge " + "§7«§b " + EnderDogeAmmoManager.balaceEnderDogeAmmo(player) + " §7«§b");
+	    		sno.setDisplayName(ChatColor.DARK_AQUA + "EnderDoge " + ChatColor.DARK_RED + EnderDogeAmmoManager.balaceEnderDogeAmmo(p));
 	    		snow.setItemMeta(sno);
 	    		player.getInventory().setItemInHand(snow);
+				
 			} 
 		}
 	}

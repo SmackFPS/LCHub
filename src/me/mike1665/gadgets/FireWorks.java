@@ -43,15 +43,16 @@ public class FireWorks implements Listener{
 		if (player.getItemInHand() == null) {
 			return;
 		}
-	    if (player.getItemInHand().getType() != Material.NETHER_STAR) {
+	    if (player.getItemInHand().getType() != Material.FIREWORK) {
 	        return;
 	    }
 		if (this._coolDown.contains(player.getUniqueId())) {
 			return;
 		}
 		  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.RED + "Firework " + "§7«§b " + FireWorksAmmoManager.balaceFireWorkAmmo(player) + " §7«§b"))){		
-				this._coolDown.add(player.getUniqueId());
+		 if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.RED + "Fireworks " + ChatColor.DARK_RED + FireWorksAmmoManager.balaceFireWorkAmmo(player)))){		
+			event.setCancelled(true);	
+			 this._coolDown.add(player.getUniqueId());
 				Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
 			
 					@Override
@@ -81,7 +82,7 @@ public class FireWorks implements Listener{
 				}
 	    		ItemStack snow = new ItemStack(Material.FIREWORK, 1);
 	    		ItemMeta sno = snow.getItemMeta();
-	    		sno.setDisplayName(ChatColor.RED + "Firework " + "§7«§b " + FireWorksAmmoManager.balaceFireWorkAmmo(player) + " §7«§b");
+	    		sno.setDisplayName(ChatColor.RED + "Fireworks " + ChatColor.DARK_RED + FireWorksAmmoManager.balaceFireWorkAmmo(player));
 	    		snow.setItemMeta(sno);
 	    		player.getInventory().setItemInHand(snow);	
 		 		}

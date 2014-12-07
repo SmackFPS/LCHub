@@ -50,7 +50,7 @@ public class KittyCannon implements Listener{
 			return;
 		}
 	  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-		  if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.GOLD + "Kitty Cannon " + "§7«§b " + KittyCannonAmmoManager.balaceCatAmmo(p) + " §7«§b"))){
+		  if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.GOLD + "Kitty Cannon " + ChatColor.DARK_RED + KittyCannonAmmoManager.balaceCatAmmo(p)))){
 			    if (this.cooldown.containsKey(p)) {
 				      return;
 				    }
@@ -67,6 +67,17 @@ public class KittyCannon implements Listener{
 				    });
 				    ((BukkitRunnable)this._cdRunnable.get(p)).runTaskTimer(plugin, 2L, 2L);
 				    
+				KittyCannonAmmoManager.takeCatAmmo(p, 1);
+				if (KittyCannonAmmoManager.balaceCatAmmo(p) < 1){
+					p.getInventory().setItemInHand(null);
+					p.sendMessage("testdsdas");
+					return;
+				}
+		    	ItemStack snow = new ItemStack(Material.STICK, 1);
+		    	ItemMeta sno = snow.getItemMeta();
+		    	sno.setDisplayName(ChatColor.GOLD + "Kitty Cannon " + ChatColor.DARK_RED + KittyCannonAmmoManager.balaceCatAmmo(p));
+		    	snow.setItemMeta(sno);
+		    	p.getInventory().setItemInHand(snow);    
 	    		Entity ent = (org.bukkit.entity.Ocelot) p.getWorld().spawnEntity(p.getLocation(), EntityType.OCELOT);
 	    		final Ocelot ocelot = (Ocelot) ent;
 				if (ocelot == null)
@@ -78,18 +89,6 @@ public class KittyCannon implements Listener{
 				ocelot.setTamed(true);
 				ocelot.setBaby();
 				ocelot.setVelocity(p.getEyeLocation().getDirection().multiply(2));
-				
-				KittyCannonAmmoManager.takeCatAmmo(p, 1);
-				if (KittyCannonAmmoManager.balaceCatAmmo(p) < 1){
-					p.getInventory().setItemInHand(null);
-					p.sendMessage("testdsdas");
-					return;
-				}
-	    		ItemStack snow = new ItemStack(Material.STICK, 1);
-	    		ItemMeta sno = snow.getItemMeta();
-	    		sno.setDisplayName(ChatColor.GOLD + "Kitty Cannon " + "§7«§b " + KittyCannonAmmoManager.balaceCatAmmo(p) + " §7«§b");
-	    		snow.setItemMeta(sno);
-	    		p.getInventory().setItemInHand(snow);
 				new BukkitRunnable() {
 					
 					int count = 1;
