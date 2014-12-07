@@ -27,3 +27,4 @@ commands:
     unlockmount:
     giveammo:
     giveammo2:
+    ammotest:

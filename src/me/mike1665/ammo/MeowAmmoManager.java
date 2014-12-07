@@ -44,4 +44,8 @@ public class MeowAmmoManager implements Listener {
 		}
 		return a;
 	}
+	
+	public static void ammoisZero(OfflinePlayer p) {
+			plugin.getConfig().get(p.getUniqueId() + ".MeowAmmo", 0);
+	}
 }
