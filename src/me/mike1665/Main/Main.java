@@ -8,6 +8,7 @@ import java.util.UUID;
 import me.jrl1004.lightcraft.commands.party.PartyManager;
 import me.jrl1004.lightcraft.utils.ProxiedEconomy;
 import me.jrl1004.lightcraft.utils.ProxiedParty;
+import me.mike1665.ammo.AmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
@@ -44,6 +45,7 @@ import me.mike1665.funstuff.FunCreepers;
 import me.mike1665.funstuff.MagicClock;
 import me.mike1665.funstuff.PvPSword;
 import me.mike1665.funstuff.SpawnCreeper;
+import me.mike1665.gadgets.GagdetManager;
 import me.mike1665.hubstuff.DoubleJump;
 import me.mike1665.hubstuff.LaunchPad;
 import me.mike1665.hubstuff.NoHunger;
@@ -253,10 +255,12 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		AdminGadgets.init();
-		BuyGadgets.init();
 		GadjetsMenu.init();
 		PlayerGadjets.init();
 		VipGadjets.init();
+		GagdetManager.registerEvents(this);
+		AmmoManager.registerEvents(this);
+		pm.registerEvents(new BuyGadgets(), this);
 		pm.registerEvents(new EnderDoge(), this);
 		pm.registerEvents(new CatWorks(this), this);
 		pm.registerEvents(new MeowBall(), this);
@@ -330,6 +334,10 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 		if (cmd.getName().equalsIgnoreCase("mountmenu")) {
 			player.openInventory(MountMenu.getMountShop(player));
+		}
+		
+		if (cmd.getName().equalsIgnoreCase("gadmenu")) {
+			player.openInventory(BuyGadgets.buygadmenu(player));
 		}
 		if (cmd.getName().equalsIgnoreCase("parkour")) {
 			player.sendMessage(ChatColor.RED + "          :" + ChatColor.RED + " Parkour Version 1" + ChatColor.RED + " :");

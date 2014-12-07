@@ -30,6 +30,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class KittyCannon implements Listener{
 
+	  public static Main plugin;
 	  private final Random random = new Random();
 	  private HashMap<Player, Double> cooldown= new HashMap<Player, Double>();
 	  HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<Player, BukkitRunnable>();
@@ -64,7 +65,7 @@ public class KittyCannon implements Listener{
 				        }
 				      }
 				    });
-				    ((BukkitRunnable)this._cdRunnable.get(p)).runTaskTimer(Main.schedule, 2L, 2L);
+				    ((BukkitRunnable)this._cdRunnable.get(p)).runTaskTimer(plugin, 2L, 2L);
 				    
 	    		Entity ent = (org.bukkit.entity.Ocelot) p.getWorld().spawnEntity(p.getLocation(), EntityType.OCELOT);
 	    		final Ocelot ocelot = (Ocelot) ent;
@@ -109,7 +110,7 @@ public class KittyCannon implements Listener{
 						count --;
 						if (count == 0) cancel();
 					}
-				}.runTaskTimer(Main.schedule, 12, 1);
+				}.runTaskTimer(plugin, 12, 1);
 		  }
 	  }
 	}

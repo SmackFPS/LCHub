@@ -17,11 +17,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class BuyGadgetsClick implements Listener{
 	
-	@EventHandler
+	/*@EventHandler
 	public void onClick(InventoryClickEvent event) {
 		try{
 		Player p = (Player) event.getWhoClicked();
-		if (event.getInventory().getName().equalsIgnoreCase(BuyGadgets.buygadmenu.getName())) {
+		if (event.getInventory().getName().equalsIgnoreCase(BuyGadgets.name)) {
 			event.setCancelled(true);
 
 			if (event.getCurrentItem() == null) {
@@ -87,7 +87,7 @@ public class BuyGadgetsClick implements Listener{
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
 			} 
-			/*if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cTNT")) {
+			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cTNT")) {
 				if(LcCoinsAPI.hasEnough(p, 30)) {
 					LcCoinsAPI.takePoints(p, 30);
 					ItemStack ender = new ItemStack(Material.TNT, 10);
@@ -99,7 +99,7 @@ public class BuyGadgetsClick implements Listener{
 				}else {
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
-			} */
+			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure Chest")) {
 			if(LcTokensAPI.hasEnough(p, 60)) {
 				LcTokensAPI.takePoints(p, 60);
@@ -159,5 +159,5 @@ public class BuyGadgetsClick implements Listener{
 		}
 		}
 		}catch(Exception e){}
-	}
+	}*/
 }

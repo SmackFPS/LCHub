@@ -33,7 +33,7 @@ public class SpawnCreeper implements Listener {
 		try{
 		Player p = (Player) event.getWhoClicked();
 		if (event.getInventory().getName()
-				.equalsIgnoreCase(BuyGadgets.buygadmenu.getName())) {
+				.equalsIgnoreCase(BuyGadgets.buygadmenu(p).getName())) {
 			event.setCancelled(true);
 
 			if (event.getCurrentItem() == null) {
