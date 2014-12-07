@@ -8,6 +8,7 @@ import java.util.UUID;
 import me.jrl1004.lightcraft.commands.party.PartyManager;
 import me.jrl1004.lightcraft.utils.ProxiedEconomy;
 import me.jrl1004.lightcraft.utils.ProxiedParty;
+import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -129,6 +130,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new AmmoTest(), this);
 		instance = this;
 		schedule = this;
+		MeowAmmoManager.initialize(this);
 		NyanRider.initialize(this);
 	    MountManager.registerEvents(this);
 		MusicClick.initalize(this);
@@ -141,6 +143,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
 		MountUnlocked.setup(this);
+		AmmoTest.setup(this);
 		new ProxiedEconomy();
 		colors.put("red", "255,0,0");
 		colors.put("orange", "255,127,0");
@@ -456,9 +459,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 				}
 
-			} else {
+			} /*else {
 				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Something Failed");
-			}
+			}*/
 		}
 
 		return false;

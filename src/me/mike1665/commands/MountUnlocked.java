@@ -45,10 +45,10 @@ public class MountUnlocked {
 					}
 				}
 
-		} else {
+		}/* else {
 			sender.sendMessage(StringManager.getPrefix(MessageType.ERROR)
 					+ "Something Failed");
-		}
+		}*/
 
 		return false;
 	}
