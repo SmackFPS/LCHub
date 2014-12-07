@@ -42,7 +42,13 @@ public class AmmoTest  implements Listener{
 		}if (cmd.getName().equalsIgnoreCase("giveammo2")) {
 			ItemStack snow = new ItemStack(Material.SNOW_BALL);
         	ItemMeta sno = snow.getItemMeta();
-        	int ammo = plugin.getConfig().getInt(p.getUniqueId() + ".MeowAmmo");
+        	int ammo = 0;
+        	try{
+        		ammo = plugin.getConfig().getInt(p.getUniqueId().toString() + ".MeowAmmo");
+        	}catch(Exception ex){
+        		ammo = 0;
+        		plugin.getConfig().set(p.getUniqueId().toString(), 0);
+        	}
         	sno.setDisplayName(ChatColor.GREEN + "MeowBall" + ammo);
         	snow.setItemMeta(sno);
         	p.getInventory().addItem(snow);
