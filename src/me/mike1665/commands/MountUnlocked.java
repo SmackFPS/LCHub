@@ -95,13 +95,8 @@ public class MountUnlocked {
 							return true;
 						}
 					}
-				}
-
-		} else {
-			sender.sendMessage(StringManager.getPrefix(MessageType.ERROR)
-					+ "Something Failed");
-		}
-
+				} 
+			}
 		return false;
 	}
 }
