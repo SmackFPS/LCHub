@@ -12,6 +12,7 @@ import me.mike1665.ammo.AmmoManager;
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
+import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.click.AdminGadgetsClick;
@@ -26,6 +27,7 @@ import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.commands.AmmoTest;
+import me.mike1665.commands.GiveAmmo;
 import me.mike1665.commands.MountUnlocked;
 import me.mike1665.commands.StatsCommand;
 import me.mike1665.eventhandlers.BatBlaster;
@@ -137,6 +139,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new AmmoManager(), this);
 		instance = this;
 		schedule = this;
+		FunCreeperAmmoManager.initialize(this);
 		MeowAmmoManager.initialize(this);
 		BatBlasterAmmoManager.initialize(this);
 		EnderDogeAmmoManager.initialize(this);
@@ -332,6 +335,8 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		if (MountUnlocked.onCommand(sender, cmd, label, a))
 			return true;
 		if (AmmoTest.onCommand(sender, cmd, label, a))
+			return true;
+		if (GiveAmmo.onCommand(sender, cmd, label, a))
 			return true;
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;

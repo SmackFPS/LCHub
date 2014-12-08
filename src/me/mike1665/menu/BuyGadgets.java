@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
+import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.ammo.PaintballAmmoManager;
@@ -60,7 +61,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a500 Coins",
 				"",
-				"§rYour ammo: " + MeowAmmoManager.balaceMeowAmmo(p)
+				"§rYour ammo: §b" + MeowAmmoManager.balaceMeowAmmo(p)
 				}));
 		
 		buygadmenu.setItem(20, ItemTools.setName(new ItemStack(Material.ENDER_PEARL), "§9Ender Doge", 
@@ -72,7 +73,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a500 Coins",
 				"",
-				"§rYour ammo: " + EnderDogeAmmoManager.balaceEnderDogeAmmo(p)
+				"§rYour ammo: §b" + EnderDogeAmmoManager.balaceEnderDogeAmmo(p)
 				}));
 		buygadmenu.setItem(21, ItemTools.setName(new ItemStack(Material.FIREWORK), "§5Fireworks", 
 				new String[] { 
@@ -83,7 +84,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a800 Coins",
 				"",
-				"§rYour ammo: " + FireWorksAmmoManager.balaceFireWorkAmmo(p)
+				"§rYour ammo: §b" + FireWorksAmmoManager.balaceFireWorkAmmo(p)
 				}));
 		buygadmenu.setItem(22, ItemTools.setName(new ItemStack(Material.EGG), "§aFun Creepers", 
 				new String[] { 
@@ -92,9 +93,9 @@ public class BuyGadgets implements Listener{
 				"§rsome creepers?" ,
 				"",
 				"§aClick to purchase",
-				"§r1 for §a100 Coins",
+				"§r10 for §a300 Coins",
 				"",
-				"§rYour ammo: " + "§cNo ammo needed."
+				"§rYour ammo: §b" + FunCreeperAmmoManager.balaceCreeperAmmo(p)
 				}));
 		buygadmenu.setItem(23, ItemTools.setName(new ItemStack(Material.IRON_BARDING), "§5Bat Blaster", 
 				new String[] { 
@@ -105,7 +106,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a800 Coins",
 				"",
-				"§rYour ammo: " + BatBlasterAmmoManager.balaceBatAmmo(p)
+				"§rYour ammo: §b" + BatBlasterAmmoManager.balaceBatAmmo(p)
 				}));
 		buygadmenu.setItem(24, ItemTools.setName(new ItemStack(Material.DIAMOND_BARDING), "§dPaintball Gun", 
 				new String[] { 
@@ -117,7 +118,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a800 Coins",
 				"",
-				"§rYour ammo: " + PaintballAmmoManager.balacePBAmmo(p)
+				"§rYour ammo: §b" + PaintballAmmoManager.balacePBAmmo(p)
 				}));
 		buygadmenu.setItem(25, ItemTools.setName(new ItemStack(Material.STICK), "§bKitty Cannon", 
 				new String[] { 
@@ -128,7 +129,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r50 for §a500 Coins",
 				"",
-				"§rYour ammo: " + KittyCannonAmmoManager.balaceCatAmmo(p)
+				"§rYour ammo: §b" + KittyCannonAmmoManager.balaceCatAmmo(p)
 				}));
 		buygadmenu.setItem(28, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§2Coin Bomb", 
 				new String[] { 
@@ -139,7 +140,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r1 for §a300 Coins",
 				"",
-				"§rYour ammo: " + "Not Needed."
+				"§rYour ammo: §b" + "Not Needed."
 				}));
 		buygadmenu.setItem(29, ItemTools.setName(new ItemStack(Material.NETHER_STAR), "§dToken Bomb", 
 				new String[] { 
@@ -150,7 +151,7 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r1 for §d200 Tokens",
 				"",
-				"§rYour ammo: " + "Not Needed."
+				"§rYour ammo: §b" + "Not Needed."
 				}));
 		buygadmenu.setItem(49, ItemTools.setName(new ItemStack(Material.CHEST), "§d§lTeasure chest", 
 				new String[] { 
@@ -161,7 +162,14 @@ public class BuyGadgets implements Listener{
 				"§aClick to purchase",
 				"§r1 for §d100 Tokens",
 				"",
-				"§rYour chests: " + "COMING SOON!"
+				"§rYour chests: §b" + "COMING SOON!"
+				}));
+		buygadmenu.setItem(8, ItemTools.setName(new ItemStack(Material.FIREBALL), "§4§lRemove Current Gadget", 
+				new String[] { 
+				"",
+				"§rRemove your current gadget!", 
+				"§rDont worry! Your ammo is saved!" ,
+				""
 				}));
 		return buygadmenu;
 

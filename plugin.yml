@@ -25,7 +25,6 @@ commands:
     friend:
     setmountspawn:
     unlockmount:
-    giveammo:
-    giveammo2:
     ammotest:
     gadmenu:
+    giveammo:

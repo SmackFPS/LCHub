@@ -14,7 +14,7 @@ public class GagdetManager {
 	    pm.registerEvents(new FireWorks(), plugin);
 	    pm.registerEvents(new KittyCannon(), plugin);
 	    pm.registerEvents(new MeowBall(), plugin);
-	   // pm.registerEvents(new PaintBall(), plugin);
+	    pm.registerEvents(new FunCreepers(), plugin);
 	  }
 
 }

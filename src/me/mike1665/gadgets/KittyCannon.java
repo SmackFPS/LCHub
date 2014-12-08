@@ -1,12 +1,15 @@
 package me.mike1665.gadgets;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.FireWorksAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -30,9 +33,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class KittyCannon implements Listener{
 
-	  public static Main plugin;
 	  private final Random random = new Random();
-	  private HashMap<Player, Double> cooldown= new HashMap<Player, Double>();
+		private ArrayList<UUID> _coolDown = new ArrayList<UUID>();
 	  HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<Player, BukkitRunnable>();
 
   
@@ -46,26 +48,20 @@ public class KittyCannon implements Listener{
 	    if (p.getItemInHand().getType() != Material.STICK) {
 	        return;
 	    }
-		if (this.cooldown.containsKey(p)) {
+		if (this._coolDown.contains(p.getUniqueId())) {
 			return;
 		}
 	  if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 		  if ((disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.GOLD + "Kitty Cannon " + ChatColor.DARK_RED + KittyCannonAmmoManager.balaceCatAmmo(p)))){
-			    if (this.cooldown.containsKey(p)) {
-				      return;
-				    }
-			  this.cooldown.put(p, Double.valueOf(2.1D));
-			  this._cdRunnable.put(p, new BukkitRunnable() {
-				      public void run() {
-				        KittyCannon.this.cooldown.put(p, Double.valueOf(((Double)KittyCannon.this.cooldown.get(p)).doubleValue() - 0.1D));
-				        if (((Double)KittyCannon.this.cooldown.get(p)).doubleValue() < 0.01D) {
-				          KittyCannon.this.cooldown.remove(p);
-				          KittyCannon.this._cdRunnable.remove(p);
-				          cancel();
-				        }
-				      }
-				    });
-				    ((BukkitRunnable)this._cdRunnable.get(p)).runTaskTimer(plugin, 2L, 2L);
+			  this._coolDown.add(p.getUniqueId());
+				Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
+			
+					@Override
+					public void run() {
+						KittyCannon.this._coolDown.remove(p.getUniqueId());
+				
+					}
+				}, 8L);
 				    
 				KittyCannonAmmoManager.takeCatAmmo(p, 1);
 				if (KittyCannonAmmoManager.balaceCatAmmo(p) < 1){
@@ -109,7 +105,7 @@ public class KittyCannon implements Listener{
 						count --;
 						if (count == 0) cancel();
 					}
-				}.runTaskTimer(plugin, 12, 1);
+				}.runTaskTimer(Main.schedule, 12, 1);
 		  }
 	  }
 	}

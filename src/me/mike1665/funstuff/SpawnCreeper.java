@@ -137,7 +137,6 @@ public class SpawnCreeper implements Listener {
 							creeper.setCustomNameVisible(true);
 							num = 1;
 						} else if (!creeper.isValid()) {
-							
 						}
 					}
 				}, 0, 1 * 2);

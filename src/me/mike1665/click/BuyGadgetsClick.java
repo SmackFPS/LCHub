@@ -3,6 +3,7 @@ package me.mike1665.click;
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
+import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.coinapi.ApiEvent;
@@ -110,10 +111,24 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aFun Creepers")) {
-				if(LcTokensAPI.hasEnough(p, 50)) {
+				if(LcTokensAPI.hasEnough(p, 50) && !(FunCreeperAmmoManager.balaceCreeperAmmo(p) > 1)) {
 					LcTokensAPI.takePoints(p, 50);
+					FunCreeperAmmoManager.giveCreeperAmmo(p, 10);
+					ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
+		    		ItemMeta sno = snow.getItemMeta();
+		    		sno.setDisplayName(ChatColor.AQUA + "Fun Creeper " + ChatColor.DARK_RED + FunCreeperAmmoManager.balaceCreeperAmmo(p));
+		    		snow.setItemMeta(sno);
+		    		p.getInventory().setItem(2, snow);
+		    		ApiEvent.updatescore(p);
             		p.closeInventory();
-				}else {
+				}else if(FunCreeperAmmoManager.balaceCreeperAmmo(p) > 1) {
+					ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
+		    		ItemMeta sno = snow.getItemMeta();
+		    		sno.setDisplayName(ChatColor.AQUA + "Fun Creeper " + ChatColor.DARK_RED + FunCreeperAmmoManager.balaceCreeperAmmo(p));
+		    		snow.setItemMeta(sno);
+		    		p.getInventory().setItem(2, snow);
+		    		p.closeInventory();
+				} else {
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
 			} 
@@ -135,6 +150,8 @@ public class BuyGadgetsClick implements Listener{
 		    		snow.setItemMeta(sno);
 		    		p.getInventory().setItem(2, snow);
                 	p.closeInventory();
+				} else {
+					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dPaintball Gun")) {
@@ -209,6 +226,11 @@ public class BuyGadgetsClick implements Listener{
 				p.playSound(p.getLocation(), Sound.DOOR_CLOSE, 10, 10);
 				return;
 		}
+			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§4§lRemove Current Gadget")) {
+				p.getInventory().setItem(2, null);
+				p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10, 10);
+				return;
+			}
 		}
 		}catch(Exception e){}
 	}

@@ -43,21 +43,65 @@ public class MountUnlocked {
 							return true;
 						}
 					}
+				if (a[0].equalsIgnoreCase("darkmount")) {
+					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);
+					UUID uuid = Bukkit.getOfflinePlayer(a[1]).getUniqueId();
+					plugin.getConfig().set(uuid + ".DarkMount", true);
+					plugin.saveConfig();
+					if (recieved.isOnline()) {
+						Player onlineplyr = recieved.getPlayer();
+						onlineplyr.sendMessage(StringManager.getPrefix(MessageType.SUCCESS)
+								+ "Enjoy your new Dark Mount!");
+						} else if (!recieved.isOnline()) {
+							return true;
+						}
+					}
+				if (a[0].equalsIgnoreCase("ghostmount")) {
+					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);
+					UUID uuid = Bukkit.getOfflinePlayer(a[1]).getUniqueId();
+					plugin.getConfig().set(uuid + ".GhostMount", true);
+					plugin.saveConfig();
+					if (recieved.isOnline()) {
+						Player onlineplyr = recieved.getPlayer();
+						onlineplyr.sendMessage(StringManager.getPrefix(MessageType.SUCCESS)
+								+ "Enjoy your new Ghost Mount!");
+						} else if (!recieved.isOnline()) {
+							return true;
+						}
+					}
+				if (a[0].equalsIgnoreCase("nyanmount")) {
+					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);
+					UUID uuid = Bukkit.getOfflinePlayer(a[1]).getUniqueId();
+					plugin.getConfig().set(uuid + ".NyanMount", true);
+					plugin.saveConfig();
+					if (recieved.isOnline()) {
+						Player onlineplyr = recieved.getPlayer();
+						onlineplyr.sendMessage(StringManager.getPrefix(MessageType.SUCCESS)
+								+ "Enjoy your new Nyan Mount!");
+						} else if (!recieved.isOnline()) {
+							return true;
+						}
+					}
+				if (a[0].equalsIgnoreCase("poseidonmount")) {
+					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);
+					UUID uuid = Bukkit.getOfflinePlayer(a[1]).getUniqueId();
+					plugin.getConfig().set(uuid + ".PoseidonMount", true);
+					plugin.saveConfig();
+					if (recieved.isOnline()) {
+						Player onlineplyr = recieved.getPlayer();
+						onlineplyr.sendMessage(StringManager.getPrefix(MessageType.SUCCESS)
+								+ "Enjoy your new Poseidon Mount!");
+						} else if (!recieved.isOnline()) {
+							return true;
+						}
+					}
 				}
 
-		}/* else {
+		} else {
 			sender.sendMessage(StringManager.getPrefix(MessageType.ERROR)
 					+ "Something Failed");
-		}*/
+		}
 
 		return false;
 	}
-
-	/*
-	 * if (a[0] == "angelmount") { UUID uuid =
-	 * Bukkit.getPlayer(a[1]).getUniqueId(); plugin.getConfig().set(uuid +
-	 * ".AngelMount", true); plugin.saveConfig();
-	 * player.sendMessage("Mount unlocked!");
-	 */
-
 }

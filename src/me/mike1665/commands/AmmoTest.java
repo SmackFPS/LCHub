@@ -46,11 +46,11 @@ public class AmmoTest implements Listener{
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
 		if(!(sender instanceof Player)) return false;
 		Player p = (Player) sender;
-		if (cmd.getName().equalsIgnoreCase("giveammo")) {
+		if (cmd.getName().equalsIgnoreCase("321")) {
 			MeowAmmoManager.giveMeowAmmo(p, 20);
 			p.sendMessage("This " + MeowAmmoManager.balaceMeowAmmo(p));
 		}
-		if (cmd.getName().equalsIgnoreCase("giveammo2")) {
+		if (cmd.getName().equalsIgnoreCase("321")) {
 			ItemStack snow = new ItemStack(Material.BLAZE_ROD, 1);
         	ItemMeta sno = snow.getItemMeta();
         	sno.setDisplayName(ChatColor.GREEN + "MeowBall " + ChatColor.DARK_RED + MeowAmmoManager.balaceMeowAmmo(p));

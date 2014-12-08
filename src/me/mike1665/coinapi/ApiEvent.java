@@ -95,7 +95,14 @@ public class ApiEvent implements Listener {
 	
 	@EventHandler
 	public void join(PlayerJoinEvent e) {
-		updatescore(e.getPlayer());
+		Player p = e.getPlayer();
+		if (p.hasPlayedBefore()) {
+			scoreboard(p);
+		} else if (!p.hasPlayedBefore()) {
+			LcCoinsAPI.givePoints(p, 500);
+			LcTokensAPI.givePoints(p, 100);
+			scoreboard(p);
+		}
 	}
 	
 	/*@SuppressWarnings("deprecation")

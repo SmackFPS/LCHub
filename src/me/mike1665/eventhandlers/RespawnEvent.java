@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.ItemStack;
@@ -74,6 +75,12 @@ public class RespawnEvent implements Listener{
 		fw.setFireworkMeta(m); 
 		
 		}
+	}
+	
+	@EventHandler
+	public void removegadget(PlayerQuitEvent event) {
+		Player p = event.getPlayer();
+		p.getInventory().setItem(2, null);
 	}
 	
 	
