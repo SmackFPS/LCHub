@@ -7,6 +7,10 @@ import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.mount.MountManager;
 import me.mike1665.utils.UtilityBlock;
+import net.minecraft.server.v1_8_R1.AttributeInstance;
+import net.minecraft.server.v1_8_R1.EntityInsentient;
+import net.minecraft.server.v1_8_R1.GenericAttributes;
+import net.minecraft.server.v1_8_R1.PathEntity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,6 +18,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
@@ -22,6 +27,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
@@ -34,7 +40,7 @@ public class DarkRider implements Listener {
 		DarkRider.plugin = plugin;
 	}
 	
-	public static void playAngelRider(Player p) {
+	public static void playDarkRider(Player p) {
 		UUID pn = p.getPlayer().getUniqueId();
 		boolean check = plugin.getConfig().getBoolean(pn + ".DarkMount");
 		if (!check && LcCoinsAPI.hasEnough(p, 10000)) {
@@ -49,7 +55,7 @@ public class DarkRider implements Listener {
 					+ "Note: Click on your mount again to spawn your new mount! ");
 
 		} else if (check) {
-			if (Bukkit.getWorld("world2") != null) {
+			if (Bukkit.getWorld("world") != null) {
 				World w = p.getWorld();
 				double x = plugin.getConfig().getDouble("mount.x");
 				double y = plugin.getConfig().getDouble("mount.y");
@@ -68,6 +74,9 @@ public class DarkRider implements Listener {
 
 				entityHorse.getInventory().setArmor(
 						new ItemStack(Material.IRON_BARDING));
+				horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD
+						+ p.getPlayer().getName() + ChatColor.RESET
+						+ "'s Horse");
 				horse.setCustomNameVisible(true);
 				horse.setOwner(p);
 				horse.setVariant(Horse.Variant.HORSE);
@@ -78,7 +87,15 @@ public class DarkRider implements Listener {
 				horse.setMetadata("darkrider", new FixedMetadataValue(
 				Main.schedule, "darkrider"));
 				MountManager.pet.put(p.getUniqueId(), horse);
+				PetFollow(p.getPlayer(), horse, 0.3);
+
+			} else {
+				p.sendMessage(StringManager.getPrefix(MessageType.ERROR)
+						+ ChatColor.DARK_RED
+						+ "You cannot spawn mounts outside of the Hub world! ");
 			}
+		} else {
+		   	p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.RED + "Insufficient Funds!");
 		}
 	}
 
@@ -121,4 +138,24 @@ public class DarkRider implements Listener {
 			}
 		}
 	}
+	
+	public static void PetFollow(final Player player , final Entity pet , final double speed){
+		new BukkitRunnable(){
+		public void run(){
+		if ((!pet.isValid() || (!player.isOnline()))){
+		this.cancel();}
+		net.minecraft.server.v1_8_R1.Entity pett = ((CraftEntity) pet).getHandle();
+		((EntityInsentient) pett).getNavigation().a(2);
+		Object petf = ((CraftEntity) pet).getHandle();
+		Location targetLocation = player.getLocation();
+		PathEntity path;
+		path = ((EntityInsentient) petf).getNavigation().a(targetLocation.getX() + 1, targetLocation.getY(), targetLocation.getZ() + 1);
+		if (path != null) {
+		((EntityInsentient) petf).getNavigation().a(path, 1.0D);
+		((EntityInsentient) petf).getNavigation().a(2.0D);}
+		int distance = (int) Bukkit.getPlayer(player.getName()).getLocation().distance(pet.getLocation());
+		if (distance > 10 && !pet.isDead() && player.isOnGround()) {
+		pet.teleport(player.getLocation());}
+		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
+		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
 }

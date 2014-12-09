@@ -65,7 +65,11 @@ import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.PlayerGadjets;
 import me.mike1665.menu.VipGadjets;
 import me.mike1665.mount.MountManager;
+import me.mike1665.mount.mounts.AngelRider;
+import me.mike1665.mount.mounts.DarkRider;
+import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
+import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 
 import org.bukkit.Bukkit;
@@ -137,6 +141,10 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		pm.registerEvents(new UpdateScore(), this);
 		pm.registerEvents(new AmmoTest(), this);
 		pm.registerEvents(new AmmoManager(), this);
+	    pm.registerEvents(new GhostRider(), this);
+	    pm.registerEvents(new DarkRider(), this);
+	    pm.registerEvents(new AngelRider(), this);
+	    pm.registerEvents(new PoseidonRider(), this);
 		instance = this;
 		schedule = this;
 		FunCreeperAmmoManager.initialize(this);
@@ -145,7 +153,11 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		EnderDogeAmmoManager.initialize(this);
 		FireWorksAmmoManager.initialize(this);
 		KittyCannonAmmoManager.initialize(this);
+		DarkRider.initialize(this);
+		GhostRider.initialize(this);
+		PoseidonRider.initialize(this);
 		NyanRider.initialize(this);
+		AngelRider.initialize(this);
 	    MountManager.registerEvents(this);
 		MusicClick.initalize(this);
 		LcTokensAPI.initialize(this);

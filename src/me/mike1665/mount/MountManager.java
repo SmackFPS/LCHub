@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import me.mike1665.Main.Main;
+import me.mike1665.mount.mounts.AngelRider;
+import me.mike1665.mount.mounts.DarkRider;
+import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
+import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.utils.UpdateEvent;
 import me.mike1665.utils.UpdateType;
@@ -192,6 +196,10 @@ public class MountManager
   {
     PluginManager pm = plugin.getServer().getPluginManager();
     pm.registerEvents(new NyanRider(), plugin);
+    pm.registerEvents(new GhostRider(), plugin);
+    pm.registerEvents(new DarkRider(), plugin);
+    pm.registerEvents(new AngelRider(), plugin);
+    pm.registerEvents(new PoseidonRider(), plugin);
     pm.registerEvents(new MountManager(), plugin);
   }
 }
