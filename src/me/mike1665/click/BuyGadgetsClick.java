@@ -43,8 +43,8 @@ public class BuyGadgetsClick implements Listener{
 			}
 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Meow Balls")) {
-				if(LcCoinsAPI.hasEnough(p, 60) && !(MeowAmmoManager.balaceMeowAmmo(p) > 1)) {
-					LcCoinsAPI.takePoints(p, 60);
+				if(LcCoinsAPI.hasEnough(p, 500) && !(MeowAmmoManager.balaceMeowAmmo(p) > 1)) {
+					LcCoinsAPI.takePoints(p, 500);
 					MeowAmmoManager.giveMeowAmmo(p, 50);
 					ItemStack snow = new ItemStack(Material.BLAZE_ROD, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -65,8 +65,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§9Ender Doge")) {
-				if(LcCoinsAPI.hasEnough(p, 50) && !(EnderDogeAmmoManager.balaceEnderDogeAmmo(p) > 1)) {
-					LcCoinsAPI.takePoints(p, 50);
+				if(LcCoinsAPI.hasEnough(p, 500) && !(EnderDogeAmmoManager.balaceEnderDogeAmmo(p) > 1)) {
+					LcCoinsAPI.takePoints(p, 500);
 					EnderDogeAmmoManager.giveEnderDogeAmmo(p, 50);
 					ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -89,8 +89,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 		}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Fireworks")) {
-				if(LcCoinsAPI.hasEnough(p, 100) && !(FireWorksAmmoManager.balaceFireWorkAmmo(p) > 1)) {
-					LcCoinsAPI.takePoints(p, 100);
+				if(LcCoinsAPI.hasEnough(p, 800) && !(FireWorksAmmoManager.balaceFireWorkAmmo(p) > 1)) {
+					LcCoinsAPI.takePoints(p, 800);
 					FireWorksAmmoManager.giveFireWorkAmmo(p, 50);
 					ItemStack snow = new ItemStack(Material.FIREWORK, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -111,8 +111,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aFun Creepers")) {
-				if(LcTokensAPI.hasEnough(p, 50) && !(FunCreeperAmmoManager.balaceCreeperAmmo(p) > 1)) {
-					LcTokensAPI.takePoints(p, 50);
+				if(LcTokensAPI.hasEnough(p, 300) && !(FunCreeperAmmoManager.balaceCreeperAmmo(p) > 1)) {
+					LcTokensAPI.takePoints(p, 300);
 					FunCreeperAmmoManager.giveCreeperAmmo(p, 10);
 					ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -133,8 +133,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§5Bat Blaster")) {
-				if(LcCoinsAPI.hasEnough(p, 30) && !(BatBlasterAmmoManager.balaceBatAmmo(p) > 1)) {
-					LcCoinsAPI.takePoints(p, 30);
+				if(LcCoinsAPI.hasEnough(p, 800) && !(BatBlasterAmmoManager.balaceBatAmmo(p) > 1)) {
+					LcCoinsAPI.takePoints(p, 800);
 					BatBlasterAmmoManager.giveBatAmmo(p, 50);
 					ItemStack snow = new ItemStack(Material.IRON_BARDING, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -155,17 +155,17 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dPaintball Gun")) {
-			if(LcTokensAPI.hasEnough(p, 60)) {
-				LcTokensAPI.takePoints(p, 60);
+			//if(LcTokensAPI.hasEnough(p, 60)) {
+				//LcTokensAPI.takePoints(p, 60);
 				p.sendMessage("In dev.");
         		p.closeInventory();
-			}else {
-				p.sendMessage(ChatColor.RED + "You dont have enough money!");
-			}
+			//}else {
+				//p.sendMessage(ChatColor.RED + "You dont have enough money!");
+			//}
 		} 
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§bKitty Cannon")) {
-				if(LcTokensAPI.hasEnough(p, 60) && !(KittyCannonAmmoManager.balaceCatAmmo(p) > 1)) {
-					LcTokensAPI.takePoints(p, 60);
+				if(LcTokensAPI.hasEnough(p, 500) && !(KittyCannonAmmoManager.balaceCatAmmo(p) > 1)) {
+					LcTokensAPI.takePoints(p, 500);
 					KittyCannonAmmoManager.giveCatAmmo(p, 50);
 					ItemStack snow = new ItemStack(Material.STICK, 1);
 		    		ItemMeta sno = snow.getItemMeta();
@@ -184,8 +184,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
-				if(LcCoinsAPI.hasEnough(p, 5000)) {
-					LcCoinsAPI.takePoints(p, 5000);
+				if(LcCoinsAPI.hasEnough(p, 300)) {
+					LcCoinsAPI.takePoints(p, 300);
 					ItemStack ender = new ItemStack(Material.DOUBLE_PLANT, 1);
 					ItemMeta e = ender.getItemMeta();
 					e.setDisplayName(ChatColor.DARK_GREEN + "Coin Bomb");
@@ -197,8 +197,8 @@ public class BuyGadgetsClick implements Listener{
 				}
 			}
 			if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dToken Bomb")) {
-				if(LcTokensAPI.hasEnough(p, 100)) {
-					LcTokensAPI.takePoints(p, 100);
+				if(LcTokensAPI.hasEnough(p, 200)) {
+					LcTokensAPI.takePoints(p, 200);
 					ItemStack ender = new ItemStack(Material.NETHER_STAR, 1);
 					ItemMeta e = ender.getItemMeta();
 					e.setDisplayName(ChatColor.LIGHT_PURPLE + "Token Bomb");
@@ -209,11 +209,11 @@ public class BuyGadgetsClick implements Listener{
 					p.sendMessage(ChatColor.RED + "You dont have enough money!");
 				}
 		}if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTeasure chest")) {
-			if(LcTokensAPI.hasEnough(p, 80)) {
-				LcTokensAPI.takePoints(p, 80);
-				ItemStack ender = new ItemStack(Material.DIAMOND_BLOCK, 1);
+			if(LcTokensAPI.hasEnough(p, 100)) {
+				LcTokensAPI.takePoints(p, 100);
+				ItemStack ender = new ItemStack(Material.TRAPPED_CHEST, 1);
 				ItemMeta e = ender.getItemMeta();
-				e.setDisplayName(ChatColor.DARK_BLUE + "Disco Ball");
+				e.setDisplayName(ChatColor.LIGHT_PURPLE +  "" + ChatColor.BOLD + "Treasure Chest");
         		ender.setItemMeta(e);
         		p.getInventory().addItem(ender);
         		p.closeInventory();
