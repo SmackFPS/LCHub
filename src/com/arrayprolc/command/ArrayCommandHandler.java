@@ -85,7 +85,7 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.DRIP_LAVA, 1, 1, 0));
+			new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.VILLAGER_HAPPY, 1, 1, 0));
 		}
 		return false;
 	}

@@ -23,7 +23,7 @@ public class ParametricFlower
 	{
 		new BukkitRunnable()
 		{
-			double _c = tor / 360;
+			double _c = tor / 90;
 			double d = 0D;
 			double radius = 1;
 
