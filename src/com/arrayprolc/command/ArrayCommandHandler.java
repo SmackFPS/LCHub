@@ -1,27 +1,23 @@
 package com.arrayprolc.command;
 
 import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.Set;
 
+import me.jrl1004.lightcraft.gadgets.parametrics.ParametricFlower;
 import me.mike1665.Main.Main;
+import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.particles18.ParticleLib18.ParticleType;
 import net.minecraft.server.v1_8_R1.EntityTypes;
-import net.minecraft.server.v1_8_R1.NBTBase;
-import net.minecraft.server.v1_8_R1.NBTTagCompound;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.speedways.CustomEntityType;
-import com.arrayprolc.speedways.SeekerSkull;
 
 public class ArrayCommandHandler
 {
@@ -89,24 +85,7 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			registerEntities();
-			Player _p = (Player) sender;
-			CraftPlayer _c = (CraftPlayer) _p;
-			net.minecraft.server.v1_8_R1.World world = _c.getHandle().getWorld();
-			SeekerSkull skull = new SeekerSkull(world, _c.getHandle(), 1, 1, 1);
-			world.addEntity(skull, SpawnReason.CUSTOM);
-			skull.teleportTo(_c.getLocation().add(0, 5, 0), false);
-			NBTTagCompound s = skull.getNBTTag();
-			if (s == null)
-			{
-				Bukkit.broadcastMessage("Null skull");
-				s = new NBTTagCompound();
-			}
-			Bukkit.broadcastMessage(s.isEmpty() + " | " + s);
-			Set<NBTBase> b = s.c();
-			Iterator<NBTBase> iter = b.iterator();
-			while (iter.hasNext())
-				Bukkit.broadcastMessage(iter.next() + "");
+			new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.DRIP_LAVA, 1, 1, 0));
 		}
 		return false;
 	}
@@ -135,7 +114,7 @@ public class ArrayCommandHandler
 			} catch (Exception e)
 			{
 				e.printStackTrace();
-				Bukkit.broadcastMessage(e.getMessage());
+				Bukkit.broadcastMessage(e.getCause() + "");
 			}
 		}
 	}
