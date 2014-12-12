@@ -5,6 +5,7 @@ import me.mike1665.Main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +37,7 @@ public class ClickInventory implements Listener {
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable(){
 			public void run(){
-				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players." }), 22+4); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players.", "§a13§7+" }), 22+4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_BLOCK), "§a§lCreative Buildoff", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("cb")[1] + " servers." }), 5); }catch(Exception e){}
@@ -109,6 +110,10 @@ public class ClickInventory implements Listener {
 		switch(e.getCurrentItem().getType()){
 		default: return;
 		case DIAMOND:{
+			if(TabHeaderSetup.age.get(e.getWhoClicked().getUniqueId()) < 13){
+				((Player) e.getWhoClicked()).sendMessage("§c§lYou are not old enough to join this server!");
+				return;
+			}
 			sendToFirstOpenServer(p, "creative", 20, "Build Team Server");
 			return;
 		}

@@ -19,12 +19,10 @@ public class PlayerChat implements Listener {
 	
 	@EventHandler
 	public void onPLayerChat(AsyncPlayerChatEvent e){
-		String format = RankManager.getFormat(RankManager.getRank(e.getPlayer()));
-		format = format.replace("[name]", e.getPlayer().getName());
-		format = format.replace("[message]", e.getMessage());
-		String format2 = RankManager.getColor(RankManager.getRank(e.getPlayer()));
-		e.getPlayer().setPlayerListName(format2 + e.getPlayer().getName());
-		e.setFormat(format);
+		if(e.getMessage().toLowerCase().contains("#CheckTPS")){
+			e.setCancelled(true);
+			e.getPlayer().sendMessage(TPSMeter.getServerTPS());
+		}
 		
 	}
 	
