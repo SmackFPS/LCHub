@@ -38,7 +38,7 @@ public class TabHeaderSetup implements Listener {
 			public void run(){
 				for(Player p : Bukkit.getOnlinePlayers()){
 					if(!age.containsKey(p.getUniqueId())){
-						if(!p.getInventory().getName().equalsIgnoreCase(m.getName())){
+						if(!p.getOpenInventory().getTitle().equals(m.getName())){
 							m.displayMenu(p);
 						}
 					}else{
