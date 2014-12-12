@@ -100,8 +100,8 @@ public class KittyCannon implements Listener{
 						builder.with(Type.values()[random.nextInt(Type.values().length)]);
 						builder.withFade(Color.fromRGB(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 						m.addEffect(builder.build());
-						m.setPower(random.nextInt(3)+1);
 						fw.setFireworkMeta(m);
+						fw.detonate();
 						count --;
 						if (count == 0) cancel();
 					}
