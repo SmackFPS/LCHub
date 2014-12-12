@@ -35,6 +35,7 @@ public class ArrayEventSetup {
 		pm.registerEvents(new Speedways(plugin), plugin);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
+		TPSMeter.setupTPSMeter(instance);
 		
 	}
 }
