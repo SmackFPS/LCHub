@@ -42,7 +42,7 @@ public class ClickInventory implements Listener {
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_BLOCK), "§a§lCreative Buildoff", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("cb")[1] + " servers." }), 5); }catch(Exception e){}
 				//try{ selector.addItem(ItemTools.setName(new ItemStack(Material.FIREWORK), "§b§lParty", getFlashyColour() + "§oClick to configure!"), 22-4); }catch(Exception e){}
-				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.NAME_TAG), "§b§lCustom Server", getFlashyColour() + "§oClick to enter server..."), 22-4); }catch(Exception e){}
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.POTION), "§§a§lLightCraft: Adventure.", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("cb")[0] + " players on " + getTotalPlayers("lca")[1] + " servers." }), 6); }catch(Exception e){}
 				ticks++;
 				if(ticks % 5 == 0) flash = !flash;
 				if(ticks % 5 == 0) ticks = 0;
@@ -115,6 +115,14 @@ public class ClickInventory implements Listener {
 				return;
 			}
 			sendToFirstOpenServer(p, "creative", 20, "Build Team Server");
+			return;
+		}
+		case POTION:{
+			if(TabHeaderSetup.age.get(e.getWhoClicked().getUniqueId()) < 13){
+				((Player) e.getWhoClicked()).sendMessage("§c§lYou are not old enough to join this server!");
+				return;
+			}
+			sendToFirstOpenServer(p, "lca", 300, "Adventure");
 			return;
 		}
 		case SAND:{
