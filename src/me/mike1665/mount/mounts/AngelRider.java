@@ -31,73 +31,84 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringList;
 import com.arrayprolc.strings.StringManager;
 
-public class AngelRider implements Listener {
-
-	private static Main plugin;
-
-	public static void initialize(Main plugin) {
-		AngelRider.plugin = plugin;
-	}
-
-	public static void playAngelRider(final Player p) {
-		UUID pn = p.getPlayer().getUniqueId();
-		boolean check = plugin.getConfig().getBoolean(pn + ".AngelMount");
-		if (!check && LcCoinsAPI.hasEnough(p, 10000)) {
-			LcCoinsAPI.takePoints(p, 10000);
-			plugin.getConfig().set(pn + ".AngelMount", true);
-			plugin.saveFile();
-			p.sendMessage(StringManager.getPrefix(MessageType.INFO)
-					+ ChatColor.GREEN + "" + ChatColor.BOLD
-					+ "Mount Purchased!");
-			p.sendMessage(StringManager.getPrefix(MessageType.INFO)
-					+ ChatColor.AQUA
-					+ "Note: Click on your mount again to spawn your new mount! ");
-
-		} else if (check) {
-			if (Bukkit.getWorld("world") != null) {
-				World w = p.getWorld();
-				double x = plugin.getConfig().getDouble("mount.x");
-				double y = plugin.getConfig().getDouble("mount.y");
-				double z = plugin.getConfig().getDouble("mount.z");
-				Location mountspawnloc = new Location(w, x, y, z);
-
-				MountManager.removeCurrentPet(p, false);
-
-				final Horse horse = (Horse) p.getWorld().spawn(mountspawnloc,
-						Horse.class);
-
-				Entity entity = horse;
-				Horse entityHorse = (Horse) entity;
-				entityHorse.getInventory().setSaddle(
-						new ItemStack(Material.SADDLE));
-				
-				horse.setCustomName(ChatColor.AQUA + "" + ChatColor.BOLD
-						+ p.getPlayer().getName() + ChatColor.RESET
-						+ "'s Horse");
-				horse.setCustomNameVisible(true);
-				horse.setOwner(p);
-				horse.setVariant(Horse.Variant.HORSE);
-				horse.setColor(Horse.Color.WHITE);
-				horse.setAdult();
-				horse.setPassenger(p);
-
-				horse.setMetadata("angelrider", new FixedMetadataValue(
-						Main.schedule, "angelrider"));
-				MountManager.pet.put(p.getUniqueId(), horse);
-				PetFollow(p.getPlayer(), horse, 0.3);
-			}
-			else {
-				p.sendMessage(StringManager.getPrefix(MessageType.ERROR)
-						+ ChatColor.DARK_RED
-						+ "You cannot spawn mounts outside of the Hub world! ");
-			}
-		} else {
-		   	p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> " + ChatColor.RED + "Insufficient Funds!");
-		}
-	}
-
+public class AngelRider
+  implements Listener
+{
+  private static Main plugin;
+  
+  public static void initialize(Main plugin)
+  {
+    plugin = plugin;
+  }
+  
+  public static boolean playAngelRider(Player p)
+  {
+    UUID pn = p.getPlayer().getUniqueId();
+    boolean check = plugin.getConfig().getBoolean(pn + ".AngelMount");
+    if ((!check) && (LcCoinsAPI.hasEnough(p, 10000)))
+    {
+      LcCoinsAPI.takePoints(p, 10000);
+      plugin.getConfig().set(pn + ".AngelMount", Boolean.valueOf(true));
+      plugin.saveFile();
+      p.sendMessage(StringManager.getPrefix(MessageType.INFO) + 
+        ChatColor.GREEN + ChatColor.BOLD + 
+        "Mount Purchased!");
+      p.sendMessage(StringManager.getPrefix(MessageType.INFO) + 
+        ChatColor.AQUA + 
+        "Note: Click on your mount again to spawn your new mount! ");
+      return true;
+    }
+    if (check)
+    {
+      if (Bukkit.getWorld(StringList.mainWorld) != null)
+      {
+        World w = p.getWorld();
+        double x = plugin.getConfig().getDouble("mount.x");
+        double y = plugin.getConfig().getDouble("mount.y");
+        double z = plugin.getConfig().getDouble("mount.z");
+        Location mountspawnloc = new Location(w, x, y, z);
+        
+        MountManager.removeCurrentPet(p, false);
+        
+        Horse horse = (Horse)p.getWorld().spawn(mountspawnloc, 
+          Horse.class);
+        
+        org.bukkit.entity.Entity entity = horse;
+        Horse entityHorse = (Horse)entity;
+        entityHorse.getInventory().setSaddle(
+          new ItemStack(Material.SADDLE));
+        
+        horse.setCustomName(ChatColor.AQUA+ "" + ChatColor.BOLD + 
+          p.getPlayer().getName() + ChatColor.RESET + 
+          "'s Horse");
+        horse.setCustomNameVisible(true);
+        horse.setOwner(p);
+        horse.setVariant(Horse.Variant.HORSE);
+        horse.setColor(Horse.Color.WHITE);
+        horse.setAdult();
+        horse.setPassenger(p);
+        
+        horse.setMetadata("angelrider", new FixedMetadataValue(
+          Main.schedule, "angelrider"));
+        MountManager.pet.put(p.getUniqueId(), horse);
+        PetFollow(p.getPlayer(), horse, 0.3D);
+      }
+      else
+      {
+        p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + 
+          ChatColor.DARK_RED + 
+          "You cannot spawn mounts outside of the Hub world! ");
+      }
+    }
+    else {
+      p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.RESET + ChatColor.DARK_GRAY + "> " + ChatColor.RED + "Insufficient Funds!");
+    }
+    return false;
+  }
+  
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
 		if ((event.getFrom().getBlockX() != event.getTo().getBlockX())
@@ -186,3 +197,9 @@ public class AngelRider implements Listener {
 		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
 		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
 }
+
+
+/* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
+ * Qualified Name:     me.mike1665.mount.mounts.AngelRider
+ * JD-Core Version:    0.7.0.1
+ */
