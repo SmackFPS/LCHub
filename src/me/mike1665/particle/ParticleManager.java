@@ -27,6 +27,12 @@ public class ParticleManager
     UtilLocation.locationEverySecond.remove(p);
     CircleParticle.effect2.remove(p);
   }
+  
+  public static void registerEvents(Main plugin)
+  {
+    PluginManager pm = plugin.getServer().getPluginManager();
+    pm.registerEvents(new CircleParticle(), plugin);
+  }
 
 
   public static enum ParticleType

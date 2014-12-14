@@ -43,6 +43,7 @@ public class MountMenu
     boolean dark = plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".DarkMount");
     boolean poseidon = plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".PoseidonMount");
     boolean nyan = plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + ".NyanMount");
+    
     Inventory mountmenu = Bukkit.createInventory(null, 54, "§8[§aP§8] §1Mount Menu");
     
     mountmenu.setItem(
@@ -77,9 +78,3 @@ public class MountMenu
     return mountmenu;
   }
 }
-
-
-/* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.menu.MountMenu
- * JD-Core Version:    0.7.0.1
- */

@@ -32,7 +32,6 @@ public class ArrayEventSetup {
 		TPSMeter.setupTPSMeter(instance);
 		
 		pm.registerEvents(new ParticleMenu(instance), plugin);
-		pm.registerEvents(new CircleParticle(instance), plugin);
 		pm.registerEvents(new ParticleManager(instance), plugin);
 	}
 }

@@ -5,6 +5,7 @@ import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
 
+import me.mike1665.extra.ExtraManager;
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MountMenu;
@@ -52,7 +53,7 @@ public class CosMenuClick
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cMounts"))
       {
         p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10.0F, 10.0F);
-        p.openInventory(MountMenu.getMountShop(p));
+        ExtraManager.Activate(p, me.mike1665.effects.EffectManager.EffectType.Helix);
         return;
       }
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Hub Purchaseables"))

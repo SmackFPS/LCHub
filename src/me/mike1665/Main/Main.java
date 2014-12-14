@@ -153,6 +153,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	    pm.registerEvents(new PoseidonRider(), this);
 		instance = this;
 		schedule = this;
+	    Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Updater(this), 1L, 1L);
 		FunCreeperAmmoManager.initialize(this);
 		MeowAmmoManager.initialize(this);
 		BatBlasterAmmoManager.initialize(this);

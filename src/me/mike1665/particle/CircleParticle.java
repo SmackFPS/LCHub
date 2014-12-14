@@ -6,41 +6,31 @@ import me.mike1665.Main.Main;
 import me.mike1665.effects.EffectManager;
 import me.mike1665.extra.ExtraManager;
 import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.utils.UpdateEvent;
 import me.mike1665.utils.UpdateType;
 import me.mike1665.utils.UtilLocation;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.util.Vector;
 
-public class CircleParticle
-implements Listener
-{
+public class CircleParticle implements Listener {
 	double radialsPerStep = 0.1963495408493621D;
 	float radius = 0.4F;
 	float step = 0.0F;
-	Main plugin;
-	public CircleParticle(Main instance){
-		plugin = instance;
-		setupTick();
-	}
+
 	public static HashMap<Player, ParticleManager.ParticleType> effect2 = new HashMap();
 
-	public static void Activate(Player p, ParticleManager.ParticleType effect)
-	{
-		if (!EffectManager.hasEffect(p))
-		{
+	public static void Activate(Player p, ParticleManager.ParticleType effect) {
+		if (!EffectManager.hasEffect(p)) {
 			EffectManager.effect3.put(p, EffectManager.EffectType.CircleEffect);
 
-			if (!ParticleManager.hasCircleEffect(p))
-			{
+			if (!ParticleManager.hasCircleEffect(p)) {
 				effect2.put(p, effect);
 				UtilLocation.locationEverySecond.put(p, p.getLocation());
-			}
-			else
-			{
+			} else {
 				effect2.remove(p);
 				effect2.put(p, effect);
 				UtilLocation.locationEverySecond.put(p, p.getLocation());
@@ -56,122 +46,159 @@ implements Listener
 		}
 	}
 
-	public void setupTick(){
-		final CircleParticle t = this;
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){ 
-			public void run(){
-				{
-					t.step += 1.0F;
-					
-					for (Player p : effect2.keySet())
-					{
-						if(UtilLocation.locationEverySecond.containsKey(p)){ UtilLocation.locationEverySecond.remove(p);
-						UtilLocation.locationEverySecond.put(p, p.getLocation()); }
-						Bukkit.broadcastMessage(p.getName() + " | " + EffectManager.getEffect(p).toString());
-						if (EffectManager.getEffect(p) == EffectManager.EffectType.CircleEffect)
-						{
-							
-							if (p.isValid())
-							{
+	@EventHandler
+	public void ParticleAura(UpdateEvent event) {
+		if (event.getType() == UpdateType.TICK) {
+			for (Player p : effect2.keySet()) {
+				if (EffectManager.getEffect(p) == EffectManager.EffectType.CircleEffect) {
+					if (p.isValid()) {
+						ParticleManager.ParticleType effect = (ParticleManager.ParticleType) effect2
+								.get(p);
 
-								
-								ParticleManager.ParticleType effect = (ParticleManager.ParticleType)effect2.get(p);
+						Vector v = new Vector(Math.cos(this.radialsPerStep
+								* this.step)
+								* this.radius, 0.0D,
+								Math.sin(this.radialsPerStep * this.step)
+										* this.radius);
+						Location l = (Location) UtilLocation.locationEverySecond
+								.get(p);
+						Location loc = new Location(p.getWorld(), l.getX(),
+								l.getY() + 2.0D, l.getZ());
 
-								Vector v = new Vector(Math.cos(t.radialsPerStep * t.step) * 
-										t.radius, 0.0D, Math.sin(t.radialsPerStep * t.step) * 
-										t.radius);
-								Location l = (Location)UtilLocation.locationEverySecond.get(p);
-								Location loc = new Location(p.getWorld(), l.getX(), 
-										l.getY() + 2.0D, l.getZ());
-							//	p.sendMessage(loc.toString());
-								loc.add(v);
+						loc.add(v);
 
-								if (effect == ParticleManager.ParticleType.Heart) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
-								}
+						loc.add(v);
 
-								if (effect == ParticleManager.ParticleType.Music) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.NOTE, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						if (effect == ParticleManager.ParticleType.Heart) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.HEART,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
+						}
 
-								}
-								if (effect == ParticleManager.ParticleType.Flame) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.FLAME, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						if (effect == ParticleManager.ParticleType.Music) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.NOTE,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Water) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.DRIP_WATER, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Flame) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.FLAME,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Lava) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.DRIP_LAVA, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Water) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.DRIP_WATER,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Spark) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.FIREWORKS_SPARK, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Lava) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.DRIP_LAVA,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Witch) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SPELL_WITCH, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Spark) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.FIREWORKS_SPARK,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Enchantement) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.ENCHANTMENT_TABLE, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Witch) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.SPELL_WITCH,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.AngryVillager) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.VILLAGER_ANGRY, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Enchantement) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.ENCHANTMENT_TABLE,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.MagicCrit) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.CRIT_MAGIC, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.AngryVillager) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.VILLAGER_ANGRY,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Portal) {
-									loc.setY(loc.getY() - 0.4000000059604645D);
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.PORTAL, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
-								}
-								if (effect == ParticleManager.ParticleType.Rainbow) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.REDSTONE, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.MagicCrit) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.CRIT_MAGIC,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Slime) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SLIME, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Portal) {
+							loc.setY(loc.getY() - 0.4000000059604645D);
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.PORTAL,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
+						}
+						if (effect == ParticleManager.ParticleType.Rainbow) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.REDSTONE,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.Snow) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOWBALL, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Slime) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.SLIME,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-								if (effect == ParticleManager.ParticleType.SnowShovel) {
-									ParticleLib18 snowshovel = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOW_SHOVEL, 0.0D, 1, 0.0001D);
-									snowshovel.sendToLocation(loc); break;
+						}
+						if (effect == ParticleManager.ParticleType.Snow) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.SNOWBALL,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
-								}
-
-								loc.subtract(v);
-							}
+						}
+						if (effect == ParticleManager.ParticleType.SnowShovel) {
+							ParticleLib18 snowshovel = new ParticleLib18(
+									me.mike1665.particles18.ParticleLib18.ParticleType.SNOW_SHOVEL,
+									0.0D, 1, 0.0001D);
+							snowshovel.sendToLocation(loc);
+							break;
 
 						}
 
+						loc.subtract(v);
 					}
 
 				}
+
 			}
-		}, 0, 1);
+
+		}
+		this.step += 1.0F;
 	}
 
 }
