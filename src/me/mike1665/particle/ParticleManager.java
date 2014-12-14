@@ -9,8 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 public class ParticleManager
-  implements Listener
-{
+  implements Listener  
+{	
+	
+	public ParticleManager(Main instance){}
   public static boolean hasCircleEffect(Player p)
   {
     if (CircleParticle.effect2.containsKey(p)) {
@@ -21,16 +23,11 @@ public class ParticleManager
 
   public static void removeCircleEffect(Player p)
   {
-    EffectManager.effect.remove(p);
+    EffectManager.effect3.remove(p);
     UtilLocation.locationEverySecond.remove(p);
     CircleParticle.effect2.remove(p);
   }
 
-  public static void registerEvents(Main plugin)
-  {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new CircleParticle(), plugin);
-  }
 
   public static enum ParticleType
   {

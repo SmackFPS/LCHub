@@ -51,7 +51,7 @@ public void LocationUpdater(UpdateEvent event)
       locationEverySecond.remove(p);
       locationEverySecond.put(p, p.getLocation());
     }
-    for (Player p : EffectManager.effect.keySet())
+    for (Player p : EffectManager.effect3.keySet())
     {
       if (ExtraManager.hasExtraEffect(p)) {
         locationEvery2Second.remove(p);

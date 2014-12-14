@@ -23,7 +23,7 @@ public void LocationUpdater(UpdateEvent event)
 {
   if (event.getType() == UpdateType.TICK)
   {
-    for (Player p : EffectManager.effect.keySet())
+    for (Player p : EffectManager.effect3.keySet())
     {
       if (EffectManager.getEffect(p) == EffectManager.EffectType.CloudLight)
       {
@@ -50,7 +50,7 @@ public void LocationUpdater(UpdateEvent event)
   }
   if (event.getType() == UpdateType.SEC)
   {
-    for (Player p : EffectManager.effect.keySet())
+    for (Player p : EffectManager.effect3.keySet())
     {
       if (EffectManager.getEffect(p) == EffectManager.EffectType.CloudLight)
       {

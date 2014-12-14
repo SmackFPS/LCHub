@@ -20,7 +20,7 @@ public class CloudSnow
   {
     if (event.getType() == UpdateType.TICK)
     {
-      for (Player p : EffectManager.effect.keySet())
+      for (Player p : EffectManager.effect3.keySet())
       {
         if ((EffectManager.getEffect(p) == EffectManager.EffectType.CloudSnow) && 
           (p.isValid()))

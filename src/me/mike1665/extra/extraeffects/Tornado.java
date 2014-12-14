@@ -23,7 +23,7 @@ public class Tornado
   public void LocationUpdater(UpdateEvent event) {
     if (event.getType() == UpdateType.TICK)
     {
-      for (Player p : EffectManager.effect.keySet())
+      for (Player p : EffectManager.effect3.keySet())
       {
         if ((EffectManager.getEffect(p) == EffectManager.EffectType.Tornado) && 
           (p.isValid()))

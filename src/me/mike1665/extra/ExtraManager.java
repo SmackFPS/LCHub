@@ -40,7 +40,7 @@ public class ExtraManager
   @EventHandler
   public void ParticleAura(UpdateEvent event) { if (event.getType() == UpdateType.FASTEST)
     {
-      for (Player player : EffectManager.effect.keySet())
+      for (Player player : EffectManager.effect3.keySet())
       {
         Location Current = player.getLocation();
         Location Last = (Location)this.lastBlockLocation.get(player.getUniqueId());
@@ -94,7 +94,7 @@ public class ExtraManager
 
   public static void removeExtraEffect(Player p)
   {
-    EffectManager.effect.remove(p);
+    EffectManager.effect3.remove(p);
     UtilLocation.locationEvery2Second.remove(p);
   }
 
@@ -102,7 +102,7 @@ public class ExtraManager
   {
     if (!EffectManager.hasEffect(p))
     {
-      EffectManager.effect.put(p, type);
+      EffectManager.effect3.put(p, type);
 
       if (!hasExtraEffect(p))
       {
@@ -111,13 +111,13 @@ public class ExtraManager
       else
       {
         removeExtraEffect(p);
-        EffectManager.effect.put(p, type);
+        EffectManager.effect3.put(p, type);
         UtilLocation.locationEverySecond.put(p, p.getLocation());
       }
     } else {
       if (hasExtraEffect(p)) {
         removeExtraEffect(p);
-        EffectManager.effect.put(p, type);
+        EffectManager.effect3.put(p, type);
         UtilLocation.locationEverySecond.put(p, p.getLocation());
       }
       if (ParticleManager.hasCircleEffect(p))

@@ -1,21 +1,13 @@
 package com.arrayprolc.event;
 
-import java.util.Random;
-
 import me.mike1665.Main.Main;
 import me.mike1665.menu.ParticleMenu;
+import me.mike1665.particle.CircleParticle;
+import me.mike1665.particle.ParticleManager;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.FallingBlock;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.util.Vector;
 
 import com.arrayprolc.menu.MenuListener;
 import com.arrayprolc.speedways.Speedways;
@@ -40,6 +32,8 @@ public class ArrayEventSetup {
 		TPSMeter.setupTPSMeter(instance);
 		
 		pm.registerEvents(new ParticleMenu(instance), plugin);
+		pm.registerEvents(new CircleParticle(instance), plugin);
+		pm.registerEvents(new ParticleManager(instance), plugin);
 	}
 }
 //

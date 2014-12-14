@@ -20,7 +20,7 @@ public class ParticleMenu implements Listener {
 	public static Menu m;
 	Main plugin;
 	Material[] display = { Material.WHEAT, Material.NOTE_BLOCK, Material.FLINT_AND_STEEL, Material.WATER_BUCKET, Material.LAVA_BUCKET, Material.IRON_INGOT, Material.INK_SACK,
-			Material.ENCHANTMENT_TABLE, Material.POTION, Material.FIREBALL, Material.PORTAL, Material.SNOW_BALL, Material.SLIME_BALL, Material.FERMENTED_SPIDER_EYE,
+			Material.ENCHANTMENT_TABLE, Material.POTION, Material.FIREBALL, Material.OBSIDIAN, Material.SNOW_BALL, Material.SLIME_BALL, Material.FERMENTED_SPIDER_EYE,
 			Material.SNOW_BLOCK, Material.CLAY};
 	public ParticleMenu(Main instance){
 		plugin = instance;
@@ -35,7 +35,7 @@ public class ParticleMenu implements Listener {
 	}
 	
 	public String getName(int slot, Material type){
-		return WordUtils.capitalize(type.toString().toLowerCase().replace("_", ""));
+		return WordUtils.capitalize(ParticleType.values()[slot].toString().toLowerCase().replace("_", ""));
 	}
 	
 	@EventHandler

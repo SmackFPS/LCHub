@@ -16,7 +16,7 @@ import org.bukkit.plugin.PluginManager;
 public class EffectManager
   implements Listener
 {
-  public static HashMap<Player, EffectType> effect = new HashMap();
+  public static HashMap<Player, EffectType> effect3 = new HashMap();
 
   @EventHandler
   public void OnPlayerLeft(PlayerQuitEvent e)
@@ -37,7 +37,7 @@ public class EffectManager
 
   public static boolean hasEffect(Player p)
   {
-    if (effect.containsKey(p)) {
+    if (effect3.containsKey(p)) {
       return true;
     }
     return false;
@@ -45,17 +45,17 @@ public class EffectManager
 
   public static void addEffect(Player p, EffectType type)
   {
-    if (!effect.containsKey(p)) {
-      effect.put(p, type);
+    if (!effect3.containsKey(p)) {
+      effect3.put(p, type);
     } else {
       removeEffect(p, false);
-      effect.put(p, type);
+      effect3.put(p, type);
     }
   }
 
   public static EffectType getEffect(Player p)
   {
-    return (EffectType)effect.get(p);
+    return (EffectType)effect3.get(p);
   }
 
   public static void removeEffect(Player p, boolean message) {
@@ -63,7 +63,7 @@ public class EffectManager
       if (ParticleManager.hasCircleEffect(p)) {
         ParticleManager.removeCircleEffect(p);
       }
-      effect.remove(p);
+      effect3.remove(p);
       if (ExtraManager.hasExtraEffect(p)) {
         ExtraManager.removeExtraEffect(p);
       }

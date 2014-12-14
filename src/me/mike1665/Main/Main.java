@@ -137,7 +137,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	public void onEnable() {
 		//this.manager = new EffectManager(this);
-	    ParticleManager.registerEvents(this);
 	    EffectManager.registerEvents(this);
 	    ExtraManager.registerEvents(this);
 		PluginManager pm = getServer().getPluginManager();
