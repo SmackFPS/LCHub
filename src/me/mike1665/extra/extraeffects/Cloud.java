@@ -3,8 +3,8 @@ package me.mike1665.extra.extraeffects;
 import me.mike1665.effects.EffectManager;
 import me.mike1665.extra.ExtraManager;
 import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.utils.UpdateEvent;
-import me.mike1665.utils.UpdateType;
+import me.mike1665.update.UpdateType;
+import me.mike1665.update.event.UpdateEvent;
 import me.mike1665.utils.UtilityMath;
 
 import org.bukkit.Location;

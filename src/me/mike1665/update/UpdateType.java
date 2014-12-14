@@ -1,5 +1,6 @@
-package me.mike1665.utils;
+package me.mike1665.update;
 
+import me.mike1665.utils.UtilTime;
 
 public enum UpdateType
 {

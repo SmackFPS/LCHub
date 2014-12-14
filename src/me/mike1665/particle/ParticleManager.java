@@ -12,7 +12,6 @@ public class ParticleManager
   implements Listener  
 {	
 	
-	public ParticleManager(Main instance){}
   public static boolean hasCircleEffect(Player p)
   {
     if (CircleParticle.effect2.containsKey(p)) {

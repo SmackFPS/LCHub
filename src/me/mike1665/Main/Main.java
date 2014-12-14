@@ -74,6 +74,8 @@ import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
+import me.mike1665.update.Updater;
+import me.mike1665.utils.UtilLocation;
 import me.mike1665.utils.UtilServer;
 
 import org.bukkit.Bukkit;
@@ -84,10 +86,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -139,6 +138,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		//this.manager = new EffectManager(this);
 	    EffectManager.registerEvents(this);
 	    ExtraManager.registerEvents(this);
+	    ParticleManager.registerEvents(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
@@ -154,6 +154,8 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		instance = this;
 		schedule = this;
 	    Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Updater(this), 1L, 1L);
+	    Bukkit.getPluginManager().registerEvents(new UtilLocation(), this);
+	    Bukkit.getPluginManager().registerEvents(new ParticleManager(), this);
 		FunCreeperAmmoManager.initialize(this);
 		MeowAmmoManager.initialize(this);
 		BatBlasterAmmoManager.initialize(this);

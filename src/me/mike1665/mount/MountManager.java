@@ -9,10 +9,6 @@ import me.mike1665.mount.mounts.DarkRider;
 import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.utils.UpdateEvent;
-import me.mike1665.utils.UpdateType;
-import me.mike1665.utils.UtilServer;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
@@ -142,7 +138,7 @@ public class MountManager
       event.setCancelled(true);
   }
 
-  @SuppressWarnings("deprecation")
+  /*@SuppressWarnings("deprecation")
 @EventHandler
   public void ParticleAura(UpdateEvent event)
   {
@@ -172,7 +168,7 @@ public class MountManager
 
           if (((Horse)pet.get(p)).hasMetadata("poseidonrider")) {
            // new UtilParticle(UtilParticle.Particle.WATER_SPLASH, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
-          } */
+          }
 
         }
 
@@ -190,7 +186,7 @@ public class MountManager
             ((Horse)pet.get(p.getUniqueId())).teleport(p);
         }
     }
-  }
+  } */
 
   public static void registerEvents(Main plugin)
   {

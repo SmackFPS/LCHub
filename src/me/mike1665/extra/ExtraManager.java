@@ -21,8 +21,8 @@ import me.mike1665.extra.extraeffects.Shield;
 import me.mike1665.extra.extraeffects.Tornado;
 import me.mike1665.extra.extraeffects.Vortex;
 import me.mike1665.particle.ParticleManager;
-import me.mike1665.utils.UpdateEvent;
-import me.mike1665.utils.UpdateType;
+import me.mike1665.update.UpdateType;
+import me.mike1665.update.event.UpdateEvent;
 import me.mike1665.utils.UtilLocation;
 
 import org.bukkit.Location;

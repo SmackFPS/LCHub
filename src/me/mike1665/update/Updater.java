@@ -1,7 +1,6 @@
-package me.mike1665.Main;
+package me.mike1665.update;
 
-import me.mike1665.utils.UpdateEvent;
-import me.mike1665.utils.UpdateType;
+import me.mike1665.update.event.UpdateEvent;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

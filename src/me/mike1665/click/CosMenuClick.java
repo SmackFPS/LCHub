@@ -11,6 +11,7 @@ import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MountMenu;
 import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.ParticleMenu;
+import me.mike1665.particle.CircleParticle;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;

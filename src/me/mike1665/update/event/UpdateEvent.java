@@ -1,4 +1,6 @@
-package me.mike1665.utils;
+package me.mike1665.update.event;
+
+import me.mike1665.update.UpdateType;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
