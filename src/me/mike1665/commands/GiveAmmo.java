@@ -37,7 +37,7 @@ public class GiveAmmo {
 			}
 		if (cmd.getName().equalsIgnoreCase("giveammo")) {
 			if (a.length < 3) {
-        		sender.sendMessage(ChatColor.DARK_RED + "/giveammoe <ammoname> <playername> <amount>");
+        		sender.sendMessage(ChatColor.DARK_RED + "/giveammo <ammoname> <playername> <amount>");
         		return true;
         	}
 			
