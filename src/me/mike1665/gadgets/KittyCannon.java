@@ -8,6 +8,7 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.FireWorksAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
+import me.mike1665.utils.CustomEntityFirework;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -92,7 +93,7 @@ public class KittyCannon implements Listener{
 					public void run() {
 						final Location loc = ocelot.getLocation();
 						ocelot.remove();
-						final org.bukkit.entity.Firework fw = (org.bukkit.entity.Firework) ocelot.getWorld().spawnEntity(loc.add(0.5, 1.2, 0.5), EntityType.FIREWORK);
+						final org.bukkit.entity.Firework fw = (org.bukkit.entity.Firework) ocelot.getWorld().spawnEntity(loc.add(/*0.5, 1.2, 0.5*/ 0.5, 1.2, 0.5), EntityType.FIREWORK);
 						Builder builder = FireworkEffect.builder();
 						FireworkMeta m = fw.getFireworkMeta();
 						builder.trail(random.nextBoolean()).flicker(random.nextBoolean());
@@ -100,8 +101,9 @@ public class KittyCannon implements Listener{
 						builder.with(Type.values()[random.nextInt(Type.values().length)]);
 						builder.withFade(Color.fromRGB(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 						m.addEffect(builder.build());
-						fw.setFireworkMeta(m);
+						m.setPower(/*random.nextInt(3) + 1*/ 0 );
 						fw.detonate();
+						fw.setFireworkMeta(m);
 						count --;
 						if (count == 0) cancel();
 					}

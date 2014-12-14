@@ -30,6 +30,7 @@ import me.mike1665.commands.AmmoTest;
 import me.mike1665.commands.GiveAmmo;
 import me.mike1665.commands.MountUnlocked;
 import me.mike1665.commands.StatsCommand;
+import me.mike1665.effects.EffectManager;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
 import me.mike1665.eventhandlers.BuyMeowBalls;
@@ -45,6 +46,7 @@ import me.mike1665.eventhandlers.PaintballGun;
 import me.mike1665.eventhandlers.PixlBomb;
 import me.mike1665.eventhandlers.RespawnEvent;
 import me.mike1665.eventhandlers.TNTFun;
+import me.mike1665.extra.ExtraManager;
 import me.mike1665.funstuff.BowTeleport;
 import me.mike1665.funstuff.DiscoBall;
 import me.mike1665.funstuff.FunCreepers;
@@ -71,6 +73,8 @@ import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
+import me.mike1665.particle.ParticleManager;
+import me.mike1665.utils.UtilServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -133,6 +137,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	public void onEnable() {
 		//this.manager = new EffectManager(this);
+	    ParticleManager.registerEvents(this);
+	    EffectManager.registerEvents(this);
+	    ExtraManager.registerEvents(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
@@ -190,6 +197,13 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}catch(Exception e){ e.printStackTrace(); 
 		}
 	}
+	
+	  public void onDisable(){
+		  for (Player players : UtilServer.getPlayers()) {
+			  EffectManager.removeEffect(players, false);
+			  MountManager.removeCurrentPet(players, false);
+		  }
+	  }
 
 		/*try {
 			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
@@ -269,11 +283,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}catch(Exception ex){
 			//Don't print the stack trace.
 		}
-	}
-	  public void onDisable()
-	  {
-	  }
-	  
+	} 
 
 	private void loadListeners() {
 		PluginManager pm = getServer().getPluginManager();
@@ -493,9 +503,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 				}
 
-			} /*else {
-				player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "Something Failed");
-			}*/
+			}
 		}
 
 		return false;

@@ -33,8 +33,8 @@ public class MeowBall implements Listener{
 
 			      s.getWorld().playEffect(s.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
 			      s.getWorld().playEffect(s.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
-			      ParticleEffect.HEART.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 2);
-			      ParticleEffect.LARGE_SMOKE.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 10);
+			     // ParticleEffect.HEART.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 2);
+			     // ParticleEffect.LARGE_SMOKE.display(s.getLocation(), 0.5F, 0.5F, 0.5F, 0.0F, 10);
 		      	}
 		    }
 		  }

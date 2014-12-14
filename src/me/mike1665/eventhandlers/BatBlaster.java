@@ -179,8 +179,9 @@ public class BatBlaster implements Listener {
 		if (this._bats.containsKey(player)) {
 			for (Bat bat : this._bats.get(player)) {
 				if (bat.isValid()) {
-					ParticleEffect.ANGRY_VILLAGER.display(bat.getLocation(),
-							5.0D, 0.0F, 0.0F, 0.0F, 0.0F, 3);
+					/*ParticleEffect.VILLAGER_ANGRY.display(bat.getLocation(), speed, amount, center, range);
+					display(bat.getLocation(),
+							5.0D, 0.0F, 0.0F, 0.0F, 0.0F, 3);*/
 				}
 				bat.remove();
 			}
