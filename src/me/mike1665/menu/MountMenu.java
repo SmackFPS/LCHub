@@ -20,7 +20,7 @@ public class MountMenu
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+    MountMenu.plugin = plugin;
   }
   
   public static ItemStack createItem(Material material, int amount, short shrt, String displayname, String lore)

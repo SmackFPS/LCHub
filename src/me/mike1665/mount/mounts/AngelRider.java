@@ -41,7 +41,7 @@ public class AngelRider
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+    AngelRider.plugin = plugin;
   }
   
   public static boolean playAngelRider(Player p)

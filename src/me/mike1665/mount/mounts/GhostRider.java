@@ -40,7 +40,7 @@ public class GhostRider
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+    GhostRider.plugin = plugin;
   }
   
   public static boolean playGhostRider(Player p)

@@ -54,7 +54,7 @@ public class CosMenuClick
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cMounts"))
       {
         p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10.0F, 10.0F);
-        ExtraManager.Activate(p, me.mike1665.effects.EffectManager.EffectType.Helix);
+        p.openInventory(MountMenu.getMountShop(p));
         return;
       }
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Hub Purchaseables"))

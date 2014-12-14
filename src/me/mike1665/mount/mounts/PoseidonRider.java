@@ -40,7 +40,7 @@ public class PoseidonRider
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+	  PoseidonRider.plugin = plugin;
   }
   
   public static boolean playPoseidonRider(Player p)

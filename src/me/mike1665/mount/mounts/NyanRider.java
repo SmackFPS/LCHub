@@ -47,7 +47,7 @@ public class NyanRider
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+    NyanRider.plugin = plugin;
   }
   
   public static boolean playNyanRider(Player p)

@@ -40,7 +40,7 @@ public class DarkRider
   
   public static void initialize(Main plugin)
   {
-    plugin = plugin;
+   DarkRider.plugin = plugin;
   }
   
   public static boolean playDarkRider(Player p)

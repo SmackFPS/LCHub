@@ -151,6 +151,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	    pm.registerEvents(new DarkRider(), this);
 	    pm.registerEvents(new AngelRider(), this);
 	    pm.registerEvents(new PoseidonRider(), this);
+	    MountMenu.initialize(this);
 		instance = this;
 		schedule = this;
 	    Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Updater(this), 1L, 1L);
