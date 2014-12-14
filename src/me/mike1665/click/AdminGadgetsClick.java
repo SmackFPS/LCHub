@@ -2,6 +2,7 @@ package me.mike1665.click;
 
 import me.mike1665.Main.Main;
 import me.mike1665.menu.AdminGadgets;
+import me.mike1665.particle.CircleParticle;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
