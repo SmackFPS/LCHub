@@ -5,6 +5,7 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,6 +30,10 @@ public class MountUnlocked {
 			if(!p.isOp()) return false;
 			}
 		if (cmd.getName().equalsIgnoreCase("unlockmount")) {
+			if (a.length < 2) {
+        		sender.sendMessage(ChatColor.DARK_RED + "/unlockmount <mountname> <playername>");
+        		return true;
+        	}
 			if (a.length == 2) {
 				if (a[0].equalsIgnoreCase("angelmount")) {
 					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);

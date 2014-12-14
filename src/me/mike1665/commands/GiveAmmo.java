@@ -11,6 +11,7 @@ import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -35,6 +36,11 @@ public class GiveAmmo {
 			if(!p.isOp()) return false;
 			}
 		if (cmd.getName().equalsIgnoreCase("giveammo")) {
+			if (a.length < 3) {
+        		sender.sendMessage(ChatColor.DARK_RED + "/giveammoe <ammoname> <playername> <amount>");
+        		return true;
+        	}
+			
 			if (a.length == 3) {
 				if (a[0].equalsIgnoreCase("batblaster")) {
 					OfflinePlayer recieved = Bukkit.getOfflinePlayer(a[1]);
