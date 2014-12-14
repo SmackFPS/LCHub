@@ -3,6 +3,7 @@ package com.arrayprolc.event;
 import java.util.Random;
 
 import me.mike1665.Main.Main;
+import me.mike1665.menu.ParticleMenu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -38,6 +39,7 @@ public class ArrayEventSetup {
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
 		TPSMeter.setupTPSMeter(instance);
 		
+		pm.registerEvents(new ParticleMenu(instance), plugin);
 	}
 }
 //
