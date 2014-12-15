@@ -29,6 +29,7 @@ import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.commands.AmmoTest;
 import me.mike1665.commands.GiveAmmo;
 import me.mike1665.commands.MountUnlocked;
+import me.mike1665.commands.SQLBan;
 import me.mike1665.commands.StatsCommand;
 import me.mike1665.effects.EffectManager;
 import me.mike1665.eventhandlers.BatBlaster;
@@ -72,6 +73,7 @@ import me.mike1665.mount.mounts.DarkRider;
 import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
+import me.mike1665.mysql.MySQL;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.update.Updater;
@@ -86,7 +88,10 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -95,8 +100,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.Vector;
-
-import code.husky.mysql.MySQL;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.PartyHooks;
@@ -124,18 +127,23 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	public static Main instance;
 	public boolean logdb = true;
 	public static Main schedule;
-	//private EntityManager entityManager;
 	public static MySQL MySQL;
-	//public EffectManager manager;
-		public static java.sql.Connection c = null;
-	  public static final String PREFIX = "§8[§3ProdigyGadget§8]";
-	  protected HashMap<UUID, Vector> velocities;
-	  protected HashMap<UUID, Location> positions;
-	  protected HashMap<UUID, Boolean> onGround;
-	  public ApiEvent ae = new ApiEvent();
+	public static java.sql.Connection c = null;
+	public static final String PREFIX = "§8[§3ProdigyGadget§8]";
+	protected HashMap<UUID, Vector> velocities;
+	protected HashMap<UUID, Location> positions;
+	protected HashMap<UUID, Boolean> onGround;
+	public ApiEvent ae = new ApiEvent();
+	  
+	private MySQL mysql;
 
 	public void onEnable() {
-		//this.manager = new EffectManager(this);
+		//MYSQL CONNECTIVITY
+		
+		
+        mysql = new MySQL(getConfig().getString("DB_IP"), getConfig().getString("DB_Username"), getConfig().getString("DB_Password"), getConfig().getString("DB_Name"));
+		
+		
 	    EffectManager.registerEvents(this);
 	    ExtraManager.registerEvents(this);
 	    ParticleManager.registerEvents(this);
@@ -179,6 +187,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ArrayCommandHandler.setup(this);
 		StatsCommand.setup(this);
 		MountUnlocked.setup(this);
+		SQLBan.setup(this);
 		AmmoTest.setup(this);
 		new ProxiedEconomy();
 		colors.put("red", "255,0,0");
@@ -201,25 +210,20 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 	}
 	
+    @EventHandler
+    public void onPlayerLogin(PlayerLoginEvent e) {
+            String reason = mysql.getBannedReason(e.getPlayer());
+            if (reason != null) {
+                    e.disallow(Result.KICK_BANNED, reason);
+            }
+    }
+	
 	  public void onDisable(){
 		  for (Player players : UtilServer.getPlayers()) {
 			  EffectManager.removeEffect(players, false);
 			  MountManager.removeCurrentPet(players, false);
 		  }
 	  }
-
-		/*try {
-			MySQL = new MySQL(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "db4free.net", "3306", "lcnetwork", "lcnetwork", getConfig().getString("sqlpassword"));
-			c = MySQL.openConnection();
-			SQLTools.statementTest();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-
 
 	@SuppressWarnings("deprecation")
 	public void bungee(){
@@ -362,6 +366,8 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		if (AmmoTest.onCommand(sender, cmd, label, a))
 			return true;
 		if (GiveAmmo.onCommand(sender, cmd, label, a))
+			return true;
+		if (SQLBan.onCommand(sender, cmd, label, a))
 			return true;
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
