@@ -99,8 +99,9 @@ public class ApiEvent implements Listener {
 		if (p.hasPlayedBefore()) {
 			scoreboard(p);
 		} else if (!p.hasPlayedBefore()) {
-			LcCoinsAPI.givePoints(p, 500);
+			LcCoinsAPI.givePoints(p, 1000);
 			LcTokensAPI.givePoints(p, 100);
+			me.mike1665.mysql.MySQL.addIntoDB(p);
 			scoreboard(p);
 		}
 	}

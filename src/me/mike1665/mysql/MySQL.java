@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.coinapi.LcTokensAPI;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -51,6 +54,17 @@ public class MySQL {
         }
     }
     
+    //Add player to economy
+    public static void addIntoDB(Player p) {
+        try {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO `Economy`(`UUID`, `Tokens`, `Coins`) VALUES ('" + p.getUniqueId() + "', '" +  LcTokensAPI.balancePoints(p) + "', '" + LcCoinsAPI.balancePoints(p) + "')");
+                statement.executeUpdate();
+                statement.close();
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
+    }
+    
     //Unbanning the player
     public static void unbanPlayer(OfflinePlayer p) {
         try {
@@ -65,7 +79,7 @@ public class MySQL {
     //Giving player coins
     public static void giveCoins(OfflinePlayer p, String amount) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE CoinsAndPoints SET Coins= Coins +" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Economy SET Coins= Coins +" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
             statement.executeUpdate();
             statement.close();
     } catch (Exception e) {
@@ -76,7 +90,7 @@ public class MySQL {
     //Give player points
     public static void givePoints(OfflinePlayer p, String amount) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE CoinsAndPoints SET Points= Points +" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Economy SET Tokens= Tokens +" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
             statement.executeUpdate();
             statement.close();
     } catch (Exception e) {
@@ -87,7 +101,7 @@ public class MySQL {
     //Taking players Coins
     public static void takeCoins(OfflinePlayer p, String amount) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE CoinsAndPoints SET Coins= Coins -" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Economy SET Coins= Coins -" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
             statement.executeUpdate();
             statement.close();
     } catch (Exception e) {
@@ -98,7 +112,7 @@ public class MySQL {
     //Taking players Points
     public static void takePoints(OfflinePlayer p, String amount) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE CoinsAndPoints SET Points= Points -" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Economy SET Tokens= Tokens -" + amount  + " WHERE UUID='" + p.getUniqueId() + "'");
             statement.executeUpdate();
             statement.close();
     } catch (Exception e) {
@@ -109,7 +123,7 @@ public class MySQL {
     //Getting Points
     public static String getPoints(OfflinePlayer p) {
     	try {
-            PreparedStatement statement = connection.prepareStatement("SELECT Points FROM CoinsAndPoints WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("SELECT Tokens FROM Economy WHERE UUID='" + p.getUniqueId() + "'");
             ResultSet result = statement.executeQuery();
            
             if (result.next()) {
@@ -126,7 +140,7 @@ public class MySQL {
     //Getting Coins
     public static String getCoins(OfflinePlayer p) {
     	try {
-            PreparedStatement statement = connection.prepareStatement("SELECT Coins FROM CoinsAndPoints WHERE UUID='" + p.getUniqueId() + "'");
+            PreparedStatement statement = connection.prepareStatement("SELECT Coins FROM Economy WHERE UUID='" + p.getUniqueId() + "'");
             ResultSet result = statement.executeQuery();
            
             if (result.next()) {
