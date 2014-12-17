@@ -19,7 +19,7 @@ public class SQLBan {
 	
     public static boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         Player p = (Player) sender;
-            if (cmd.getName().equalsIgnoreCase("sqlban")) {
+            /*if (cmd.getName().equalsIgnoreCase("sqlban")) {
                     if (args.length < 2) {
                             sender.sendMessage(ChatColor.RED + "/sqlban <username> <reason>");
                             return true;
@@ -41,7 +41,7 @@ public class SQLBan {
                    
                     player.kickPlayer(reason);
                     me.mike1665.mysql.MySQL.banPlayer(player, reason);
-            }
+            }*/
 			return true;
     }
 }

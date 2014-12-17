@@ -15,7 +15,7 @@ import com.arrayprolc.coin.Multiplier;
 
 public class MySQL {
 
-    private static Connection connection;
+    /*private static Connection connection;
     
     public MySQL(String ip, String userName, String password, String db) {
         try {
@@ -170,5 +170,5 @@ public class MySQL {
     	if (Integer.parseInt(getPoints(p)) >= i)
     		return true;
 		return false;
-    }
+    } */
 }
