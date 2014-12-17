@@ -20,8 +20,8 @@ public class LcCoinsAPI implements Listener {
 		plugin.getConfig().set(p.getUniqueId() + ".Coins",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Coins", 0) + i);
 		plugin.saveFile();
-		String i2 = Integer.toString(i);
-		me.mike1665.mysql.MySQL.giveCoins(p, i2);
+		//String i2 = Integer.toString(i);
+		//me.mike1665.mysql.MySQL.giveCoins(p, i2);
 	}
 
 	public static void takePoints(OfflinePlayer p, int i) {
@@ -29,8 +29,8 @@ public class LcCoinsAPI implements Listener {
 		plugin.getConfig().set(p.getUniqueId() + ".Coins",
 				plugin.getConfig().getInt(p.getUniqueId() + ".Coins", 0) - i);
 		plugin.saveFile();
-		String i2 = Integer.toString(i);
-		me.mike1665.mysql.MySQL.takeCoins(p, i2);
+		//String i2 = Integer.toString(i);
+		//me.mike1665.mysql.MySQL.takeCoins(p, i2);
 	}
 
 	public static boolean hasEnough(OfflinePlayer p, int i) {

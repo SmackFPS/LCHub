@@ -135,13 +135,13 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	protected HashMap<UUID, Boolean> onGround;
 	public ApiEvent ae = new ApiEvent();
 	  
-	private MySQL mysql;
+	//private MySQL mysql;
 
 	public void onEnable() {
 		//MYSQL CONNECTIVITY
 		
 		
-        mysql = new MySQL(getConfig().getString("DB_IP"), getConfig().getString("DB_Username"), getConfig().getString("DB_Password"), getConfig().getString("DB_Name"));
+        //mysql = new MySQL(getConfig().getString("DB_IP"), getConfig().getString("DB_Username"), getConfig().getString("DB_Password"), getConfig().getString("DB_Name"));
 		
 		
 	    EffectManager.registerEvents(this);
@@ -210,13 +210,13 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 	}
 	
-    @EventHandler
+   /* @EventHandler
     public void onPlayerLogin(PlayerLoginEvent e) {
             String reason = mysql.getBannedReason(e.getPlayer());
             if (reason != null) {
                     e.disallow(Result.KICK_BANNED, reason);
             }
-    }
+    }*/
 	
 	  public void onDisable(){
 		  for (Player players : UtilServer.getPlayers()) {
