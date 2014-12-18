@@ -1,9 +1,8 @@
 package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
+import me.mike1665.chest.TreasureChestManager;
 import me.mike1665.menu.ParticleMenu;
-import me.mike1665.particle.CircleParticle;
-import me.mike1665.particle.ParticleManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -32,6 +31,7 @@ public class ArrayEventSetup {
 		TPSMeter.setupTPSMeter(instance);
 		
 		pm.registerEvents(new ParticleMenu(instance), plugin);
+		pm.registerEvents(new TreasureChestManager(), plugin);
 	}
 }
 //

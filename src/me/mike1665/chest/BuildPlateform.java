@@ -95,7 +95,7 @@ public class BuildPlateform
       buildPlateform(p, l, Plateform.FROST);
   }
 
-  private static void buildPlateform(final Player p, final Location l, Plateform plateform)
+  public static void buildPlateform(final Player p, final Location l, Plateform plateform)
   {
     if (plateform == Plateform.WOOD) {
       if (p.isValid()) {
@@ -104,7 +104,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(BuildPlateform.this, l, Material.SANDSTONE, (byte)0).buildRectangle3();
+              new BuildManager(p, l, Material.SANDSTONE, (byte)0).buildRectangle3();
           }
         }
         , 20L);
@@ -113,7 +113,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(BuildPlateform.this, l, Material.LEAVES, (byte)3).buildRectangle4();
+              new BuildManager(p, l, Material.LEAVES, (byte)3).buildRectangle4();
           }
         }
         , 40L);
@@ -122,7 +122,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(this, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.VILLAGER_ANGRY, ParticleLib18.ParticleType.SLIME);
+              new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.VILLAGER_ANGRY, ParticleLib18.ParticleType.SLIME);
           }
         }
         , 60L);
@@ -134,7 +134,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(BuildPlateform.this, l, Material.NETHER_BRICK, (byte)0).buildRectangle3();
+              new BuildManager(p, l, Material.NETHER_BRICK, (byte)0).buildRectangle3();
           }
         }
         , 20L);
@@ -143,7 +143,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(BuildPlateform.this, l, Material.NETHER_FENCE, (byte)0).buildRectangle4();
+              new BuildManager(p, l, Material.NETHER_FENCE, (byte)0).buildRectangle4();
           }
         }
         , 40L);
@@ -152,7 +152,7 @@ public class BuildPlateform
           .runTaskLater(Main.schedule, new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(BuildPlateform.this, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.FLAME, ParticleLib18.ParticleType.LAVA);
+              new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.FLAME, ParticleLib18.ParticleType.LAVA);
           }
         }
         , 60L);
@@ -165,7 +165,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.SNOW_BLOCK, (byte)0).buildRectangle3();
+            new BuildManager((Player) p, l, Material.SNOW_BLOCK, (byte)0).buildRectangle3();
         }
       }
       , 20L);
@@ -174,7 +174,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.STAINED_GLASS_PANE, (byte)0).buildRectangle4();
+            new BuildManager((Player) p, l, Material.STAINED_GLASS_PANE, (byte)0).buildRectangle4();
         }
       }
       , 40L);
@@ -183,7 +183,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SNOW_SHOVEL, ParticleLib18.ParticleType.SNOWBALL);
+            new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SNOW_SHOVEL, ParticleLib18.ParticleType.SNOWBALL);
         }
       }
       , 60L);
@@ -194,7 +194,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.SMOOTH_BRICK, (byte)0).buildRectangle3();
+            new BuildManager((Player) p, l, Material.SMOOTH_BRICK, (byte)0).buildRectangle3();
         }
       }
       , 20L);
@@ -203,7 +203,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.COBBLE_WALL, (byte)0).buildRectangle4();
+            new BuildManager((Player) p, l, Material.COBBLE_WALL, (byte)0).buildRectangle4();
         }
       }
       , 40L);
@@ -212,7 +212,7 @@ public class BuildPlateform
         .runTaskLater(Main.schedule, new Runnable() {
         public void run() {
           if (p.isValid())
-            new BuildManager((Player) BuildPlateform.this, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SMOKE_LARGE, ParticleLib18.ParticleType.REDSTONE);
+            new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SMOKE_LARGE, ParticleLib18.ParticleType.REDSTONE);
         }
       }
       , 60L);

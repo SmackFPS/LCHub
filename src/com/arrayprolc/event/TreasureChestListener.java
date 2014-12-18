@@ -5,6 +5,10 @@ import java.util.Random;
 import java.util.UUID;
 
 import me.mike1665.Main.Main;
+import me.mike1665.chest.BuildManager;
+import me.mike1665.chest.BuildPlateform;
+import me.mike1665.chest.BuildPlateform.Plateform;
+import me.mike1665.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -39,7 +43,9 @@ public class TreasureChestListener implements Listener {
 				i.setAmount(i.getAmount() - 1);
 				e.getPlayer().setItemInHand(i);
 				Bukkit.broadcastMessage(StringManager.getMessage("§a§l" + e.getPlayer().getName() + " is opening a treasure chest!", MessageType.TREASURE));
-				chest(e.getPlayer());
+				//chest(e.getPlayer());
+				BuildPlateform.randomPlateform(e.getPlayer(), e.getPlayer().getLocation());
+				
 			}
 		}
 	}

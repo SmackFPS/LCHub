@@ -396,7 +396,7 @@ public class UtilityBlock
   }
 
   public static void sendBreak(Player p, int id, byte data, Location loc) {
-    p.getWorld().playEffect(loc, Effect.STEP_SOUND, id, data);
+    p.getWorld().playEffect(loc, Effect.STEP_SOUND, id, (int)data);
   }
 
   public static void setBlockToRestore(final Block block, final int id, final byte data, long timeInSecs, final boolean fakeBlock, final boolean frosty, final boolean playEffect)
