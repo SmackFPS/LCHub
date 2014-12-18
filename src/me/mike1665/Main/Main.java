@@ -367,8 +367,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 			return true;
 		if (GiveAmmo.onCommand(sender, cmd, label, a))
 			return true;
-		if (SQLBan.onCommand(sender, cmd, label, a))
-			return true;
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {

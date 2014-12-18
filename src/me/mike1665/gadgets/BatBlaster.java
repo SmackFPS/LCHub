@@ -11,6 +11,7 @@ import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.utils.UtilAction;
 import me.mike1665.utils.UtilAlg;
 import me.mike1665.utils.UtilEnt;
+import me.mike1665.utils.UtilEntity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -114,7 +115,7 @@ public class BatBlaster implements Listener {
 														.getServer()
 														.getOnlinePlayers()) {
 													if (!other.equals(cur)) {
-														if (UtilEnt.hitBox(bat
+														if (UtilEntity.hitBox(bat
 																.getLocation(),
 																other, 2.0D,
 																null)) {

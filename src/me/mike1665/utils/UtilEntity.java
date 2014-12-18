@@ -1,15 +1,12 @@
 package me.mike1665.utils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
-import me.mike1665.Main.Main;
 import net.minecraft.server.v1_8_R1.EntityCreature;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
-import net.minecraft.server.v1_8_R1.EntityItem;
 import net.minecraft.server.v1_8_R1.Navigation;
+import net.minecraft.server.v1_8_R1.NavigationAbstract;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 
 import org.bukkit.Location;
@@ -19,56 +16,25 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftCreature;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_8_R1.inventory.CraftItemStack;
-import org.bukkit.entity.Bat;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Giant;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.WitherSkull;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.util.Vector;
 
-public class UtilEnt
-  implements Listener
+public class UtilEntity
 {
-  private static HashMap<org.bukkit.entity.Entity, String> _nameMap = new HashMap();
-  private static HashMap<String, EntityType> creatureMap = new HashMap();
+  private static HashMap<org.bukkit.entity.Entity, String> _nameMap = new HashMap<org.bukkit.entity.Entity, String> ();
+  private static HashMap<String, EntityType> creatureMap = new HashMap<String, EntityType>();
   private static Field _goalSelector;
-  public static HashMap<Player, ArrayList<org.bukkit.entity.Entity>> flyingEntities = new HashMap();
+  @SuppressWarnings("unused")
+private static Field _targetSelector;
+  @SuppressWarnings("unused")
+private static Field _bsRestrictionGoal;
 
   public static HashMap<org.bukkit.entity.Entity, String> GetEntityNames()
   {
     return _nameMap;
-  }
-
-  public static void dropItemToRemove(Location loc, org.bukkit.inventory.ItemStack i, int number, int removeTime, String Metadata, boolean playEffect)
-  {
-    for (int k = 0; k < number; k++) {
-      EntityItem ei = new EntityItem(
-        ((CraftWorld)loc.getWorld()).getHandle(), 
-        loc.getX(), 
-        loc.getY(), 
-        loc.getZ(), 
-        CraftItemStack.asNMSCopy(i))
-      {
-        public boolean a(EntityItem entityitem) {
-          return false;
-        }
-      };
-      ei.pickupDelay = 20;
-      ((Item)ei.getBukkitEntity()).setVelocity(new Vector(UtilityMath.randomRange(-0.2000000029802322D, 0.2000000029802322D), 0.5D, UtilityMath.randomRange(-0.2000000029802322D, 0.2000000029802322D)));
-      ((CraftWorld)loc.getWorld()).getHandle().addEntity(ei);
-      ((Item)ei.getBukkitEntity()).setMetadata(Metadata, new FixedMetadataValue(
-        Main.schedule, Metadata));
-      UtilItem.EntityToRemove(ei.getBukkitEntity(), removeTime, playEffect);
-    }
   }
 
   public static void removeGoalSelectors(org.bukkit.entity.Entity entity)
@@ -170,7 +136,8 @@ public class UtilEnt
     return getName(ent.getType());
   }
 
-  public static String getName(EntityType type)
+  @SuppressWarnings("deprecation")
+public static String getName(EntityType type)
   {
     for (String cur : creatureMap.keySet()) {
       if (creatureMap.get(cur) == type)
@@ -179,10 +146,17 @@ public class UtilEnt
     return type.getName();
   }
 
-  public static boolean hitBox(Location loc, LivingEntity ent, double mult)
+  public static boolean hitBox(Location loc, LivingEntity ent, double mult, EntityType disguise)
   {
-    if (UtilMath.offset(loc, ent.getLocation().add(0.0D, 0.4D, 0.0D)) < 0.6D * mult) {
-      return true;
+    if (disguise != null)
+    {
+      if (disguise == EntityType.SQUID)
+      {
+        if (UtilMath.offset(loc, ent.getLocation().add(0.0D, 0.4D, 0.0D)) < 0.6D * mult) {
+          return true;
+        }
+        return false;
+      }
     }
 
     if ((ent instanceof Player))
@@ -224,7 +198,7 @@ public class UtilEnt
     if ((ent instanceof CraftEntity)) {
       return ((CraftEntity)ent).getHandle().onGround;
     }
-    return UtilityBlock.solid(ent.getLocation().getBlock().getRelative(BlockFace.DOWN));
+    return UtilBlock.solid(ent.getLocation().getBlock().getRelative(BlockFace.DOWN));
   }
 
   public static void PlayDamageSound(LivingEntity damagee)
@@ -310,7 +284,7 @@ public class UtilEnt
       return;
     }
     EntityCreature ec = ((CraftCreature)ent).getHandle();
-    Navigation nav = (Navigation) ec.getNavigation();
+    NavigationAbstract nav = ec.getNavigation();
 
     if (UtilMath.offset(ent.getLocation(), target) > 24.0D)
     {
@@ -341,104 +315,5 @@ public class UtilEnt
     ec.getControllerMove().a(target.getX(), target.getY(), target.getZ(), speed);
 
     return true;
-  }
-
-  public static org.bukkit.entity.Entity[] getNearbyEntities(Location l, int radius)
-  {
-    int chunkRadius = radius < 16 ? 1 : (radius - radius % 16) / 16;
-    HashSet radiusEntities = new HashSet();
-    for (int chX = 0 - chunkRadius; chX <= chunkRadius; chX++) {
-      for (int chZ = 0 - chunkRadius; chZ <= chunkRadius; chZ++) {
-        int x = (int)l.getX(); int y = (int)l.getY(); int z = (int)l.getZ();
-        for (org.bukkit.entity.Entity e : new Location(l.getWorld(), x + chX * 16, y, z + chZ * 16).getChunk().getEntities()) {
-          if ((e.getLocation().distance(l) <= radius) && (e.getLocation().getBlock() != l.getBlock())) radiusEntities.add(e);
-        }
-      }
-    }
-    return (org.bukkit.entity.Entity[])radiusEntities.toArray(new org.bukkit.entity.Entity[radiusEntities.size()]);
-  }
-
-  public static void setHelmet(LivingEntity e, org.bukkit.inventory.ItemStack helmet)
-  {
-    EntityEquipment ee = e.getEquipment();
-    ee.setHelmet(helmet);
-  }
-
-  public static void setItemInHand(LivingEntity e, org.bukkit.inventory.ItemStack itemInHand)
-  {
-    EntityEquipment ee = e.getEquipment();
-    ee.setItemInHand(itemInHand);
-  }
-
-  public static void RemoveHelmet(LivingEntity e)
-  {
-    EntityEquipment ee = e.getEquipment();
-    ee.setHelmet(null);
-  }
-
-  public static void spawnFlyingItemToRemove(Player p, Location l, Material m, byte data)
-  {
-    if (!flyingEntities.containsKey(p)) {
-      flyingEntities.put(p, new ArrayList());
-    }
-
-    WitherSkull skull = (WitherSkull)l.getWorld().spawn(
-      l.add(0.5D, 0.0D, 0.5D), WitherSkull.class);
-    skull.setDirection(new Vector(0, 0, 0));
-    skull.setVelocity(new Vector(0, 0, 0));
-    EntityItem ei = new EntityItem(
-      ((CraftWorld)l.getWorld()).getHandle(), 
-      l.getX(), 
-      l.getY(), 
-      l.getZ(), 
-      CraftItemStack.asNMSCopy(UtilItem.create(m, 1, data)))
-    {
-      public boolean a(EntityItem entityitem) {
-        return false;
-      }
-    };
-    ei.pickupDelay = 20;
-    ((CraftWorld)l.getWorld()).getHandle().addEntity(ei);
-
-    skull.setPassenger(ei.getBukkitEntity());
-    ei.getBukkitEntity().setMetadata("unpickable", new FixedMetadataValue(
-      Main.schedule, "unpickable"));
-    ((ArrayList)flyingEntities.get(p)).add(skull);
-    ((ArrayList)flyingEntities.get(p)).add(ei.getBukkitEntity());
-  }
-
-  public static void spawnFlyingEntity(Player p, Location l, String text)
-  {
-    if (!flyingEntities.containsKey(p)) {
-      flyingEntities.put(p, new ArrayList());
-    }
-
-    WitherSkull skull = (WitherSkull)l.getWorld().spawn(
-      l.add(0.5D, 0.0D, 0.5D), WitherSkull.class);
-    Bat b = (Bat)l.getWorld().spawn(
-      l, Bat.class);
-    skull.setDirection(new Vector(0, 0, 0));
-    skull.setVelocity(new Vector(0, 0, 0));
-    b.setCustomName(text);
-    b.setMetadata("nodamagetext", new FixedMetadataValue(
-      Main.schedule, "nodamagetext"));
-    skull.setMetadata("nodamagetext", new FixedMetadataValue(
-      Main.schedule, "nodamagetext"));
-
-    skull.setPassenger(b);
-    ((ArrayList)flyingEntities.get(p)).add(skull);
-    ((ArrayList)flyingEntities.get(p)).add(b);
-  }
-
-  @EventHandler
-  public void skullDamage(EntityDamageEvent event)
-  {
-    org.bukkit.entity.Entity e = event.getEntity();
-
-    if (((e instanceof WitherSkull)) || ((e instanceof org.bukkit.entity.Entity)))
-    {
-      if (e.hasMetadata("nodamagetext"))
-        event.setCancelled(true);
-    }
   }
 }
