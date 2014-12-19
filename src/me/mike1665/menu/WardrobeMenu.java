@@ -132,6 +132,28 @@ public class WardrobeMenu
       createItem(Material.DIAMOND_BOOTS, 1, (short) 0, "§b§lDiamond Boots", 
     	    	WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_BOOTS) ? ChatColor.GREEN + ""+ ChatColor.BOLD + "Unlocked" : "§bCosts §6§l: §a30 Tokens"));  
     
+    //Remove Armor
+    wardrobeMenu.setItem(
+    	16, 
+    	createItem(Material.GLASS, 1, (short) 0, "§a§lRemove Helmet", 
+    	    	  "§aRemove Your Helmet"));
+    wardrobeMenu.setItem(
+        25, 
+        createItem(Material.GLASS, 1, (short) 0, "§a§lRemove Chestplate", 
+        	      "§aRemove Your Chestplate"));
+    wardrobeMenu.setItem(
+   	    34, 
+        createItem(Material.GLASS, 1, (short) 0, "§a§lRemove Leggings", 
+    	    	 "§aRemove Your Leggings"));
+    wardrobeMenu.setItem(
+        43, 
+    	createItem(Material.GLASS, 1, (short) 0, "§a§lRemove Boots", 
+    			  "§aRemove Your Boots"));
+    wardrobeMenu.setItem(
+        52, 
+       	createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§a§lRemove All", 
+       			  "§aRemove Your Boots"));  
+    	    
     //OTHERS
     wardrobeMenu.setItem(
       49, 
