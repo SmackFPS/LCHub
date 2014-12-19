@@ -6,9 +6,12 @@ import java.util.UUID;
 
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.BatBlasterAmmoManager;
+import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
+import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.ammo.PaintballAmmoManager;
 import me.mike1665.coinapi.LcCoinsAPI;
+import me.mike1665.eventhandlers.EnderDoge;
 import me.mike1665.utils.UtilEffect;
 import me.mike1665.utils.UtilEnt;
 import me.mike1665.utils.UtilFirework;
@@ -76,11 +79,12 @@ public class RandomManager
       giveRandomCoins(p, l);
     else
       giveRandomAmmo(p, l);
+    	//giveRandomMount(p, l);
   }
 
   public static void giveRandomCoins(Player p, Location l)
   {
-    int am = UtilityMath.getRandomNumberBetween(200, 500);
+    int am = UtilityMath.getRandomNumberBetween(10, 100);
     LcCoinsAPI.givePoints(p, am);
     UtilEnt.spawnFlyingEntity(p, l.add(0.0D, 0.8D, 0.0D), Integer.toString(am) + " §e§lCoins");
     UtilFirework.fireFirework(l.add(0.0D, 2.0D, 0.0D));
@@ -89,7 +93,7 @@ public class RandomManager
   public static void giveRandomAmmo(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
   {
     double r = Math.random();
-    int amount = UtilityMath.getRandomNumberBetween(200, 500);
+    int amount = UtilityMath.getRandomNumberBetween(10, 100);
     UtilEffect.playFlameThing(l);
     if (r < 0.34D) {
       BatBlasterAmmoManager.giveBatAmmo(p, amount);
@@ -97,10 +101,18 @@ public class RandomManager
     } else if (r < 0.67D) {
       PaintballAmmoManager.givePBAmmo(p, amount);
       UtilEnt.spawnFlyingEntity(p, l.add(0.0D, 0.8D, 0.0D), "§4" + Integer.toString(amount) + " Paintball Ammo");
-    } else {
+    } else if (r < 0.80D){
       KittyCannonAmmoManager.giveCatAmmo(p, amount);
       UtilEnt.spawnFlyingEntity(p, l.add(0.0D, 0.8D, 0.0D), "§4" + Integer.toString(amount) + " Kitty Cannon Ammo");
+    } else if (r < 1.0D){
+        MeowAmmoManager.giveMeowAmmo(p, amount);
+        UtilEnt.spawnFlyingEntity(p, l.add(0.0D, 0.8D, 0.0D), "§4" + Integer.toString(amount) + " MeowBall Ammo");
+    } else if (r < 1.34D){
+        EnderDogeAmmoManager.giveEnderDogeAmmo(p, amount);
+        UtilEnt.spawnFlyingEntity(p, l.add(0.0D, 0.8D, 0.0D), "§4" + Integer.toString(amount) + " EnderDoge Cannon Ammo");
     }
+    
+    
   }
 
   public static void giveRandomMount(Player p, Location l)
@@ -171,7 +183,7 @@ public class RandomManager
           giveRandomThing(p, l);
         }
       }
-      else if (r < 0.10D) {
+      else if (r < 1.0D) {
           if (!nyan) {
               Bukkit.broadcastMessage("Has found the Nyan Mount!");
               for (Player cur : UtilServer.getPlayers()) {

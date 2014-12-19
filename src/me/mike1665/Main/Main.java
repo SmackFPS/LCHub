@@ -2,6 +2,7 @@ package me.mike1665.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,9 @@ import me.mike1665.ammo.FireWorksAmmoManager;
 import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
+import me.mike1665.block.BlockRestore;
+import me.mike1665.chest.RandomManager;
+import me.mike1665.chest.TreasureChestManager;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -23,6 +27,7 @@ import me.mike1665.click.MountMenuClick;
 import me.mike1665.click.MusicClick;
 import me.mike1665.click.PlayerGadjetsClick;
 import me.mike1665.click.VipGadjetsClick;
+import me.mike1665.click.WardrobeClick;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
@@ -67,6 +72,7 @@ import me.mike1665.menu.MountMenu;
 import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.PlayerGadjets;
 import me.mike1665.menu.VipGadjets;
+import me.mike1665.menu.WardrobeMenu;
 import me.mike1665.mount.MountManager;
 import me.mike1665.mount.mounts.AngelRider;
 import me.mike1665.mount.mounts.DarkRider;
@@ -77,8 +83,11 @@ import me.mike1665.mysql.MySQL;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.update.Updater;
+import me.mike1665.utils.UtilEnt;
 import me.mike1665.utils.UtilLocation;
 import me.mike1665.utils.UtilServer;
+import me.mike1665.utils.UtilityBlock;
+import me.mike1665.wardrobe.WardrobeManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -87,6 +96,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -142,12 +152,18 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		
 		
         //mysql = new MySQL(getConfig().getString("DB_IP"), getConfig().getString("DB_Username"), getConfig().getString("DB_Password"), getConfig().getString("DB_Name"));
-		
-		
+	   
+		WardrobeManager.initialize(this);
+		WardrobeMenu.initialize(this);
+		RandomManager.initialize(this);
+		Bukkit.getPluginManager().registerEvents(new TreasureChestManager(), this);
+	    Bukkit.getPluginManager().registerEvents(new UtilEnt(), this);
+	    Bukkit.getPluginManager().registerEvents(new UtilityBlock(), this);
 	    EffectManager.registerEvents(this);
 	    ExtraManager.registerEvents(this);
 	    ParticleManager.registerEvents(this);
 		PluginManager pm = getServer().getPluginManager();
+		pm.registerEvents(new WardrobeClick(), this);
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
 		pm.registerEvents(new MagicClock(), this);
@@ -210,18 +226,32 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 	}
 	
-   /* @EventHandler
-    public void onPlayerLogin(PlayerLoginEvent e) {
-            String reason = mysql.getBannedReason(e.getPlayer());
-            if (reason != null) {
-                    e.disallow(Result.KICK_BANNED, reason);
-            }
-    }*/
-	
 	  public void onDisable(){
 		  for (Player players : UtilServer.getPlayers()) {
 			  EffectManager.removeEffect(players, false);
 			  MountManager.removeCurrentPet(players, false);
+			  
+		      if (TreasureChestManager.isInTreasureChest(players))
+		      {
+		        Iterator localIterator2;
+		        for (Iterator localIterator1 = UtilEnt.flyingEntities.keySet().iterator(); localIterator1.hasNext(); 
+		          localIterator2.hasNext())
+		        {
+		          Player p = (Player)localIterator1.next();
+		          ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
+		          localIterator2 = entList.iterator(); 
+		          Entity e = (Entity) localIterator2.next();
+		          if (e.isValid()) {
+		            e.remove();
+		          }
+
+		        }
+
+		        BlockRestore.restore(players);
+		        TreasureChestManager.chest.remove(players.getUniqueId());
+		        TreasureChestManager.treasureChest.remove(players.getUniqueId());
+		        TreasureChestManager.playerpos.remove(players);
+		      }
 		  }
 	  }
 
@@ -381,6 +411,10 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		
 		if (cmd.getName().equalsIgnoreCase("gadmenu")) {
 			player.openInventory(BuyGadgets.buygadmenu(player));
+		}
+		
+		if (cmd.getName().equalsIgnoreCase("wardrobe")) {
+			player.openInventory(WardrobeMenu.getWardrobeShop(player));
 		}
 		if (cmd.getName().equalsIgnoreCase("parkour")) {
 			player.sendMessage(ChatColor.RED + "          :" + ChatColor.RED + " Parkour Version 1" + ChatColor.RED + " :");

@@ -1,6 +1,5 @@
 package me.mike1665.chest;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,23 +13,16 @@ import me.mike1665.block.BlockRestore;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import me.mike1665.utils.UtilBlock;
 import me.mike1665.utils.UtilEnt;
 import me.mike1665.utils.UtilServer;
 import me.mike1665.utils.UtilVelocity;
 import me.mike1665.utils.UtilityBlock;
-import net.minecraft.server.v1_8_R1.Packet;
-import net.minecraft.server.v1_8_R1.PacketPlayOutBlockAction;
-import net.minecraft.server.v1_8_R1.WorldServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -71,11 +63,15 @@ implements Listener
 
 					Vector v = new Vector(this.k * Math.sin(this.k * 3.141592653589793D / 2.0D) * this.rayon, this.k + this.heightPosition, this.k * Math.cos(this.k * 3.141592653589793D / 2.0D) * this.rayon);
 					l.add(v);
-					//new UtilParticle(particle, 0.0D, 1, 0.0D).sendToLocation(l);
+				    ParticleLib18 paricle1 = new ParticleLib18(particle, 0.0D, 1, 0.0D);
+				    paricle1.sendToLocation(l);
+
 
 					Vector v2 = new Vector(this.k * Math.sin(this.k * 3.141592653589793D / 2.0D) * -this.rayon, this.k + this.heightPosition, this.k * Math.cos(this.k * 3.141592653589793D / 2.0D) * -this.rayon);
 					l2.add(v2);
-					//new UtilParticle(particle, 0.0D, 1, 0.0D).sendToLocation(l2);
+				    ParticleLib18 paricle2 = new ParticleLib18(particle, 0.0D, 1, 0.0D);
+				    paricle2.sendToLocation(l2);
+
 
 					this.k -= this.particleDistance;
 
@@ -89,7 +85,9 @@ implements Listener
 		{
 			public void run() {
 				Bukkit.getScheduler().cancelTask(i);
-				//new UtilParticle(placeParticle, 0.1000000014901161D, 10, 0.300000011920929D).sendToLocation(loc.add(0.0D, 0.699999988079071D, 0.0D));
+			    ParticleLib18 paricle = new ParticleLib18(placeParticle, 0.1000000014901161D, 10, 0.300000011920929D);
+			    paricle.sendToLocation(loc.add(0.0D, 0.699999988079071D, 0.0D));
+
 			}
 		}
 		, 40L);
@@ -133,6 +131,7 @@ implements Listener
 		return result;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void changeChestState(Location loc, boolean open) {
 	    for (Player p : loc.getWorld().getPlayers()) {
 	        p.playNote(loc, (byte) 1, (byte) (open ? 1 : 0));
@@ -180,7 +179,6 @@ implements Listener
 							Bukkit.getServer().getScheduler()
 							.runTaskLater(Main.schedule, new Runnable()
 							{
-								@SuppressWarnings("rawtypes")
 								public void run() {
 									if (p.isValid())
 									{
@@ -192,7 +190,6 @@ implements Listener
 											Player p = (Player)localIterator1.next();
 											ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
 											localIterator2 = entList.iterator(); 
-											//continue; 
 											Entity e = (Entity) localIterator1.next();
 											if (e.isValid()) {
 												e.remove();
@@ -255,7 +252,6 @@ implements Listener
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	@EventHandler
 	public void OnPlayerLeft(PlayerQuitEvent event)
 	{
@@ -269,7 +265,6 @@ implements Listener
 				Player p = (Player)localIterator1.next();
 				ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
 				localIterator2 = entList.iterator(); 
-				//continue;
 				Entity e = (Entity)localIterator2.next();
 				if (e.isValid()) {
 					e.remove();
@@ -298,7 +293,6 @@ implements Listener
 				Player p = (Player)localIterator1.next();
 				ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
 				localIterator2 = entList.iterator(); 
-				//continue; 
 				Entity e = (Entity) localIterator2.next();
 				if (e.isValid()) {
 					e.remove();
