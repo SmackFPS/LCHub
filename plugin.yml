@@ -30,3 +30,5 @@ commands:
     giveammo:
     sqlban:
     wardrobe:
+    colorhelm:
+    unlockallarmor:

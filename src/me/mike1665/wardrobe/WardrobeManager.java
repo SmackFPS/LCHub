@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import me.mike1665.Main.Main;
 
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
@@ -18,11 +19,11 @@ public class WardrobeManager implements Listener{
 		WardrobeManager.plugin = plugin;
 	}
 	
-	public static boolean hasUnlockedArmor(Player p, Material m) {
+	public static boolean hasUnlockedArmor(OfflinePlayer p, Material m) {
 		return plugin.getConfig().getBoolean(p.getPlayer().getUniqueId() + "." + m.toString());
 	}
 	
-	public static void unlockArmor(Player p, Material m) {
+	public static void unlockArmor(OfflinePlayer p, Material m) {
 		plugin.getConfig().set(p.getPlayer().getUniqueId() + "." + m.toString(), true);
 		plugin.saveConfig();
 	}

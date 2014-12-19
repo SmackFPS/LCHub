@@ -13,10 +13,16 @@ import me.mike1665.wardrobe.WardrobeManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import com.arrayprolc.event.ColouredWardrobe;
+import com.arrayprolc.event.WardrobeType;
 
 public class WardrobeClick
   implements Listener
@@ -314,6 +320,38 @@ public class WardrobeClick
           p.closeInventory();
           p.openInventory(CosmeticsMenu.cosmenu(p));
           return;
+        }
+        
+      //Colored Armor
+        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("§a§lHelmet Colour"))
+        {
+        	ColouredWardrobe.openColorWardrobe(p, WardrobeType.HELMET);
+        }
+        
+        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("§a§lChestplate Colour"))
+        {
+        	ColouredWardrobe.openColorWardrobe(p, WardrobeType.CHESTPLATE);
+        }
+        
+        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("§a§lLeggings Colour"))
+        {
+        	ColouredWardrobe.openColorWardrobe(p, WardrobeType.LEGGINGS);
+        }
+        
+        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("§a§lBoots Colour"))
+        {
+        	ColouredWardrobe.openColorWardrobe(p, WardrobeType.BOOTS);
+        }
+        
+        //Pumpkin head
+        
+        if (event.getCurrentItem().getItemMeta().getDisplayName().contains("§6§lPumpkin Head"))
+        {
+        	ItemStack pumpkin = new ItemStack(Material.PUMPKIN, 1);
+        	ItemMeta pumpkin2 = pumpkin.getItemMeta();
+        	pumpkin2.addEnchant(Enchantment.DURABILITY, 1, true);
+        	pumpkin.setItemMeta(pumpkin2);
+        	p.getPlayer().getInventory().setHelmet(pumpkin);
         }
       }
     }

@@ -36,6 +36,7 @@ import me.mike1665.commands.GiveAmmo;
 import me.mike1665.commands.MountUnlocked;
 import me.mike1665.commands.SQLBan;
 import me.mike1665.commands.StatsCommand;
+import me.mike1665.commands.UnlockAllArmor;
 import me.mike1665.effects.EffectManager;
 import me.mike1665.eventhandlers.BatBlaster;
 import me.mike1665.eventhandlers.BuyEnderDoge;
@@ -116,6 +117,8 @@ import com.arrayprolc.bungeehook.PartyHooks;
 import com.arrayprolc.bungeehook.Servers;
 import com.arrayprolc.command.ArrayCommandHandler;
 import com.arrayprolc.event.ArrayEventSetup;
+import com.arrayprolc.event.ColouredWardrobe;
+import com.arrayprolc.event.WardrobeType;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
@@ -163,6 +166,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 	    ExtraManager.registerEvents(this);
 	    ParticleManager.registerEvents(this);
 		PluginManager pm = getServer().getPluginManager();
+		pm.registerEvents(new ColouredWardrobe(), this);
 		pm.registerEvents(new WardrobeClick(), this);
 		pm.registerEvents(new BowTeleport(), this);
 		pm.registerEvents(new PvPSword(), this);
@@ -205,6 +209,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		MountUnlocked.setup(this);
 		SQLBan.setup(this);
 		AmmoTest.setup(this);
+		UnlockAllArmor.setup(this);
 		new ProxiedEconomy();
 		colors.put("red", "255,0,0");
 		colors.put("orange", "255,127,0");
@@ -397,6 +402,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 			return true;
 		if (GiveAmmo.onCommand(sender, cmd, label, a))
 			return true;
+		if (UnlockAllArmor.onCommand(sender, cmd, label, a))
+			return true;
+		
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
@@ -416,6 +424,11 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		if (cmd.getName().equalsIgnoreCase("wardrobe")) {
 			player.openInventory(WardrobeMenu.getWardrobeShop(player));
 		}
+		
+		if (cmd.getName().equalsIgnoreCase("colorhelm")) {
+			ColouredWardrobe.openColorWardrobe(player, WardrobeType.CHESTPLATE);
+		}
+
 		if (cmd.getName().equalsIgnoreCase("parkour")) {
 			player.sendMessage(ChatColor.RED + "          :" + ChatColor.RED + " Parkour Version 1" + ChatColor.RED + " :");
 			player.sendMessage(ChatColor.RED + "          :" + ChatColor.GREEN + " Developed by @SwaggyYolo " + ChatColor.RED + ":");

@@ -102,7 +102,7 @@ public class CosmeticsMenu
 
 
 
-    cosmenu.setItem(40, ItemTools.setName(new ItemStack(Material.RECORD_10), "§3JukeBox", 
+    cosmenu.setItem(39, ItemTools.setName(new ItemStack(Material.RECORD_10), "§3JukeBox", 
       new String[] {
       "", 
       "§eNeed something entertaining?", 
@@ -110,6 +110,18 @@ public class CosmeticsMenu
       "§7§lThis is a §a§lVIP §7§lFeature §nONLY!", 
       "", 
       "§cPurchase a rank on the website!" }));
+    
+    cosmenu.setItem(42, ItemTools.setName(new ItemStack(Material.IRON_CHESTPLATE), "§cWardobe", 
+    	      new String[] {
+    	      "", 
+    	      "§eWant to look cool on the Hub?", 
+    	      "",
+    	      "§b§lMVIP §rGets to have everything unlocked!",
+    	      "",
+    	      "§cPurchase a rank on the website!" }));
+      
+      
+      
     
     return cosmenu;
   }

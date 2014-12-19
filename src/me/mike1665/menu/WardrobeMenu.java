@@ -152,7 +152,32 @@ public class WardrobeMenu
     wardrobeMenu.setItem(
         52, 
        	createItem(Material.REDSTONE_BLOCK, 1, (short) 0, "§a§lRemove All", 
-       			  "§aRemove Your Boots"));  
+       			  "§aRemove Your Armor"));
+    
+    //Set The Color
+    wardrobeMenu.setItem(
+        10, 
+       createItem(Material.INK_SACK, 1, (short) 15, "§a§lHelmet Colour", 
+        	       "§cMust Have Leather Armor"));
+    wardrobeMenu.setItem(
+        19, 
+        createItem(Material.INK_SACK, 1, (short) 15, "§a§lChestplate Colour", 
+            	    "§cMust Have Leather Armor"));
+    wardrobeMenu.setItem(
+        28, 
+        createItem(Material.INK_SACK, 1, (short) 15, "§a§lLeggings Colour", 
+        	        "§cMust Have Leather Armor"));
+    wardrobeMenu.setItem(
+        37, 
+        createItem(Material.INK_SACK, 1, (short) 15, "§a§lBoots Colour", 
+        			 "§cMust Have Leather Armor")); 
+    
+    //Pumpkin Head
+    wardrobeMenu.setItem(
+        4, 
+        createItem(Material.PUMPKIN, 1, (short) 0, "§6§lPumpkin Head", 
+                      "§cSwagg Style!"));     
+    
     	    
     //OTHERS
     wardrobeMenu.setItem(

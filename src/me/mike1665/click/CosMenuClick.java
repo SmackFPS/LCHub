@@ -11,6 +11,7 @@ import me.mike1665.menu.CosmeticsMenu;
 import me.mike1665.menu.MountMenu;
 import me.mike1665.menu.MusicMenu;
 import me.mike1665.menu.ParticleMenu;
+import me.mike1665.menu.WardrobeMenu;
 import me.mike1665.particle.CircleParticle;
 
 import org.bukkit.ChatColor;
@@ -81,6 +82,11 @@ public class CosMenuClick
         p.closeInventory();
         p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0F, 10.0F);
         p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + "You need to purchase VIP for this feature!");
+      }
+      
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cWardobe"))
+      {
+        p.openInventory(WardrobeMenu.getWardrobeShop(p));
       }
     }
   }
