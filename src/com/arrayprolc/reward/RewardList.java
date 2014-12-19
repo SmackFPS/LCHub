@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.arrayprolc.item.ItemTools;
+import com.arrayprolc.tools.ItemTools;
 
 public class RewardList {
 

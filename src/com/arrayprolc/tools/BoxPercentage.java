@@ -1,4 +1,4 @@
-package com.arrayprolc.strings;
+package com.arrayprolc.tools;
 
 public class BoxPercentage {
 	public static String generateBoxPercentage(double input){

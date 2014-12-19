@@ -2,31 +2,42 @@ package com.arrayprolc.command;
 
 import java.lang.reflect.Method;
 
-import me.jrl1004.lightcraft.gadgets.parametrics.ParametricFlower;
 import me.mike1665.Main.Main;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.material.Dye;
 
+import com.arrayprolc.menu.Menu;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.speedways.CustomEntityType;
+import com.arrayprolc.tools.ItemTools;
 
-public class ArrayCommandHandler
+public class ArrayCommandHandler implements Listener
 {
 
 	static Main plugin;
-
+	public static ArrayCommandHandler instance2;
 	public static void setup(Main instance)
 	{
 		plugin = instance;
+		instance2 = new ArrayCommandHandler();
+		Bukkit.getPluginManager().registerEvents(instance2, instance);
 	}
 
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a)
@@ -85,11 +96,56 @@ public class ArrayCommandHandler
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.VILLAGER_HAPPY, 1, 1, 0));
+			//new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.VILLAGER_HAPPY, 1, 1, 0));
+			Menu m = new Menu("Wardrobe: " + a[0], getClosestTo(16, 9));
+			int end = 0;
+			for(int i = 0; i < 16; i++){
+				byte dyeColour = (byte)i;
+				int slot = (DyeColor.values().length-1) - i;
+				String colour = WordUtils.capitalize(DyeColor.values()[slot].toString().toLowerCase().replace("_", " "));
+				ItemStack dye = ItemTools.setName(new ItemStack(Material.INK_SACK, 1, dyeColour),  ChatColor.RESET + "" + colour);
+				m.addItem(dye, i);
+				end++;
+			}
+			end = end + 2;
+			m.addItem(ItemTools.setName(new ItemStack(Material.ARROW), "§a<§a§m-- §f§aGo Back"), end);
+			m.displayMenu((Player)sender);
 		}
 		return false;
 	}
-
+	public static Material getType(String s){
+		s = s.toLowerCase();
+		for(Material m : Material.values()){
+			if(m.toString().toLowerCase().contains("LEATHER") && m.toString().toLowerCase().contains(s)){
+				return m;
+			}
+		}
+		return Material.LEATHER_CHESTPLATE;
+	}
+	@EventHandler
+	public void onInteract(InventoryClickEvent e){
+		if(!e.getInventory().getTitle().contains("Wardrobe:")){
+			return;
+		}
+		String type = e.getInventory().getTitle().split("Wardrobe: ")[1];
+		Material t = getType(type);
+		if(!(e.getCurrentItem().getData() instanceof Dye)) return;
+		Dye dye =  (Dye) e.getCurrentItem().getData();
+		ItemStack lhelmet = new ItemStack(t, 1);
+		LeatherArmorMeta lam = (LeatherArmorMeta)lhelmet.getItemMeta();
+		lam.setColor(dye.getColor().getColor());
+		lhelmet.setItemMeta(lam);
+		switch(t){
+		case LEATHER_HELMET: e.getWhoClicked().getInventory().setHelmet(lhelmet); break;
+		case LEATHER_CHESTPLATE: e.getWhoClicked().getInventory().setChestplate(lhelmet);break;
+		case LEATHER_LEGGINGS: e.getWhoClicked().getInventory().setLeggings(lhelmet);break;
+		case LEATHER_BOOTS: e.getWhoClicked().getInventory().setBoots(lhelmet);break;
+		default: return;
+		}
+	}
+	public static int getClosestTo(int j, int rejex){
+		int working = rejex; for(int i = 0; i < 9*7; i++) if(j > working) working = working + rejex; return working;
+	}
 	static boolean isOnline(Player p)
 	{
 		for (Player p2 : Bukkit.getOnlinePlayers())

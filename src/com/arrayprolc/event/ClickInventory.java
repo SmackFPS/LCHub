@@ -1,11 +1,12 @@
 package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
+import net.minecraft.server.v1_8_R1.PacketPlayOutNamedSoundEffect;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,11 +20,11 @@ import org.bukkit.inventory.ItemStack;
 import com.arrayprolc.anvilgui.AnvilGUI;
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
-import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.menu.Menu;
 import com.arrayprolc.serverjoin.PartyTools;
 import com.arrayprolc.strings.MessageType;
 import com.arrayprolc.strings.StringManager;
+import com.arrayprolc.tools.ItemTools;
 
 public class ClickInventory implements Listener {
 
@@ -59,7 +60,23 @@ public class ClickInventory implements Listener {
 			((Player) e.getWhoClicked()).sendMessage(StringManager.getMessage("To change armor, use the Hub Gadgets menu.", MessageType.ERROR));
 		}
 	}
+	
+	@EventHandler
+	public void interact2(PlayerInteractEvent e){
+		Player p = e.getPlayer();
+		if(p.getItemInHand().getType().equals(Material.SLIME_BALL)){
+			customSound(e.getPlayer(), "airhorn");
+		}
+	}
+	public void customSound(Player player, String sound, float vol, float pitch){
+		Player p = player;
+		PacketPlayOutNamedSoundEffect packet = new PacketPlayOutNamedSoundEffect(sound, p.getLocation().getBlockX(), p.getLocation().getBlockY(), p.getLocation().getBlockZ(), vol, pitch);
+		((CraftPlayer)player).getHandle().playerConnection.sendPacket(packet);
+	}
 
+	public void customSound(Player player, String sound){
+		customSound(player, sound, 1.0F, 1.0F);
+	}
 	@EventHandler
 	public void join(PlayerJoinEvent e){
 		e.getPlayer().getInventory().setItem(0, ItemTools.setName(new ItemStack(Material.BOOK), "§aGame Selector §7(Right-Click)"));
