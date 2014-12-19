@@ -25,7 +25,7 @@ public class BungeeHooks {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("ConnectOther");
 		out.writeUTF(p.getName());
-		out.writeUTF(name);
+		out.writeUTF(name);//This is another edit
 		Bukkit.getOnlinePlayers()[0].sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
 	}
 
