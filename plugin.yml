@@ -1,7 +1,7 @@
 name: HubPlugin
 main: me.mike1665.Main.Main
 version: 1.0
-description: Test
+description: Testa
 author: mike1665
 commands:
     caoff:
