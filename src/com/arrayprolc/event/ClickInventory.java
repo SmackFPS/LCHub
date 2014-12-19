@@ -66,6 +66,7 @@ public class ClickInventory implements Listener {
 		Player p = e.getPlayer();
 		if(p.getItemInHand().getType().equals(Material.SLIME_BALL)){
 			customSound(e.getPlayer(), "airhorn");
+			p.setItemInHand(p.getItemInHand());
 		}
 	}
 	public void customSound(Player player, String sound, float vol, float pitch){
