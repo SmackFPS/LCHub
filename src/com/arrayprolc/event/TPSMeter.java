@@ -4,7 +4,7 @@ import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
 
-import com.arrayprolc.strings.BoxPercentage;
+import com.arrayprolc.tools.BoxPercentage;
 
 public class TPSMeter {
 	public static int tps = 0;

@@ -1,11 +1,14 @@
 package me.mike1665.menu;
 
-import com.arrayprolc.item.ItemTools;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
+import com.arrayprolc.tools.ItemTools;
+
 import java.util.ArrayList;
+
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
+
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
