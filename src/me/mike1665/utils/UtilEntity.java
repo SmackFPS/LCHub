@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import net.minecraft.server.v1_8_R1.EntityCreature;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
-import net.minecraft.server.v1_8_R1.Navigation;
 import net.minecraft.server.v1_8_R1.NavigationAbstract;
 import net.minecraft.server.v1_8_R1.PathfinderGoalSelector;
 
