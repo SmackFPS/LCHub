@@ -1,10 +1,12 @@
 package me.mike1665.click;
 
 import java.util.ArrayList;
+
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
 import me.mike1665.ammo.FunCreeperAmmoManager;
+import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.coinapi.ApiEvent;
@@ -12,8 +14,10 @@ import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.funstuff.BowTeleport;
 import me.mike1665.funstuff.PvPSword;
+import me.mike1665.gadgets.GagdetManager;
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -205,9 +209,9 @@ public class BuyGadgetsClick
           p.closeInventory();
         }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§bKitty Cannon")) {
-          if ((LcTokensAPI.hasEnough(p, 500)) && (KittyCannonAmmoManager.balaceCatAmmo(p) <= 1))
+          if ((LcTokensAPI.hasEnough(p, 100)) && (KittyCannonAmmoManager.balaceCatAmmo(p) <= 1))
           {
-            LcTokensAPI.takePoints(p, 500);
+            LcTokensAPI.takePoints(p, 100);
             KittyCannonAmmoManager.giveCatAmmo(p, 50);
             ItemStack snow = new ItemStack(Material.STICK, 1);
             ItemMeta sno = snow.getItemMeta();
@@ -227,6 +231,30 @@ public class BuyGadgetsClick
             p.closeInventory();
           }
         }
+        
+        if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aPig Quake Gun")) {
+            if ((LcTokensAPI.hasEnough(p, 200)) && (GadgetAmmo.balanceGadgetAmo(p, "QuakeGunAmmo") <= 1))
+            {
+              LcTokensAPI.takePoints(p, 200);
+              GadgetAmmo.addGadgetAmo(p, "QuakeGunAmmo", 50);
+              ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
+              ItemMeta sno = snow.getItemMeta();
+              sno.setDisplayName(ChatColor.GREEN + "QuakeGun " + ChatColor.DARK_RED + GadgetAmmo.balanceGadgetAmo(p, "QuakeGunAmmo"));
+              snow.setItemMeta(sno);
+              p.getInventory().setItem(2, snow);
+              ApiEvent.updatescore(p);
+              p.closeInventory();
+            }
+            else if (GadgetAmmo.balanceGadgetAmo(p, "QuakeGunAmmo") > 1)
+            {
+              ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
+              ItemMeta sno = snow.getItemMeta();
+              sno.setDisplayName(ChatColor.GREEN + "QuakeGun " + ChatColor.DARK_RED + GadgetAmmo.balanceGadgetAmo(p, "QuakeGunAmmo"));
+              snow.setItemMeta(sno);
+              p.getInventory().setItem(2, snow);
+              p.closeInventory();
+            }
+          }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
           if (LcCoinsAPI.hasEnough(p, 300))
           {

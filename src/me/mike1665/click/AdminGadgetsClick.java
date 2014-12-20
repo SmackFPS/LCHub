@@ -65,8 +65,6 @@ public class AdminGadgetsClick
       }
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§1Wear Rainbow Armor"))
       {
-        Main.activate.add(p.getName());
-        Main.rainbowarmor.put(p.getName(), "red");
         p.sendMessage(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Gadgets" + ChatColor.GRAY + "] " + ChatColor.AQUA + "Rainbow Armor Active. To Turn off do - /caoff");
         p.closeInventory();
         return;

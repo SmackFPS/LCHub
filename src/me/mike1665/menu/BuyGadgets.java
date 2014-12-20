@@ -8,6 +8,7 @@ import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
 import me.mike1665.ammo.FunCreeperAmmoManager;
+import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.ammo.PaintballAmmoManager;
@@ -128,11 +129,22 @@ public class BuyGadgets
       "§ror something else?", 
       "", 
       "§aClick to purchase", 
-      "§r50 for §a500 Coins", 
+      "§r50 for §a100 §dTokens", 
       "", 
       "§rYour ammo: §b" + KittyCannonAmmoManager.balaceCatAmmo(p) }));
     
-    buygadmenu.setItem(28, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§2Coin Bomb", 
+    buygadmenu.setItem(28, ItemTools.setName(new ItemStack(Material.DIAMOND_HOE), "§aPig Quake Gun", 
+       new String[] {
+       "", 
+       "§rShoots pigs ridng", 
+       "§rfireworks!?!?", 
+       "", 
+       "§aClick to purchase", 
+       "§r50 for §a200 §dTokens", 
+       "", 
+       "§rYour ammo: §b" + GadgetAmmo.balanceGadgetAmo(p, "QuakeGunAmmo") }));
+    
+    buygadmenu.setItem(29, ItemTools.setName(new ItemStack(Material.DOUBLE_PLANT), "§2Coin Bomb", 
       new String[] {
       "", 
       "§rWant to throw an awesome", 
@@ -143,7 +155,7 @@ public class BuyGadgets
       "", 
       "§rYour ammo: §bNot Needed." }));
     
-    buygadmenu.setItem(29, ItemTools.setName(new ItemStack(Material.NETHER_STAR), "§dToken Bomb", 
+    buygadmenu.setItem(30, ItemTools.setName(new ItemStack(Material.NETHER_STAR), "§dToken Bomb", 
       new String[] {
       "", 
       "§rWant to throw an awesome", 
@@ -154,7 +166,7 @@ public class BuyGadgets
       "", 
       "§rYour ammo: §bNot Needed." }));
     
-    buygadmenu.setItem(30, ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§dPvP Sword", 
+    buygadmenu.setItem(31, ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§dPvP Sword", 
       new String[] {
       "", 
       "§rWant to PVP with others?", 
@@ -164,7 +176,7 @@ public class BuyGadgets
       "", 
       "§rYour ammo: §bNot Needed." }));
     
-    buygadmenu.setItem(31, ItemTools.setName(new ItemStack(Material.BOW), "§bTeleport Bow", 
+    buygadmenu.setItem(32, ItemTools.setName(new ItemStack(Material.BOW), "§bTeleport Bow", 
       new String[] {
       "", 
       "§rWant to teleport around?", 

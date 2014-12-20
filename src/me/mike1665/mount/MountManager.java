@@ -9,7 +9,12 @@ import me.mike1665.mount.mounts.DarkRider;
 import me.mike1665.mount.mounts.GhostRider;
 import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
+import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.update.UpdateType;
+import me.mike1665.update.event.UpdateEvent;
+import me.mike1665.utils.UtilServer;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
@@ -44,7 +49,7 @@ public class MountManager
       pet.remove(p.getUniqueId());
     } else {
       if (message) {
-        p.sendMessage("Pet already removed!");
+        p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.DARK_GRAY + "> " + ChatColor.RESET + "" + ChatColor.RED + "Mount already removed!");
       }
       return;
     }
@@ -87,30 +92,18 @@ public class MountManager
   }
 
   @EventHandler
-  public void onPlayerInteractEntity(PlayerInteractEntityEvent event)
+  public void HorseInteract(PlayerInteractEntityEvent event)
   {
-    if ((event.getRightClicked() instanceof Horse))
-    {
-      Player damager = event.getPlayer();
-      Horse h = (Horse)event.getRightClicked();
+    if (!(event.getRightClicked() instanceof Horse)) {
+      return;
+    }
+    Player player = event.getPlayer();
+    Horse horse = (Horse)event.getRightClicked();
 
-      if ((h.hasMetadata("poseidonrider")) || 
-        (h.hasMetadata("darkrider")) || 
-        (h.hasMetadata("nyanrider")) || 
-        (h.hasMetadata("angelrider")) || 
-        (h.hasMetadata("ghostrider")))
-      {
-        if (!isPetOwner(damager, h))
-        {
-          try
-          {
-            event.setCancelled(true);
-            damager.sendMessage("Dis not yur pet");
-          } catch (Exception localException) {
-          }
-          return;
-        }
-      }
+    if ((horse.getOwner() == null) || (!horse.getOwner().equals(player)))
+    {
+      player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Mounts" + ChatColor.DARK_GRAY + "> " + ChatColor.RESET + "" + ChatColor.RED + "This is not your mount!");
+      event.setCancelled(true);
     }
   }
 
@@ -138,7 +131,7 @@ public class MountManager
       event.setCancelled(true);
   }
 
-  /*@SuppressWarnings("deprecation")
+@SuppressWarnings("deprecation")
 @EventHandler
   public void ParticleAura(UpdateEvent event)
   {
@@ -149,25 +142,28 @@ public class MountManager
         if (((Horse)pet.get(p)).isValid())
         {
           if (((Horse)pet.get(p)).hasMetadata("angelrider")) {
-        	  ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOW_SHOVEL, 10, 5, 1);
-        	  snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
-         //   new UtilParticle(UtilParticle.Particle.SNOW_SHOVEL, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
+        	  	ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOW_SHOVEL, 0.1000000014901161D, 3, 0.25D);
+        	  	snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
-         /* if (((Horse)pet.get(p)).hasMetadata("darkrider")) {
-          //  new UtilParticle(UtilParticle.Particle.SPELL_WITCH, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
-          }
+         if (((Horse)pet.get(p)).hasMetadata("darkrider")) {
+       	  		ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SPELL_WITCH, 0.1000000014901161D, 3, 0.25D);
+       	  		snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
+    	  }
 
           if (((Horse)pet.get(p)).hasMetadata("ghostrider")) {
-           // new UtilParticle(UtilParticle.Particle.FLAME, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
+           	  	ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.FLAME, 0.1000000014901161D, 3, 0.25D);
+           	  	snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
           if (((Horse)pet.get(p)).hasMetadata("nyanrider")) {
-           // new UtilParticle(UtilParticle.Particle.SPELL_MOB, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
+           	  	ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SPELL_MOB, 0.1000000014901161D, 3, 0.25D);
+           	  	snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
           if (((Horse)pet.get(p)).hasMetadata("poseidonrider")) {
-           // new UtilParticle(UtilParticle.Particle.WATER_SPLASH, 0.1000000014901161D, 3, 0.25D).sendToLocation(((Horse)pet.get(p)).getLocation().add(0.0D, 1.0D, 0.0D));
+           	  	ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.WATER_SPLASH, 0.1000000014901161D, 3, 0.25D);
+           	  	snow.sendToLocation(pet.get(p).getLocation().add(0.0D, 1.0D, 0.0D));
           }
 
         }
@@ -186,7 +182,7 @@ public class MountManager
             ((Horse)pet.get(p.getUniqueId())).teleport(p);
         }
     }
-  } */
+  }
 
   public static void registerEvents(Main plugin)
   {

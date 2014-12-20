@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
+
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.KittyCannonAmmoManager;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -32,6 +34,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
+
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
 
 public class KittyCannon
   implements Listener
@@ -69,7 +74,7 @@ public class KittyCannon
       if (KittyCannonAmmoManager.balaceCatAmmo(p) < 1)
       {
         p.getInventory().setItemInHand(null);
-        p.sendMessage("testdsdas");
+		p.sendMessage(StringManager.getPrefix(MessageType.ERROR) + ChatColor.AQUA+ "You ran out of ammo!");
         return;
       }
       ItemStack snow = new ItemStack(Material.STICK, 1);

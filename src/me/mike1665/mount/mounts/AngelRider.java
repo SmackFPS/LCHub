@@ -5,6 +5,7 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.mount.MountManager;
+import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.utils.UtilityBlock;
 import net.minecraft.server.v1_8_R1.AttributeInstance;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
@@ -122,12 +123,10 @@ public class AngelRider
 						2));
 				p.addPotionEffect(new PotionEffect(
 						PotionEffectType.SLOW_DIGGING, 100, 5));
-				// new UtilParticle(UtilParticle.Particle.SNOW_SHOVEL,
-				// 0.1000000014901161D, 10,
-				// 2.0D).sendToLocation(p.getLocation().add(0.0D, 1.0D, 0.0D));
-				// new UtilParticle(UtilParticle.Particle.SNOWBALL,
-				// 0.1000000014901161D, 10,
-				// 2.0D).sendToLocation(p.getLocation().add(0.0D, 1.0D, 0.0D));
+        	  	ParticleLib18  snow = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOW_SHOVEL, 0.1000000014901161D, 10, 2.0D);
+        	  	ParticleLib18  snow2 = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SNOWBALL, 0.1000000014901161D, 10, 2.0D);
+        	  	snow.sendToLocation(p.getLocation().add(0.0D, 1.0D, 0.0D));
+        	  	snow2.sendToLocation(p.getLocation().add(0.0D, 1.0D, 0.0D));
 				UtilityBlock.sendBreak(p, 80, (byte) 0, p.getLocation()
 						.getBlock().getLocation());
 			}

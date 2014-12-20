@@ -30,6 +30,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class BatBlaster implements Listener {
 
 	private HashMap<Player, Long> _active = new HashMap<Player, Long>();
@@ -75,7 +78,7 @@ public class BatBlaster implements Listener {
 				BatBlasterAmmoManager.takeBatAmmo(player, 1);
 				if (BatBlasterAmmoManager.balaceBatAmmo(player) < 1){
 					player.getInventory().setItemInHand(null);
-					player.sendMessage("testdsdas");
+					player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + ChatColor.AQUA+ "You ran out of ammo!");
 					return;
 				}
 	    		ItemStack snow = new ItemStack(Material.IRON_BARDING, 1);

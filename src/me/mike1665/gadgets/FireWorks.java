@@ -3,8 +3,10 @@ package me.mike1665.gadgets;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
+
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.FireWorksAmmoManager;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -25,6 +27,9 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
+
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
 
 public class FireWorks
   implements Listener
@@ -74,7 +79,7 @@ public class FireWorks
       if (FireWorksAmmoManager.balaceFireWorkAmmo(player) < 1)
       {
         player.getInventory().setItemInHand(null);
-        player.sendMessage("testdsdas");
+		player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + ChatColor.AQUA+ "You ran out of ammo!");
         return;
       }
       ItemStack snow = new ItemStack(Material.FIREWORK, 1);

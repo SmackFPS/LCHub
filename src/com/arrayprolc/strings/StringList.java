@@ -2,7 +2,7 @@ package com.arrayprolc.strings;
 
 public class StringList
 {
-  public static String mainWorld = "LCBeta";
+  public static String mainWorld = "world";
 }
 
 

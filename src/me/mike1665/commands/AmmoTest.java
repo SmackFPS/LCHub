@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.UUID;
 
 import me.mike1665.Main.Main;
+import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.eventhandlers.PaintballGun;
 import me.mike1665.particlelib.ParticleEffect;
@@ -31,6 +32,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
+
 public class AmmoTest implements Listener{
 
 	private static Main plugin;
@@ -46,18 +50,18 @@ public class AmmoTest implements Listener{
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
 		if(!(sender instanceof Player)) return false;
 		Player p = (Player) sender;
-		if (cmd.getName().equalsIgnoreCase("321")) {
-			MeowAmmoManager.giveMeowAmmo(p, 20);
-			p.sendMessage("This " + MeowAmmoManager.balaceMeowAmmo(p));
+		if (cmd.getName().equalsIgnoreCase("321") && p.isOp()) {
+			GadgetAmmo.addGadgetAmo(p, "QuakeGun", 5);
+			p.sendMessage("This " + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));
 		}
-		if (cmd.getName().equalsIgnoreCase("321")) {
-			ItemStack snow = new ItemStack(Material.BLAZE_ROD, 1);
+		if (cmd.getName().equalsIgnoreCase("3211") && p.isOp()) {
+			ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
         	ItemMeta sno = snow.getItemMeta();
-        	sno.setDisplayName(ChatColor.GREEN + "MeowBall " + ChatColor.DARK_RED + MeowAmmoManager.balaceMeowAmmo(p));
+        	sno.setDisplayName(ChatColor.GREEN + "QuakeGun " + ChatColor.DARK_RED + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));
         	snow.setItemMeta(sno);
         	p.getInventory().addItem(snow);
 		}
-		if (cmd.getName().equalsIgnoreCase("ammotest")) {
+		if (cmd.getName().equalsIgnoreCase("ammotest") && p.isOp()) {
 			if(p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "MeowBall " + ChatColor.DARK_RED + MeowAmmoManager.balaceMeowAmmo(p))) {
 				p.sendMessage("Check worked!");
 			}
@@ -163,7 +167,7 @@ public class AmmoTest implements Listener{
 				MeowAmmoManager.takeMeowAmmo(player, 1);
 				if (MeowAmmoManager.balaceMeowAmmo(player) < 1){
 					player.getInventory().setItemInHand(null);
-					player.sendMessage("testdsdas");
+					player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + ChatColor.AQUA+ "You ran out of ammo!");
 					return;
 				}
 	    		ItemStack snow = new ItemStack(Material.BLAZE_ROD, 1);

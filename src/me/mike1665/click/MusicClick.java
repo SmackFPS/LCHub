@@ -39,7 +39,7 @@ public class MusicClick
   
   public static void initalize(Main plugin)
   {
-    plugin = plugin;
+    MusicClick.plugin = plugin;
   }
   
   @EventHandler
@@ -165,7 +165,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 6540L, 1L);
+    }.runTaskTimer(Main.schedule, 6540L, 1L);
   }
   
   public void spawnChirpJuke(Player p)
@@ -185,7 +185,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3660L, 1L);
+    }.runTaskTimer(Main.schedule, 3660L, 1L);
   }
   
   public void spawnFarJuke(Player p)
@@ -205,7 +205,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3048L, 1L);
+    }.runTaskTimer(Main.schedule, 3048L, 1L);
   }
   
   public void spawnMallJuke(Player p)
@@ -225,7 +225,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3804L, 1L);
+    }.runTaskTimer(Main.schedule, 3804L, 1L);
   }
   
   public void spawnMellohiJuke(Player p)
@@ -245,7 +245,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 16320L, 1L);
+    }.runTaskTimer(Main.schedule, 16320L, 1L);
   }
   
   public void spawnStalJuke(Player p)
@@ -265,7 +265,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 2760L, 1L);
+    }.runTaskTimer(Main.schedule, 2760L, 1L);
   }
   
   public void spawnStradJuke(Player p)
@@ -285,7 +285,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3696L, 1L);
+    }.runTaskTimer(Main.schedule, 3696L, 1L);
   }
   
   public void spawnWardJuke(Player p)
@@ -305,7 +305,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 4932L, 1L);
+    }.runTaskTimer(Main.schedule, 4932L, 1L);
   }
   
   public void spawn11Juke(Player p)
@@ -325,7 +325,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 1332L, 1L);
+    }.runTaskTimer(Main.schedule, 1332L, 1L);
   }
   
   public void spawnWaitJuke(Player p)
@@ -345,7 +345,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 4296L, 1L);
+    }.runTaskTimer(Main.schedule, 4296L, 1L);
   }
   
   public void spawn13Juke(final Player p)
@@ -367,7 +367,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3096L, 1L);
+    }.runTaskTimer(Main.schedule, 3096L, 1L);
   }
   
   public void spawnCatJuke(final Player p)
@@ -388,7 +388,7 @@ public class MusicClick
           cancel();
         }
       }
-    }.runTaskTimer(plugin, 3660L, 1L);
+    }.runTaskTimer(Main.schedule, 3660L, 1L);
   }
   
   public void removeJuke(Player p)
@@ -432,7 +432,7 @@ public class MusicClick
 }
 
 
-/* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
+/* Location:           A:\LC\Lobby\Main.schedules\HubMain.schedule.jar
  * Qualified Name:     me.mike1665.click.MusicClick
  * JD-Core Version:    0.7.0.1
  */

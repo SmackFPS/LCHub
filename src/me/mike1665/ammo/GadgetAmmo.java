@@ -17,7 +17,7 @@ public class GadgetAmmo {
 	public static int balanceGadgetAmo(OfflinePlayer p, String gadget) {
 		int a;
 		try {
-			a = plugin.getConfig().getInt(p.getUniqueId() + gadget);
+			a = plugin.getConfig().getInt(p.getUniqueId() + "." + gadget);
 		} catch (Exception exc) {
 			a = 0;
 		}
@@ -26,26 +26,23 @@ public class GadgetAmmo {
 
 	public static boolean hasGadgetAmo(OfflinePlayer p, String gadget, int i) {
 		i = i * Multiplier.coin(p);
-		if (plugin.getConfig().getInt(p.getUniqueId() + gadget) >= i)
+		if (plugin.getConfig().getInt(p.getUniqueId() + "." + gadget) >= i)
 			return true;
 		return false;
 	}
 
 	public static void removeGadgetAmo(OfflinePlayer p, String gadget, int amount) {
 		amount = amount * Multiplier.coin(p);
-		plugin.getConfig()
-				.set(p.getUniqueId() + gadget,
-						plugin.getConfig().getInt(p.getUniqueId() + gadget, 0)
+		plugin.getConfig().set(p.getUniqueId() + "." + gadget,
+						plugin.getConfig().getInt(p.getUniqueId() + "." + gadget, 0)
 								- amount);
 		plugin.saveFile();
 	}
 
 	public static void addGadgetAmo(OfflinePlayer p, String gadget, int amount) {
 		amount = amount * Multiplier.coin(p);
-		plugin.getConfig()
-				.set(p.getUniqueId() + gadget,
-						plugin.getConfig().getInt(p.getUniqueId() + gadget, 0)
-								+ amount);
+		plugin.getConfig().set(p.getUniqueId() + "." + gadget, 
+				plugin.getConfig().getInt(p.getUniqueId() + "." + gadget, 0) + amount);
 		plugin.saveFile();
 	}
 }

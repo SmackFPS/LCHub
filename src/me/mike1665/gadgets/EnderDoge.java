@@ -3,11 +3,13 @@ package me.mike1665.gadgets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
+
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.particles18.ParticleLib18.ParticleType;
 import me.mike1665.utils.UtilBlock;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -27,6 +29,9 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
+
+import com.arrayprolc.strings.MessageType;
+import com.arrayprolc.strings.StringManager;
 
 public class EnderDoge
   implements Listener
@@ -86,7 +91,7 @@ public class EnderDoge
       if (EnderDogeAmmoManager.balaceEnderDogeAmmo(p) < 1)
       {
         player.getInventory().setItemInHand(null);
-        player.sendMessage("testdsdas");
+		player.sendMessage(StringManager.getPrefix(MessageType.ERROR) + ChatColor.AQUA+ "You ran out of ammo!");
         return;
       }
       ItemStack snow = new ItemStack(Material.FIREWORK_CHARGE, 1);
