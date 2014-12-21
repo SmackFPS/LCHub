@@ -16,17 +16,20 @@ public class JacobCommandHandler implements Listener {
 	private static Random random;
 	static Main plugin;
 	public static JacobCommandHandler instance2;
+	private static boolean _setup = false;
 
 	public static void setup() {
 		plugin = Main.getInstance();
 		instance2 = new JacobCommandHandler();
 		random = new Random();
-		Bukkit.getPluginManager().registerEvents(instance2, Main.getInstance());
+		_setup = true;
 	}
 
 	public static boolean command(CommandSender sender, Command cmd,
 			String label, String[] a) {
 		String name = cmd.getName();
+		if (!_setup)
+			setup();
 		if (name.equalsIgnoreCase("Seeker")) {
 			if (sender instanceof Player == false)
 				return false;
