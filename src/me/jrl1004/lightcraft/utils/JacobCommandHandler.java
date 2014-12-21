@@ -43,6 +43,7 @@ public class JacobCommandHandler implements Listener {
 				s.sendMessage("Player is offline");
 				return true;
 			}
+			System.out.println("Begin Launch");
 			SeekerBeam
 					.launchBeam(
 							s.getEyeLocation(),
