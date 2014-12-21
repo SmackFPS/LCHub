@@ -69,7 +69,12 @@ public class ColouredWardrobe implements Listener {
 	}
 
 	public static int getClosestTo(int j, int rejex){
-		int working = rejex; for(int i = 0; i < 9*7; i++) if(j > working) working = working + rejex; return working;
+		int working = rejex; for(int i = 0; i < 9*7; i++){
+			if(j > working){
+				working = working + rejex; 
+			}
+		}
+		return working;
 	}
 	
 }
