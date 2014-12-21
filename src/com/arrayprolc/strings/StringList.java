@@ -1,8 +1,10 @@
 package com.arrayprolc.strings;
 
+import org.bukkit.Bukkit;
+
 public class StringList
 {
-  public static String mainWorld = "world";
+  public static String mainWorld = Bukkit.getWorlds().get(0).getName();
 }
 
 

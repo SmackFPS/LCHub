@@ -379,7 +379,12 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 		
 		if (cmd.getName().equalsIgnoreCase("colorhelm")) {
+			try{
 			ColouredWardrobe.openColorWardrobe(player, WardrobeType.CHESTPLATE);
+			}
+			catch(Exception ex){
+				
+			}
 		}
 
 		if (cmd.getName().equalsIgnoreCase("parkour")) {
