@@ -44,9 +44,7 @@ public class JacobCommandHandler implements Listener {
 				return true;
 			}
 			System.out.println("Begin Launch");
-			SeekerBeam.launchBeam(s.getEyeLocation(), t.getEyeLocation(), 50,
-					Math.sin(random.nextInt(4)), Math.sin(random.nextInt(4)),
-					Math.sin(random.nextInt(4)));
+			SeekerBeam.launchBeam(s.getEyeLocation(), t.getEyeLocation());
 			return true;
 		}
 
