@@ -42,7 +42,7 @@ public class AngelRider
   
   public static void initialize()
   {
-    AngelRider.plugin = Main.getInstance();
+    AngelRider.plugin = Main.getInstance().getInstance();
   }
   
   public static boolean playAngelRider(Player p)

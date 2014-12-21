@@ -40,7 +40,7 @@ public class DarkRider
   
   public static void initialize()
   {
-   DarkRider.plugin = Main.getInstance();
+   DarkRider.plugin = Main.getInstance().getInstance();
   }
   
   public static boolean playDarkRider(Player p)

@@ -12,7 +12,7 @@ public class KittyCannonAmmoManager implements Listener {
 	private static Main plugin;
 	
 	public static void initialize(){
-		KittyCannonAmmoManager.plugin = Main.getInstance();
+		KittyCannonAmmoManager.plugin = Main.getInstance().getInstance();
 	}
 	
 	public static void giveCatAmmo(OfflinePlayer p, int i) {

@@ -87,7 +87,7 @@ public class ClickInventory implements Listener {
 		if(!e.getAction().toString().contains("CLICK")) return;
 		if(e.getPlayer().getItemInHand().getType().equals(Material.BOOK)){
 			e.setCancelled(true);
-			Main.requestPlayerList();
+			ArrayEventSetup.requestPlayerList();
 			selector.displayMenu(e.getPlayer());
 		}
 	}
@@ -170,7 +170,7 @@ public class ClickInventory implements Listener {
 
 	static String getFirstOpenServer(Player p, String pfx, int maxPerGame){
 		int amountOfPlayers = PartyTools.playersWith(p);
-		Main.requestPlayerList();
+		ArrayEventSetup.requestPlayerList();
 		for(String s : Servers.servers){
 			if(s.toLowerCase().equalsIgnoreCase(pfx.toLowerCase())){
 				return s;

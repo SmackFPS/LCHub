@@ -31,7 +31,7 @@ public class RandomManager
 	  
 	public static void initialize()
 	{
-		RandomManager.plugin = Main.getInstance();
+		RandomManager.plugin = Main.getInstance().getInstance();
 	 	}
 
   public static void giveRandomBetweenRareAndNormalThing(Player p, Location l)

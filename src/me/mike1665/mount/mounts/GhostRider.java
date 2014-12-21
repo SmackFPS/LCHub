@@ -40,7 +40,7 @@ public class GhostRider
   
   public static void initialize()
   {
-    GhostRider.plugin = Main.getInstance();
+    GhostRider.plugin = Main.getInstance().getInstance();
   }
   
   public static boolean playGhostRider(Player p)

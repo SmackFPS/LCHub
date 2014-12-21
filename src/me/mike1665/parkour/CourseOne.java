@@ -34,7 +34,7 @@ public class CourseOne implements Listener {
 			+ ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
 
 	public static void initialize() {
-		CourseOne.plugin = Main.getInstance();
+		CourseOne.plugin = Main.getInstance().getInstance();
 	}
 
 	@EventHandler

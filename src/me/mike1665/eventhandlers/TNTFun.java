@@ -25,8 +25,8 @@ import com.arrayprolc.strings.StringManager;
 public class TNTFun implements Listener{
 	
 	private Main plugin;
-	public TNTFun(Main main) {
-		this.plugin = main;
+	public TNTFun() {
+		this.plugin = Main.getInstance();
 	}
 	
 	@SuppressWarnings("unused")

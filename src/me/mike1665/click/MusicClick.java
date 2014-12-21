@@ -39,7 +39,7 @@ public class MusicClick
   
   public static void initalize()
   {
-    MusicClick.plugin = Main.getInstance();
+    MusicClick.plugin = Main.getInstance().getInstance();
   }
   
   @EventHandler

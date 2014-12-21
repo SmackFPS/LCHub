@@ -33,8 +33,8 @@ public class PaintballGun implements Listener{
 	private HashSet<Projectile> _balls = new HashSet<Projectile>();
 	private ArrayList<UUID> _coolDown = new ArrayList<UUID>();
 	
-	public PaintballGun(Main main) {
-		this.plugin = main;
+	public PaintballGun() {
+		this.plugin = Main.getInstance();
 	}
 	
 	@SuppressWarnings("deprecation")

@@ -37,8 +37,8 @@ public class CoinBomb implements Listener {
 	Logger log = Logger.getLogger("Minecraft");
 	List<UUID> firedEmys = new ArrayList<UUID>();
 	
-	public CoinBomb(Main main) {
-		this.plugin = main;
+	public CoinBomb() {
+		this.plugin = Main.getInstance();
 	}
 
 		@EventHandler(priority=EventPriority.HIGH)

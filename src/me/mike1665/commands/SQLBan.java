@@ -14,7 +14,7 @@ public class SQLBan {
 	public static Main plugin;
 	
 	public static void setup() {
-		SQLBan.plugin = Main.getInstance();
+		SQLBan.plugin = Main.getInstance().getInstance();
 	}
 	
     public static boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {

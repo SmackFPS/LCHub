@@ -40,7 +40,7 @@ public class PoseidonRider
   
   public static void initialize()
   {
-	  PoseidonRider.plugin = Main.getInstance();
+	  PoseidonRider.plugin = Main.getInstance().getInstance();
   }
   
   public static boolean playPoseidonRider(Player p)

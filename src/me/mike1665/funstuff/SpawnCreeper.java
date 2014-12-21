@@ -29,9 +29,9 @@ public class SpawnCreeper
 {
   private Main plugin;
   
-  public SpawnCreeper(Main main)
+  public SpawnCreeper()
   {
-    plugin = main;
+    plugin = Main.getInstance();
   }
   
   @EventHandler

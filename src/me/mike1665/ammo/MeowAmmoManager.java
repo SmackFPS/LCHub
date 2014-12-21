@@ -12,7 +12,7 @@ public class MeowAmmoManager implements Listener {
 	private static Main plugin;
 	
 	public static void initialize(){
-		MeowAmmoManager.plugin = Main.getInstance();
+		MeowAmmoManager.plugin = Main.getInstance().getInstance();
 	}
 	
 	public static void giveMeowAmmo(OfflinePlayer p, int i) {

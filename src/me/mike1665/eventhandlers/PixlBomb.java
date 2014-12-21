@@ -37,8 +37,8 @@ public class PixlBomb implements Listener {
 	Logger log = Logger.getLogger("Minecraft");
 	List<UUID> firedEmys = new ArrayList<UUID>();
 	
-	public PixlBomb(Main main) {
-		this.plugin = main;
+	public PixlBomb() {
+		this.plugin = Main.getInstance();
 	}
 
 		@EventHandler(priority=EventPriority.HIGH)

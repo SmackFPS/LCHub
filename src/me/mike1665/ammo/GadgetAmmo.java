@@ -11,7 +11,7 @@ public class GadgetAmmo {
 	private static Main plugin;
 
 	public static void initialize() {
-		GadgetAmmo.plugin = Main.getInstance();
+		GadgetAmmo.plugin = Main.getInstance().getInstance();
 	}
 
 	public static int balanceGadgetAmo(OfflinePlayer p, String gadget) {

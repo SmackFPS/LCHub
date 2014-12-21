@@ -6,4 +6,7 @@ public class JacobEventSetup {
 		new me.jrl1004.lightcraft.commands.party.PartyManager();
 		new ProxiedEconomy();
 	}
+	public static void disable(){
+		
+	}
 }

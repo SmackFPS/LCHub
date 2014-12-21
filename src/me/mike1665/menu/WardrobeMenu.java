@@ -21,7 +21,7 @@ public class WardrobeMenu
   
   public static void initialize()
   {
-    WardrobeMenu.plugin = Main.getInstance();
+    WardrobeMenu.plugin = Main.getInstance().getInstance();
   }
   
   public static ItemStack createItem(Material material, int amount, short shrt, String displayname, String lore)

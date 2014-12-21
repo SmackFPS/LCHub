@@ -47,7 +47,7 @@ public class NyanRider
   
   public static void initialize()
   {
-    NyanRider.plugin = Main.getInstance();
+    NyanRider.plugin = Main.getInstance().getInstance();
   }
   
   public static boolean playNyanRider(Player p)

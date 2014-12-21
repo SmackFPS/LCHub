@@ -1,34 +1,27 @@
 package me.mike1665.click;
 
-import java.util.HashMap;
-import java.util.List;
 import me.mike1665.Main.Main;
 import me.mike1665.menu.AdminGadgets;
 import me.mike1665.menu.GadjetsMenu;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
-import org.bukkit.Server;
 import org.bukkit.Sound;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitScheduler;
 
 public class AdminGadgetsClick
   implements Listener
 {
   private Main plugin;
   
-  public AdminGadgetsClick(Main main)
+  public AdminGadgetsClick()
   {
-    plugin = main;
+    plugin = Main.getInstance();
   }
   
   @EventHandler

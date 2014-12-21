@@ -20,7 +20,7 @@ public class MountMenu
   
   public static void initialize()
   {
-    MountMenu.plugin = Main.getInstance();
+    MountMenu.plugin = Main.getInstance().getInstance();
   }
   
   public static ItemStack createItem(Material material, int amount, short shrt, String displayname, String lore)

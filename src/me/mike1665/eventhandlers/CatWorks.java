@@ -32,8 +32,8 @@ public class CatWorks implements Listener{
 	private Main plugin;
 	private final Random random = new Random();
 	
-	public CatWorks(Main main) {
-		this.plugin = main;
+	public CatWorks() {
+		this.plugin = Main.getInstance();
 	}
 	  private HashMap<Player, Double> cooldown= new HashMap<Player, Double>();
 	  HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<Player, BukkitRunnable>();
