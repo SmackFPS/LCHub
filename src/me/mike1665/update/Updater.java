@@ -12,7 +12,7 @@ public class Updater
   public Updater(JavaPlugin plugin)
   {
     this._plugin = plugin;
-    this._plugin.getServer().getScheduler().scheduleSyncRepeatingTask(this._plugin, this, 0L, 1L);
+   // this._plugin.getServer().getScheduler().scheduleSyncRepeatingTask(this._plugin, this, 0L, 1L);
   }
 
   public void run()
