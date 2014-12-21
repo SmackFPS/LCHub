@@ -5,10 +5,8 @@ import java.util.Random;
 import java.util.UUID;
 
 import me.mike1665.Main.Main;
-import me.mike1665.chest.BuildManager;
-import me.mike1665.chest.BuildPlateform;
-import me.mike1665.chest.BuildPlateform.Plateform;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,8 +19,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.reward.Reward;
 import com.arrayprolc.reward.RewardList;
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class TreasureChestListener implements Listener {
 
@@ -44,7 +40,7 @@ public class TreasureChestListener implements Listener {
 				e.getPlayer().setItemInHand(i);
 				Bukkit.broadcastMessage(StringManager.getMessage("§a§l" + e.getPlayer().getName() + " is opening a treasure chest!", MessageType.TREASURE));
 				//chest(e.getPlayer());
-				BuildPlateform.randomPlateform(e.getPlayer(), e.getPlayer().getLocation());
+				//BuildPlateform.randomPlateform(e.getPlayer(), e.getPlayer().getLocation());
 				
 			}
 		}

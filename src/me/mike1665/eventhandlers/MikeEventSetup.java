@@ -1,8 +1,5 @@
 package me.mike1665.eventhandlers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.AmmoManager;
 import me.mike1665.ammo.BatBlasterAmmoManager;
@@ -12,9 +9,6 @@ import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.block.BlockRestore;
-import me.mike1665.chest.RandomManager;
-import me.mike1665.chest.TreasureChestManager;
 import me.mike1665.click.AdminGadgetsClick;
 import me.mike1665.click.BuyGadgetsClick;
 import me.mike1665.click.CosMenuClick;
@@ -62,14 +56,13 @@ import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
+import me.mike1665.wardrobe.WardrobeManager;
 import net.lightcraftmc.fusebox.util.UtilEnt;
 import net.lightcraftmc.fusebox.util.UtilLocation;
 import net.lightcraftmc.fusebox.util.UtilServer;
 import net.lightcraftmc.fusebox.util.UtilityBlock;
-import me.mike1665.wardrobe.WardrobeManager;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
@@ -83,29 +76,6 @@ public class MikeEventSetup {
 	public static void disable(){
 		  for (Player players : UtilServer.getPlayers()) {
 			  EffectManager.removeEffect(players, false);
-			  MountManager.removeCurrentPet(players, false);
-			  
-		      if (TreasureChestManager.isInTreasureChest(players))
-		      {
-		        Iterator localIterator2;
-		        for (Iterator localIterator1 = UtilEnt.flyingEntities.keySet().iterator(); localIterator1.hasNext(); 
-		          localIterator2.hasNext())
-		        {
-		          Player p = (Player)localIterator1.next();
-		          ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
-		          localIterator2 = entList.iterator(); 
-		          Entity e = (Entity) localIterator2.next();
-		          if (e.isValid()) {
-		            e.remove();
-		          }
-
-		        }
-
-		        BlockRestore.restore(players);
-		        TreasureChestManager.chest.remove(players.getUniqueId());
-		        TreasureChestManager.treasureChest.remove(players.getUniqueId());
-		        TreasureChestManager.playerpos.remove(players);
-		      }
 		  }
 	}
 	
@@ -150,11 +120,9 @@ public class MikeEventSetup {
 	    pm.registerEvents(new PoseidonRider(), Main.getInstance());
 		WardrobeManager.initialize();
 		WardrobeMenu.initialize();
-		RandomManager.initialize();
 	    EffectManager.registerEvents();
 	    ExtraManager.registerEvents();
 	    ParticleManager.registerEvents();
-		Bukkit.getPluginManager().registerEvents(new TreasureChestManager(), Main.getInstance());
 	    Bukkit.getPluginManager().registerEvents(new UtilEnt(), Main.getInstance());
 	    Bukkit.getPluginManager().registerEvents(new UtilityBlock(), Main.getInstance());
 	    Bukkit.getPluginManager().registerEvents(new UtilLocation(), Main.getInstance());

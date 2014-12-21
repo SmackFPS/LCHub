@@ -1,7 +1,6 @@
 package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
-import me.mike1665.chest.TreasureChestManager;
 import me.mike1665.menu.ParticleMenu;
 
 import org.bukkit.Bukkit;
@@ -11,7 +10,6 @@ import org.bukkit.plugin.PluginManager;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
-import net.lightcraftmc.fusebox.menu.MenuListener;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.speedways.Speedways;
 import com.google.common.io.ByteArrayDataInput;
@@ -37,7 +35,6 @@ public class ArrayEventSetup {
 		TPSMeter.setupTPSMeter();
 		RankManager.init();
 		pm.registerEvents(new ParticleMenu(), plugin);
-		pm.registerEvents(new TreasureChestManager(), plugin);
 		bungee();
 	}
 	
