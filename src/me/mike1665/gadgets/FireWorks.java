@@ -55,7 +55,7 @@ public class FireWorks
     {
       event.setCancelled(true);
       _coolDown.add(player.getUniqueId());
-      Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable()
+      Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable()
       {
         public void run()
         {

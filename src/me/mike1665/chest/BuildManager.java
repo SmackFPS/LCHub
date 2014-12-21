@@ -296,7 +296,7 @@ public void buildRectangle4()
     if (this.p.isValid()) {
       TreasureChestManager.playSpiral(l2, this.p, particle, placeParticle);
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable()
+        .runTaskLater(Main.getInstance(), new Runnable()
       {
         @SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
 		public void run() {
@@ -315,7 +315,7 @@ public void buildRectangle4()
       }
       , 40L);
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable()
+        .runTaskLater(Main.getInstance(), new Runnable()
       {
         @SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 		public void run() {
@@ -333,7 +333,7 @@ public void buildRectangle4()
       }
       , 80L);
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable()
+        .runTaskLater(Main.getInstance(), new Runnable()
       {
         @SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
 		public void run() {
@@ -352,7 +352,7 @@ public void buildRectangle4()
       , 120L);
 
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable()
+        .runTaskLater(Main.getInstance(), new Runnable()
       {
         @SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
 		public void run() {

@@ -38,7 +38,7 @@ public class BatBlaster implements Listener {
 	private Main plugin;
 
 	public BatBlaster() {
-		this.plugin = Main.getInstance().getInstance();
+		this.plugin = Main.getInstance();
 		Bukkit.getPluginManager().registerEvents(this, plugin);
 	}
 

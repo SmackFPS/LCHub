@@ -21,6 +21,7 @@ public class BungeeHooks {
 		out.writeUTF(name);
 		p.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
 	}
+	@SuppressWarnings("deprecation")
 	public static void sendPlayerToServer(String name, OfflinePlayer p){
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("ConnectOther");

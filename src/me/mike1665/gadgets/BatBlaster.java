@@ -73,7 +73,7 @@ public class BatBlaster implements Listener {
 					}
 				});
 				((BukkitRunnable) this._cdRunnable.get(player)).runTaskTimer(
-						Main.schedule, 2L, 2L);
+						Main.getInstance(), 2L, 2L);
 				
 				BatBlasterAmmoManager.takeBatAmmo(player, 1);
 				if (BatBlasterAmmoManager.balaceBatAmmo(player) < 1){
@@ -94,7 +94,7 @@ public class BatBlaster implements Listener {
 				this._bats.put(player, new ArrayList());
 
 				final Integer task = Integer.valueOf(Bukkit.getScheduler()
-						.runTaskTimer(Main.schedule, new Runnable() {
+						.runTaskTimer(Main.getInstance(), new Runnable() {
 							@SuppressWarnings("deprecation")
 							public void run() {
 								for (Player cur : Bukkit.getOnlinePlayers()) {
@@ -159,7 +159,7 @@ public class BatBlaster implements Listener {
 							}
 						}, 1L, 1L).getTaskId());
 
-				Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
+				Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
 					public void run() {
 						ArrayList<Bat> batList = BatBlaster.this._bats
 								.get(event.getPlayer());

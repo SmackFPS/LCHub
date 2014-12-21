@@ -36,7 +36,7 @@ public class UtilFirework extends EntityFireworks
     fwm.addEffect(effect);
     fwm.setPower(0);
     fw.setFireworkMeta(fwm);
-    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.schedule, new Runnable() {
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
       public void run() { fw.detonate(); }
 
     }

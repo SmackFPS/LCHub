@@ -82,7 +82,7 @@ public class AmmoTest implements Listener{
 	      if(player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "MeowBall " + ChatColor.DARK_RED + MeowAmmoManager.balaceMeowAmmo(player))) {
 	    		  
 	    	  this._coolDown.add(player.getUniqueId());
-	    		  Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
+	    		  Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
 			
 	    			  @Override
 	    			  public void run() {
@@ -151,7 +151,7 @@ public class AmmoTest implements Listener{
 				e.setCancelled(true);
 		
 				this._coolDown.add(p.getUniqueId());
-				Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable() {
+				Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
 			
 					@Override
 					public void run() {

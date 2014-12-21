@@ -62,7 +62,7 @@ public class KittyCannon
       (disName(p.getItemInHand()) != null) && (disName(p.getItemInHand()).equalsIgnoreCase(ChatColor.GOLD + "Kitty Cannon " + ChatColor.DARK_RED + KittyCannonAmmoManager.balaceCatAmmo(p))))
     {
       _coolDown.add(p.getUniqueId());
-      Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable()
+      Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable()
       {
         public void run()
         {
@@ -115,7 +115,7 @@ public class KittyCannon
             cancel();
           }
         }
-      }.runTaskTimer(Main.schedule, 12L, 1L);
+      }.runTaskTimer(Main.getInstance(), 12L, 1L);
     }
   }
   

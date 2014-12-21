@@ -73,7 +73,7 @@ public class FunCreepers
       e.setCancelled(true);
       
       _coolDown.add(p.getUniqueId());
-      Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable()
+      Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable()
       {
         public void run()
         {
@@ -104,7 +104,7 @@ public class FunCreepers
   {
     final Creeper creeper = (Creeper)l.getWorld().spawn(l, Creeper.class);
     Bukkit.getServer().getScheduler()
-      .scheduleSyncRepeatingTask(Main.schedule, new Runnable()
+      .scheduleSyncRepeatingTask(Main.getInstance(), new Runnable()
       {
         int num = 1;
         

@@ -19,7 +19,7 @@ public class Config {
 	private static Config instance;
 
 	private Config() {
-		this.saveDirectory = new File(Main.instance.getDataFolder(), "Mounts");
+		this.saveDirectory = new File(Main.getInstance().getDataFolder(), "Mounts");
 		this.saveDirectory.mkdirs();
 		this.saveFile = new File(saveDirectory, "Players");
 		if (!saveFile.exists())

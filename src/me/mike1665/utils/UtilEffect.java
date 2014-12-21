@@ -11,7 +11,7 @@ public class UtilEffect
 {
   public static void playFlameBonus(Location l)
   {
-    final int i2 = Bukkit.getScheduler().runTaskTimer(Main.schedule, new Runnable() { private int particles;
+    final int i2 = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new Runnable() { private int particles;
       private int particlesPerIteration;
       private float size;
       private float xFactor;
@@ -48,7 +48,7 @@ public class UtilEffect
     , 1L, 1L).getTaskId();
 
     Bukkit.getServer().getScheduler()
-      .runTaskLater(Main.schedule, new Runnable()
+      .runTaskLater(Main.getInstance(), new Runnable()
     {
       public void run() {
         Bukkit.getScheduler().cancelTask(i2);
@@ -59,7 +59,7 @@ public class UtilEffect
 
   public static void playFlameThing(final Location l)
   {
-    final int i = Bukkit.getScheduler().runTaskTimer(Main.schedule, new Runnable()
+    final int i = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new Runnable()
     {
       float LineNumber = 1.0F;
       float j = 0.0F;
@@ -88,7 +88,7 @@ public class UtilEffect
     , 1L, 1L).getTaskId();
 
     Bukkit.getServer().getScheduler()
-      .runTaskLater(Main.schedule, new Runnable()
+      .runTaskLater(Main.getInstance(), new Runnable()
     {
       public void run() {
         Bukkit.getScheduler().cancelTask(i);

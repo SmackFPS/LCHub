@@ -21,7 +21,7 @@ public class ProxiedEconomy
 	public ProxiedEconomy()
 	{
 		instance = this;
-		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.instance, "BungeeCord");
+		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.getInstance(), "BungeeCord");
 	}
 
 	public static ProxiedEconomy getInstance()
@@ -36,7 +36,7 @@ public class ProxiedEconomy
 		out.writeUTF("BALANCE");
 		out.writeUTF(c.toString());
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void resetPlayerBalance(Player player, Currency c)
@@ -46,7 +46,7 @@ public class ProxiedEconomy
 		out.writeUTF("RESET");
 		out.writeUTF(c.toString());
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void increasePlayerBalance(Player player, Currency c, Long amount)
@@ -57,7 +57,7 @@ public class ProxiedEconomy
 		out.writeUTF(c.toString());
 		out.writeUTF(player.getName());
 		out.writeLong(amount);
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void decreasePlayerBalance(Player player, Currency c, Long amount)
@@ -68,7 +68,7 @@ public class ProxiedEconomy
 		out.writeUTF(c.toString());
 		out.writeUTF(player.getName());
 		out.writeLong(amount);
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void setPlayerBalance(Player player, Currency c, Long amount)
@@ -79,7 +79,7 @@ public class ProxiedEconomy
 		out.writeUTF(c.toString());
 		out.writeUTF(player.getName());
 		out.writeLong(amount);
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 }

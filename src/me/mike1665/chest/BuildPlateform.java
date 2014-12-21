@@ -101,7 +101,7 @@ public class BuildPlateform
       if (p.isValid()) {
         new BuildManager(p, l, Material.LOG, (byte)7).buildRectangle2();
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.SANDSTONE, (byte)0).buildRectangle3();
@@ -110,7 +110,7 @@ public class BuildPlateform
         , 20L);
 
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.LEAVES, (byte)3).buildRectangle4();
@@ -119,7 +119,7 @@ public class BuildPlateform
         , 40L);
 
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.VILLAGER_ANGRY, ParticleLib18.ParticleType.SLIME);
@@ -131,7 +131,7 @@ public class BuildPlateform
       if (plateform == Plateform.NETHER) {
         new BuildManager(p, l, Material.NETHERRACK, (byte)0).buildRectangle2();
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.NETHER_BRICK, (byte)0).buildRectangle3();
@@ -140,7 +140,7 @@ public class BuildPlateform
         , 20L);
 
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.NETHER_FENCE, (byte)0).buildRectangle4();
@@ -149,7 +149,7 @@ public class BuildPlateform
         , 40L);
 
         Bukkit.getServer().getScheduler()
-          .runTaskLater(Main.schedule, new Runnable() {
+          .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
               new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.FLAME, ParticleLib18.ParticleType.LAVA);
@@ -162,7 +162,7 @@ public class BuildPlateform
     if (plateform == Plateform.FROST) {
       new BuildManager(p, l, Material.PACKED_ICE, (byte)0).buildRectangle2();
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.SNOW_BLOCK, (byte)0).buildRectangle3();
@@ -171,7 +171,7 @@ public class BuildPlateform
       , 20L);
 
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.STAINED_GLASS_PANE, (byte)0).buildRectangle4();
@@ -180,7 +180,7 @@ public class BuildPlateform
       , 40L);
 
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SNOW_SHOVEL, ParticleLib18.ParticleType.SNOWBALL);
@@ -191,7 +191,7 @@ public class BuildPlateform
     if (plateform == Plateform.MUSHROOM) {
       new BuildManager(p, l, Material.MYCEL, (byte)0).buildRectangle2();
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.SMOOTH_BRICK, (byte)0).buildRectangle3();
@@ -200,7 +200,7 @@ public class BuildPlateform
       , 20L);
 
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.COBBLE_WALL, (byte)0).buildRectangle4();
@@ -209,7 +209,7 @@ public class BuildPlateform
       , 40L);
 
       Bukkit.getServer().getScheduler()
-        .runTaskLater(Main.schedule, new Runnable() {
+        .runTaskLater(Main.getInstance(), new Runnable() {
         public void run() {
           if (p.isValid())
             new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.SMOKE_LARGE, ParticleLib18.ParticleType.REDSTONE);

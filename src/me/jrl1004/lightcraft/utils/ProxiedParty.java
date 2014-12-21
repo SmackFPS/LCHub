@@ -13,7 +13,7 @@ public class ProxiedParty {
 
 	public ProxiedParty() {
 		instance = this;
-		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.instance, "BungeeCord");
+		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.getInstance(), "BungeeCord");
 	}
 
 	public static ProxiedParty getInstance() {
@@ -24,21 +24,21 @@ public class ProxiedParty {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:list");
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void requestPartyHost(Player player) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:host");
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 	public void requestPartySize(Player player) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("party:size");
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(Main.instance, "BungeeCord", out.toByteArray());
+		player.sendPluginMessage(Main.getInstance(), "BungeeCord", out.toByteArray());
 	}
 
 }

@@ -12,7 +12,7 @@ public class FunCreeperAmmoManager implements Listener {
 	private static Main plugin;
 	
 	public static void initialize(){
-		FunCreeperAmmoManager.plugin = Main.getInstance().getInstance();
+		FunCreeperAmmoManager.plugin = Main.getInstance();
 	}
 	
 	public static void giveCreeperAmmo(OfflinePlayer p, int i) {

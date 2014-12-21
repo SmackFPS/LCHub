@@ -12,7 +12,7 @@ public class LcTokensAPI implements Listener {
 	private static Main plugin;
 	
 	public static void initialize(){
-		LcTokensAPI.plugin = Main.getInstance().getInstance();
+		LcTokensAPI.plugin = Main.getInstance();
 	}
 	
 	public static void givePoints(OfflinePlayer p, int i) {

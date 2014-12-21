@@ -40,7 +40,7 @@ public class DarkRider
   
   public static void initialize()
   {
-   DarkRider.plugin = Main.getInstance().getInstance();
+   DarkRider.plugin = Main.getInstance();
   }
   
   public static boolean playDarkRider(Player p)
@@ -93,7 +93,7 @@ public class DarkRider
         horse.setPassenger(p);
         
         horse.setMetadata("darkrider", new FixedMetadataValue(
-          Main.schedule, "darkrider"));
+          Main.getInstance(), "darkrider"));
         MountManager.pet.put(p.getUniqueId(), horse);
         PetFollow(p.getPlayer(), horse, 0.3D);
       }
@@ -166,7 +166,7 @@ public class DarkRider
 		if (distance > 10 && !pet.isDead() && player.isOnGround()) {
 		pet.teleport(player.getLocation());}
  		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
-		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
+		attributes.setValue(speed);}}.runTaskTimer(Main.getInstance(), 0L, 20L);}
 }
 
 

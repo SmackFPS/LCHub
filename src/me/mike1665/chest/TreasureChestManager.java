@@ -49,7 +49,7 @@ implements Listener
 
 	public static void playSpiral(final Location loc, final Player p, final ParticleLib18.ParticleType particle, final ParticleLib18.ParticleType placeParticle)
 	{
-		final int i = Bukkit.getScheduler().runTaskTimer(Main.schedule, new Runnable()
+		final int i = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new Runnable()
 		{
 			float k = 0.0F;
 			float heightPosition = 4.0F;
@@ -81,7 +81,7 @@ implements Listener
 		}
 		, 1L, 1L).getTaskId();
 		Bukkit.getServer().getScheduler()
-		.runTaskLater(Main.schedule, new Runnable()
+		.runTaskLater(Main.getInstance(), new Runnable()
 		{
 			public void run() {
 				Bukkit.getScheduler().cancelTask(i);
@@ -177,7 +177,7 @@ implements Listener
 							RandomManager.giveRandomBetweenRareAndNormalThing(p, event.getClickedBlock().getLocation());
 							((ArrayList)chest.get(p.getUniqueId())).add(event.getClickedBlock());
 							Bukkit.getServer().getScheduler()
-							.runTaskLater(Main.schedule, new Runnable()
+							.runTaskLater(Main.getInstance(), new Runnable()
 							{
 								public void run() {
 									if (p.isValid())

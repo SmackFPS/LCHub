@@ -40,7 +40,7 @@ public class PoseidonRider
   
   public static void initialize()
   {
-	  PoseidonRider.plugin = Main.getInstance().getInstance();
+	  PoseidonRider.plugin = Main.getInstance();
   }
   
   public static boolean playPoseidonRider(Player p)
@@ -94,7 +94,7 @@ public class PoseidonRider
         horse.setPassenger(p);
         
         horse.setMetadata("poseidonrider", new FixedMetadataValue(
-          Main.schedule, "poseidonrider"));
+          Main.getInstance(), "poseidonrider"));
         MountManager.pet.put(p.getUniqueId(), horse);
         PetFollow(p.getPlayer(), horse, 0.3D);
       }
@@ -167,7 +167,7 @@ public class PoseidonRider
 		if (distance > 10 && !pet.isDead() && player.isOnGround()) {
 		pet.teleport(player.getLocation());}
 		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
-		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
+		attributes.setValue(speed);}}.runTaskTimer(Main.getInstance(), 0L, 20L);}
 
 }
 

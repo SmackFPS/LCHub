@@ -22,7 +22,7 @@ public class DiscoBall
   
   public DiscoBall()
   {
-    this.plugin = Main.getInstance().getInstance();
+    this.plugin = Main.getInstance();
   }
   
   @EventHandler(priority=EventPriority.HIGHEST)

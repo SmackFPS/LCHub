@@ -33,7 +33,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	public Scoreboard board;
 	public String tag = ChatColor.RED + "" + ChatColor.BOLD + "Parkour " + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
-	public static Main instance, schedule;
+	static Main instance;
 	protected HashMap<UUID, Vector> velocities;
 	protected HashMap<UUID, Location> positions;
 	protected HashMap<UUID, Boolean> onGround;
@@ -41,7 +41,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	public void onEnable() {
 		instance = this;
-		schedule = this;
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Updater(this), 1L, 1L);
 		ArrayEventSetup.setupEvents();
 		ArrayCommandHandler.setup();

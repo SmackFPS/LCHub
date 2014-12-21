@@ -47,7 +47,7 @@ public class NyanRider
   
   public static void initialize()
   {
-    NyanRider.plugin = Main.getInstance().getInstance();
+    NyanRider.plugin = Main.getInstance();
   }
   
   public static boolean playNyanRider(Player p)
@@ -95,7 +95,7 @@ public class NyanRider
         horse.setPassenger(p);
         
         horse.setMetadata("nyanrider", new FixedMetadataValue(
-          Main.schedule, "nyanrider"));
+          Main.getInstance(), "nyanrider"));
         MountManager.pet.put(p.getUniqueId(), horse);
         PetFollow(p.getPlayer(), horse, 0.3D);
       }
@@ -173,7 +173,7 @@ public class NyanRider
 		if (distance > 10 && !pet.isDead() && player.isOnGround()) {
 		pet.teleport(player.getLocation());}
 		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
-		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
+		attributes.setValue(speed);}}.runTaskTimer(Main.getInstance(), 0L, 20L);}
 
 }
 

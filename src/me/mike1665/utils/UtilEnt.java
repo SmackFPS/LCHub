@@ -66,7 +66,7 @@ public class UtilEnt
       ((Item)ei.getBukkitEntity()).setVelocity(new Vector(UtilityMath.randomRange(-0.2000000029802322D, 0.2000000029802322D), 0.5D, UtilityMath.randomRange(-0.2000000029802322D, 0.2000000029802322D)));
       ((CraftWorld)loc.getWorld()).getHandle().addEntity(ei);
       ((Item)ei.getBukkitEntity()).setMetadata(Metadata, new FixedMetadataValue(
-        Main.schedule, Metadata));
+        Main.getInstance(), Metadata));
       UtilItem.EntityToRemove(ei.getBukkitEntity(), removeTime, playEffect);
     }
   }
@@ -402,7 +402,7 @@ public class UtilEnt
 
     skull.setPassenger(ei.getBukkitEntity());
     ei.getBukkitEntity().setMetadata("unpickable", new FixedMetadataValue(
-      Main.schedule, "unpickable"));
+      Main.getInstance(), "unpickable"));
     ((ArrayList)flyingEntities.get(p)).add(skull);
     ((ArrayList)flyingEntities.get(p)).add(ei.getBukkitEntity());
   }
@@ -421,9 +421,9 @@ public class UtilEnt
     skull.setVelocity(new Vector(0, 0, 0));
     b.setCustomName(text);
     b.setMetadata("nodamagetext", new FixedMetadataValue(
-      Main.schedule, "nodamagetext"));
+      Main.getInstance(), "nodamagetext"));
     skull.setMetadata("nodamagetext", new FixedMetadataValue(
-      Main.schedule, "nodamagetext"));
+      Main.getInstance(), "nodamagetext"));
 
     skull.setPassenger(b);
     ((ArrayList)flyingEntities.get(p)).add(skull);

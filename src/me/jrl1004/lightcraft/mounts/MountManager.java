@@ -55,7 +55,7 @@ public class MountManager {
 		horse.setOwner(player);
 		horse.setCustomName(type.getName(player));
 		horse.setCustomNameVisible(true);
-		horse.setMetadata(LcConstants.MOUNT_METADATA_STRING, new FixedMetadataValue(Main.instance, true));
+		horse.setMetadata(LcConstants.MOUNT_METADATA_STRING, new FixedMetadataValue(Main.getInstance(), true));
 	}
 
 	public boolean isEntityAMount(Entity e) {

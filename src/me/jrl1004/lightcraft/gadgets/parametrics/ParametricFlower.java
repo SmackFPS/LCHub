@@ -47,7 +47,7 @@ public class ParametricFlower
 					yBuff = 0.10;
 				yCur += yBuff;
 			}
-		}.runTaskTimer(Main.instance, 0, 2);
+		}.runTaskTimer(Main.getInstance(), 0, 2);
 	}
 
 }

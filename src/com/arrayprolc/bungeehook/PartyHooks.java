@@ -19,13 +19,13 @@ public class PartyHooks implements PluginMessageListener {
 
 	public PartyHooks() {
 		instance = this;
-		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.instance, "BungeeCord");
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "BungeeCord", this);
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partylist", this);
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partyhost", this);
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partysize", this);
-		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "party", this);
-		//Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.instance, "partylist", this);
+		Bukkit.getMessenger().registerOutgoingPluginChannel(Main.getInstance(), "BungeeCord");
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "BungeeCord", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "partylist", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "partyhost", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "partysize", this);
+		Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "party", this);
+		//Bukkit.getServer().getMessenger().registerIncomingPluginChannel(Main.getInstance(), "partylist", this);
 	}
 
 	public static PartyHooks getInstance() {

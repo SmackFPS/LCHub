@@ -305,7 +305,7 @@ public class UtilItem
   }
 
   public static void EntityToRemove(final Entity e, int time, final boolean withEffect) {
-    Bukkit.getScheduler().runTaskLater(Main.schedule, new Runnable()
+    Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable()
     {
       public void run()
       {

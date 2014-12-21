@@ -42,7 +42,7 @@ public class AngelRider
   
   public static void initialize()
   {
-    AngelRider.plugin = Main.getInstance().getInstance();
+    AngelRider.plugin = Main.getInstance();
   }
   
   public static boolean playAngelRider(Player p)
@@ -93,7 +93,7 @@ public class AngelRider
         horse.setPassenger(p);
         
         horse.setMetadata("angelrider", new FixedMetadataValue(
-          Main.schedule, "angelrider"));
+          Main.getInstance(), "angelrider"));
         MountManager.pet.put(p.getUniqueId(), horse);
         PetFollow(p.getPlayer(), horse, 0.3D);
       }
@@ -194,7 +194,7 @@ public class AngelRider
 		if (distance > 10 && !pet.isDead() && player.isOnGround()) {
 		pet.teleport(player.getLocation());}
 		AttributeInstance attributes = ((EntityInsentient)((CraftEntity)pet).getHandle()).getAttributeInstance(GenericAttributes.d);
-		attributes.setValue(speed);}}.runTaskTimer(Main.schedule, 0L, 20L);}
+		attributes.setValue(speed);}}.runTaskTimer(Main.getInstance(), 0L, 20L);}
 }
 
 
