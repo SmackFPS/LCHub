@@ -17,7 +17,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.arrayprolc.anvilgui.AnvilGUI;
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
 import com.arrayprolc.menu.Menu;
@@ -27,16 +26,15 @@ import com.arrayprolc.strings.StringManager;
 import com.arrayprolc.tools.ItemTools;
 
 public class ClickInventory implements Listener {
-
-	public Main plugin;
+	Main plugin;
 
 	Menu selector = new Menu("§aGame Selector", 9*3);
 	boolean flash = false;
 	int ticks = 0;
-	public ClickInventory(Main instance){
-		plugin = instance;
+	public ClickInventory(){
+		plugin = Main.getInstance();
 
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable(){
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable(){
 			public void run(){
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players.", "§a13§7+" }), 22+4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3); }catch(Exception e){}
@@ -163,31 +161,7 @@ public class ClickInventory implements Listener {
 				p.sendMessage("§cYou do not have permission to do that.");
 				return;
 			}
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), new Runnable(){
-				public void run(){
-					p.closeInventory();
-					com.arrayprolc.anvilgui.AnvilGUI gui = new AnvilGUI(p, new AnvilGUI.AnvilClickEventHandler(){
-						@Override
-						public void onAnvilClick(AnvilGUI.AnvilClickEvent event){
-						if(event.getSlot() == AnvilGUI.AnvilSlot.OUTPUT){
-						event.setWillClose(true);
-						event.setWillDestroy(true);
-						sendToFirstOpenServer(p, event.getName(), 16, "Custom Server");
-						} else {
-						event.setWillClose(false);
-						event.setWillDestroy(false);
-						}
-						}
-						});
-						 
-						gui.setSlot(AnvilGUI.AnvilSlot.INPUT_LEFT, ItemTools.setName(new ItemStack(Material.NAME_TAG), "lobby"));
-						p.sendMessage("§7Please enter a server name.");
-						 
-						gui.open();
-				}
-			}, 5);
-
-			//sendToFirstOpenServer(p, "cb", 16, "Creative Buildoff");
+			//TODO make this work
 			return;
 
 		}

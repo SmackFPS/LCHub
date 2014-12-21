@@ -13,8 +13,8 @@ public class PlayerChat implements Listener {
 
 	public Main plugin;
 
-	public PlayerChat(Main instance){
-		plugin = instance;
+	public PlayerChat(){
+		plugin = Main.getInstance();
 	}
 	
 	@EventHandler

@@ -33,11 +33,11 @@ public class ArrayCommandHandler implements Listener
 
 	static Main plugin;
 	public static ArrayCommandHandler instance2;
-	public static void setup(Main instance)
+	public static void setup()
 	{
-		plugin = instance;
+		plugin = Main.getInstance();
 		instance2 = new ArrayCommandHandler();
-		Bukkit.getPluginManager().registerEvents(instance2, instance);
+		Bukkit.getPluginManager().registerEvents(instance2, Main.getInstance());
 	}
 
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a)

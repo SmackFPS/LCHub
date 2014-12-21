@@ -15,8 +15,8 @@ public class StatsCommand {
 
 	static Main plugin;
 
-	public static void setup(Main instance) {
-		plugin = instance;
+	public static void setup() {
+		plugin = Main.getInstance();
 	}
 
 	public static boolean command(CommandSender sender, Command cmd,

@@ -22,8 +22,8 @@ public class ParticleMenu implements Listener {
 	Material[] display = { Material.WHEAT, Material.NOTE_BLOCK, Material.FLINT_AND_STEEL, Material.WATER_BUCKET, Material.LAVA_BUCKET, Material.IRON_INGOT, Material.INK_SACK,
 			Material.ENCHANTMENT_TABLE, Material.POTION, Material.FIREBALL, Material.OBSIDIAN, Material.SNOW_BALL, Material.SLIME_BALL, Material.FERMENTED_SPIDER_EYE,
 			Material.SNOW_BLOCK, Material.CLAY};
-	public ParticleMenu(Main instance){
-		plugin = instance;
+	public ParticleMenu(){
+		plugin = Main.getInstance();
 		m = new Menu("§a§lParticles", 9*6);
 
 		int i = 0;

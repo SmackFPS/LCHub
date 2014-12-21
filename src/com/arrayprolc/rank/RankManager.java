@@ -11,8 +11,8 @@ public class RankManager {
 
 	static Main plugin;
 
-	public static void init(Main instance){
-		plugin = instance;
+	public static void init(){
+		plugin = Main.getInstance();
 	}
 
 	/**

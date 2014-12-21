@@ -15,8 +15,8 @@ public class Speedways implements Listener {
 
 	Main plugin;
 
-	public Speedways(Main instance){
-		plugin = instance;
+	public Speedways(){
+		plugin = Main.getInstance();
 	}
 
 	@EventHandler

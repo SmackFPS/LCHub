@@ -17,8 +17,8 @@ public class MenuListener implements Listener {
 
 	public static Main plugin;
  
-	public MenuListener(Main instance) {
-		plugin = instance;
+	public MenuListener() {
+		plugin = Main.getInstance();
 	}
 
 	public static ArrayList<String> menuInventories = new ArrayList<String>();

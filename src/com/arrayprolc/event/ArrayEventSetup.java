@@ -15,22 +15,22 @@ public class ArrayEventSetup {
 
 	static Main plugin;
 	
-	public static void setupEvents(Main instance){
+	public static void setupEvents(){
 		PluginManager pm = Bukkit.getServer().getPluginManager();
-		plugin = instance;
-		pm.registerEvents(new ClickInventory(plugin), plugin);
-		pm.registerEvents(new TabHeaderSetup(plugin), plugin);
-		pm.registerEvents(new BuildListener(plugin), plugin);
-		pm.registerEvents(new TreasureChestListener(plugin), plugin);
-		pm.registerEvents(new MenuListener(plugin), plugin);
-		pm.registerEvents(new PlayerChat(plugin), plugin);
-		pm.registerEvents(new Speedways(plugin), plugin);
-		pm.registerEvents(new VillagerSpawn(plugin), plugin);
+		plugin = Main.getInstance();
+		pm.registerEvents(new ClickInventory(), plugin);
+		pm.registerEvents(new TabHeaderSetup(), plugin);
+		pm.registerEvents(new BuildListener(), plugin);
+		pm.registerEvents(new TreasureChestListener(), plugin);
+		pm.registerEvents(new MenuListener(), plugin);
+		pm.registerEvents(new PlayerChat(), plugin);
+		pm.registerEvents(new Speedways(), plugin);
+		pm.registerEvents(new VillagerSpawn(), plugin);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
-		TPSMeter.setupTPSMeter(instance);
+		TPSMeter.setupTPSMeter();
 		
-		pm.registerEvents(new ParticleMenu(instance), plugin);
+		pm.registerEvents(new ParticleMenu(), plugin);
 		pm.registerEvents(new TreasureChestManager(), plugin);
 	}
 }

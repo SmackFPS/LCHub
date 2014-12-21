@@ -24,8 +24,8 @@ public class GiveAmmo {
 
 	static Main plugin;
 
-	public static void setup(Main instance) {
-		plugin = instance;
+	public static void setup() {
+		plugin = Main.getInstance();
 	}
 
 	@SuppressWarnings("deprecation")

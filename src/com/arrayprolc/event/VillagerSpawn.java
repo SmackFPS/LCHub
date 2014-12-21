@@ -26,9 +26,9 @@ public class VillagerSpawn implements Listener {
 
 	Main plugin;
 
-	public VillagerSpawn(Main instance){
-		plugin = instance;
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable(){
+	public VillagerSpawn(){
+		plugin = Main.getInstance();
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable(){
 			public void run(){
 				for(World w : Bukkit.getWorlds()){
 					if(amountOfVillagers(w) < 15){

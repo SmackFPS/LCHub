@@ -188,15 +188,15 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		ApiEvent.initialize(this);
 		MountMenu.initialize(this);
 		CourseOne.initialize(this);
-		ArrayEventSetup.setupEvents(this);
-		ArrayCommandHandler.setup(this);
-		StatsCommand.setup(this);
-		MountUnlocked.setup(this);
-		SQLBan.setup(this);
-		AmmoTest.setup(this);
-		UnlockAllArmor.setup(this);
+		ArrayEventSetup.setupEvents();
+		ArrayCommandHandler.setup();
+		StatsCommand.setup();
+		MountUnlocked.setup();
+		SQLBan.setup();
+		AmmoTest.setup();
+		UnlockAllArmor.setup();
 		new ProxiedEconomy();
-		RankManager.init(this);
+		RankManager.init();
 		loadListeners();
 		new PartyManager();
 		try{
@@ -256,15 +256,10 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		}
 	}
 
-	public static int getPlayerCount(String server){
-
-		return 0;
-	}
 	@SuppressWarnings("unused")
 	@Override
 	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
 		try{
-			//	Bukkit.broadcastMessage("--------------");
 		ByteArrayDataInput in = ByteStreams.newDataInput(message);
 		if (!channel.equals("BungeeCord")) {
 			return;
@@ -273,7 +268,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		if(!in.readUTF().equalsIgnoreCase("PlayerList")) return;
 		String server = in.readUTF();
 		String builder = in.readUTF();
-		//Bukkit.broadcastMessage(server + " " + builder);
 		boolean removeOne = false;
 		for(String s : builder.split(", ")){
 			if(s.equalsIgnoreCase("")){
@@ -482,7 +476,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 				}
 
 			} else {
-				player.sendMessage(ChatColor.RED + "Somehting Failed!");
+				player.sendMessage(ChatColor.RED + "Something Failed!");
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("givecoins") && player.isOp()) {
@@ -517,5 +511,9 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 
 	public static Location GetSpawn() {
 		return _spawn.clone();
+	}
+
+	public static Main getInstance() {
+		return instance;
 	}
 }

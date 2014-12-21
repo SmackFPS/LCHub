@@ -8,8 +8,8 @@ import com.arrayprolc.tools.BoxPercentage;
 
 public class TPSMeter {
 	public static int tps = 0;
-	public static void setupTPSMeter(Main instance){
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable()
+	public static void setupTPSMeter(){
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable()
 		{
 			long sec;
 			long currentSec;

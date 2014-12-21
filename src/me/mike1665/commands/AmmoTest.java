@@ -43,8 +43,8 @@ public class AmmoTest implements Listener{
 
 
 
-	public static void setup(Main instance) {
-		plugin = instance;
+	public static void setup() {
+		plugin = Main.getInstance();
 	}
 	
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {

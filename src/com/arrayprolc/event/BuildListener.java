@@ -13,8 +13,8 @@ public class BuildListener implements Listener {
 
 	public Main plugin;
 
-	public BuildListener(Main instance){
-		plugin = instance;
+	public BuildListener(){
+		plugin = Main.getInstance();
 	}
 	
 	@EventHandler

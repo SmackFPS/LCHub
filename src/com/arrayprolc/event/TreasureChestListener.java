@@ -30,8 +30,8 @@ public class TreasureChestListener implements Listener {
 	public static ArrayList<UUID> currentlyEnabled = new ArrayList<UUID>();
 	public Main plugin;
 
-	public TreasureChestListener(Main instance){
-		plugin = instance;
+	public TreasureChestListener(){
+		plugin = Main.getInstance();
 	}
 	
 	@EventHandler

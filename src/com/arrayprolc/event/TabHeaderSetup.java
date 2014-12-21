@@ -28,13 +28,13 @@ public class TabHeaderSetup implements Listener {
 	public static HashMap<UUID, Integer> age = new HashMap<UUID, Integer>();
 	String ageInventoryName = "§c§lPlease select your age.";
 	Menu m;
-	public TabHeaderSetup(Main instance){
-		plugin = instance;
+	public TabHeaderSetup(){
+		plugin = Main.getInstance();
 		m = new Menu(ageInventoryName, 9);
 		m.addItem(ItemTools.setName(new ItemStack(Material.NAME_TAG, 1), "§9Under 13", "§7§oAll ages are allowed!"), 0);
 		m.addItem(ItemTools.setName(new ItemStack(Material.NAME_TAG, 13), "§913-16", "§7§oAll ages are allowed!"), 4);
 		m.addItem(ItemTools.setName(new ItemStack(Material.NAME_TAG, 16), "§916+", "§7§oAll ages are allowed!"), 8);
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable(){
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable(){
 			public void run(){
 				for(Player p : Bukkit.getOnlinePlayers()){
 					if(!age.containsKey(p.getUniqueId())){
