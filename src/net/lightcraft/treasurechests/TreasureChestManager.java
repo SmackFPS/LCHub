@@ -14,6 +14,7 @@ import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
 import net.lightcraft.blocks.BlockRestore;
 import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilPacket;
 import net.lightcraftmc.fusebox.util.UtilEntity;
 import net.lightcraftmc.fusebox.util.UtilServer;
 import net.lightcraftmc.fusebox.util.UtilVelocity;
@@ -104,6 +105,10 @@ implements Listener
 		}
 		return false;
 	}
+	
+	public void chestStayOpen(Player p, Location l) {
+		UtilPacket.PacketPlayOutOpenChest(p , l, 10);
+	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static List<Entity> getClosestEntitiesFromLocation(Location location, double radius)
@@ -171,6 +176,7 @@ implements Listener
 					}
 					ArrayList b = (ArrayList)chest.get(p.getUniqueId());
 					if (!b.contains(event.getClickedBlock())) {
+						chestStayOpen(p, event.getClickedBlock().getLocation());
 						changeChestState(event.getClickedBlock().getLocation(), true);
 						event.getClickedBlock().getLocation().getWorld().playSound(event.getClickedBlock().getLocation(), Sound.CHEST_OPEN, 1.0F, 1.0F);
 						if (((ArrayList)chest.get(p.getUniqueId())).size() < 3) {

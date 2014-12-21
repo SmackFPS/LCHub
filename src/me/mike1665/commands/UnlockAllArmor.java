@@ -39,30 +39,40 @@ public class UnlockAllArmor {
 				WardrobeManager.unlockArmor(p2, Material.LEATHER_CHESTPLATE);
 				WardrobeManager.unlockArmor(p2, Material.LEATHER_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.LEATHER_LEGGINGS);
+				WardrobeManager.unlockArmor(p2, Material.LEATHER_BOOTS);
+
 				
 				//Chain Armor
 				WardrobeManager.unlockArmor(p2, Material.CHAINMAIL_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.CHAINMAIL_CHESTPLATE);
 				WardrobeManager.unlockArmor(p2, Material.CHAINMAIL_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.CHAINMAIL_LEGGINGS);
+				WardrobeManager.unlockArmor(p2, Material.CHAINMAIL_BOOTS);
+
 				
 				//Iron Armor
 				WardrobeManager.unlockArmor(p2, Material.IRON_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.IRON_CHESTPLATE);
 				WardrobeManager.unlockArmor(p2, Material.IRON_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.IRON_LEGGINGS);
+				WardrobeManager.unlockArmor(p2, Material.IRON_BOOTS);
+
 				
 				//Gold Armor
 				WardrobeManager.unlockArmor(p2, Material.GOLD_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.GOLD_CHESTPLATE);
 				WardrobeManager.unlockArmor(p2, Material.GOLD_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.GOLD_LEGGINGS);
+				WardrobeManager.unlockArmor(p2, Material.GOLD_BOOTS);
+
 				
 				//Diamond Armor
 				WardrobeManager.unlockArmor(p2, Material.DIAMOND_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.DIAMOND_CHESTPLATE);
 				WardrobeManager.unlockArmor(p2, Material.DIAMOND_HELMET);
 				WardrobeManager.unlockArmor(p2, Material.DIAMOND_LEGGINGS);
+				WardrobeManager.unlockArmor(p2, Material.DIAMOND_BOOTS);
+
 				
 				if (p2.isOnline()) {
 					p2.getPlayer().sendMessage(StringManager.getPrefix(MessageType.SUCCESS) + "Successfully unlocked all Wardrobe contents!");
