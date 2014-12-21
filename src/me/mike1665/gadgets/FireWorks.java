@@ -28,8 +28,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class FireWorks
   implements Listener

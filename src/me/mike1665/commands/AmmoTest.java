@@ -10,7 +10,7 @@ import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.eventhandlers.PaintballGun;
 import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.utils.UtilBlock;
+import net.lightcraftmc.fusebox.util.UtilBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -32,8 +32,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class AmmoTest implements Listener{
 

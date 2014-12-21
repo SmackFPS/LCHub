@@ -19,11 +19,11 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
-import com.arrayprolc.menu.Menu;
+import net.lightcraftmc.fusebox.menu.Menu;
 import com.arrayprolc.serverjoin.PartyTools;
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
-import com.arrayprolc.tools.ItemTools;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
+import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class ClickInventory implements Listener {
 	Main plugin;

@@ -7,7 +7,7 @@ import me.mike1665.extra.ExtraManager;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import me.mike1665.utils.UtilLocation;
+import net.lightcraftmc.fusebox.util.UtilLocation;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

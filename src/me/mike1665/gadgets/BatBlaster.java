@@ -8,10 +8,10 @@ import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.utils.UtilAction;
-import me.mike1665.utils.UtilAlg;
-import me.mike1665.utils.UtilEnt;
-import me.mike1665.utils.UtilEntity;
+import net.lightcraftmc.fusebox.util.UtilAction;
+import net.lightcraftmc.fusebox.util.UtilAlg;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilEntity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,8 +30,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class BatBlaster implements Listener {
 

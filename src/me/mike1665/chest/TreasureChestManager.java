@@ -13,10 +13,10 @@ import me.mike1665.block.BlockRestore;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import me.mike1665.utils.UtilEnt;
-import me.mike1665.utils.UtilServer;
-import me.mike1665.utils.UtilVelocity;
-import me.mike1665.utils.UtilityBlock;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilServer;
+import net.lightcraftmc.fusebox.util.UtilVelocity;
+import net.lightcraftmc.fusebox.util.UtilityBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

@@ -12,11 +12,11 @@ import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.ammo.PaintballAmmoManager;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.eventhandlers.EnderDoge;
-import me.mike1665.utils.UtilEffect;
-import me.mike1665.utils.UtilEnt;
-import me.mike1665.utils.UtilFirework;
-import me.mike1665.utils.UtilServer;
-import me.mike1665.utils.UtilityMath;
+import net.lightcraftmc.fusebox.util.UtilEffect;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilFirework;
+import net.lightcraftmc.fusebox.util.UtilServer;
+import net.lightcraftmc.fusebox.util.UtilityMath;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

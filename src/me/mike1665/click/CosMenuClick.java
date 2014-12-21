@@ -2,8 +2,8 @@ package me.mike1665.click;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 import me.mike1665.extra.ExtraManager;
 import me.mike1665.menu.BuyGadgets;

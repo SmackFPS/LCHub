@@ -7,8 +7,8 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 import me.mike1665.block.BlockRestore;
 import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.utils.UtilServer;
-import me.mike1665.utils.UtilityBlock;
+import net.lightcraftmc.fusebox.util.UtilServer;
+import net.lightcraftmc.fusebox.util.UtilityBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

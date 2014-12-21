@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import me.mike1665.Main.Main;
 import me.mike1665.particlelib.ParticleEffect;
-import me.mike1665.utils.UtilBlock;
+import net.lightcraftmc.fusebox.util.UtilBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

@@ -62,10 +62,10 @@ import me.mike1665.mount.mounts.NyanRider;
 import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
-import me.mike1665.utils.UtilEnt;
-import me.mike1665.utils.UtilLocation;
-import me.mike1665.utils.UtilServer;
-import me.mike1665.utils.UtilityBlock;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilLocation;
+import net.lightcraftmc.fusebox.util.UtilServer;
+import net.lightcraftmc.fusebox.util.UtilityBlock;
 import me.mike1665.wardrobe.WardrobeManager;
 
 import org.bukkit.Bukkit;

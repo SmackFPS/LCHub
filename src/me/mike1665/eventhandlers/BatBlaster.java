@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 import me.mike1665.Main.Main;
 import me.mike1665.particlelib.ParticleEffect;
-import me.mike1665.utils.UtilAction;
-import me.mike1665.utils.UtilAlg;
-import me.mike1665.utils.UtilEnt;
-import me.mike1665.utils.UtilEntity;
+import net.lightcraftmc.fusebox.util.UtilAction;
+import net.lightcraftmc.fusebox.util.UtilAlg;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilEntity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

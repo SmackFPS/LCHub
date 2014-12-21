@@ -8,7 +8,7 @@ import me.mike1665.Main.Main;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.particles18.ParticleLib18.ParticleType;
-import me.mike1665.utils.UtilBlock;
+import net.lightcraftmc.fusebox.util.UtilBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,8 +31,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class MeowBall
   implements Listener

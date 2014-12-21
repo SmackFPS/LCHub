@@ -11,7 +11,7 @@ import org.bukkit.plugin.PluginManager;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
-import com.arrayprolc.menu.MenuListener;
+import net.lightcraftmc.fusebox.menu.MenuListener;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.speedways.Speedways;
 import com.google.common.io.ByteArrayDataInput;
@@ -29,7 +29,6 @@ public class ArrayEventSetup {
 		pm.registerEvents(new TabHeaderSetup(), plugin);
 		pm.registerEvents(new BuildListener(), plugin);
 		pm.registerEvents(new TreasureChestListener(), plugin);
-		pm.registerEvents(new MenuListener(), plugin);
 		pm.registerEvents(new PlayerChat(), plugin);
 		pm.registerEvents(new Speedways(), plugin);
 		pm.registerEvents(new VillagerSpawn(), plugin);

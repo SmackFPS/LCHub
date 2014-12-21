@@ -4,7 +4,6 @@ import me.mike1665.Main.Main;
 
 import org.bukkit.Bukkit;
 
-import com.arrayprolc.tools.BoxPercentage;
 
 public class TPSMeter {
 	public static int tps = 0;
@@ -53,6 +52,6 @@ public class TPSMeter {
 		if(tps <= 0){
 			percent = 1;
 		}
-		return "§9Performance > §f" + BoxPercentage.generateBoxPercentage(tps/20) + " §7(" + percent + "%)";
+		return "§9Performance > §f" + net.lightcraftmc.fusebox.strings.BoxPercentage.generateBoxPercentage(tps/20) + " §7(" + percent + "%)";
 	}
 }

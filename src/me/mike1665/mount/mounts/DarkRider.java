@@ -6,7 +6,7 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.mount.MountManager;
-import me.mike1665.utils.UtilityBlock;
+import net.lightcraftmc.fusebox.util.UtilityBlock;
 import net.minecraft.server.v1_8_R1.AttributeInstance;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.GenericAttributes;
@@ -29,9 +29,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringList;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringList;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class DarkRider
   implements Listener

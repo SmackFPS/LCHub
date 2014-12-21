@@ -22,11 +22,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.material.Dye;
 
-import com.arrayprolc.menu.Menu;
+import net.lightcraftmc.fusebox.menu.Menu;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.speedways.CustomEntityType;
-import com.arrayprolc.tools.ItemTools;
+import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class ArrayCommandHandler implements Listener
 {

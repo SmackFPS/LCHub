@@ -1,6 +1,6 @@
 package me.mike1665.menu;
 
-import com.arrayprolc.tools.ItemTools;
+import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 import java.util.ArrayList;
 

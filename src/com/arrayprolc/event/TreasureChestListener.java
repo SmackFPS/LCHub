@@ -21,8 +21,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.reward.Reward;
 import com.arrayprolc.reward.RewardList;
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class TreasureChestListener implements Listener {
 

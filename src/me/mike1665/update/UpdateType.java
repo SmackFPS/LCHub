@@ -1,6 +1,6 @@
 package me.mike1665.update;
 
-import me.mike1665.utils.UtilTime;
+import net.lightcraftmc.fusebox.util.UtilTime;
 
 public enum UpdateType
 {

@@ -1,7 +1,7 @@
 package me.mike1665.funstuff;
 
-import com.arrayprolc.strings.MessageType;
-import com.arrayprolc.strings.StringManager;
+import net.lightcraftmc.fusebox.strings.MessageType;
+import net.lightcraftmc.fusebox.strings.StringManager;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.bukkit.ChatColor;

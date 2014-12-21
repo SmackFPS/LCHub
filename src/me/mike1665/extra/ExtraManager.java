@@ -23,7 +23,7 @@ import me.mike1665.extra.extraeffects.Vortex;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import me.mike1665.utils.UtilLocation;
+import net.lightcraftmc.fusebox.util.UtilLocation;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

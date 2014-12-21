@@ -19,8 +19,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.bountifulupdate.BUtils;
 import com.arrayprolc.coin.Multiplier;
-import com.arrayprolc.menu.Menu;
-import com.arrayprolc.tools.ItemTools;
+import net.lightcraftmc.fusebox.menu.Menu;
+import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class TabHeaderSetup implements Listener {
 

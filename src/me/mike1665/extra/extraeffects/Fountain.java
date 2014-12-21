@@ -5,8 +5,8 @@ import me.mike1665.extra.ExtraManager;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import me.mike1665.utils.MathUtils;
-import me.mike1665.utils.UtilVector;
+import net.lightcraftmc.fusebox.util.MathUtils;
+import net.lightcraftmc.fusebox.util.UtilVector;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
