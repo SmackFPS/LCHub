@@ -107,7 +107,7 @@ implements Listener
 	}
 	
 	public void chestStayOpen(Player p, Location l) {
-		UtilPacket.PacketPlayOutOpenChest(p , l, 10);
+		UtilPacket.sendPacketPlayOutOpenChest(p , l, 10);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
