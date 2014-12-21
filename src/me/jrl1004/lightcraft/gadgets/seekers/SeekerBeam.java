@@ -1,8 +1,8 @@
 package me.jrl1004.lightcraft.gadgets.seekers;
 
 import me.mike1665.Main.Main;
-import net.lightcraftmc.fusebox.util.particles18.ParticleLib18;
-import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
+import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -33,8 +33,8 @@ public class SeekerBeam {
 			double zBump = zOffset / (steps / 2);
 			int s = 0;
 			boolean flipped = false;
-			ParticleLib18 particle = new ParticleLib18(ParticleType.DRIP_LAVA,
-					1, 1, 0);
+			ParticleLib18 particle = new ParticleLib18(ParticleType.HEART, 0D,
+					1, Double.MIN_VALUE);
 
 			public void run() {
 				System.out.println("Running step " + s);
@@ -47,6 +47,7 @@ public class SeekerBeam {
 					xBump *= -1;
 					yBump *= -1;
 					zBump *= -1;
+					flipped = true;
 					System.out.println("Bump values flipped");
 				}
 				Location target = start.clone();
