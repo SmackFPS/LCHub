@@ -185,27 +185,15 @@ implements Listener
 								public void run() {
 									if (p.isValid())
 									{
-										Iterator localIterator2;
-										for (Iterator localIterator1 = UtilEnt.flyingEntities.keySet().iterator(); 
-												localIterator1.hasNext(); 
-												localIterator2.hasNext())
-										{
-											Player p = (Player)localIterator1.next();
-											ArrayList entList = (ArrayList)UtilEnt.flyingEntities.get(p);
-											localIterator2 = entList.iterator(); 
-											Entity e = (Entity) localIterator1.next();
-											if (e.isValid()) {
-												e.remove();
-											}
-
-										}
-
-										for(Entity e : UtilEnt.flyingEntities.get(p)){
-											if (e.isValid()) {
+										Iterator<Entity> i = UtilEnt.flyingEntities.get(p).iterator();
+										while(i.hasNext()){
+											Entity e = i.next();
+											if(e.isValid()){
 												e.remove();
 											}
 										}
-
+										UtilEnt.flyingEntities.remove(p);
+										
 										BlockRestore.restore(p);
 										TreasureChestManager.chest.remove(p.getUniqueId());
 										TreasureChestManager.treasureChest.remove(p.getUniqueId());
