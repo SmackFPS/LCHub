@@ -1,5 +1,6 @@
 package me.jrl1004.lightcraft.gadgets.seekers;
 
+import me.mike1665.Main.Main;
 import net.lightcraftmc.fusebox.util.particles18.ParticleLib18;
 import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 
@@ -48,7 +49,7 @@ public class SeekerBeam {
 						ParticleType.VILLAGER_HAPPY, 1, 1, 0);
 				particle.sendToLocation(target);
 			}
-		};
+		}.runTaskTimer(Main.getInstance(), 0, 1);
 	}
 
 	private static double abs(double d) {
