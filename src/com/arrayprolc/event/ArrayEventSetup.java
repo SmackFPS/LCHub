@@ -9,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 
 import com.arrayprolc.menu.MenuListener;
+import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.speedways.Speedways;
 
 public class ArrayEventSetup {
@@ -29,7 +30,7 @@ public class ArrayEventSetup {
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("doDaylightCycle", "false");
 		TPSMeter.setupTPSMeter();
-		
+		RankManager.init();
 		pm.registerEvents(new ParticleMenu(), plugin);
 		pm.registerEvents(new TreasureChestManager(), plugin);
 	}

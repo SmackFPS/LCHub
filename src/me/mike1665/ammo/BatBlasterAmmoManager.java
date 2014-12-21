@@ -11,8 +11,8 @@ public class BatBlasterAmmoManager implements Listener {
 	
 	private static Main plugin;
 	
-	public static void initialize(Main plugin){
-		BatBlasterAmmoManager.plugin = plugin;
+	public static void initialize(){
+		BatBlasterAmmoManager.plugin = Main.getInstance();
 	}
 	
 	public static void giveBatAmmo(OfflinePlayer p, int i) {

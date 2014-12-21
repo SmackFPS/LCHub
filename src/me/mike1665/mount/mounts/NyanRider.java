@@ -45,9 +45,9 @@ public class NyanRider
 {
   private static Main plugin;
   
-  public static void initialize(Main plugin)
+  public static void initialize()
   {
-    NyanRider.plugin = plugin;
+    NyanRider.plugin = Main.getInstance();
   }
   
   public static boolean playNyanRider(Player p)

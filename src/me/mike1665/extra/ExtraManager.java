@@ -25,6 +25,7 @@ import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
 import me.mike1665.utils.UtilLocation;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -125,22 +126,22 @@ public class ExtraManager
     }
   }
 
-  public static void registerEvents(Main plugin)
+  public static void registerEvents()
   {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new Cloud(), plugin);
-    pm.registerEvents(new CloudSnow(), plugin);
-    pm.registerEvents(new CloudLight(), plugin);
-    pm.registerEvents(new Helix(), plugin);
-    pm.registerEvents(new Vortex(), plugin);
-    pm.registerEvents(new Tornado(), plugin);
-    pm.registerEvents(new HourGlass(), plugin);
-    pm.registerEvents(new Shield(), plugin);
-    pm.registerEvents(new Fountain(), plugin);
-    pm.registerEvents(new FlameLilly(), plugin);
-    pm.registerEvents(new GreenRing(), plugin);
-    pm.registerEvents(new FlameRing(), plugin);
-    pm.registerEvents(new GreenSpiral(), plugin);
-    pm.registerEvents(new ExtraManager(), plugin);
+    PluginManager pm = Bukkit.getServer().getPluginManager();
+    pm.registerEvents(new Cloud(), Main.getInstance());
+    pm.registerEvents(new CloudSnow(), Main.getInstance());
+    pm.registerEvents(new CloudLight(), Main.getInstance());
+    pm.registerEvents(new Helix(), Main.getInstance());
+    pm.registerEvents(new Vortex(), Main.getInstance());
+    pm.registerEvents(new Tornado(), Main.getInstance());
+    pm.registerEvents(new HourGlass(), Main.getInstance());
+    pm.registerEvents(new Shield(), Main.getInstance());
+    pm.registerEvents(new Fountain(), Main.getInstance());
+    pm.registerEvents(new FlameLilly(), Main.getInstance());
+    pm.registerEvents(new GreenRing(), Main.getInstance());
+    pm.registerEvents(new FlameRing(), Main.getInstance());
+    pm.registerEvents(new GreenSpiral(), Main.getInstance());
+    pm.registerEvents(new ExtraManager(), Main.getInstance());
   }
 }

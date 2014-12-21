@@ -40,9 +40,9 @@ public class AngelRider
 {
   private static Main plugin;
   
-  public static void initialize(Main plugin)
+  public static void initialize()
   {
-    AngelRider.plugin = plugin;
+    AngelRider.plugin = Main.getInstance();
   }
   
   public static boolean playAngelRider(Player p)

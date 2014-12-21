@@ -1,21 +1,22 @@
 package me.mike1665.gadgets;
 
 import me.mike1665.Main.Main;
-import org.bukkit.Server;
+
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
 public class GagdetManager
 {
-  public static void registerEvents(Main plugin)
+  public static void registerEvents()
   {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new BatBlaster(), plugin);
-    pm.registerEvents(new EnderDoge(), plugin);
-    pm.registerEvents(new FireWorks(), plugin);
-    pm.registerEvents(new KittyCannon(), plugin);
-    pm.registerEvents(new MeowBall(), plugin);
-    pm.registerEvents(new FunCreepers(), plugin);
-    pm.registerEvents(new QuakeGun(), plugin);
+    PluginManager pm = Bukkit.getServer().getPluginManager();
+    pm.registerEvents(new BatBlaster(), Main.getInstance());
+    pm.registerEvents(new EnderDoge(), Main.getInstance());
+    pm.registerEvents(new FireWorks(), Main.getInstance());
+    pm.registerEvents(new KittyCannon(), Main.getInstance());
+    pm.registerEvents(new MeowBall(), Main.getInstance());
+    pm.registerEvents(new FunCreepers(), Main.getInstance());
+    pm.registerEvents(new QuakeGun(), Main.getInstance());
   }
 }
 

@@ -2,19 +2,20 @@ package me.mike1665.ammo;
 
 import me.mike1665.Main.Main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 public class AmmoManager implements Listener{
 	
-	  public static void registerEvents(Main plugin)
+	  public static void registerEvents()
 	  {
-	    PluginManager pm = plugin.getServer().getPluginManager();
-	    pm.registerEvents(new BatBlasterAmmoManager(), plugin);
-	    pm.registerEvents(new EnderDogeAmmoManager(), plugin);
-	    pm.registerEvents(new FireWorksAmmoManager(), plugin);
-	    pm.registerEvents(new KittyCannonAmmoManager(), plugin);
-	    pm.registerEvents(new MeowAmmoManager(), plugin);
-	    pm.registerEvents(new PaintballAmmoManager(), plugin);
+	    PluginManager pm = Bukkit.getServer().getPluginManager();
+	    pm.registerEvents(new BatBlasterAmmoManager(), Main.getInstance());
+	    pm.registerEvents(new EnderDogeAmmoManager(), Main.getInstance());
+	    pm.registerEvents(new FireWorksAmmoManager(), Main.getInstance());
+	    pm.registerEvents(new KittyCannonAmmoManager(), Main.getInstance());
+	    pm.registerEvents(new MeowAmmoManager(), Main.getInstance());
+	    pm.registerEvents(new PaintballAmmoManager(), Main.getInstance());
 	  }
 }

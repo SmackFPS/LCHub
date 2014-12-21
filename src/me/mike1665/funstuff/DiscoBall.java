@@ -20,9 +20,9 @@ public class DiscoBall
 {
   public Main plugin;
   
-  public DiscoBall(Main plugin)
+  public DiscoBall()
   {
-    this.plugin = plugin;
+    this.plugin = Main.getInstance();
   }
   
   @EventHandler(priority=EventPriority.HIGHEST)

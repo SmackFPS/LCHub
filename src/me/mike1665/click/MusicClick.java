@@ -37,9 +37,9 @@ public class MusicClick
   ArrayList<Location> thirteen = new ArrayList();
   ArrayList<Player> wait = new ArrayList();
   
-  public static void initalize(Main plugin)
+  public static void initalize()
   {
-    MusicClick.plugin = plugin;
+    MusicClick.plugin = Main.getInstance();
   }
   
   @EventHandler

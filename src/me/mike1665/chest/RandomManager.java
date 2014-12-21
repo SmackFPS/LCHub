@@ -29,9 +29,9 @@ public class RandomManager
 	
 	private static Main plugin;
 	  
-	public static void initialize(Main plugin)
+	public static void initialize()
 	{
-		RandomManager.plugin = plugin;
+		RandomManager.plugin = Main.getInstance();
 	 	}
 
   public static void giveRandomBetweenRareAndNormalThing(Player p, Location l)

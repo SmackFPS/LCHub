@@ -14,6 +14,7 @@ import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
 import me.mike1665.utils.UtilServer;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
@@ -184,14 +185,14 @@ public class MountManager
     }
   }
 
-  public static void registerEvents(Main plugin)
+  public static void registerEvents()
   {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new NyanRider(), plugin);
-    pm.registerEvents(new GhostRider(), plugin);
-    pm.registerEvents(new DarkRider(), plugin);
-    pm.registerEvents(new AngelRider(), plugin);
-    pm.registerEvents(new PoseidonRider(), plugin);
-    pm.registerEvents(new MountManager(), plugin);
+    PluginManager pm = Bukkit.getServer().getPluginManager();
+    pm.registerEvents(new NyanRider(), Main.getInstance());
+    pm.registerEvents(new GhostRider(), Main.getInstance());
+    pm.registerEvents(new DarkRider(), Main.getInstance());
+    pm.registerEvents(new AngelRider(), Main.getInstance());
+    pm.registerEvents(new PoseidonRider(), Main.getInstance());
+    pm.registerEvents(new MountManager(), Main.getInstance());
   }
 }

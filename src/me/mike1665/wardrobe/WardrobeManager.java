@@ -15,8 +15,8 @@ public class WardrobeManager implements Listener{
 	
 	private static Main plugin;
 	
-	public static void initialize(Main plugin){
-		WardrobeManager.plugin = plugin;
+	public static void initialize(){
+		WardrobeManager.plugin = Main.getInstance();
 	}
 	
 	public static boolean hasUnlockedArmor(OfflinePlayer p, Material m) {

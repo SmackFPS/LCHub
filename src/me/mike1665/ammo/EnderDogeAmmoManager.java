@@ -11,8 +11,8 @@ public class EnderDogeAmmoManager implements Listener {
 	
 	private static Main plugin;
 	
-	public static void initialize(Main plugin){
-		EnderDogeAmmoManager.plugin = plugin;
+	public static void initialize(){
+		EnderDogeAmmoManager.plugin = Main.getInstance();
 	}
 	
 	public static void giveEnderDogeAmmo(OfflinePlayer p, int i) {

@@ -24,8 +24,8 @@ public class ApiEvent implements Listener {
 	private static Main plugin;
 	public static boolean hasInit = false;
 	
-	public static void initialize(Main plugin){
-		ApiEvent.plugin = plugin;
+	public static void initialize(){
+		ApiEvent.plugin = Main.getInstance();
 	}
 	
 	@SuppressWarnings("deprecation")

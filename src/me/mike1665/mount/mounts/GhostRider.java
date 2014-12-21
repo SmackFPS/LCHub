@@ -38,9 +38,9 @@ public class GhostRider
 {
   private static Main plugin;
   
-  public static void initialize(Main plugin)
+  public static void initialize()
   {
-    GhostRider.plugin = plugin;
+    GhostRider.plugin = Main.getInstance();
   }
   
   public static boolean playGhostRider(Player p)

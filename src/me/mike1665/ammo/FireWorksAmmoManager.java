@@ -11,8 +11,8 @@ public class FireWorksAmmoManager implements Listener {
 	
 	private static Main plugin;
 	
-	public static void initialize(Main plugin){
-		FireWorksAmmoManager.plugin = plugin;
+	public static void initialize(){
+		FireWorksAmmoManager.plugin = Main.getInstance();
 	}
 	
 	public static void giveFireWorkAmmo(OfflinePlayer p, int i) {

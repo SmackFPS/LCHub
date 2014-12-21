@@ -18,9 +18,9 @@ public class MountMenu
   public static final String INV_NAME = "§8[§aP§8] §1Mount Menu";
   private static Main plugin;
   
-  public static void initialize(Main plugin)
+  public static void initialize()
   {
-    MountMenu.plugin = plugin;
+    MountMenu.plugin = Main.getInstance();
   }
   
   public static ItemStack createItem(Material material, int amount, short shrt, String displayname, String lore)

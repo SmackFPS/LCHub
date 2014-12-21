@@ -6,6 +6,7 @@ import me.mike1665.Main.Main;
 import me.mike1665.extra.ExtraManager;
 import me.mike1665.particle.ParticleManager;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -74,10 +75,10 @@ public class EffectManager
     }
   }
 
-  public static void registerEvents(Main plugin)
+  public static void registerEvents()
   {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new EffectManager(), plugin);
+    PluginManager pm = Bukkit.getServer().getPluginManager();
+    pm.registerEvents(new EffectManager(), Main.getInstance());
   }
 
   public static enum EffectType

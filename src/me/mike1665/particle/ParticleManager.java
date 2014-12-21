@@ -4,6 +4,7 @@ import me.mike1665.Main.Main;
 import me.mike1665.effects.EffectManager;
 import me.mike1665.utils.UtilLocation;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
@@ -27,10 +28,10 @@ public class ParticleManager
     CircleParticle.effect2.remove(p);
   }
   
-  public static void registerEvents(Main plugin)
+  public static void registerEvents()
   {
-    PluginManager pm = plugin.getServer().getPluginManager();
-    pm.registerEvents(new CircleParticle(), plugin);
+    PluginManager pm = Bukkit.getServer().getPluginManager();
+    pm.registerEvents(new CircleParticle(), Main.getInstance());
   }
 
 

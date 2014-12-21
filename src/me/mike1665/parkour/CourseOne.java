@@ -33,8 +33,8 @@ public class CourseOne implements Listener {
 	String tag = ChatColor.RED + "" + ChatColor.BOLD + "Parkour "
 			+ ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
 
-	public static void initialize(Main plugin2) {
-		CourseOne.plugin = plugin2;
+	public static void initialize() {
+		CourseOne.plugin = Main.getInstance();
 	}
 
 	@EventHandler

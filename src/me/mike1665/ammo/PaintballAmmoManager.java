@@ -11,8 +11,8 @@ public class PaintballAmmoManager implements Listener {
 	
 	private static Main plugin;
 	
-	public static void initialize(Main plugin){
-		PaintballAmmoManager.plugin = plugin;
+	public static void initialize(){
+		PaintballAmmoManager.plugin = Main.getInstance();
 	}
 	
 	public static void givePBAmmo(OfflinePlayer p, int i) {

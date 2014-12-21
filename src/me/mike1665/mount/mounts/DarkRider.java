@@ -38,9 +38,9 @@ public class DarkRider
 {
   private static Main plugin;
   
-  public static void initialize(Main plugin)
+  public static void initialize()
   {
-   DarkRider.plugin = plugin;
+   DarkRider.plugin = Main.getInstance();
   }
   
   public static boolean playDarkRider(Player p)
