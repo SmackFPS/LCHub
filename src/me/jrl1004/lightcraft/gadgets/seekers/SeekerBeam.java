@@ -37,7 +37,7 @@ public class SeekerBeam {
 					1, 1, 0);
 
 			public void run() {
-				System.out.println("Sunning step " + s);
+				System.out.println("Running step " + s);
 				if (s >= steps) {
 					System.out.println("Cancelling");
 					cancel();
@@ -54,6 +54,7 @@ public class SeekerBeam {
 				target = target.add(xBump, yBump, zBump);
 				System.out.println("Current target calculated");
 				particle.sendToLocation(target);
+				s++;
 			}
 		}.runTaskTimer(Main.getInstance(), 0, 1);
 	}
