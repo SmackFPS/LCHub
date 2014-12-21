@@ -3,6 +3,7 @@ package me.mike1665.Main;
 import java.util.HashMap;
 import java.util.UUID;
 
+import me.jrl1004.lightcraft.utils.JacobCommandHandler;
 import me.jrl1004.lightcraft.utils.JacobEventSetup;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.commands.AmmoTest;
@@ -72,6 +73,7 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		if (GiveAmmo.onCommand(sender, cmd, label, a)) return true;
 		if (UnlockAllArmor.onCommand(sender, cmd, label, a)) return true;
 		if (MikeCommandHandler.onCommand(sender, cmd, label, a)) return true;
+		if (JacobCommandHandler.command(sender, cmd, label, a)) return true;
 
 		return false;
 
