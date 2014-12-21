@@ -57,6 +57,10 @@ import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.wardrobe.WardrobeManager;
+import net.lightcraft.treasurechests.BuildManager;
+import net.lightcraft.treasurechests.BuildPlateform;
+import net.lightcraft.treasurechests.RandomManager;
+import net.lightcraft.treasurechests.TreasureChestManager;
 import net.lightcraftmc.fusebox.util.UtilEnt;
 import net.lightcraftmc.fusebox.util.UtilLocation;
 import net.lightcraftmc.fusebox.util.UtilServer;
@@ -118,6 +122,11 @@ public class MikeEventSetup {
 	    pm.registerEvents(new DarkRider(), Main.getInstance());
 	    pm.registerEvents(new AngelRider(), Main.getInstance());
 	    pm.registerEvents(new PoseidonRider(), Main.getInstance());
+	   
+	    pm.registerEvents(new TreasureChestManager(), Main.getInstance());
+	    RandomManager.initialize();
+	    
+	    
 		WardrobeManager.initialize();
 		WardrobeMenu.initialize();
 	    EffectManager.registerEvents();

@@ -10,6 +10,7 @@ import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.eventhandlers.PaintballGun;
 import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
+import net.lightcraft.treasurechests.BuildPlateform;
 import net.lightcraftmc.fusebox.util.UtilBlock;
 
 import org.bukkit.Bukkit;
@@ -51,8 +52,9 @@ public class AmmoTest implements Listener{
 		if(!(sender instanceof Player)) return false;
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("321") && p.isOp()) {
-			GadgetAmmo.addGadgetAmo(p, "QuakeGun", 5);
-			p.sendMessage("This " + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));
+			BuildPlateform.randomPlateform(p.getPlayer(), p.getLocation());
+			/*GadgetAmmo.addGadgetAmo(p, "QuakeGun", 5);
+			p.sendMessage("This " + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));*/
 		}
 		if (cmd.getName().equalsIgnoreCase("3211") && p.isOp()) {
 			ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
