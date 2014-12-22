@@ -1,8 +1,9 @@
-name: LCHub
+name: LightCraftHub
 main: me.mike1665.Main.Main
 version: 1.0
 description: Testa
 author: mike1665
+depend: [LightCraftFuseBox]
 commands:
     caoff:
     gadgets:
