@@ -1,27 +1,26 @@
 package me.jrl1004.lightcraft.utils;
 
-import java.util.Random;
-
-import me.jrl1004.lightcraft.gadgets.seekers.SeekerBeam;
+import me.jrl1004.lightcraft.gadgets.arcs.ArcDataSaver;
+import me.jrl1004.lightcraft.gadgets.arcs.ParticleArc;
 import me.mike1665.Main.Main;
+import net.lightcraftmc.fusebox.tools.SelectionTool;
+import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 public class JacobCommandHandler implements Listener {
+	private JacobCommandHandler() {
+	}
 
-	private static Random random;
 	static Main plugin;
-	public static JacobCommandHandler instance2;
 	private static boolean _setup = false;
 
 	public static void setup() {
 		plugin = Main.getInstance();
-		instance2 = new JacobCommandHandler();
-		random = new Random();
 		_setup = true;
 	}
 
@@ -30,24 +29,43 @@ public class JacobCommandHandler implements Listener {
 		String name = cmd.getName();
 		if (!_setup)
 			setup();
-		if (name.equalsIgnoreCase("Seeker")) {
-			if (sender instanceof Player == false)
-				return false;
-			Player s = (Player) sender;
-			if (a.length == 0) {
-				s.sendMessage("/Seeker <target>");
+		if (name.equalsIgnoreCase("Arc")) {
+			if (sender instanceof Player == false) {
+				sender.sendMessage("You must be a player to use this command");
 				return true;
 			}
-			Player t = Bukkit.getPlayer(a[0]);
-			if (t == null) {
-				s.sendMessage("Player is offline");
+			final Player player = (Player) sender;
+			if (a.length < 3) {
+				sender.sendMessage("Usage: /Arc <Particle> <CurveHeight> <Seconds>");
 				return true;
 			}
-			System.out.println("Begin Launch");
-			SeekerBeam.launchBeam(s.getEyeLocation(), t.getEyeLocation());
+			ParticleType type;
+			try {
+				type = ParticleType.valueOf(a[0].toUpperCase());
+			} catch (Exception exc) {
+				sender.sendMessage("Invalid particle type");
+				return true;
+			}
+			double h, s;
+			try {
+				h = Double.parseDouble(a[1]);
+				s = Double.parseDouble(a[2]);
+			} catch (NumberFormatException exc) {
+				sender.sendMessage("Invalid number supplied");
+				return true;
+			}
+			if (!(SelectionTool.getInstance().hasLocation1(player) && SelectionTool
+					.getInstance().hasLocation2(player))) {
+				player.sendMessage("Make sure you have a valid selection!");
+				return true;
+			}
+			Location l1 = SelectionTool.getInstance().getLocation1(player);
+			Location l2 = SelectionTool.getInstance().getLocation2(player);
+			ParticleArc arc = new ParticleArc(type, l1, l2, h, s);
+			ArcDataSaver.addArcToSaveList(arc);
+			arc.beginArcing();
 			return true;
 		}
-
 		return false;
 	}
 }
