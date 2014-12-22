@@ -107,7 +107,7 @@ implements Listener
 	}
 	
 	public void chestStayOpen(Player p, Location l) {
-		UtilPacket.sendPacketPlayOutOpenChest(p , l, 10);
+		UtilPacket.sendPacketPlayOutOpenChest(p , l, 30);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

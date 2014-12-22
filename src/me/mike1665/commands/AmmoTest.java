@@ -22,6 +22,9 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
@@ -32,6 +35,8 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import net.lightcraftmc.fusebox.strings.MessageType;
 import net.lightcraftmc.fusebox.strings.StringManager;
@@ -50,18 +55,38 @@ public class AmmoTest implements Listener{
 	
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
 		if(!(sender instanceof Player)) return false;
-		Player p = (Player) sender;
+		final Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("321") && p.isOp()) {
 			BuildPlateform.randomPlateform(p.getPlayer(), p.getLocation());
 			/*GadgetAmmo.addGadgetAmo(p, "QuakeGun", 5);
 			p.sendMessage("This " + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));*/
 		}
 		if (cmd.getName().equalsIgnoreCase("3211") && p.isOp()) {
-			ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
+			final Entity e = p.getWorld().spawnEntity(p.getLocation(), EntityType.MINECART);
+			e.setCustomName(ChatColor.GRAY + p.getName() + " Minecart Mount");
+			e.setCustomNameVisible(true);
+			e.setPassenger(p);
+			new BukkitRunnable() {
+				
+				@Override
+				public void run() {
+					if(e.isDead() || !e.isValid()) {
+						Bukkit.getScheduler().cancelTask(getTaskId());
+						return;
+					}
+					if (e.getPassenger() != null) {
+						double x = p.getLocation().getX();
+						double z = p.getLocation().getZ();
+						e.setVelocity(p.getLocation().getDirection().setY(1));
+					}
+				}
+			}.runTaskTimer(Main.getInstance(), 20, 1);
+			
+			/*ItemStack snow = new ItemStack(Material.DIAMOND_HOE, 1);
         	ItemMeta sno = snow.getItemMeta();
         	sno.setDisplayName(ChatColor.GREEN + "QuakeGun " + ChatColor.DARK_RED + GadgetAmmo.balanceGadgetAmo(p, "QuakeGun"));
         	snow.setItemMeta(sno);
-        	p.getInventory().addItem(snow);
+        	p.getInventory().addItem(snow);*/
 		}
 		if (cmd.getName().equalsIgnoreCase("ammotest") && p.isOp()) {
 			if(p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "MeowBall " + ChatColor.DARK_RED + MeowAmmoManager.balaceMeowAmmo(p))) {

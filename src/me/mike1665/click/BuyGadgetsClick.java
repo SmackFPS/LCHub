@@ -256,45 +256,49 @@ public class BuyGadgetsClick
             }
           }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
-          if (LcCoinsAPI.hasEnough(p, 300))
+          if (LcCoinsAPI.hasEnough(p, 300) && (GadgetAmmo.balanceGadgetAmo(p, "CoinBomb") <= 1))
           {
             LcCoinsAPI.takePoints(p, 300);
+            GadgetAmmo.addGadgetAmo(p, "CoinBomb", 1);
             ItemStack ender = new ItemStack(Material.DOUBLE_PLANT, 1);
             ItemMeta e = ender.getItemMeta();
             e.setDisplayName(ChatColor.DARK_GREEN + "Coin Bomb");
             ender.setItemMeta(e);
-            if (p.getInventory().contains(Material.DOUBLE_PLANT)) {
-              p.getInventory().addItem(new ItemStack[] { ender });
-            } else {
-              p.getInventory().setItem(2, ender);
-            }
+            p.getInventory().setItem(2, ender);
+            ApiEvent.updatescore(p);
             p.closeInventory();
           }
-          else
-          {
-            p.sendMessage(ChatColor.RED + "You don't have enough money!");
+          else if (GadgetAmmo.balanceGadgetAmo(p, "CoinBomb") > 1) {
+              ItemStack snow = new ItemStack(Material.DOUBLE_PLANT, 1);
+              ItemMeta sno = snow.getItemMeta();
+              sno.setDisplayName(ChatColor.DARK_GREEN + "Coin Bomb");
+              snow.setItemMeta(sno);
+              p.getInventory().setItem(2, snow);
+              p.closeInventory();
+          	} 
           }
-        }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dToken Bomb")) {
-          if (LcTokensAPI.hasEnough(p, 200))
-          {
-            LcTokensAPI.takePoints(p, 200);
-            ItemStack ender = new ItemStack(Material.NETHER_STAR, 1);
-            ItemMeta e = ender.getItemMeta();
-            e.setDisplayName(ChatColor.LIGHT_PURPLE + "Token Bomb");
-            ender.setItemMeta(e);
-            if (p.getInventory().contains(Material.NETHER_STAR)) {
-              p.getInventory().addItem(new ItemStack[] { ender });
-            } else {
+            if (LcTokensAPI.hasEnough(p, 200) && (GadgetAmmo.balanceGadgetAmo(p, "TokenBomb") <= 1))
+            {
+              LcCoinsAPI.takePoints(p, 200);
+              GadgetAmmo.addGadgetAmo(p, "TokenBomb", 1);
+              ItemStack ender = new ItemStack(Material.NETHER_STAR, 1);
+              ItemMeta e = ender.getItemMeta();
+              e.setDisplayName(ChatColor.LIGHT_PURPLE + "Token Bomb");
+              ender.setItemMeta(e);
               p.getInventory().setItem(2, ender);
+              ApiEvent.updatescore(p);
+              p.closeInventory();
             }
-            p.closeInventory();
-          }
-          else
-          {
-            p.sendMessage(ChatColor.RED + "You don't have enough money!");
-          }
-        }
+            else if (GadgetAmmo.balanceGadgetAmo(p, "TokenBomb") > 1) {
+                ItemStack snow = new ItemStack(Material.NETHER_STAR, 1);
+                ItemMeta sno = snow.getItemMeta();
+                sno.setDisplayName(ChatColor.LIGHT_PURPLE + "Token Bomb");
+                snow.setItemMeta(sno);
+                p.getInventory().setItem(2, snow);
+                p.closeInventory();
+            	} 
+            }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure chest")) {
           if (LcTokensAPI.hasEnough(p, 500))
           {

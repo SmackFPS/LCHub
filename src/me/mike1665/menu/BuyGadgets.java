@@ -153,7 +153,7 @@ public class BuyGadgets
       "§aClick to purchase", 
       "§r1 for §a300 Coins", 
       "", 
-      "§rYour ammo: §bNot Needed." }));
+      "§rYour ammo: §b" + GadgetAmmo.balanceGadgetAmo(p, "CoinBomb") }));
     
     buygadmenu.setItem(30, ItemTools.setName(new ItemStack(Material.NETHER_STAR), "§dToken Bomb", 
       new String[] {
@@ -164,7 +164,7 @@ public class BuyGadgets
       "§aClick to purchase", 
       "§r1 for §d200 Tokens", 
       "", 
-      "§rYour ammo: §bNot Needed." }));
+      "§rYour ammo: §b" + GadgetAmmo.balanceGadgetAmo(p, "TokenBomb") }));
     
     buygadmenu.setItem(31, ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§dPvP Sword", 
       new String[] {
