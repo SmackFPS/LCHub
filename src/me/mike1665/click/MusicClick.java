@@ -150,6 +150,7 @@ public class MusicClick
   
   public void spawnBlocksJuke(Player p)
   {
+	
     final Location l = p.getEyeLocation();
     l.add(0.0D, -1.0D, 0.0D).getBlock().setType(Material.JUKEBOX);
     new BukkitRunnable()
