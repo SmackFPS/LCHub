@@ -155,7 +155,6 @@ public class MikeEventSetup {
 		pm.registerEvents(new PlayerGadjets(), Main.getInstance());
 		pm.registerEvents(new AdminGadgetsClick(), Main.getInstance());
 		pm.registerEvents(new AdminGadgets(), Main.getInstance());
-		pm.registerEvents(new EnderRide(), Main.getInstance());
 		pm.registerEvents(new MelonBlock(), Main.getInstance());
 		pm.registerEvents(new EntityHook(), Main.getInstance());
 		pm.registerEvents(new RespawnEvent(), Main.getInstance());
