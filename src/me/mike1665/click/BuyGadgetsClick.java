@@ -296,9 +296,9 @@ public class BuyGadgetsClick
           }
         }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure chest")) {
-          if (LcTokensAPI.hasEnough(p, 100))
+          if (LcTokensAPI.hasEnough(p, 500))
           {
-            LcTokensAPI.takePoints(p, 100);
+            LcTokensAPI.takePoints(p, 500);
             ItemStack ender = new ItemStack(Material.TRAPPED_CHEST, 1);
             ItemMeta e = ender.getItemMeta();
             e.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Treasure Chest");

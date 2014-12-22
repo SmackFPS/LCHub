@@ -193,7 +193,7 @@ public class BuyGadgets
       "§rRARE and \"free\"!", 
       "", 
       "§aClick to purchase", 
-      "§r1 for §d100 Tokens", 
+      "§r1 for §d500 Tokens", 
       "", 
       "§rYour chests: §bCOMING SOON!" }));
     

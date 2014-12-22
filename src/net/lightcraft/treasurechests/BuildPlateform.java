@@ -2,6 +2,8 @@ package net.lightcraft.treasurechests;
 
 import me.mike1665.Main.Main;
 import me.mike1665.particles18.ParticleLib18;
+import net.lightcraftmc.fusebox.util.UtilMath;
+import net.lightcraftmc.fusebox.util.UtilityMath;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -11,6 +13,7 @@ import org.bukkit.entity.Player;
 
 public class BuildPlateform
 {
+		
   public static boolean isBuildable(Player p)
   {
     Location l = p.getLocation();
@@ -84,27 +87,34 @@ public class BuildPlateform
 
   public static void randomPlateform(Player p, Location l)
   {
-    double r = Math.random();
-    if (r < 0.25D)
-      buildPlateform(p, l, Plateform.MUSHROOM);
-    else if (r < 0.5D)
-      buildPlateform(p, l, Plateform.NETHER);
-    else if (r < 0.75D)
-      buildPlateform(p, l, Plateform.WOOD);
-    else
-      buildPlateform(p, l, Plateform.FROST);
+    int r = UtilMath.randInt(0, 4);
+    switch (r){
+    
+    case 1:
+        buildPlateform(p, l, Plateform.MUSHROOM);
+        break;
+    case 2:
+        buildPlateform(p, l, Plateform.NETHER);
+        break;
+    case 3:
+        buildPlateform(p, l, Plateform.WOOD);
+        break;
+    default:
+    	buildPlateform(p, l, Plateform.FROST);
+    	break;
+    	
+    }
   }
-
+  
   public static void buildPlateform(final Player p, final Location l, Plateform plateform)
   {
     if (plateform == Plateform.WOOD) {
-      if (p.isValid()) {
         new BuildManager(p, l, Material.LOG, (byte)7).buildRectangle2();
         Bukkit.getServer().getScheduler()
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.SANDSTONE, (byte)0).buildRectangle3();
+              new BuildManager((Player) p, l, Material.SANDSTONE, (byte)0).buildRectangle3();
           }
         }
         , 20L);
@@ -113,7 +123,7 @@ public class BuildPlateform
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.LEAVES, (byte)3).buildRectangle4();
+              new BuildManager((Player) p, l, Material.LEAVES, (byte)3).buildRectangle4();
           }
         }
         , 40L);
@@ -122,7 +132,7 @@ public class BuildPlateform
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.VILLAGER_ANGRY, ParticleLib18.ParticleType.SLIME);
+              new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.VILLAGER_ANGRY, ParticleLib18.ParticleType.SLIME);
           }
         }
         , 60L);
@@ -134,7 +144,7 @@ public class BuildPlateform
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.NETHER_BRICK, (byte)0).buildRectangle3();
+              new BuildManager((Player) p, l, Material.NETHER_BRICK, (byte)0).buildRectangle3();
           }
         }
         , 20L);
@@ -143,7 +153,7 @@ public class BuildPlateform
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.NETHER_FENCE, (byte)0).buildRectangle4();
+              new BuildManager((Player) p, l, Material.NETHER_FENCE, (byte)0).buildRectangle4();
           }
         }
         , 40L);
@@ -152,11 +162,10 @@ public class BuildPlateform
           .runTaskLater(Main.getInstance(), new Runnable() {
           public void run() {
             if (p.isValid())
-              new BuildManager(p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.FLAME, ParticleLib18.ParticleType.LAVA);
+              new BuildManager((Player) p, l, Material.CHEST, (byte)0).buildChest(ParticleLib18.ParticleType.FLAME, ParticleLib18.ParticleType.LAVA);
           }
         }
         , 60L);
-      }
     }
 
     if (plateform == Plateform.FROST) {
