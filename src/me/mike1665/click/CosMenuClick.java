@@ -58,7 +58,7 @@ public class CosMenuClick
         p.openInventory(MountMenu.getMountShop(p));
         return;
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Hub Purchaseables"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§8Gadgets"))
       {
         p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10.0F, 10.0F);
         p.openInventory(BuyGadgets.buygadmenu(p));

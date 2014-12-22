@@ -22,7 +22,7 @@ public class Config {
 		this.saveDirectory = new File(Main.getInstance().getDataFolder(), "Mounts");
 		this.saveDirectory.mkdirs();
 		this.saveFile = new File(saveDirectory, "Players");
-		if (!saveFile.exists())
+		if (!saveFile.exists()) 
 			try {
 				saveFile.createNewFile();
 			} catch (Exception exc) {
