@@ -49,7 +49,7 @@ public class CosMenuClick
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aParticles"))
       {
         p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10.0F, 10.0F);
-        ParticleMenu.m.displayMenu(p);
+        net.lightcraft.particles.ParticleMenu.openMenu(p);
         return;
       }
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cMounts"))

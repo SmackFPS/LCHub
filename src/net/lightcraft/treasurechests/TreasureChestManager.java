@@ -183,7 +183,7 @@ implements Listener
 							((ArrayList)chest.get(p.getUniqueId())).add(event.getClickedBlock());
 							RandomManager.giveRandomThing(p, event.getClickedBlock().getLocation());
 						} else {
-							RandomManager.giveRandomBetweenRareAndNormalThing(p, event.getClickedBlock().getLocation());
+							RandomManager.giveRandomThing(p, event.getClickedBlock().getLocation());
 							((ArrayList)chest.get(p.getUniqueId())).add(event.getClickedBlock());
 							Bukkit.getServer().getScheduler()
 							.runTaskLater(Main.getInstance(), new Runnable()

@@ -56,6 +56,9 @@ import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.parkour.CourseOne;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.wardrobe.WardrobeManager;
+import net.lightcraft.particles.ParticleClick;
+import net.lightcraft.particles.UnlockedParticle;
+import net.lightcraft.particles.staff.StaffJoin;
 import net.lightcraft.treasurechests.RandomManager;
 import net.lightcraft.treasurechests.TreasureChestManager;
 import net.lightcraftmc.fusebox.util.UtilEnt;
@@ -107,6 +110,7 @@ public class MikeEventSetup {
 		UnlockAllArmor.setup();
 	    GadgetAmmo.initialize();
 	    MountMenu.initialize();
+	    UnlockedParticle.initialize();
 		pm.registerEvents(new WardrobeClick(), Main.getInstance());
 		pm.registerEvents(new BowTeleport(), Main.getInstance());
 		pm.registerEvents(new PvPSword(), Main.getInstance());
@@ -133,6 +137,11 @@ public class MikeEventSetup {
 	    Bukkit.getPluginManager().registerEvents(new UtilityBlock(), Main.getInstance());
 	    Bukkit.getPluginManager().registerEvents(new UtilLocation(), Main.getInstance());
 	    Bukkit.getPluginManager().registerEvents(new ParticleManager(), Main.getInstance());
+	    Bukkit.getPluginManager().registerEvents(new StaffJoin(), Main.getInstance());
+	    Bukkit.getPluginManager().registerEvents(new ParticleClick(), Main.getInstance());
+
+
+	    
 	    pm.registerEvents(new ColouredWardrobe(), Main.getInstance());
 		AdminGadgets.init();
 		GadjetsMenu.init();

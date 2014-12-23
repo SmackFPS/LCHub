@@ -13,17 +13,15 @@ import me.mike1665.ammo.FunCreeperAmmoManager;
 import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.KittyCannonAmmoManager;
 import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.ammo.PaintballAmmoManager;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
-import me.mike1665.hubstuff.LaunchPad;
-import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
+import me.mike1665.particles18.ParticleLib18.ParticleType;
 import me.mike1665.wardrobe.WardrobeManager;
+import net.lightcraft.particles.UnlockedParticle;
 import net.lightcraftmc.fusebox.util.MathUtils;
 import net.lightcraftmc.fusebox.util.UtilEffect;
 import net.lightcraftmc.fusebox.util.UtilEnt;
-import net.lightcraftmc.fusebox.util.UtilFirework;
 import net.lightcraftmc.fusebox.util.UtilMath;
 import net.lightcraftmc.fusebox.util.UtilServer;
 import net.lightcraftmc.fusebox.util.UtilVector;
@@ -39,7 +37,6 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
@@ -54,43 +51,6 @@ public class RandomManager
 	{
 		RandomManager.plugin = Main.getInstance();
 	 	}
-
-  public static void giveRandomBetweenRareAndNormalThing(Player p, Location l)
-    throws FileNotFoundException, IOException, InvalidConfigurationException
-  {
-    double r = Math.random();
-    if (r < 0.5D)
-      giveRandomThing(p, l);
-    else
-      giveRandomRareThing(p, l);
-  }
-
-  public static void giveRandomRareThing(Player p, Location l)
-    throws FileNotFoundException, IOException, InvalidConfigurationException
-  {
-    double r = Math.random();
-    if (r < 0.2D)
-      giveRandomCoins(p, l);
-    /*else if (r < 0.4D) {
-      if (!p.hasPermission("extra.*"))
-        giveRandomExtra(p, l);
-      else
-        giveRandomThing(p, l);
-    } */
-    else if (r < 0.4D) {
-      if (!p.hasPermission("mount.*"))
-        giveRandomMount(p, l);
-      else
-        giveRandomThing(p, l);
-    }
-    else if (r < 0.6D) {
-      giveRandomAmmo(p, l);
-    }
-    /*else if (!p.hasPermission("pets.*"))
-      giveRandomPet(p, l);
-    else
-      giveRandomThing(p, l);*/
-  }
 
   public static void giveRandomThing(Player p, Location l)
     throws FileNotFoundException, IOException, InvalidConfigurationException
@@ -112,7 +72,7 @@ public class RandomManager
 	}
   }
 
-  public static void giveRandomCoins(Player p, Location l)
+  public static void giveRandomCoins(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
   {
 	  
 	  int ran = UtilMath.randInt(0, 2);
@@ -129,19 +89,81 @@ public class RandomManager
 		    UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.NETHER_STAR, (byte) 0, Integer.toString(am) + " §d§lTokens");
 		    break;
 	  default:
-		  try {
-			giveRandomThing(p, l);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			e.printStackTrace();
-		}
+		  giveRandomParticle(p, l);
 		  break;
 	  }
   }
 
+  public static void giveRandomParticle(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
+  {
+    int ran = UtilMath.randInt(0, 14);
+
+	UtilEffect.playFlameThing(l);
+	
+	switch (ran) {
+	case 1: 
+    	UnlockedParticle.unlockParticle(p, ParticleType.HEART);
+    	UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.RED_ROSE, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &c&lHeart Particles"));
+    	break;
+	case 2:
+    	UnlockedParticle.unlockParticle(p, ParticleType.NOTE);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.NOTE_BLOCK, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &a&lNote Particles"));
+        break;
+	case 3:
+    	UnlockedParticle.unlockParticle(p, ParticleType.FLAME);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.BLAZE_POWDER, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &6&lFlame Particles"));
+        break;
+	case 4:
+    	UnlockedParticle.unlockParticle(p, ParticleType.DRIP_WATER);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.WATER_BUCKET, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &9&lWater Particles"));
+        break;
+	case 5:
+    	UnlockedParticle.unlockParticle(p, ParticleType.DRIP_LAVA);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.LAVA_BUCKET, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &e&lLava Particles"));
+        break;
+	case 6:
+    	UnlockedParticle.unlockParticle(p, ParticleType.ENCHANTMENT_TABLE);
+		UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.ENCHANTED_BOOK, (byte) 50, ChatColor.translateAlternateColorCodes('&', " &lEnchantment Particles"));
+        break;
+	case 7: 
+    	UnlockedParticle.unlockParticle(p, ParticleType.SPELL);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.STRING, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &7&lSwirly Particles"));
+        break;
+	case 8: 
+    	UnlockedParticle.unlockParticle(p, ParticleType.REDSTONE);
+    	UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.REDSTONE, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &4&lRedstone Particles"));
+    	break;
+	case 9:
+    	UnlockedParticle.unlockParticle(p, ParticleType.SPELL_WITCH);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.GLOWSTONE_DUST, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &5&lWitch Particles"));
+        break;
+	case 10:
+    	UnlockedParticle.unlockParticle(p, ParticleType.CRIT_MAGIC);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.NETHER_STAR, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &3&lCritial Particles"));
+        break;
+	case 11:
+    	UnlockedParticle.unlockParticle(p, ParticleType.SPELL_MOB);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.FIREWORK_CHARGE, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &nMob Spell Particles"));
+        break;
+	case 12:
+    	UnlockedParticle.unlockParticle(p, ParticleType.SMOKE_NORMAL);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.COAL, (byte) 0, ChatColor.translateAlternateColorCodes('&', " &8&lSmoke Particles"));
+        break;
+	case 13:
+    	UnlockedParticle.unlockParticle(p, ParticleType.VILLAGER_HAPPY);
+		UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.EMERALD, (byte) 50, ChatColor.translateAlternateColorCodes('&', "&a&lHappy Villager Particles"));
+        break;
+	case 14: 
+    	UnlockedParticle.unlockParticle(p, ParticleType.VILLAGER_ANGRY);
+        UtilEnt.spawnArmourStandItem(p, l.add(0.0D, 0.0D, 0.0D), Material.FIREWORK_CHARGE, (byte) 0, ChatColor.translateAlternateColorCodes('&', "&e&lAngry Villager Particles"));
+        break;
+    default:
+    	giveRandomAmmo(p, l);
+    	break;
+        	
+	}	
+  }
+  
   public static void giveRandomAmmo(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
   {
     int ran = UtilMath.randInt(0, 6);
@@ -184,7 +206,7 @@ public class RandomManager
   public static void giveBombs(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
   {
     int ran = UtilMath.randInt(0, 2);
-	int amount = UtilityMath.getRandomNumberBetween(1, 2);
+	int amount = UtilityMath.getRandomNumberBetween(0, 2);
     
 	UtilEffect.playFlameThing(l);
 	
@@ -304,7 +326,7 @@ public class RandomManager
   public static void giveWardobeItem(Player p, Location l) throws FileNotFoundException, IOException, InvalidConfigurationException
   {
     int ran = UtilMath.randInt(0, 20);
-	int am = UtilityMath.getRandomNumberBetween(0, 20);
+    
 	launchWardobeFW(l, 1);
     
 	switch (ran) {
