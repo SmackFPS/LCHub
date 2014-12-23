@@ -38,7 +38,7 @@ public class ArrayEventSetup {
 		pm.registerEvents(new ParticleMenu(), plugin);
 		bungee();
 		BuildSettings.disableServerHunger();
-		BuildSettings.revokeBlockBreak(Bukkit.getWorlds[0].getName());
+		BuildSettings.revokeBlockBreak(Bukkit.getWorlds().get(0).getName());
 		
 	}
 	
