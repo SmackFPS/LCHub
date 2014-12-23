@@ -126,18 +126,10 @@ public class ClickInventory implements Listener {
 		switch(e.getCurrentItem().getType()){
 		default: return;
 		case DIAMOND:{
-			if(TabHeaderSetup.age.get(e.getWhoClicked().getUniqueId()) < 13){
-				((Player) e.getWhoClicked()).sendMessage("§c§lYou are not old enough to join this server!");
-				return;
-			}
 			sendToFirstOpenServer(p, "creative", 20, "Build Team Server");
 			return;
 		}
 		case POTION:{
-			if(TabHeaderSetup.age.get(e.getWhoClicked().getUniqueId()) < 13){
-				((Player) e.getWhoClicked()).sendMessage("§c§lYou are not old enough to join this server!");
-				return;
-			}
 			sendToFirstOpenServer(p, "lca", 300, "Adventure");
 			return;
 		}
