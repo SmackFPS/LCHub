@@ -58,91 +58,91 @@ public class MusicClick
       if (!event.getCurrentItem().hasItemMeta()) {
         return;
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lBlocks Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lBlocks Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_3, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnBlocksJuke(p);
+      //  spawnBlocksJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lChirp Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lChirp Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_4, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnChirpJuke(p);
+       //  spawnChirpJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lFar Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lFar Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_5, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnFarJuke(p);
+       //  spawnFarJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lMall Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lMall Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_6, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnMallJuke(p);
+       //  spawnMallJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lMellohi Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lMellohi Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_7, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnMellohiJuke(p);
+       //  spawnMellohiJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lStal Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lStal Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_8, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnStalJuke(p);
+       //  spawnStalJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lStrad Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lStrad Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_9, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnStradJuke(p);
+       //  spawnStradJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lWard Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lWard Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_10, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnWardJuke(p);
+      //   spawnWardJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§l11 Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§l11 Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_11, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawn11Juke(p);
+      //   spawn11Juke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lWait Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lWait Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.RECORD_12, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnWaitJuke(p);
+      //   spawnWaitJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§l13 Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§l13 Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.GOLD_RECORD, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawn13Juke(p);
+       //  spawn13Juke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§b§lCat Disk"))
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§bÂ§lCat Disk"))
       {
         p.getWorld().playEffect(p.getLocation(), Effect.RECORD_PLAY, Material.GREEN_RECORD, 0);
         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 10.0F, 10.0F);
         p.closeInventory();
-        spawnCatJuke(p);
+       //  spawnCatJuke(p);
       }
-      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cGo Back")) {
+      if (event.getCurrentItem().getItemMeta().getDisplayName().equals("Â§cGo Back")) {
         p.openInventory(CosmeticsMenu.cosmenu(p));
       }
     }
@@ -432,8 +432,12 @@ public class MusicClick
   }
 }
 
-
-/* Location:           A:\LC\Lobby\Main.getInstance()s\HubMain.getInstance().jar
- * Qualified Name:     me.mike1665.click.MusicClick
- * JD-Core Version:    0.7.0.1
+
+
+/* Location:           A:\LC\Lobby\Main.getInstance()s\HubMain.getInstance().jar
+
+ * Qualified Name:     me.mike1665.click.MusicClick
+
+ * JD-Core Version:    0.7.0.1
+
  */
