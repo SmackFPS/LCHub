@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
+import net.lightcraftmc.fusebox.build.listener.BuildSettings;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
@@ -36,6 +37,9 @@ public class ArrayEventSetup {
 		RankManager.init();
 		pm.registerEvents(new ParticleMenu(), plugin);
 		bungee();
+		BuildSettings.disableServerHunger();
+		BuildSettings.revokeBlockBreak(Bukkit.getWorlds[0].getName());
+		
 	}
 	
 	public static void bungee(){
