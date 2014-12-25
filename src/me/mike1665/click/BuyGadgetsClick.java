@@ -1,7 +1,5 @@
 package me.mike1665.click;
 
-import java.util.ArrayList;
-
 import me.mike1665.ammo.BatBlasterAmmoManager;
 import me.mike1665.ammo.EnderDogeAmmoManager;
 import me.mike1665.ammo.FireWorksAmmoManager;
@@ -14,7 +12,6 @@ import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.funstuff.BowTeleport;
 import me.mike1665.funstuff.PvPSword;
-import me.mike1665.gadgets.GagdetManager;
 import me.mike1665.menu.BuyGadgets;
 import me.mike1665.menu.CosmeticsMenu;
 
@@ -25,9 +22,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class BuyGadgetsClick
@@ -230,6 +225,10 @@ public class BuyGadgetsClick
             p.getInventory().setItem(2, snow);
             p.closeInventory();
           }
+          else
+          {
+            p.sendMessage(ChatColor.RED + "You don't have enough money!");
+          }
         }
         
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aPig Quake Gun")) {
@@ -254,6 +253,10 @@ public class BuyGadgetsClick
               p.getInventory().setItem(2, snow);
               p.closeInventory();
             }
+            else
+            {
+              p.sendMessage(ChatColor.RED + "You don't have enough money!");
+            }
           }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§2Coin Bomb")) {
           if (LcCoinsAPI.hasEnough(p, 300) && (GadgetAmmo.balanceGadgetAmo(p, "CoinBomb") <= 1))
@@ -276,6 +279,10 @@ public class BuyGadgetsClick
               p.getInventory().setItem(2, snow);
               p.closeInventory();
           	} 
+          else
+          {
+            p.sendMessage(ChatColor.RED + "You don't have enough money!");
+          }
           }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§dToken Bomb")) {
             if (LcTokensAPI.hasEnough(p, 200) && (GadgetAmmo.balanceGadgetAmo(p, "TokenBomb") <= 1))
@@ -298,6 +305,10 @@ public class BuyGadgetsClick
                 p.getInventory().setItem(2, snow);
                 p.closeInventory();
             	} 
+            else
+            {
+              p.sendMessage(ChatColor.RED + "You don't have enough money!");
+            }
             }
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§d§lTreasure chest")) {
           if (LcTokensAPI.hasEnough(p, 500))

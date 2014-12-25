@@ -2,12 +2,6 @@ package me.mike1665.click;
 
 import me.mike1665.coinapi.LcTokensAPI;
 import me.mike1665.menu.CosmeticsMenu;
-import me.mike1665.menu.WardrobeMenu;
-import me.mike1665.mount.MountManager;
-import me.mike1665.mount.mounts.DarkRider;
-import me.mike1665.mount.mounts.GhostRider;
-import me.mike1665.mount.mounts.NyanRider;
-import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.wardrobe.WardrobeManager;
 
 import org.bukkit.ChatColor;
@@ -55,44 +49,52 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_HELMET)) {
         		WardrobeManager.setHelmet(p, Material.LEATHER_HELMET);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_HELMET)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_HELMET) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.LEATHER_HELMET);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Leather Helmet for 50 Tokens!");
-        	}
+        	} else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.LEATHER_CHESTPLATE)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_CHESTPLATE)) {
         		WardrobeManager.setChestPlate(p, Material.LEATHER_CHESTPLATE);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_CHESTPLATE)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_CHESTPLATE) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.LEATHER_CHESTPLATE);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Leather Chestplate for 50 Tokens!");
-        	}
+        	} else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.LEATHER_LEGGINGS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_LEGGINGS)) {
         		WardrobeManager.setLeggings(p, Material.LEATHER_LEGGINGS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_LEGGINGS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_LEGGINGS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.LEATHER_LEGGINGS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Leather Leggings for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.LEATHER_BOOTS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_BOOTS)) {
         		WardrobeManager.setBoots(p, Material.LEATHER_BOOTS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_BOOTS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.LEATHER_BOOTS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.LEATHER_BOOTS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Leather Boots for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         
         //CHAINMAIL ARMOR
@@ -101,18 +103,20 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_HELMET)) {
         		WardrobeManager.setHelmet(p, Material.CHAINMAIL_HELMET);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_HELMET)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_HELMET) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.CHAINMAIL_HELMET);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Chainmail Helmet for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.CHAINMAIL_CHESTPLATE)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_CHESTPLATE)) {
         		WardrobeManager.setChestPlate(p, Material.CHAINMAIL_CHESTPLATE);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_CHESTPLATE)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_CHESTPLATE) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.CHAINMAIL_CHESTPLATE);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Chainmail Chestplate for 50 Tokens!");
@@ -123,7 +127,7 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_LEGGINGS)) {
         		WardrobeManager.setLeggings(p, Material.CHAINMAIL_LEGGINGS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_LEGGINGS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_LEGGINGS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.CHAINMAIL_LEGGINGS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Chainmail Leggings for 50 Tokens!");
@@ -134,7 +138,7 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_BOOTS)) {
         		WardrobeManager.setBoots(p, Material.CHAINMAIL_BOOTS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_BOOTS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.CHAINMAIL_BOOTS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.CHAINMAIL_BOOTS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Chainmail Boots for 50 Tokens!");
@@ -147,44 +151,52 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.IRON_HELMET)) {
         		WardrobeManager.setHelmet(p, Material.IRON_HELMET);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_HELMET)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_HELMET) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.IRON_HELMET);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Iron Helmet for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.IRON_CHESTPLATE)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.IRON_CHESTPLATE)) {
         		WardrobeManager.setChestPlate(p, Material.IRON_CHESTPLATE);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_CHESTPLATE)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_CHESTPLATE) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.IRON_CHESTPLATE);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Iron Chestplate for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.IRON_LEGGINGS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.IRON_LEGGINGS)) {
         		WardrobeManager.setLeggings(p, Material.IRON_LEGGINGS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_LEGGINGS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_LEGGINGS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.IRON_LEGGINGS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Iron Leggings for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.IRON_BOOTS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.IRON_BOOTS)) {
         		WardrobeManager.setBoots(p, Material.IRON_BOOTS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_BOOTS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.IRON_BOOTS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.IRON_BOOTS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Iron Boots for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         
         //GOLD ARMOR
@@ -193,44 +205,52 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.GOLD_HELMET)) {
         		WardrobeManager.setHelmet(p, Material.GOLD_HELMET);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_HELMET)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_HELMET) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.GOLD_HELMET);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Gold Helmet for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.GOLD_CHESTPLATE)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.GOLD_CHESTPLATE)) {
         		WardrobeManager.setChestPlate(p, Material.GOLD_CHESTPLATE);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_CHESTPLATE)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_CHESTPLATE) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.GOLD_CHESTPLATE);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Fold Chestplate for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.GOLD_LEGGINGS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.GOLD_LEGGINGS)) {
         		WardrobeManager.setLeggings(p, Material.GOLD_LEGGINGS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_LEGGINGS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_LEGGINGS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.GOLD_LEGGINGS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Gold Leggings for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.GOLD_BOOTS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.GOLD_BOOTS)) {
         		WardrobeManager.setBoots(p, Material.GOLD_BOOTS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_BOOTS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.GOLD_BOOTS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.GOLD_BOOTS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Gold Boots for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         
         //Diamond Armor
@@ -239,44 +259,52 @@ public class WardrobeClick
         	if (WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_HELMET)) {
         		WardrobeManager.setHelmet(p, Material.DIAMOND_HELMET);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_HELMET)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_HELMET) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.DIAMOND_HELMET);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Diamond Helmet for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.DIAMOND_CHESTPLATE)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_CHESTPLATE)) {
         		WardrobeManager.setChestPlate(p, Material.DIAMOND_CHESTPLATE);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_CHESTPLATE)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_CHESTPLATE) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.DIAMOND_CHESTPLATE);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Diamond Chestplate for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.DIAMOND_LEGGINGS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_LEGGINGS)) {
         		WardrobeManager.setLeggings(p, Material.DIAMOND_LEGGINGS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_LEGGINGS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_LEGGINGS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.DIAMOND_LEGGINGS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Diamond Leggings for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         if (event.getCurrentItem().getType() == Material.DIAMOND_BOOTS)
         {
         	if (WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_BOOTS)) {
         		WardrobeManager.setBoots(p, Material.DIAMOND_BOOTS);
         		return;
-        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_BOOTS)){
+        	} else  if (!WardrobeManager.hasUnlockedArmor(p, Material.DIAMOND_BOOTS) && LcTokensAPI.hasEnough(p, 50)){
         		LcTokensAPI.takePoints(p, 50);
         		WardrobeManager.unlockArmor(p, Material.DIAMOND_BOOTS);
         		p.sendMessage(ChatColor.GREEN + "You unlocked the Leather Boots for 50 Tokens!");
-        	}
+        	}else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+              }
         }
         
         //Remove Stuff
