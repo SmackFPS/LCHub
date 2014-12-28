@@ -29,7 +29,7 @@ import com.lightcraftmc.event.setup.ArrayEventSetup;
 import com.lightcraftmc.event.setup.JacobEventSetup;
 import com.lightcraftmc.update.Updater;
 
-public class Main extends JavaPlugin implements Listener, PluginMessageListener {
+public class Main extends JavaPlugin implements Listener {
 
 	public Scoreboard board;
 	public String tag = ChatColor.RED + "" + ChatColor.BOLD + "Parkour " + ChatColor.RESET + "" + ChatColor.DARK_GRAY + "> ";
@@ -54,10 +54,6 @@ public class Main extends JavaPlugin implements Listener, PluginMessageListener 
 		JacobEventSetup.disable();
 	}
 
-	@Override
-	public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-		ArrayEventSetup.onPluginMessageReceived(channel, player, message);
-	} 
 
 	public void saveFile() {
 		this.saveConfig();

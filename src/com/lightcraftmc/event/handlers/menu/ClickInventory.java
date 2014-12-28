@@ -16,9 +16,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.lightcraftmc.bungeehook.BungeeHooks;
-import com.lightcraftmc.bungeehook.Servers;
 import com.lightcraftmc.event.setup.ArrayEventSetup;
+import com.lightcraftmc.fusebox.bungeecord.BCHooks;
+import com.lightcraftmc.fusebox.bungeecord.Servers;
 import com.lightcraftmc.fusebox.menu.Menu;
 import com.lightcraftmc.fusebox.util.item.ItemTools;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
@@ -37,6 +37,7 @@ public class ClickInventory implements Listener {
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable(){
 			public void run(){
+				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.BOW), "§d§lBow Spleef", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("bs")[1] + " servers." }), 3); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND), "§9§lCreative Server", new String[] {"§7§oInvite-Only", "§7" + getTotalPlayers("creative")[0] + " players.", "§a13§7+" }), 22+4); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.SAND), "§a§lWalls Tower", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("wt")[0] + " players on " + getTotalPlayers("wt")[1] + " servers." }), 3); }catch(Exception e){}
 				try{ selector.addItem(ItemTools.setName(new ItemStack(Material.DIAMOND_SWORD), "§9§lGUILD WARS", new String[] { getFlashyColour() + "§oClick to join!", "§7" + getTotalPlayers("guildwars")[0] + " players." }), 4); }catch(Exception e){}
@@ -80,7 +81,6 @@ public class ClickInventory implements Listener {
 	@EventHandler
 	public void join(PlayerJoinEvent e){
 		e.getPlayer().getInventory().setItem(0, ItemTools.setName(new ItemStack(Material.BOOK), "§aGame Selector §7(Right-Click)"));
-		//e.getPlayer().getInventory().setItem(8, ItemTools.setName(new ItemStack(Material.EMERALD), "§aShop §7(Right-Click)"));
 	}
 
 	@EventHandler
@@ -88,7 +88,7 @@ public class ClickInventory implements Listener {
 		if(!e.getAction().toString().contains("CLICK")) return;
 		if(e.getPlayer().getItemInHand().getType().equals(Material.BOOK)){
 			e.setCancelled(true);
-			ArrayEventSetup.requestPlayerList();
+			BCHooks.requestPlayerList();
 			selector.displayMenu(e.getPlayer());
 		}
 	}
@@ -96,10 +96,10 @@ public class ClickInventory implements Listener {
 	public int[] getTotalPlayers(String pfx){
 		int serverCount = 0;
 		int players = 0;
-		for(String s : Servers.servers){
+		for(String s : Servers.getServers()){
 			if(s.toLowerCase().startsWith(pfx.toLowerCase())){
 				serverCount++;
-				players = players + BungeeHooks.players.get(s);
+				players = players + BCHooks.players.get(s);
 			}
 		}
 		return new int[] { players, serverCount };
@@ -163,13 +163,13 @@ public class ClickInventory implements Listener {
 
 	static String getFirstOpenServer(Player p, String pfx, int maxPerGame){
 		int amountOfPlayers = PartyTools.playersWith(p);
-		ArrayEventSetup.requestPlayerList();
-		for(String s : Servers.servers){
+		BCHooks.requestPlayerList();
+		for(String s : Servers.getServers()){
 			if(s.toLowerCase().equalsIgnoreCase(pfx.toLowerCase())){
 				return s;
 			}
 			if(s.toLowerCase().startsWith(pfx.toLowerCase())){
-				int playersOnline = BungeeHooks.players.get(s);
+				int playersOnline = BCHooks.players.get(s);
 				if(!(playersOnline >= maxPerGame)){
 					int i = (maxPerGame - playersOnline);
 					if(i >= amountOfPlayers){
