@@ -3,9 +3,6 @@ package com.lightcraftmc.hub.main;
 import java.util.HashMap;
 import java.util.UUID;
 
-import me.mike1665.coinapi.ApiEvent;
-import me.mike1665.update.Updater;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -18,6 +15,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.coinapi.ApiEvent;
 import com.lightcraftmc.command.AmmoTest;
 import com.lightcraftmc.command.ArrayCommandHandler;
 import com.lightcraftmc.command.GiveAmmo;
@@ -29,6 +27,7 @@ import com.lightcraftmc.command.UnlockAllArmor;
 import com.lightcraftmc.event.handlers.MikeEventSetup;
 import com.lightcraftmc.event.setup.ArrayEventSetup;
 import com.lightcraftmc.event.setup.JacobEventSetup;
+import com.lightcraftmc.update.Updater;
 
 public class Main extends JavaPlugin implements Listener, PluginMessageListener {
 

@@ -3,8 +3,6 @@ package com.lightcraftmc.event.handlers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import me.mike1665.particlelib.ParticleEffect;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -26,6 +24,7 @@ import com.lightcraftmc.fusebox.util.UtilAlg;
 import com.lightcraftmc.fusebox.util.UtilEnt;
 import com.lightcraftmc.fusebox.util.UtilEntity;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particlelib.ParticleEffect;
 
 public class BatBlaster implements Listener {
 

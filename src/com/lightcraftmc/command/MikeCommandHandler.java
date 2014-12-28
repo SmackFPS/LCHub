@@ -1,12 +1,5 @@
 package com.lightcraftmc.command;
 
-import me.mike1665.coinapi.ApiEvent;
-import me.mike1665.coinapi.LcCoinsAPI;
-import me.mike1665.coinapi.LcTokensAPI;
-import me.mike1665.menu.BuyGadgets;
-import me.mike1665.menu.MountMenu;
-import me.mike1665.menu.WardrobeMenu;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -14,11 +7,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.arrayprolc.event.ColouredWardrobe;
-import com.arrayprolc.event.WardrobeType;
+import com.lightcraftmc.coinapi.ApiEvent;
+import com.lightcraftmc.coinapi.LcCoinsAPI;
+import com.lightcraftmc.coinapi.LcTokensAPI;
+import com.lightcraftmc.event.ColouredWardrobe;
+import com.lightcraftmc.event.WardrobeType;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.menu.BuyGadgets;
+import com.lightcraftmc.menu.MountMenu;
+import com.lightcraftmc.menu.WardrobeMenu;
 
 public class MikeCommandHandler {
 
@@ -26,10 +25,10 @@ public class MikeCommandHandler {
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("gadgets")) {
-			player.openInventory(me.mike1665.menu.GadjetsMenu.gadmenu);
+			player.openInventory(com.lightcraftmc.menu.GadjetsMenu.gadmenu);
 		}
 		if (cmd.getName().equalsIgnoreCase("cosmenu")) {
-			player.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu((Player) sender));
+			player.openInventory(com.lightcraftmc.menu.CosmeticsMenu.cosmenu((Player) sender));
 		}
 		if (cmd.getName().equalsIgnoreCase("mountmenu")) {
 			player.openInventory(MountMenu.getMountShop(player));

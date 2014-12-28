@@ -5,20 +5,6 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
 
-import me.mike1665.ammo.BatBlasterAmmoManager;
-import me.mike1665.ammo.EnderDogeAmmoManager;
-import me.mike1665.ammo.FireWorksAmmoManager;
-import me.mike1665.ammo.FunCreeperAmmoManager;
-import me.mike1665.ammo.GadgetAmmo;
-import me.mike1665.ammo.KittyCannonAmmoManager;
-import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.coinapi.LcCoinsAPI;
-import me.mike1665.coinapi.LcTokensAPI;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
-import me.mike1665.wardrobe.WardrobeManager;
-import net.lightcraft.particles.UnlockedParticle;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -32,6 +18,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.BatBlasterAmmoManager;
+import com.lightcraftmc.ammo.EnderDogeAmmoManager;
+import com.lightcraftmc.ammo.FireWorksAmmoManager;
+import com.lightcraftmc.ammo.FunCreeperAmmoManager;
+import com.lightcraftmc.ammo.GadgetAmmo;
+import com.lightcraftmc.ammo.KittyCannonAmmoManager;
+import com.lightcraftmc.ammo.MeowAmmoManager;
+import com.lightcraftmc.coinapi.LcCoinsAPI;
+import com.lightcraftmc.coinapi.LcTokensAPI;
 import com.lightcraftmc.fusebox.util.MathUtils;
 import com.lightcraftmc.fusebox.util.UtilEffect;
 import com.lightcraftmc.fusebox.util.UtilEnt;
@@ -40,6 +35,10 @@ import com.lightcraftmc.fusebox.util.UtilServer;
 import com.lightcraftmc.fusebox.util.UtilVector;
 import com.lightcraftmc.fusebox.util.UtilityMath;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particles.UnlockedParticle;
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
+import com.lightcraftmc.wardrobe.WardrobeManager;
 
 public class RandomManager
 {

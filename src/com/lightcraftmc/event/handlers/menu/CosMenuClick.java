@@ -1,18 +1,17 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import com.arrayprolc.rank.RankManager;
-import com.arrayprolc.rank.ServerRank;
+import com.lightcraftmc.extra.ExtraManager;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
-
-import me.mike1665.extra.ExtraManager;
-import me.mike1665.menu.BuyGadgets;
-import me.mike1665.menu.CosmeticsMenu;
-import me.mike1665.menu.MountMenu;
-import me.mike1665.menu.MusicMenu;
-import me.mike1665.menu.ParticleMenu;
-import me.mike1665.menu.WardrobeMenu;
-import me.mike1665.particle.CircleParticle;
+import com.lightcraftmc.menu.BuyGadgets;
+import com.lightcraftmc.menu.CosmeticsMenu;
+import com.lightcraftmc.menu.MountMenu;
+import com.lightcraftmc.menu.MusicMenu;
+import com.lightcraftmc.menu.ParticleMenu;
+import com.lightcraftmc.menu.WardrobeMenu;
+import com.lightcraftmc.particle.CircleParticle;
+import com.lightcraftmc.rank.RankManager;
+import com.lightcraftmc.rank.ServerRank;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -49,7 +48,7 @@ public class CosMenuClick
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§aParticles"))
       {
         p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10.0F, 10.0F);
-        net.lightcraft.particles.ParticleMenu.openMenu(p);
+        com.lightcraftmc.particles.ParticleMenu.openMenu(p);
         return;
       }
       if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§cMounts"))
@@ -94,6 +93,6 @@ public class CosMenuClick
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.click.CosMenuClick
+ * Qualified Name:     com.lightcraftmc.click.CosMenuClick
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
 package com.lightcraftmc.command;
 
-import me.mike1665.coinapi.LcCoinsAPI;
-import me.mike1665.coinapi.LcTokensAPI;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.arrayprolc.rank.RankManager;
+import com.lightcraftmc.coinapi.LcCoinsAPI;
+import com.lightcraftmc.coinapi.LcTokensAPI;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.rank.RankManager;
 
 public class StatsCommand {
 

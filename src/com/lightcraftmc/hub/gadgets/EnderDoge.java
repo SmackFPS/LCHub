@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
 
-import me.mike1665.ammo.EnderDogeAmmoManager;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -28,10 +24,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.EnderDogeAmmoManager;
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
 
 public class EnderDoge
   implements Listener
@@ -119,6 +118,6 @@ public class EnderDoge
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.EnderDoge
+ * Qualified Name:     com.lightcraftmc.gadgets.EnderDoge
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,13 @@ import org.bukkit.entity.Wolf;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.arrayprolc.rank.RankManager;
-import com.arrayprolc.rank.ServerRank;
-import com.arrayprolc.speedways.CustomEntityType;
 import com.lightcraftmc.fusebox.pet.Pet;
 import com.lightcraftmc.fusebox.util.UtilEnt;
 import com.lightcraftmc.fusebox.util.UtilMath;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.rank.RankManager;
+import com.lightcraftmc.rank.ServerRank;
+import com.lightcraftmc.speedways.CustomEntityType;
 
 public class ArrayCommandHandler implements Listener
 {
@@ -48,13 +48,13 @@ public class ArrayCommandHandler implements Listener
 
 			case "coin":
 			{
-				me.mike1665.coinapi.LcCoinsAPI.givePoints(p, amount);
-				me.mike1665.coinapi.ApiEvent.scoreboard(p);
+				com.lightcraftmc.coinapi.LcCoinsAPI.givePoints(p, amount);
+				com.lightcraftmc.coinapi.ApiEvent.scoreboard(p);
 				return true;
 			}
 			case "token":
-				me.mike1665.coinapi.LcTokensAPI.givePoints(p, amount);
-				me.mike1665.coinapi.ApiEvent.scoreboard(p);
+				com.lightcraftmc.coinapi.LcTokensAPI.givePoints(p, amount);
+				com.lightcraftmc.coinapi.ApiEvent.scoreboard(p);
 				return true;
 			}
 		}

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
 
-import me.mike1665.particlelib.ParticleEffect;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -27,6 +25,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particlelib.ParticleEffect;
 
 public class PaintballGun implements Listener{
 	

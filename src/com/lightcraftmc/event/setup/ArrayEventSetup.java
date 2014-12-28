@@ -1,28 +1,27 @@
 package com.lightcraftmc.event.setup;
 
-import me.mike1665.menu.ParticleMenu;
-
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
-import com.arrayprolc.bungeehook.BungeeHooks;
-import com.arrayprolc.bungeehook.Servers;
-import com.arrayprolc.event.BuildListener;
-import com.arrayprolc.event.TPSMeter;
-import com.arrayprolc.event.TabHeaderSetup;
-import com.arrayprolc.event.TreasureChestListener;
-import com.arrayprolc.event.VillagerSpawn;
-import com.arrayprolc.rank.RankManager;
-import com.arrayprolc.speedways.Speedways;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import com.lightcraftmc.bungeehook.BungeeHooks;
+import com.lightcraftmc.bungeehook.Servers;
+import com.lightcraftmc.event.BuildListener;
+import com.lightcraftmc.event.TPSMeter;
+import com.lightcraftmc.event.TabHeaderSetup;
+import com.lightcraftmc.event.TreasureChestListener;
+import com.lightcraftmc.event.VillagerSpawn;
 import com.lightcraftmc.event.handlers.menu.ClickInventory;
 import com.lightcraftmc.fusebox.build.listener.BuildSettings;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.menu.ParticleMenu;
+import com.lightcraftmc.rank.RankManager;
+import com.lightcraftmc.speedways.Speedways;
 
 public class ArrayEventSetup {
 

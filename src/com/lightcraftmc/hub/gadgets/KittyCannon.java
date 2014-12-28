@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-import me.mike1665.ammo.KittyCannonAmmoManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -34,6 +32,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.KittyCannonAmmoManager;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
@@ -141,6 +140,6 @@ public class KittyCannon
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.KittyCannon
+ * Qualified Name:     com.lightcraftmc.gadgets.KittyCannon
  * JD-Core Version:    0.7.0.1
  */

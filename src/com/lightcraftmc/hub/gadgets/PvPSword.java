@@ -115,6 +115,6 @@ public class PvPSword
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.funstuff.PvPSword
+ * Qualified Name:     com.lightcraftmc.funstuff.PvPSword
  * JD-Core Version:    0.7.0.1
  */

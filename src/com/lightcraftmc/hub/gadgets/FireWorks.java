@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-import me.mike1665.ammo.FireWorksAmmoManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -27,6 +25,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import com.lightcraftmc.ammo.FireWorksAmmoManager;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
@@ -107,6 +106,6 @@ public class FireWorks
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.FireWorks
+ * Qualified Name:     com.lightcraftmc.gadgets.FireWorks
  * JD-Core Version:    0.7.0.1
  */

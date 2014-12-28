@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
 
-import me.mike1665.ammo.GadgetAmmo;
-import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.particlelib.ParticleEffect;
-import me.mike1665.particles18.ParticleLib18;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -34,11 +29,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.GadgetAmmo;
+import com.lightcraftmc.ammo.MeowAmmoManager;
 import com.lightcraftmc.event.handlers.PaintballGun;
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particlelib.ParticleEffect;
+import com.lightcraftmc.particles18.ParticleLib18;
 import com.lightcraftmc.treasurechests.BuildPlateform;
 
 public class AmmoTest implements Listener{
@@ -120,9 +119,9 @@ public class AmmoTest implements Listener{
 	    		  
 	    		  Snowball s = (Snowball)event.getEntity();
 	    		  s.getWorld().playSound(s.getLocation(), Sound.CAT_MEOW, 1.0F, 1.0F);
-	    		  ParticleLib18 lava = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
-	    		  ParticleLib18 hearts = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
-	    		  ParticleLib18 largesmoke = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
+	    		  ParticleLib18 lava = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
+	    		  ParticleLib18 hearts = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
+	    		  ParticleLib18 largesmoke = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
 	    		  lava.sendToLocation(s.getLocation());
 	    		  hearts.sendToLocation(s.getLocation());
 	    		  largesmoke.sendToLocation(s.getLocation());
@@ -146,9 +145,9 @@ public class AmmoTest implements Listener{
 		}
 		Location loc = event.getEntity().getLocation().add(event.getEntity().getVelocity());
 		loc.getWorld().playSound(loc, Sound.CAT_MEOW, 1.0F, 1.0F);
-		ParticleLib18 lava = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
-	    ParticleLib18 hearts = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
-		ParticleLib18 largesmoke = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
+		ParticleLib18 lava = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
+	    ParticleLib18 hearts = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
+		ParticleLib18 largesmoke = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
 		lava.sendToLocation(loc.add(0, +1, 0));
 		hearts.sendToLocation(loc.add(0, +1, 0));
 		largesmoke.sendToLocation(loc.add(0, +1, 0));

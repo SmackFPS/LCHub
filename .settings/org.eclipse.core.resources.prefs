@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/com/arrayprolc/event/TabHeaderSetup.java=UTF-8
 encoding//src/com/arrayprolc/strings/BoxPercentage.java=UTF-8
-encoding//src/me/mike1665/Main/Main.java=UTF-8
-encoding//src/me/mike1665/coinapi/ApiEvent.java=UTF-8
+encoding//src/com/lightcraftmc/coinapi/ApiEvent.java=UTF-8
+encoding//src/com/lightcraftmc/event/TabHeaderSetup.java=UTF-8
+encoding//src/com/lightcraftmc/hub/main/Main.java=UTF-8

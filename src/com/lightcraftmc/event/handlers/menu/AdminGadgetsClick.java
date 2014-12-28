@@ -1,8 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import me.mike1665.menu.AdminGadgets;
-import me.mike1665.menu.GadjetsMenu;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
@@ -14,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.menu.AdminGadgets;
+import com.lightcraftmc.menu.GadjetsMenu;
 
 public class AdminGadgetsClick
   implements Listener
@@ -126,6 +125,6 @@ public class AdminGadgetsClick
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.click.AdminGadgetsClick
+ * Qualified Name:     com.lightcraftmc.click.AdminGadgetsClick
  * JD-Core Version:    0.7.0.1
  */

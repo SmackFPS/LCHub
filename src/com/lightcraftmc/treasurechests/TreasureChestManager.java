@@ -8,11 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.update.UpdateType;
-import me.mike1665.update.event.UpdateEvent;
-import net.lightcraft.blocks.BlockRestore;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -33,6 +28,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.util.Vector;
 
 import com.avaje.ebeaninternal.server.deploy.BeanDescriptor.EntityType;
+import com.lightcraftmc.blocks.BlockRestore;
 import com.lightcraftmc.fusebox.util.UtilEnt;
 import com.lightcraftmc.fusebox.util.UtilEntity;
 import com.lightcraftmc.fusebox.util.UtilPacket;
@@ -40,6 +36,9 @@ import com.lightcraftmc.fusebox.util.UtilServer;
 import com.lightcraftmc.fusebox.util.UtilVelocity;
 import com.lightcraftmc.fusebox.util.UtilityBlock;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.update.UpdateType;
+import com.lightcraftmc.update.event.UpdateEvent;
 
 public class TreasureChestManager
 implements Listener

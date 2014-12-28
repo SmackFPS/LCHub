@@ -2,13 +2,6 @@ package com.lightcraftmc.command;
 
 import java.util.UUID;
 
-import me.mike1665.ammo.BatBlasterAmmoManager;
-import me.mike1665.ammo.EnderDogeAmmoManager;
-import me.mike1665.ammo.FireWorksAmmoManager;
-import me.mike1665.ammo.FunCreeperAmmoManager;
-import me.mike1665.ammo.KittyCannonAmmoManager;
-import me.mike1665.ammo.MeowAmmoManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -16,6 +9,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.lightcraftmc.ammo.BatBlasterAmmoManager;
+import com.lightcraftmc.ammo.EnderDogeAmmoManager;
+import com.lightcraftmc.ammo.FireWorksAmmoManager;
+import com.lightcraftmc.ammo.FunCreeperAmmoManager;
+import com.lightcraftmc.ammo.KittyCannonAmmoManager;
+import com.lightcraftmc.ammo.MeowAmmoManager;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;

@@ -1,7 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import me.mike1665.menu.GadjetsMenu;
-import me.mike1665.menu.PlayerGadjets;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -13,6 +11,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.lightcraftmc.menu.GadjetsMenu;
+import com.lightcraftmc.menu.PlayerGadjets;
 
 public class PlayerGadjetsClick
   implements Listener
@@ -74,6 +75,6 @@ public class PlayerGadjetsClick
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.click.PlayerGadjetsClick
+ * Qualified Name:     com.lightcraftmc.click.PlayerGadjetsClick
  * JD-Core Version:    0.7.0.1
  */

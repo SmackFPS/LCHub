@@ -22,6 +22,6 @@ public class GagdetManager
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.GagdetManager
+ * Qualified Name:     com.lightcraftmc.gadgets.GagdetManager
  * JD-Core Version:    0.7.0.1
  */

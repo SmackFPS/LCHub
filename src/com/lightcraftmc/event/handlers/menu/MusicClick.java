@@ -2,11 +2,6 @@ package com.lightcraftmc.event.handlers.menu;
 
 import java.util.ArrayList;
 
-import me.mike1665.menu.CosmeticsMenu;
-import me.mike1665.menu.MusicMenu;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
-
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,6 +18,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.menu.CosmeticsMenu;
+import com.lightcraftmc.menu.MusicMenu;
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
 
 public class MusicClick
   implements Listener
@@ -439,7 +438,7 @@ public class MusicClick
 
 /* Location:           A:\LC\Lobby\Main.getInstance()s\HubMain.getInstance().jar
 
- * Qualified Name:     me.mike1665.click.MusicClick
+ * Qualified Name:     com.lightcraftmc.click.MusicClick
 
  * JD-Core Version:    0.7.0.1
 

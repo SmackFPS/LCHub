@@ -16,15 +16,15 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.arrayprolc.bungeehook.BungeeHooks;
-import com.arrayprolc.bungeehook.Servers;
-import com.arrayprolc.serverjoin.PartyTools;
+import com.lightcraftmc.bungeehook.BungeeHooks;
+import com.lightcraftmc.bungeehook.Servers;
 import com.lightcraftmc.event.setup.ArrayEventSetup;
 import com.lightcraftmc.fusebox.menu.Menu;
 import com.lightcraftmc.fusebox.util.item.ItemTools;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.serverjoin.PartyTools;
 
 public class ClickInventory implements Listener {
 	Main plugin;

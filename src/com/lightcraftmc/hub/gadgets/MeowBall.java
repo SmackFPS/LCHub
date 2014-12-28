@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
 
-import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -29,10 +25,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.MeowAmmoManager;
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
 
 public class MeowBall
   implements Listener
@@ -125,6 +124,6 @@ public class MeowBall
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.MeowBall
+ * Qualified Name:     com.lightcraftmc.gadgets.MeowBall
  * JD-Core Version:    0.7.0.1
  */

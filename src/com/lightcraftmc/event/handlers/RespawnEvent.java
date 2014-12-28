@@ -42,7 +42,7 @@ public class RespawnEvent implements Listener{
 	{
 	  Player p = event.getPlayer();
 	  if (p.getItemInHand().getType() == Material.CHEST && p.getItemInHand().hasItemMeta() && event.getAction().toString().contains("RIGHT")) {
-		  p.openInventory(me.mike1665.menu.CosmeticsMenu.cosmenu(p));
+		  p.openInventory(com.lightcraftmc.menu.CosmeticsMenu.cosmenu(p));
 		  p.playSound(p.getLocation(), Sound.DOOR_OPEN, 10, 10);
 		  p.sendMessage(StringManager.getPrefix(MessageType.INFO) + "Opened Hub Menu.");
 		  event.setCancelled(true);

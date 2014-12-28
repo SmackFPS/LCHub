@@ -1,18 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import me.mike1665.ammo.BatBlasterAmmoManager;
-import me.mike1665.ammo.EnderDogeAmmoManager;
-import me.mike1665.ammo.FireWorksAmmoManager;
-import me.mike1665.ammo.FunCreeperAmmoManager;
-import me.mike1665.ammo.GadgetAmmo;
-import me.mike1665.ammo.KittyCannonAmmoManager;
-import me.mike1665.ammo.MeowAmmoManager;
-import me.mike1665.coinapi.ApiEvent;
-import me.mike1665.coinapi.LcCoinsAPI;
-import me.mike1665.coinapi.LcTokensAPI;
-import me.mike1665.menu.BuyGadgets;
-import me.mike1665.menu.CosmeticsMenu;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -23,8 +10,20 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.lightcraftmc.ammo.BatBlasterAmmoManager;
+import com.lightcraftmc.ammo.EnderDogeAmmoManager;
+import com.lightcraftmc.ammo.FireWorksAmmoManager;
+import com.lightcraftmc.ammo.FunCreeperAmmoManager;
+import com.lightcraftmc.ammo.GadgetAmmo;
+import com.lightcraftmc.ammo.KittyCannonAmmoManager;
+import com.lightcraftmc.ammo.MeowAmmoManager;
+import com.lightcraftmc.coinapi.ApiEvent;
+import com.lightcraftmc.coinapi.LcCoinsAPI;
+import com.lightcraftmc.coinapi.LcTokensAPI;
 import com.lightcraftmc.hub.gadgets.BowTeleport;
 import com.lightcraftmc.hub.gadgets.PvPSword;
+import com.lightcraftmc.menu.BuyGadgets;
+import com.lightcraftmc.menu.CosmeticsMenu;
 
 public class BuyGadgetsClick
   implements Listener
@@ -357,6 +356,6 @@ public class BuyGadgetsClick
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.click.BuyGadgetsClick
+ * Qualified Name:     com.lightcraftmc.click.BuyGadgetsClick
  * JD-Core Version:    0.7.0.1
  */

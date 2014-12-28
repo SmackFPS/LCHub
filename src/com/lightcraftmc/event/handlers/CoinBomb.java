@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import me.mike1665.coinapi.LcCoinsAPI;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -26,6 +24,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.coinapi.LcCoinsAPI;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;

@@ -1,7 +1,5 @@
 package com.lightcraftmc.command;
 
-import me.mike1665.wardrobe.WardrobeManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,6 +11,7 @@ import org.bukkit.entity.Player;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.wardrobe.WardrobeManager;
 
 public class UnlockAllArmor {
 	

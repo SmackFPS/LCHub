@@ -1,12 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import me.mike1665.menu.CosmeticsMenu;
-import me.mike1665.mount.MountManager;
-import me.mike1665.mount.mounts.AngelRider;
-import me.mike1665.mount.mounts.DarkRider;
-import me.mike1665.mount.mounts.GhostRider;
-import me.mike1665.mount.mounts.NyanRider;
-import me.mike1665.mount.mounts.PoseidonRider;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,6 +8,14 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.lightcraftmc.menu.CosmeticsMenu;
+import com.lightcraftmc.mount.MountManager;
+import com.lightcraftmc.mount.mounts.AngelRider;
+import com.lightcraftmc.mount.mounts.DarkRider;
+import com.lightcraftmc.mount.mounts.GhostRider;
+import com.lightcraftmc.mount.mounts.NyanRider;
+import com.lightcraftmc.mount.mounts.PoseidonRider;
 
 public class MountMenuClick
   implements Listener
@@ -90,6 +91,6 @@ public class MountMenuClick
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.click.MountMenuClick
+ * Qualified Name:     com.lightcraftmc.click.MountMenuClick
  * JD-Core Version:    0.7.0.1
  */

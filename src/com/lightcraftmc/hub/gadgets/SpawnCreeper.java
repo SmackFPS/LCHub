@@ -1,8 +1,5 @@
 package com.lightcraftmc.hub.gadgets;
 
-import me.mike1665.coinapi.LcCoinsAPI;
-import me.mike1665.menu.BuyGadgets;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -24,7 +21,9 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import com.lightcraftmc.coinapi.LcCoinsAPI;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.menu.BuyGadgets;
 
 public class SpawnCreeper
   implements Listener
@@ -214,6 +213,6 @@ public class SpawnCreeper
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.funstuff.SpawnCreeper
+ * Qualified Name:     com.lightcraftmc.funstuff.SpawnCreeper
  * JD-Core Version:    0.7.0.1
  */

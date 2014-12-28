@@ -1,7 +1,5 @@
 package com.lightcraftmc.event.handlers;
 
-import me.mike1665.particlelib.ParticleEffect;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Sound;
@@ -12,6 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
+
+import com.lightcraftmc.particlelib.ParticleEffect;
 
 public class MeowBall implements Listener{
 	

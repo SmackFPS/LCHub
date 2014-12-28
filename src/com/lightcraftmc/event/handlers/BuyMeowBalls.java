@@ -1,8 +1,5 @@
 package com.lightcraftmc.event.handlers;
 
-import me.mike1665.particlelib.ParticleEffect;
-import me.mike1665.particles18.ParticleLib18;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Sound;
@@ -13,6 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
+
+import com.lightcraftmc.particlelib.ParticleEffect;
+import com.lightcraftmc.particles18.ParticleLib18;
 
 public class BuyMeowBalls implements Listener{
 	
@@ -30,9 +30,9 @@ public class BuyMeowBalls implements Listener{
 	      if ((disName(player.getItemInHand()) != null) && (disName(player.getItemInHand()).equalsIgnoreCase(ChatColor.GREEN + "MeowBall"))){
 	    	  Snowball s = (Snowball)event.getEntity();
 		      s.getWorld().playSound(s.getLocation(), Sound.CAT_MEOW, 1.0F, 1.0F);
-	          ParticleLib18 lava = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
-	          ParticleLib18 hearts = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
-	          ParticleLib18 largesmoke = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
+	          ParticleLib18 lava = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.LAVA, 0.0F, 20, 0);
+	          ParticleLib18 hearts = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.HEART, 0.0F, 2, 0);
+	          ParticleLib18 largesmoke = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.SMOKE_LARGE, 0.0F, 10, 0);
 
 
 		     //ParticleEffect.LAVA.display(s.getLocation(), 0.0F, 0.0F, 0.0F, 0.0F, 20);

@@ -1,9 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import me.mike1665.coinapi.LcTokensAPI;
-import me.mike1665.menu.CosmeticsMenu;
-import me.mike1665.wardrobe.WardrobeManager;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -15,8 +11,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.arrayprolc.event.ColouredWardrobe;
-import com.arrayprolc.event.WardrobeType;
+import com.lightcraftmc.coinapi.LcTokensAPI;
+import com.lightcraftmc.event.ColouredWardrobe;
+import com.lightcraftmc.event.WardrobeType;
+import com.lightcraftmc.menu.CosmeticsMenu;
+import com.lightcraftmc.wardrobe.WardrobeManager;
 
 public class WardrobeClick
   implements Listener

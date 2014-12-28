@@ -1,7 +1,5 @@
 package com.lightcraftmc.hub.gadgets;
 
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -26,6 +24,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
 
 public class BowTeleport
   implements Listener
@@ -152,6 +153,6 @@ public class BowTeleport
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.funstuff.BowTeleport
+ * Qualified Name:     com.lightcraftmc.funstuff.BowTeleport
  * JD-Core Version:    0.7.0.1
  */

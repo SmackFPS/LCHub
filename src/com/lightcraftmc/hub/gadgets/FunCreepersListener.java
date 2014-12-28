@@ -1,8 +1,7 @@
 package com.lightcraftmc.hub.gadgets;
 
 import java.util.List;
-import me.mike1665.particles18.ParticleLib18;
-import me.mike1665.particles18.ParticleLib18.ParticleType;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Egg;
@@ -13,6 +12,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.util.Vector;
+
+import com.lightcraftmc.particles18.ParticleLib18;
+import com.lightcraftmc.particles18.ParticleLib18.ParticleType;
 
 public class FunCreepersListener
   implements Listener
@@ -62,6 +64,6 @@ public class FunCreepersListener
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.funstuff.FunCreepers
+ * Qualified Name:     com.lightcraftmc.funstuff.FunCreepers
  * JD-Core Version:    0.7.0.1
  */

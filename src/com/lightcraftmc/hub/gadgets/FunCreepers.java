@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.UUID;
 
-import me.mike1665.ammo.FunCreeperAmmoManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -28,6 +26,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.FunCreeperAmmoManager;
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
@@ -219,6 +218,6 @@ public class FunCreepers
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.gadgets.FunCreepers
+ * Qualified Name:     com.lightcraftmc.gadgets.FunCreepers
  * JD-Core Version:    0.7.0.1
  */

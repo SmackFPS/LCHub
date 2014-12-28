@@ -3,11 +3,6 @@ package com.lightcraftmc.hub.gadgets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import me.mike1665.ammo.BatBlasterAmmoManager;
-import me.mike1665.ammo.EnderDogeAmmoManager;
-import me.mike1665.particlelib.ParticleEffect;
-import me.mike1665.particles18.ParticleLib18;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -25,6 +20,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.ammo.BatBlasterAmmoManager;
+import com.lightcraftmc.ammo.EnderDogeAmmoManager;
 import com.lightcraftmc.fusebox.util.UtilAction;
 import com.lightcraftmc.fusebox.util.UtilAlg;
 import com.lightcraftmc.fusebox.util.UtilEnt;
@@ -32,6 +29,8 @@ import com.lightcraftmc.fusebox.util.UtilEntity;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.particlelib.ParticleEffect;
+import com.lightcraftmc.particles18.ParticleLib18;
 
 public class BatBlaster implements Listener {
 
@@ -189,7 +188,7 @@ public class BatBlaster implements Listener {
 		if (this._bats.containsKey(player)) {
 			for (Bat bat : this._bats.get(player)) {
 				if (bat.isValid()) {
-				    ParticleLib18 angry = new ParticleLib18(me.mike1665.particles18.ParticleLib18.ParticleType.VILLAGER_ANGRY, 0.0F, 3, 0);
+				    ParticleLib18 angry = new ParticleLib18(com.lightcraftmc.particles18.ParticleLib18.ParticleType.VILLAGER_ANGRY, 0.0F, 3, 0);
 					angry.sendToLocation(bat.getLocation());
 				}
 				bat.remove();

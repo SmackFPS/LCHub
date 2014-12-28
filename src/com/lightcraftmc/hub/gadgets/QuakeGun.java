@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import me.mike1665.ammo.GadgetAmmo;
-import me.mike1665.ammo.MeowAmmoManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -31,6 +28,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.lightcraftmc.ammo.GadgetAmmo;
+import com.lightcraftmc.ammo.MeowAmmoManager;
 import com.lightcraftmc.fusebox.util.UtilBlock;
 import com.lightcraftmc.fusebox.util.strings.MessageType;
 import com.lightcraftmc.fusebox.util.strings.StringManager;

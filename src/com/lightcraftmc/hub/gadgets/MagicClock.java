@@ -100,6 +100,6 @@ public class MagicClock
 
 
 /* Location:           A:\LC\Lobby\plugins\HubPlugin.jar
- * Qualified Name:     me.mike1665.funstuff.MagicClock
+ * Qualified Name:     com.lightcraftmc.funstuff.MagicClock
  * JD-Core Version:    0.7.0.1
  */
