@@ -1,7 +1,7 @@
 name: LightCraftHub
-main: me.mike1665.Main.Main
+main: com.lightcraftmc.hub.main.Main
 version: 1.0
-description: Testa
+description: Hub PLugin
 author: mike1665
 depend: [LightCraftFusebox]
 commands:
@@ -33,6 +33,4 @@ commands:
     wardrobe:
     colorhelm:
     unlockallarmor:
-    321:
-    3211:
     arc:

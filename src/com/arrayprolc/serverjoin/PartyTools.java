@@ -1,14 +1,13 @@
 package com.arrayprolc.serverjoin;
 
-import net.lightcraftmc.com.fusebox.party.Party;
-import net.lightcraftmc.com.fusebox.party.PartyManager;
-
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import com.lightcraftmc.fusebox.party.Party;
+import com.lightcraftmc.fusebox.party.PartyManager;
 
 public class PartyTools {
 
