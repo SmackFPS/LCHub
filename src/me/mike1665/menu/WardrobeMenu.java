@@ -2,7 +2,6 @@ package me.mike1665.menu;
 
 import java.util.ArrayList;
 
-import me.mike1665.Main.Main;
 import me.mike1665.wardrobe.WardrobeManager;
 
 import org.bukkit.Bukkit;
@@ -13,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class WardrobeMenu
   implements Listener

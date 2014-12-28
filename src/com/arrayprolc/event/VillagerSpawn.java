@@ -2,8 +2,6 @@ package com.arrayprolc.event;
 
 import java.util.Random;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.EntityEffect;
@@ -21,6 +19,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class VillagerSpawn implements Listener {
 

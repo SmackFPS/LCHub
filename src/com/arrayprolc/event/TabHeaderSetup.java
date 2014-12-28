@@ -1,7 +1,5 @@
 package com.arrayprolc.event;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -14,6 +12,7 @@ import com.arrayprolc.bountifulupdate.BUtils;
 import com.arrayprolc.coin.Multiplier;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
+import com.lightcraftmc.hub.main.Main;
 
 public class TabHeaderSetup implements Listener {
 

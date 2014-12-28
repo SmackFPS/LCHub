@@ -1,10 +1,11 @@
 package net.lightcraft.particles;
 
-import me.mike1665.Main.Main;
 import me.mike1665.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Listener;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class UnlockedParticle implements Listener{
 	

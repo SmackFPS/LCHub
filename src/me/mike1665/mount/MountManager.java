@@ -3,7 +3,6 @@ package me.mike1665.mount;
 import java.util.HashMap;
 import java.util.UUID;
 
-import me.mike1665.Main.Main;
 import me.mike1665.mount.mounts.AngelRider;
 import me.mike1665.mount.mounts.DarkRider;
 import me.mike1665.mount.mounts.GhostRider;
@@ -28,6 +27,8 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class MountManager
   implements Listener

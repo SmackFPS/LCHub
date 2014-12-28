@@ -1,8 +1,8 @@
 package com.arrayprolc.event;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
+
+import com.lightcraftmc.hub.main.Main;
 
 
 public class TPSMeter {

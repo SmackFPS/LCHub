@@ -2,14 +2,13 @@ package com.arrayprolc.bungeehook;
 
 import java.util.HashMap;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import com.lightcraftmc.hub.main.Main;
 
 public class BungeeHooks {
 	static Main plugin;

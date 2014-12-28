@@ -2,7 +2,6 @@ package me.mike1665.effects;
 
 import java.util.HashMap;
 
-import me.mike1665.Main.Main;
 import me.mike1665.extra.ExtraManager;
 import me.mike1665.particle.ParticleManager;
 
@@ -13,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class EffectManager
   implements Listener

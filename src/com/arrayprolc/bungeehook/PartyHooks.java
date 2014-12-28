@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import com.lightcraftmc.hub.main.Main;
 
 public class PartyHooks implements PluginMessageListener {
 	private static PartyHooks instance;

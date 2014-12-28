@@ -1,6 +1,5 @@
 package me.mike1665.menu;
 
-import me.mike1665.Main.Main;
 import me.mike1665.particle.CircleParticle;
 import me.mike1665.particle.ParticleManager.ParticleType;
 
@@ -10,6 +9,8 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+
+import com.lightcraftmc.hub.main.Main;
 
 import net.lightcraftmc.fusebox.menu.Menu;
 import net.lightcraftmc.fusebox.menu.PlayerMenuEvent;

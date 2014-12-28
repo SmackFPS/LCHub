@@ -1,10 +1,9 @@
 package me.mike1665.ammo;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.OfflinePlayer;
 
 import com.arrayprolc.coin.Multiplier;
+import com.lightcraftmc.hub.main.Main;
 
 public class GadgetAmmo {
 

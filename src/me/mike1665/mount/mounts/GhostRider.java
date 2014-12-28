@@ -3,7 +3,6 @@ package me.mike1665.mount.mounts;
 import java.util.Iterator;
 import java.util.UUID;
 
-import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.mount.MountManager;
 import net.lightcraftmc.fusebox.util.UtilityBlock;
@@ -31,6 +30,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class GhostRider
   implements Listener

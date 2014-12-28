@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-import me.mike1665.Main.Main;
-import net.lightcraft.treasurechests.BuildPlateform;
 import net.lightcraftmc.fusebox.util.strings.MessageType;
 import net.lightcraftmc.fusebox.util.strings.StringManager;
 
@@ -20,6 +18,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.reward.Reward;
 import com.arrayprolc.reward.RewardList;
+import com.lightcraftmc.hub.main.Main;
+import com.lightcraftmc.treasurechests.BuildPlateform;
 
 public class TreasureChestListener implements Listener {
 

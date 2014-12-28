@@ -3,7 +3,6 @@ package me.mike1665.parkour;
 import java.util.ArrayList;
 import java.util.Random;
 
-import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.coinapi.LcTokensAPI;
 
@@ -23,6 +22,8 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class CourseOne implements Listener {
 

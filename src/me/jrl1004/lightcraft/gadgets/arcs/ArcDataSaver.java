@@ -2,12 +2,13 @@ package me.jrl1004.lightcraft.gadgets.arcs;
 
 import java.util.ArrayList;
 
-import me.mike1665.Main.Main;
 import net.lightcraftmc.fusebox.configuration.Configuration;
 import net.lightcraftmc.fusebox.util.UtilLocation;
 import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.Location;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class ArcDataSaver {
 	private static Configuration config;

@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
-import me.mike1665.Main.Main;
 import me.mike1665.coinapi.LcCoinsAPI;
 import me.mike1665.mount.MountManager;
 import net.lightcraftmc.fusebox.util.UtilityBlock;
@@ -38,6 +37,8 @@ import org.bukkit.inventory.HorseInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class NyanRider
   implements Listener

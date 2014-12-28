@@ -1,6 +1,5 @@
 package me.mike1665.particle;
 
-import me.mike1665.Main.Main;
 import me.mike1665.effects.EffectManager;
 import net.lightcraftmc.fusebox.util.UtilLocation;
 
@@ -8,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class ParticleManager
   implements Listener  

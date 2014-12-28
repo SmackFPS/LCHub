@@ -1,11 +1,10 @@
 package me.mike1665.coinapi;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Listener;
 
 import com.arrayprolc.coin.Multiplier;
+import com.lightcraftmc.hub.main.Main;
 
 public class LcCoinsAPI implements Listener {
 	

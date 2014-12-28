@@ -2,10 +2,10 @@ package com.arrayprolc.rank;
 
 import java.util.ArrayList;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class RankManager {
 

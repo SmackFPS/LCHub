@@ -1,10 +1,10 @@
 package me.mike1665.ammo;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class AmmoManager implements Listener{
 	

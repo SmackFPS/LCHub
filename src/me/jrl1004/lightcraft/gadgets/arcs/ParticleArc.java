@@ -1,11 +1,12 @@
 package me.jrl1004.lightcraft.gadgets.arcs;
 
-import me.mike1665.Main.Main;
 import net.lightcraftmc.fusebox.util.particles18.ParticleLib18;
 import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class ParticleArc {
 	private final ParticleType type;

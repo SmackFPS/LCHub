@@ -2,14 +2,14 @@ package me.mike1665.wardrobe;
 
 import java.util.ArrayList;
 
-import me.mike1665.Main.Main;
-
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class WardrobeManager implements Listener{
 	

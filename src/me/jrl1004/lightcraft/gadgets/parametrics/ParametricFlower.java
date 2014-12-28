@@ -1,10 +1,11 @@
 package me.jrl1004.lightcraft.gadgets.parametrics;
 
-import me.mike1665.Main.Main;
 import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class ParametricFlower
 {

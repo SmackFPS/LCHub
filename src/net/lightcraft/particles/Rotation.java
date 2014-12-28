@@ -2,13 +2,14 @@ package net.lightcraft.particles;
 
 import java.util.HashMap;
 
-import me.mike1665.Main.Main;
 import me.mike1665.particles18.ParticleLib18;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import com.lightcraftmc.hub.main.Main;
 
 public class Rotation extends ParticleMenu
 {

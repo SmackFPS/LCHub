@@ -1,7 +1,5 @@
 package me.mike1665.coinapi;
 
-import me.mike1665.Main.Main;
-
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,6 +16,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
 import com.arrayprolc.rank.RankManager;
+import com.lightcraftmc.hub.main.Main;
 
 public class ApiEvent implements Listener {
 	
