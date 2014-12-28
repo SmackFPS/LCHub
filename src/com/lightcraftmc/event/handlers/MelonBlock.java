@@ -18,8 +18,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import net.lightcraftmc.fusebox.util.strings.MessageType;
-import net.lightcraftmc.fusebox.util.strings.StringManager;
+import com.lightcraftmc.fusebox.util.strings.MessageType;
+import com.lightcraftmc.fusebox.util.strings.StringManager;
 
 public class MelonBlock implements Listener{
 	

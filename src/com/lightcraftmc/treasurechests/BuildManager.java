@@ -6,8 +6,6 @@ import java.util.UUID;
 
 import me.mike1665.particles18.ParticleLib18;
 import net.lightcraft.blocks.BlockRestore;
-import net.lightcraftmc.fusebox.util.UtilServer;
-import net.lightcraftmc.fusebox.util.UtilityBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,6 +16,8 @@ import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
+import com.lightcraftmc.fusebox.util.UtilServer;
+import com.lightcraftmc.fusebox.util.UtilityBlock;
 import com.lightcraftmc.hub.main.Main;
 
 public class BuildManager

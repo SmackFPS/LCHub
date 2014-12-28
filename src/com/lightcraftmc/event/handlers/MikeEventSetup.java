@@ -36,7 +36,6 @@ import me.mike1665.particle.ParticleManager;
 import me.mike1665.wardrobe.WardrobeManager;
 import net.lightcraft.particles.ParticleClick;
 import net.lightcraft.particles.UnlockedParticle;
-import net.lightcraftmc.fusebox.util.UtilServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -56,6 +55,7 @@ import com.lightcraftmc.event.handlers.menu.MusicClick;
 import com.lightcraftmc.event.handlers.menu.PlayerGadjetsClick;
 import com.lightcraftmc.event.handlers.menu.VipGadjetsClick;
 import com.lightcraftmc.event.handlers.menu.WardrobeClick;
+import com.lightcraftmc.fusebox.util.UtilServer;
 import com.lightcraftmc.hub.gadgets.BowTeleport;
 import com.lightcraftmc.hub.gadgets.FunCreepers;
 import com.lightcraftmc.hub.gadgets.GagdetManager;

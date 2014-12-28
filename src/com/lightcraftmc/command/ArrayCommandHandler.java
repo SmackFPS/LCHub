@@ -2,9 +2,6 @@ package com.lightcraftmc.command;
 
 import java.lang.reflect.Method;
 
-import net.lightcraftmc.fusebox.pet.Pet;
-import net.lightcraftmc.fusebox.util.UtilEnt;
-import net.lightcraftmc.fusebox.util.UtilMath;
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
 import org.bukkit.Bukkit;
@@ -21,6 +18,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.speedways.CustomEntityType;
+import com.lightcraftmc.fusebox.pet.Pet;
+import com.lightcraftmc.fusebox.util.UtilEnt;
+import com.lightcraftmc.fusebox.util.UtilMath;
 import com.lightcraftmc.hub.main.Main;
 
 public class ArrayCommandHandler implements Listener

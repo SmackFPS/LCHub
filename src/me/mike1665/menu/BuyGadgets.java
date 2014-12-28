@@ -1,7 +1,5 @@
 package me.mike1665.menu;
 
-import net.lightcraftmc.fusebox.util.item.ItemTools;
-
 import java.util.ArrayList;
 
 import me.mike1665.ammo.BatBlasterAmmoManager;
@@ -25,6 +23,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class BuyGadgets
   implements Listener

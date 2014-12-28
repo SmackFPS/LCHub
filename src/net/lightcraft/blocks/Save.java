@@ -1,11 +1,12 @@
 package net.lightcraft.blocks;
 
 import me.mike1665.particles18.ParticleLib18;
-import net.lightcraftmc.fusebox.util.UtilityBlock;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+
+import com.lightcraftmc.fusebox.util.UtilityBlock;
 
 public class Save
 {

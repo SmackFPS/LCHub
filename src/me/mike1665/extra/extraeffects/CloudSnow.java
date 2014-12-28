@@ -5,12 +5,13 @@ import me.mike1665.extra.ExtraManager;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import net.lightcraftmc.fusebox.util.UtilityMath;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
+import com.lightcraftmc.fusebox.util.UtilityMath;
 
 public class CloudSnow
   implements Listener

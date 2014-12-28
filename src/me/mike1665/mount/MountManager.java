@@ -11,7 +11,6 @@ import me.mike1665.mount.mounts.PoseidonRider;
 import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import net.lightcraftmc.fusebox.util.UtilServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,6 +27,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 
+import com.lightcraftmc.fusebox.util.UtilServer;
 import com.lightcraftmc.hub.main.Main;
 
 public class MountManager

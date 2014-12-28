@@ -8,9 +8,6 @@ import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.MeowAmmoManager;
 import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
-import net.lightcraftmc.fusebox.util.UtilBlock;
-import net.lightcraftmc.fusebox.util.strings.MessageType;
-import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -38,6 +35,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.lightcraftmc.event.handlers.PaintballGun;
+import com.lightcraftmc.fusebox.util.UtilBlock;
+import com.lightcraftmc.fusebox.util.strings.MessageType;
+import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
 import com.lightcraftmc.treasurechests.BuildPlateform;
 

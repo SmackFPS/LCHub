@@ -22,7 +22,6 @@ import me.mike1665.extra.extraeffects.Vortex;
 import me.mike1665.particle.ParticleManager;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
-import net.lightcraftmc.fusebox.util.UtilLocation;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -31,6 +30,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
+import com.lightcraftmc.fusebox.util.UtilLocation;
 import com.lightcraftmc.hub.main.Main;
 
 public class ExtraManager

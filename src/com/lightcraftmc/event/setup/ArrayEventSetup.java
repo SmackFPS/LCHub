@@ -1,7 +1,6 @@
 package com.lightcraftmc.event.setup;
 
 import me.mike1665.menu.ParticleMenu;
-import net.lightcraftmc.fusebox.build.listener.BuildSettings;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -22,6 +21,7 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import com.lightcraftmc.event.handlers.menu.ClickInventory;
+import com.lightcraftmc.fusebox.build.listener.BuildSettings;
 import com.lightcraftmc.hub.main.Main;
 
 public class ArrayEventSetup {

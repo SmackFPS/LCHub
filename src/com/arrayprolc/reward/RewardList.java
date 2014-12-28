@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import net.lightcraftmc.fusebox.util.item.ItemTools;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class RewardList {
 

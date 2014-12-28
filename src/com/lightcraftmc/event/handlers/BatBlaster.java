@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import me.mike1665.particlelib.ParticleEffect;
-import net.lightcraftmc.fusebox.util.UtilAction;
-import net.lightcraftmc.fusebox.util.UtilAlg;
-import net.lightcraftmc.fusebox.util.UtilEnt;
-import net.lightcraftmc.fusebox.util.UtilEntity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,6 +21,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.fusebox.util.UtilAction;
+import com.lightcraftmc.fusebox.util.UtilAlg;
+import com.lightcraftmc.fusebox.util.UtilEnt;
+import com.lightcraftmc.fusebox.util.UtilEntity;
 import com.lightcraftmc.hub.main.Main;
 
 public class BatBlaster implements Listener {

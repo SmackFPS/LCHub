@@ -1,9 +1,5 @@
 package com.lightcraftmc.event.handlers.menu;
 
-import net.lightcraftmc.fusebox.menu.Menu;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
-import net.lightcraftmc.fusebox.util.strings.MessageType;
-import net.lightcraftmc.fusebox.util.strings.StringManager;
 import net.minecraft.server.v1_8_R1.PacketPlayOutNamedSoundEffect;
 
 import org.bukkit.Bukkit;
@@ -24,6 +20,10 @@ import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
 import com.arrayprolc.serverjoin.PartyTools;
 import com.lightcraftmc.event.setup.ArrayEventSetup;
+import com.lightcraftmc.fusebox.menu.Menu;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
+import com.lightcraftmc.fusebox.util.strings.MessageType;
+import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
 
 public class ClickInventory implements Listener {

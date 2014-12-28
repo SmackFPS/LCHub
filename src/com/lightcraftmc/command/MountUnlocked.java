@@ -9,10 +9,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.lightcraftmc.fusebox.util.strings.MessageType;
+import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
-
-import net.lightcraftmc.fusebox.util.strings.MessageType;
-import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 public class MountUnlocked {
 

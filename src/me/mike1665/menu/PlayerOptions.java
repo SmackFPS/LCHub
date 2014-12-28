@@ -2,7 +2,7 @@ package me.mike1665.menu;
 
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
 
 import java.util.ArrayList;
 

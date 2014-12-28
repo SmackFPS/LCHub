@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.UUID;
 
 import me.mike1665.ammo.FunCreeperAmmoManager;
-import net.lightcraftmc.fusebox.util.UtilBlock;
-import net.lightcraftmc.fusebox.util.strings.MessageType;
-import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,6 +28,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.fusebox.util.UtilBlock;
+import com.lightcraftmc.fusebox.util.strings.MessageType;
+import com.lightcraftmc.fusebox.util.strings.StringManager;
 import com.lightcraftmc.hub.main.Main;
 
 public class FunCreepers

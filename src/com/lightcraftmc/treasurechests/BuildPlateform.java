@@ -1,8 +1,6 @@
 package com.lightcraftmc.treasurechests;
 
 import me.mike1665.particles18.ParticleLib18;
-import net.lightcraftmc.fusebox.util.UtilMath;
-import net.lightcraftmc.fusebox.util.UtilityMath;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -10,6 +8,8 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import com.lightcraftmc.fusebox.util.UtilMath;
+import com.lightcraftmc.fusebox.util.UtilityMath;
 import com.lightcraftmc.hub.main.Main;
 
 public class BuildPlateform

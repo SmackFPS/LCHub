@@ -10,11 +10,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import com.lightcraftmc.fusebox.menu.Menu;
+import com.lightcraftmc.fusebox.menu.PlayerMenuEvent;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
 import com.lightcraftmc.hub.main.Main;
-
-import net.lightcraftmc.fusebox.menu.Menu;
-import net.lightcraftmc.fusebox.menu.PlayerMenuEvent;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class ParticleMenu implements Listener {
 

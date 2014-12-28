@@ -2,8 +2,6 @@ package com.lightcraftmc.command;
 
 import me.jrl1004.lightcraft.gadgets.arcs.ArcDataSaver;
 import me.jrl1004.lightcraft.gadgets.arcs.ParticleArc;
-import net.lightcraftmc.fusebox.tools.SelectionTool;
-import net.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -11,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
+import com.lightcraftmc.fusebox.tools.SelectionTool;
+import com.lightcraftmc.fusebox.util.particles18.ParticleLib18.ParticleType;
 import com.lightcraftmc.hub.main.Main;
 
 public class JacobCommandHandler implements Listener {

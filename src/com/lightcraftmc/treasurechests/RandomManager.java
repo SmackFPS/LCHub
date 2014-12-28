@@ -18,13 +18,6 @@ import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.particles18.ParticleLib18.ParticleType;
 import me.mike1665.wardrobe.WardrobeManager;
 import net.lightcraft.particles.UnlockedParticle;
-import net.lightcraftmc.fusebox.util.MathUtils;
-import net.lightcraftmc.fusebox.util.UtilEffect;
-import net.lightcraftmc.fusebox.util.UtilEnt;
-import net.lightcraftmc.fusebox.util.UtilMath;
-import net.lightcraftmc.fusebox.util.UtilServer;
-import net.lightcraftmc.fusebox.util.UtilVector;
-import net.lightcraftmc.fusebox.util.UtilityMath;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -39,6 +32,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
 
+import com.lightcraftmc.fusebox.util.MathUtils;
+import com.lightcraftmc.fusebox.util.UtilEffect;
+import com.lightcraftmc.fusebox.util.UtilEnt;
+import com.lightcraftmc.fusebox.util.UtilMath;
+import com.lightcraftmc.fusebox.util.UtilServer;
+import com.lightcraftmc.fusebox.util.UtilVector;
+import com.lightcraftmc.fusebox.util.UtilityMath;
 import com.lightcraftmc.hub.main.Main;
 
 public class RandomManager

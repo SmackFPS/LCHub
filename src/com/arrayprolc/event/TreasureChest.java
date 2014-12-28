@@ -13,8 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.lightcraftmc.fusebox.menu.Menu;
 import com.arrayprolc.reward.Reward;
+import com.lightcraftmc.fusebox.menu.Menu;
 
 public class TreasureChest {
 	Player p;

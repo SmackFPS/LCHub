@@ -12,12 +12,6 @@ import me.mike1665.particles18.ParticleLib18;
 import me.mike1665.update.UpdateType;
 import me.mike1665.update.event.UpdateEvent;
 import net.lightcraft.blocks.BlockRestore;
-import net.lightcraftmc.fusebox.util.UtilEnt;
-import net.lightcraftmc.fusebox.util.UtilPacket;
-import net.lightcraftmc.fusebox.util.UtilEntity;
-import net.lightcraftmc.fusebox.util.UtilServer;
-import net.lightcraftmc.fusebox.util.UtilVelocity;
-import net.lightcraftmc.fusebox.util.UtilityBlock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -39,6 +33,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.util.Vector;
 
 import com.avaje.ebeaninternal.server.deploy.BeanDescriptor.EntityType;
+import com.lightcraftmc.fusebox.util.UtilEnt;
+import com.lightcraftmc.fusebox.util.UtilEntity;
+import com.lightcraftmc.fusebox.util.UtilPacket;
+import com.lightcraftmc.fusebox.util.UtilServer;
+import com.lightcraftmc.fusebox.util.UtilVelocity;
+import com.lightcraftmc.fusebox.util.UtilityBlock;
 import com.lightcraftmc.hub.main.Main;
 
 public class TreasureChestManager

@@ -12,8 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.material.Dye;
 
-import net.lightcraftmc.fusebox.menu.Menu;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
+import com.lightcraftmc.fusebox.menu.Menu;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class ColouredWardrobe implements Listener {
 
