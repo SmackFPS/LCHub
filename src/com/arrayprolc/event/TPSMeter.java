@@ -52,6 +52,6 @@ public class TPSMeter {
 		if(tps <= 0){
 			percent = 1;
 		}
-		return "§9Performance > §f" + net.lightcraftmc.fusebox.strings.BoxPercentage.generateBoxPercentage(tps/20) + " §7(" + percent + "%)";
+		return "§9Performance > §f" + net.lightcraftmc.fusebox.util.strings.BoxPercentage.generateBoxPercentage(tps/20) + " §7(" + percent + "%)";
 	}
 }

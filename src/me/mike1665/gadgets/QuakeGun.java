@@ -10,6 +10,8 @@ import me.mike1665.Main.Main;
 import me.mike1665.ammo.GadgetAmmo;
 import me.mike1665.ammo.MeowAmmoManager;
 import net.lightcraftmc.fusebox.util.UtilBlock;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -32,9 +34,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class QuakeGun implements Listener {
 

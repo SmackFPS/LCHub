@@ -11,8 +11,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 public class UnlockAllArmor {
 	

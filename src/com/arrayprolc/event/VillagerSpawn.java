@@ -82,7 +82,11 @@ public class VillagerSpawn implements Listener {
 		if(e.getCause().equals(DamageCause.VOID)){
 			return;
 		}
-		if(e.getEntity() instanceof Player){
+		if(!(e.getEntity() instanceof Villager)){
+			if(e.getEntity() instanceof Player){
+				return;
+			}
+			e.setCancelled(true);
 			return;
 		}
 		e.getEntity().setVelocity(e.getEntity().getLocation().getDirection().multiply(-0.8D));

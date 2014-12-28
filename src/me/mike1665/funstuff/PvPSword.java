@@ -1,9 +1,11 @@
 package me.mike1665.funstuff;
 
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
+
 import java.util.ArrayList;
 import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;

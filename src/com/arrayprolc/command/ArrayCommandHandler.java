@@ -3,30 +3,25 @@ package com.arrayprolc.command;
 import java.lang.reflect.Method;
 
 import me.mike1665.Main.Main;
+import net.lightcraftmc.fusebox.pet.Pet;
+import net.lightcraftmc.fusebox.util.UtilEnt;
+import net.lightcraftmc.fusebox.util.UtilMath;
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
-import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
-import org.bukkit.event.EventHandler;
+import org.bukkit.entity.Wolf;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.material.Dye;
+import org.bukkit.scheduler.BukkitRunnable;
 
-import net.lightcraftmc.fusebox.menu.Menu;
 import com.arrayprolc.rank.RankManager;
 import com.arrayprolc.rank.ServerRank;
 import com.arrayprolc.speedways.CustomEntityType;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
 
 public class ArrayCommandHandler implements Listener
 {
@@ -96,8 +91,24 @@ public class ArrayCommandHandler implements Listener
 		}
 		if (label.equalsIgnoreCase("test"))
 		{
-			//new ParametricFlower(((Player) sender).getLocation(), new ParticleLib18(ParticleType.VILLAGER_HAPPY, 1, 1, 0));
-		
+			if(a.length == 1){
+				Wolf w = ((Player) sender).getWorld().spawn(((Player) sender).getLocation(), Wolf.class);
+				new BukkitRunnable() {
+					public void run() {
+						UtilEnt.CreatureMove(w, w.getLocation().add(UtilMath.randInt(-5, 5),UtilMath.randInt(-5, 5),UtilMath.randInt(-5, 5)), 2f);
+					}
+				}.runTaskTimer(Main.getInstance(), 0, 1);
+				return true;
+			}
+			try{
+			Pet pet = new Pet(EntityType.WOLF, (Player)sender);	
+			}catch(Exception ex){
+				for(StackTraceElement s : ex.getStackTrace()){
+					
+					sender.sendMessage(s.toString());
+				}
+				
+			}
 		}
 		return false;
 	}

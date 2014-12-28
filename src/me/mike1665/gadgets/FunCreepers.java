@@ -7,6 +7,8 @@ import java.util.UUID;
 import me.mike1665.Main.Main;
 import me.mike1665.ammo.FunCreeperAmmoManager;
 import net.lightcraftmc.fusebox.util.UtilBlock;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,9 +31,6 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
-
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class FunCreepers
   implements Listener

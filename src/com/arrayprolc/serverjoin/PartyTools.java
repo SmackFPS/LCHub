@@ -1,7 +1,7 @@
 package com.arrayprolc.serverjoin;
 
-import me.jrl1004.lightcraft.commands.party.Party;
-import me.jrl1004.lightcraft.commands.party.PartyManager;
+import net.lightcraftmc.com.fusebox.party.Party;
+import net.lightcraftmc.com.fusebox.party.PartyManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;

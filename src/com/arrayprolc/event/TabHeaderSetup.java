@@ -1,26 +1,25 @@
 package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
-import net.lightcraftmc.fusebox.util.item.ItemTools;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
 
 import com.arrayprolc.bountifulupdate.BUtils;
 import com.arrayprolc.coin.Multiplier;
+import com.arrayprolc.rank.RankManager;
+import com.arrayprolc.rank.ServerRank;
 
 public class TabHeaderSetup implements Listener {
 
 	public Main plugin;
 	public TabHeaderSetup(){
 		plugin = Main.getInstance();
-
-
 	}
 	
 	@EventHandler
@@ -40,7 +39,17 @@ public class TabHeaderSetup implements Listener {
 		BUtils.sendTitle(e.getPlayer(), "", sub, 5, 5, 5);
 		e.getPlayer().teleport(e.getPlayer().getWorld().getSpawnLocation());
 		e.getPlayer().setGameMode(GameMode.ADVENTURE);
+		sendBlankSpace(e.getPlayer());
+		if(RankManager.hasRank(e.getPlayer(), ServerRank.MVP)){
+			Bukkit.broadcastMessage(RankManager.getFormat(RankManager.getRank(e.getPlayer())) + " §ajoined the lobby.");
+		}
 		e.setJoinMessage(null);
+	}
+	
+	public void sendBlankSpace(Player p){
+		for(int i = 0; i < 25*4; i++){
+			p.sendMessage("");
+		}
 	}
 	
 	@EventHandler

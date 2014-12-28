@@ -17,18 +17,6 @@ public class BuildListener implements Listener {
 		plugin = Main.getInstance();
 	}
 	
-	@EventHandler
-	public void place(BlockPlaceEvent e){
-		if(e.getPlayer().getGameMode() != GameMode.CREATIVE){
-			e.setCancelled(true);
-		}
-	}
-	@EventHandler
-	public void place(BlockBreakEvent e){
-		if(e.getPlayer().getGameMode() != GameMode.CREATIVE){
-			e.setCancelled(true);
-		}
-	}
 	
 	@EventHandler
 	public void onDrop(PlayerDropItemEvent e){

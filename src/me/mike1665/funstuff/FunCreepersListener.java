@@ -14,7 +14,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.util.Vector;
 
-public class FunCreepers
+public class FunCreepersListener
   implements Listener
 {
   @EventHandler

@@ -3,8 +3,8 @@ package me.mike1665.Main;
 import java.util.HashMap;
 import java.util.UUID;
 
-import me.jrl1004.lightcraft.utils.JacobCommandHandler;
-import me.jrl1004.lightcraft.utils.JacobEventSetup;
+import mc.jrl1004.lightcraft.utils.JacobCommandHandler;
+import me.jrl1004.setup.JacobEventSetup;
 import me.mike1665.coinapi.ApiEvent;
 import me.mike1665.commands.AmmoTest;
 import me.mike1665.commands.GiveAmmo;

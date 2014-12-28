@@ -1,13 +1,15 @@
 package com.arrayprolc.event;
 
 import me.mike1665.Main.Main;
+import me.mike1665.gadgets.ClickInventory;
 import me.mike1665.menu.ParticleMenu;
+import net.lightcraftmc.fusebox.build.listener.BuildSettings;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
-import net.lightcraftmc.fusebox.build.listener.BuildSettings;
 
 import com.arrayprolc.bungeehook.BungeeHooks;
 import com.arrayprolc.bungeehook.Servers;
@@ -28,7 +30,6 @@ public class ArrayEventSetup {
 		pm.registerEvents(new TabHeaderSetup(), plugin);
 		pm.registerEvents(new BuildListener(), plugin);
 		pm.registerEvents(new TreasureChestListener(), plugin);
-		pm.registerEvents(new PlayerChat(), plugin);
 		pm.registerEvents(new Speedways(), plugin);
 		pm.registerEvents(new VillagerSpawn(), plugin);
 		for(World w : Bukkit.getWorlds()) w.setGameRuleValue("reducedDebugInfo", "true");
@@ -39,9 +40,12 @@ public class ArrayEventSetup {
 		bungee();
 		BuildSettings.disableServerHunger();
 		BuildSettings.revokeBlockBreak(Bukkit.getWorlds().get(0).getName());
+		removeEntities();
 		
 	}
-	
+	private static void removeEntities(){
+		for(World w : Bukkit.getWorlds()) for(Entity e : w.getEntities()) if(!(e instanceof Player)) e.remove();
+	}
 	public static void bungee(){
 
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Main.getInstance(), "BungeeCord");

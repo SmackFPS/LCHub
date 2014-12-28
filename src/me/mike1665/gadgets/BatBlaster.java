@@ -12,6 +12,8 @@ import net.lightcraftmc.fusebox.util.UtilAction;
 import net.lightcraftmc.fusebox.util.UtilAlg;
 import net.lightcraftmc.fusebox.util.UtilEnt;
 import net.lightcraftmc.fusebox.util.UtilEntity;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,9 +31,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
-
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class BatBlaster implements Listener {
 

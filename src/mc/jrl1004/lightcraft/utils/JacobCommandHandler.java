@@ -1,4 +1,4 @@
-package me.jrl1004.lightcraft.utils;
+package mc.jrl1004.lightcraft.utils;
 
 import me.jrl1004.lightcraft.gadgets.arcs.ArcDataSaver;
 import me.jrl1004.lightcraft.gadgets.arcs.ParticleArc;

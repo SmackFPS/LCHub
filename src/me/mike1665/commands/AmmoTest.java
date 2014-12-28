@@ -12,6 +12,8 @@ import me.mike1665.particlelib.ParticleEffect;
 import me.mike1665.particles18.ParticleLib18;
 import net.lightcraft.treasurechests.BuildPlateform;
 import net.lightcraftmc.fusebox.util.UtilBlock;
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -37,9 +39,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
-
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
 
 public class AmmoTest implements Listener{
 

@@ -17,8 +17,9 @@ import org.bukkit.entity.Player;
 
 import com.arrayprolc.event.ColouredWardrobe;
 import com.arrayprolc.event.WardrobeType;
-import net.lightcraftmc.fusebox.strings.MessageType;
-import net.lightcraftmc.fusebox.strings.StringManager;
+
+import net.lightcraftmc.fusebox.util.strings.MessageType;
+import net.lightcraftmc.fusebox.util.strings.StringManager;
 
 public class MikeCommandHandler {
 
