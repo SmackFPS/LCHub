@@ -22,19 +22,44 @@ public class ApiEvent implements Listener {
 	
 	private static Main plugin;
 	public static boolean hasInit = false;
+	private static int count = 0;
+	private static String current = "";
+	static String title = "§9§l§e§lL§9§light§3§lCraft §9§lL§e§li§9§lght§3§lCraft §9§lLi§e§lg§9§lht§3§lCraft §9§lLig§e§lh§9§lt§3§lCraft §9§lLigh§e§lt§3§lCraft §9§lLight§3§l§e§lC§3§lraft §9§lLight§3§lC§e§lr§3§laft §9§lLight§3§lCr§e§la§3§lft §9§lLight§3§lCra§e§lf§3§lt §9§lLight§3§lCraf§e§lt §9§lLight§3§lCraft";
 	
 	public static void initialize(){
 		ApiEvent.plugin = Main.getInstance();
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable(){
+			@SuppressWarnings("deprecation")
+			public void run(){
+				getNext();
+				for(Player p : Bukkit.getOnlinePlayers()) scoreboard(p, current);
+			}
+		}, 0, 5);
 	}
 	
-	@SuppressWarnings("deprecation")
+	public static String getNext(){
+		count++;
+		if(count > getTitle().length - 1){
+			count = 0;
+		}
+		current = getTitle()[count];
+		return getTitle()[count];
+	}
+	
+	public static String[] getTitle(){
+		return title.split(" ");
+	}
 	public static void scoreboard(Player p){
+		scoreboard(p, current);
+	}
+	@SuppressWarnings("deprecation")
+	public static void scoreboard(Player p, String t){
 		ScoreboardManager manager = Bukkit.getScoreboardManager();
 		Scoreboard board = manager.getNewScoreboard();
 		for(Player p2 : Bukkit.getOnlinePlayers())try{ board.getTeam(p2.getName()).unregister(); }catch(Exception ex){}
 
 		Objective objective = board.registerNewObjective("Test2", "dummy");
-		objective.setDisplayName(ChatColor.RED + "▪ " + ChatColor.GREEN +"" + ChatColor.BOLD + "§9§lLight§3§lCraft" + "" + ChatColor.RED + " ▪");
+		objective.setDisplayName(t);
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
 		

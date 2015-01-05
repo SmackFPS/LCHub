@@ -1,23 +1,27 @@
 package com.lightcraftmc.command;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
-import org.bukkit.entity.Wolf;
 import org.bukkit.event.Listener;
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.inventory.ItemStack;
 
-import com.lightcraftmc.fusebox.pet.Pet;
-import com.lightcraftmc.fusebox.util.UtilEnt;
-import com.lightcraftmc.fusebox.util.UtilMath;
+import com.lightcraftmc.effects.EffectManager;
+import com.lightcraftmc.extra.ExtraManager;
+import com.lightcraftmc.fusebox.menu.Menu;
+import com.lightcraftmc.fusebox.menu.UtilMenu;
+import com.lightcraftmc.fusebox.util.item.ItemTools;
+import com.lightcraftmc.fusebox.util.strings.UtilString;
 import com.lightcraftmc.hub.main.Main;
 import com.lightcraftmc.rank.RankManager;
 import com.lightcraftmc.rank.ServerRank;
@@ -37,6 +41,26 @@ public class ArrayCommandHandler implements Listener
 
 	public static boolean command(CommandSender sender, Command cmd, String label, String[] a)
 	{
+		if(label.equalsIgnoreCase("extrafx")){
+			Player p = (Player)sender;
+			if(!p.isOp()) return false;
+			if(a.length == 0){
+				ExtraManager.removeExtraEffect(p);
+				sender.sendMessage("§cExtra Effects disabled.");
+				return true;
+			}else{
+				for(EffectManager.EffectType e : EffectManager.EffectType.values()){
+					if(e.toString().equalsIgnoreCase(a[0])){
+						ExtraManager.removeExtraEffect(p);
+						ExtraManager.Activate(p, e);
+						sender.sendMessage("§aSuccess!");
+					}
+				}
+				sender.sendMessage("§a/extrafx §7CircleEffect, FlameRing, GreenSpiral, Cloud, CloudSnow, CloudLight, Helix, Tornado, Vortex, FlameLilly, HourGlass, Shield, Fountain, GreenRing");
+
+			}
+		}
+
 		if (label.equalsIgnoreCase("g-reward"))
 		{
 			if (sender instanceof Player)
@@ -89,25 +113,35 @@ public class ArrayCommandHandler implements Listener
 			RankManager.setRank(p, r);
 
 		}
+
+
 		if (label.equalsIgnoreCase("test"))
 		{
-			if(a.length == 1){
-				Wolf w = ((Player) sender).getWorld().spawn(((Player) sender).getLocation(), Wolf.class);
-				new BukkitRunnable() {
-					public void run() {
-						UtilEnt.CreatureMove(w, w.getLocation().add(UtilMath.randInt(-5, 5),UtilMath.randInt(-5, 5),UtilMath.randInt(-5, 5)), 2f);
-					}
-				}.runTaskTimer(Main.getInstance(), 0, 1);
-				return true;
-			}
-			try{
-			Pet pet = new Pet(EntityType.WOLF, (Player)sender);	
+			/*try{
+				EntityType en = EntityType.PIG;
+				for(EntityType e2 : EntityType.values()){
+					try{
+						if(a[0].equalsIgnoreCase(e2.toString())){
+							en = e2;
+						}
+					}catch(Exception ex){}
+				}
+			Pet pet = new Pet(en, (Player)sender);	
 			}catch(Exception ex){
 				for(StackTraceElement s : ex.getStackTrace()){
-					
+
 					sender.sendMessage(s.toString());
 				}
-				
+
+			}*/
+		}
+		return false;
+	}
+
+	public static boolean isExclusion(EntityType e, EntityType[] types){
+		for(EntityType e2 : types){
+			if(e == e2){
+				return true;
 			}
 		}
 		return false;
