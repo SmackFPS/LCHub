@@ -1,5 +1,7 @@
 package com.lightcraftmc.serverjoin;
 
+import java.util.Collection;
+
 import net.lightcraftmc.com.fusebox.party.Party;
 import net.lightcraftmc.com.fusebox.party.PartyManager;
 
@@ -12,79 +14,93 @@ import com.google.common.io.ByteStreams;
 
 public class PartyTools {
 
-	public static Party party(Player p){
-		if(PartyManager.getInstance().isInParty(p)){
+	public static Party party(Player p) {
+		if (PartyManager.getInstance().isInParty(p)) {
 			return PartyManager.getInstance().getByPlayer(p);
 		}
 		return null;
 	}
-	public static Party party(OfflinePlayer p){
-		if(PartyManager.getInstance().isInParty(p)){
+
+	public static Party party(OfflinePlayer p) {
+		if (PartyManager.getInstance().isInParty(p)) {
 			return PartyManager.getInstance().getByPlayer(p);
 		}
 		return null;
 	}
-	
-	public static boolean isHost(Player p, Party part){
+
+	public static boolean isHost(Player p, Party part) {
 		return p.getName().equalsIgnoreCase(part.getHost().getName());
 	}
-	
-	public static OfflinePlayer[] getPlayersInParty(Party part){
+
+	public static OfflinePlayer[] getPlayersInParty(Party part) {
 		return part.getPlayers();
 	}
-	
-	public static OfflinePlayer[] getPartyMembers(OfflinePlayer p){
-		if(party(p) == null){
+
+	public static OfflinePlayer[] getPartyMembers(OfflinePlayer p) {
+		if (party(p) == null) {
 			return new OfflinePlayer[] { p };
 		}
 		return getPlayersInParty(party(p));
 	}
-	
-	public static boolean sendPartyToServer(Player p, String server){
-		if(party(p) == null){
+
+	public static boolean sendPartyToServer(Player p, String server) {
+		if (party(p) == null) {
 			sendPlayerToServer(server, p);
 			return true;
 		}
 		Party par = party(p);
-		if(!isHost(p, par)){
+		if (!isHost(p, par)) {
 			return false;
 		}//
-		for(OfflinePlayer p2 : getPlayersInParty(par)){
+		for (OfflinePlayer p2 : getPlayersInParty(par)) {
 			sendPlayerToServer(server, p2);
 		}
 		return true;
-		
+
 	}
-	public static int playersWith(Player p){
-		if(party(p) == null){
+
+	public static int playersWith(Player p) {
+		if (party(p) == null) {
 			return 1;
 		}
 		return getPlayersInParty(party(p)).length;
 	}
-	public static int playersWith(OfflinePlayer p){
-		if(party(p) == null){
+
+	public static int playersWith(OfflinePlayer p) {
+		if (party(p) == null) {
 			return 1;
 		}
 		return getPlayersInParty(party(p)).length;
 	}
-	public static boolean hasControl(Player p){
-		if(party(p) == null){
+
+	public static boolean hasControl(Player p) {
+		if (party(p) == null) {
 			return true;
 		}
 		return isHost(p, party(p));
 	}
-	
-	public static void sendPlayerToServer(String name, OfflinePlayer p){
+
+	public static void sendPlayerToServer(String name, OfflinePlayer p) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("ConnectOther");
 		out.writeUTF(p.getName());
 		out.writeUTF(name);
-		Bukkit.getOnlinePlayers()[0].sendPluginMessage(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "BungeeCord", out.toByteArray());
+		Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+		if (players.size() >= 1)
+			players.iterator()
+					.next()
+					.sendPluginMessage(
+							Bukkit.getServer().getPluginManager()
+									.getPlugin("HubPlugin"), "BungeeCord",
+							out.toByteArray());
 	}
-	public static void sendPlayerToServer(String name, Player p){
+
+	public static void sendPlayerToServer(String name, Player p) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("Connect");
 		out.writeUTF(name);
-		p.sendPluginMessage(Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"), "BungeeCord", out.toByteArray());
+		p.sendPluginMessage(
+				Bukkit.getServer().getPluginManager().getPlugin("HubPlugin"),
+				"BungeeCord", out.toByteArray());
 	}
 }
